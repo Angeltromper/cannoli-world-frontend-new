@@ -13,7 +13,7 @@
 }
 
 #intro::before {
-    display: block;
+    display: 'block';
     content: 'Welkom';
     color: var(--text-faded);
     opacity: 0.3;
