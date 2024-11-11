@@ -1,8 +1,6 @@
 import {Route, Routes, useLocation} from "react-router-dom";
-// eslint-disable-next-line no-unused-vars
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
-import {Cart} from "./components/cart/Cart";
 import NavbarLinks from "./components/pageLayout/navbar/NavbarLinks";
 import Header from "./components/pageLayout/header/Header";
 import Homepage from "./pages/homepage/Homepage";
@@ -155,9 +153,6 @@ function App () {
 
                         <Route path="/admin-users/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
-
-                        <Route path="/checkout/"
-                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
                                element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>

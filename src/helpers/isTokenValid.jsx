@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Service() {
+function isTokenValid() {
     return (
         <div>
 
@@ -11,4 +11,4 @@ function Service() {
 }
 
 
-export default Service;
+export default isTokenValid;

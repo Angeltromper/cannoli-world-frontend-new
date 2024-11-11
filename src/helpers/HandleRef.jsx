@@ -1,3 +1,14 @@
-export default class HandleRef {
+import React from 'react';
 
+
+function HandleRef() {
+    return (
+        <div>
+
+
+        </div>
+    );
 }
+
+
+export default  HandleRef;
