@@ -1,0 +1,36 @@
+.giftbox {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.geschenk-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.geschenk {
+    background-color: var(--background-color-light);
+    color: var(--background-color-dark);
+    font-weight: bold;
+    position: relative;
+}
+
+#geschenk::before {
+    display: block;
+    content: 'Cadeau';
+    color: var(--text-faded);
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 300px;
+    font-weight: var(--font-weight);
+    letter-spacing: -16px;
+    top: -20px;
+    left: 0;
+}

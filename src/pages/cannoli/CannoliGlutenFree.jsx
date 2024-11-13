@@ -13,6 +13,7 @@ import glutenfreemandarino from "../../assets/img.cannoli-glutenfree/Glutenfree 
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/card_Menu/Card";
+import './CannoliGlutenFree.css';
 
 
 function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
@@ -20,9 +21,8 @@ function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
     useEffect(() => {
         headerImageHandler (pageImg);
         pageTitleHandler();
-    }, [headerImageHandler, pageTitleHandler]);
+    }, []);
 
-    const [cannoliQuery, setCannoliQuery] = useState("");
     const refSearch = useRef(null);
 
     return (

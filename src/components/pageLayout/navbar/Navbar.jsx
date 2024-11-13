@@ -5,10 +5,10 @@ import { AuthContext } from "../../../context/AuthContext";
 import './Navbar.css';
 
 function Navbar() {
-    const history = useNavigate ();
+    const navigate = useNavigate ();
     const toLink = (e) => {
         e.preventDefault ();
-        history ("/inloggen");
+        navigate ("/inloggen");
     };
 
     const {isAuth} = useContext (AuthContext);

@@ -1,0 +1,73 @@
+.page-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    text-transform: uppercase;
+}
+
+.page-login input [type="text"],
+input [type="email"],
+input [type="password"],
+textarea {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: min-content;
+    border: 1px solid black;
+}
+
+.page-login input[type="text"] {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100%;
+    margin: 8px;
+    padding: 16px;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+
+}
+
+.page-login input[type="password"] {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 100%;
+    margin: 8px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.form-login {
+    box-shadow: #FF003D 2px 2px 3px;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    padding: 6rem 8rem;
+    min-width: auto;
+    justify-content: center;
+
+}
+
+.details-username::placeholder {
+    color: var(--shadow-color);
+    font-size: 20px;
+}
+
+.details-password::placeholder {
+    color: var(--shadow-color);
+    font-size: 20px;
+}
+
+.timeout-succes-signin {
+    display: flex;
+    margin: auto;
+}
+
+.valid-check {
+
+}
+
+.button-inlog {
+    display: flex;
+    color: white;
+}

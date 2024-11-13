@@ -12,10 +12,12 @@ import CannoliGlutenFree from "./pages/cannoli/CannoliGlutenFree";
 import CannoliVegan from "./pages/cannoli/CannoliVegan";
 import CannoliView from "./components/cannoliList/CannoliView";
 import CannoliIngredient from "./components/cannoliIngredient/CannoliIngredient";
-import CannoliPricelist from "./pages/priceList/CannoliPriceList";
-import Giftbox from "./pages/categorien/giftbox/Giftbox";
+import CannoliPriceList from "./pages/priceList/CannoliPriceList";
+import Giftbox from "./pages/giftbox/Giftbox";
+import GiftboxPriceList from "./pages/priceList/GiftboxPriceList";
 import Service from "./pages/service/Service";
 import Franchise from "./pages/franchise/Franchise";
+import FranchiseInformation from "./pages/franchise/FranchiseInformation";
 import Contact from "./pages/contact/Contact";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import SearchCannoli from "./pages/searchCannoli/SearchCannoli";
@@ -32,7 +34,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import Cart_DeliveryRequest from "./components/cart_DeliveryRequest/Cart_DeliveryRequest";
-import Info_Form from "./components/form/InfoForm"
+import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
 import FourZeroFour from "./pages/404/FourZeroFour";
 import OrderList from "./components/orderList/OrderList";
@@ -85,17 +87,20 @@ function App () {
                         <Route path="/cannolivegan"
                                element={<CannoliVegan headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/cannoliView"
+                        <Route path="/cannoli-view"
                                element={<CannoliView headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannoli-ingredient"
                                element={<CannoliIngredient headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannoli-pricelist"
-                               element={<CannoliPricelist headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+                               element={<CannoliPriceList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/giftbox"
                                element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/giftbox-pricelist"
+                               element={<GiftboxPriceList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/service"
                                element={<Service headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -103,16 +108,19 @@ function App () {
                         <Route path="/franchise"
                                element={<Franchise headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
+                        <Route path="/franchise-information"
+                               element={<FranchiseInformation headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
                         <Route path="/contact"
                                element={<Contact headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/forgotPassword"
+                        <Route path="/forgot-password"
                                element={<ForgotPassword headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/searchCannoli"
+                        <Route path="/search-cannoli"
                                element={<SearchCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/searchResult"
+                        <Route path="/search-result"
                                element={<SearchResult headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/profile/"
@@ -136,7 +144,7 @@ function App () {
                         <Route path="/logout/"
                                element={<SignOut headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/design elements/"
+                        <Route path="/design-elements/"
                                element={<Elements headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route patch="/footer-nav"
@@ -164,7 +172,7 @@ function App () {
                                element={<PrivateRoute><OrderLists headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route exact path="/users/:user_id"
-                               element={<PrivateRoute><Info_Form headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><InfoForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                     </Routes>
                     <Footer/>

@@ -8,18 +8,16 @@ import snackcocos from "../../assets/img.cannoli-snack/Snack Cocos.png";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/card_Menu/Card";
-
-
-
+import './CannoliSnack.css';
 
 function CannoliSnack({headerImageHandler, pageTitleHandler})  {
 
     useEffect(() => {
         headerImageHandler (pageImg);
         pageTitleHandler();
-    }, [headerImageHandler, pageTitleHandler]);
+    }, []);
 
-    const [cannoliQuery, setCannoliQuery] = useState("");
+
     const refSearch = useRef(null);
 
     return (

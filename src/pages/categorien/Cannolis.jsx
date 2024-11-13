@@ -13,7 +13,7 @@ function Cannolis({headerImageHandler, pageTitleHandler})  {
     useEffect(() => {
         headerImageHandler (pageImg);
         pageTitleHandler();
-    }, [headerImageHandler, pageTitleHandler]);
+    }, []);
 
 
     const refSearch = useRef(null);

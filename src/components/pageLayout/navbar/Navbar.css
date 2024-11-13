@@ -1,15 +1,12 @@
 .navbar {
     background: linear-gradient(180deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
     background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#3B1C11FF', endColorstr='#150A06FF', GradientType=0 );
-    background: -webkit-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgb(59, 28, 17, 99) 100%);
-    background: -o-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
 
     width: 100%;
     position: fixed;
     flex-direction: row;
     align-items: flex-start;
-    height: 20em;
+    height: 22em;
     z-index: 9;
 }
 

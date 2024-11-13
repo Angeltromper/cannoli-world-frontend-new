@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Giftbox() {
+function Giftboxes() {
     return (
         <div>
 
@@ -11,4 +11,4 @@ function Giftbox() {
 }
 
 
-export default  Giftbox;
+export default  Giftboxes;
