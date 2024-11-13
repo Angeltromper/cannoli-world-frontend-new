@@ -1,0 +1,21 @@
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+/*
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1,2rem;
+    row-gap: 1.2rem;
+}
+*/
+
+

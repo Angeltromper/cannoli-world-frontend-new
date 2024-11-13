@@ -6,10 +6,15 @@ import CannoliContextProvider from './context/CannoliContext.jsx';
 import {CartProvider} from "./context/CartContext.jsx";
 import './index.css';
 import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <Router>
-        <React.StrictMode>
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+
+    <React.StrictMode>
+        <Router>
 
             <AuthContextProvider>
                 <CannoliContextProvider>
@@ -19,6 +24,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 </CannoliContextProvider>
             </AuthContextProvider>
 
+        </Router>
     </React.StrictMode>
-</Router>
+
+
+
 );
+
+reportWebVitals();

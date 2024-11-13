@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useContext } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/Logo Cannoli.png";

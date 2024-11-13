@@ -1,0 +1,24 @@
+.card-container {
+    display: block;
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 20em;
+    border-radius: .6em;
+}
+
+.card-image {
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+}
+
+.text-container {
+    padding: 2em;
+}
+
+.text-container h2 {
+    font-size: 1.2em;
+    margin-bottom: .5em;
+
+}

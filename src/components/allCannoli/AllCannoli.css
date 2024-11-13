@@ -1,0 +1,22 @@
+.cannolis {
+    margin-block: 3rem;
+}
+
+.cannolis-card {
+    margin: 2rem;
+}
+
+.cannolis-card .image-wrapper {
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    aspect-ratio: 4/3;
+}
+
+.cannolis-card .content {
+    padding: 1.2rem 1.2rem 1.4rem 1.2rem;
+}
+
+.shadow {
+    border-radius: 10px;
+    box-shadow: 0 0 20px #ffefe9;
+}
