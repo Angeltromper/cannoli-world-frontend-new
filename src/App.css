@@ -1,42 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto:wght@300;400;700&display=swap');
+
+/*/////////////////////////
+    Table of Contents
+    1.  Global Styles
+    2.  Typography
+    3.  Page-layout
+    4.  Scroll-bar
+    5.  Media Queries
+/////////////////////////*/
+
+/*--------------------- 1. Global Styles ---------------------*/
+
+:root {
+  --font: Merriweather;
+  --font-weight: 800;
+  --second-font: 'Roboto', sans-serif;
+  --second-font-line-height: 10px;
+
+  --background-color-dark:  #150A06;
+  --background-color: rgba(59, 28, 17, 99);
+  --background-color-light: #FFFFFF;
+  --background-color-yellow: #FFF4A0;
+  --figure-color-1: #FF003D;
+  --figure-color-2: #1AE216;
+  --button-color: #FF003D;
+
+  --focus-color: #010101;
+  --shadow-color: #00000085;
+
+  --text-logo: #CEA71E;
+  --text-intro-pink: #FF003D;
+  --text-color-error: #F40000;
+  --text: #7A7A7A;
+  --text-intro-white: #FFFFFF;
+  --text-light: #FFFFFF;
+  --text-faded: #FFDDE6;
+  --text-dark: #010101;
+
+  --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
+  --border: 0.2em solid var(--focus-color);
+  --margin: 1.5em;
+  --minusTop: -8rem;
+
+  /*--------------------- Mobile Styles  ---------------------*/
+  --background-color-light-mobile: #E7FFC7;
+  --background-color-mobile: #FFDA5B;
+  --text-dark-mobile: #010101;
+  --menu-bar-width: 60px;
+  --menu-bar-height: 10px;
+}
+
 #root {
-  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  padding:0;
+  /*Met de padding worden de hoogtes en breedtes van de elementen berekend en inclusief padding en borders*/
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+body a {
+  color: white;
+}
+
+a, a:hover {
+  text-decoration: #FF003D;
+}
+
+
+/*--------------------- 2. Typography ---------------------*/
+
+.page-title {
+  font-size: 10px;
+  margin: -12rem;
+  background-size: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Merriweather, 'Times New Roman', serif;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.2em;
+  padding: 16px 0;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.2rem;
+  padding: 12px 0;
+}
+
+h4::after {
+  display: block;
+  content: '';
+  margin: 24px 0 0;
+  width: 57px;
+  height: 4px;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 0.6em;
+}
+
+strong {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+/*--------------------- 3. Page-layout ---------------------*/
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.outer-container__reusable {
+  display: flex;
+  max-width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.inner-container__reusable  {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 0;
   margin: 0 auto;
-  padding: 2rem;
+  justify-content: space-between;
+}
+
+.default-area-padding {
+  padding: 0 0 100px 0;
+}
+
+.default-text-restrictor {
+  max-width: 100%;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.page-content {
+  color: var(--text-intro-pink);
+  display: flex;
+  height: 1.5em;
+  margin: 2em 0;
+  position: relative;
+  justify-content: center;
+  z-index: 5;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.page-content-two h2 {
+  color: var(--text-intro-pink);
+  height: 1.5ch;
+}
+
+.page-content-two h3 {
+  color: var(--text-intro-pink);
+  height: 1.5ch;
+}
+
+.page-content-two {
+  position: relative;
+  margin: var(--margin);
+  font-weight: bold;
+}
+
+.image-preview {
+  width: 100%;
+}
+
+
+.slide-bottom {
+  -webkit-animation: slide-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  animation: slide-bottom 1s cubic-bezier(0.230, 2.000, 0.320, 1.000) both;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+  100% {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
   }
 }
 
-.card {
-  padding: 2em;
-}
 
-.read-the-docs {
-  color: #888;
+
+
+/*--------------------- 4.Media-queries -----------------*/
+
+@media screen and (min-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
 }
