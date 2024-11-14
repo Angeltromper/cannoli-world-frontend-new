@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function CannoliPriceList() {
+
+function CannoliPriceList({headerImageHandler, pageTitleHandler}) {
+
+    useEffect (() => {
+        headerImageHandler ();
+        pageTitleHandler ();
+    }, []);
+
+
     return (
         <div>
 

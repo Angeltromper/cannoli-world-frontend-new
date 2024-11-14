@@ -1,0 +1,11 @@
+.save-button {
+    display: flex;
+    background-color: var(--button-color);
+    color: var(--text-intro-white);
+    box-shadow: var(--shadow-color);
+    border: solid black 1px;
+    border-radius: 12px;
+    font-size: 1em;
+    font: var(--font);
+    justify-content: flex-start;
+}

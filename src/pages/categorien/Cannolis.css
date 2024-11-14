@@ -1,0 +1,17 @@
+.cannolis {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.cannoli-assorti-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 5em;
+    gap: 3em;
+}
+
+
+

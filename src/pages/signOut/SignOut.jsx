@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function SignOut() {
+function SignOut({headerImageHandler, pageTitleHandler}) {
+    useEffect(() => {
+        headerImageHandler();
+        pageTitleHandler();
+    }, []);
+
     return (
         <div>
 

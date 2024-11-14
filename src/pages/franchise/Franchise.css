@@ -1,0 +1,18 @@
+.franchise-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.go-up-search-section {
+
+}
+
+
+.search-result__go-up-icon {
+    width: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}

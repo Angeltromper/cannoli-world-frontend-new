@@ -1,0 +1,10 @@
+.account-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12rem;
+    height: 6rem;
+    transform: scale(0.7);
+    transition: transform 200ms ease-in-out;
+}
+

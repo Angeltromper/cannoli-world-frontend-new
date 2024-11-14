@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function General() {
+function General({headerImageHandler, pageTitleHandler}) {
+    useEffect(() => {
+        headerImageHandler();
+        pageTitleHandler();
+    }, []);
+
+
     return (
         <div>
 

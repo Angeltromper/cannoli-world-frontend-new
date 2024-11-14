@@ -1,0 +1,45 @@
+.cannoli-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+    gap: 2em;
+}
+
+.cards-glutenfree-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    margin: 3em auto;
+    max-width: 1200px;
+    gap: 2em;
+}
+
+.cards-glutenfree-container .button {
+    display: inline-block;
+    color: #FF003D;
+    padding: 12px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+.cards-glutenfree-container .button-primary {
+    background-color: #FF003D;
+    border: 2px solid #FF003D;
+}
+
+.cards-glutenfree-container .button-secondary {
+    border: 2px solid rgba(255, 0, 61, 0.63);
+}
+
+.cards-glutenfree-container .button-secondary:hover {
+    background-color: rgba(255, 0, 61, 0.44) ;
+}
+
+.search-result__go-up-icon {
+    width: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}

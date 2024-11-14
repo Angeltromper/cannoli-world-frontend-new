@@ -1,14 +1,5 @@
-import React from 'react';
+const handleRef = (ref) => {
+    ref.current?.scrollIntoView({behavior: "smooth"})
+};
 
-
-function HandleRef() {
-    return (
-        <div>
-
-
-        </div>
-    );
-}
-
-
-export default  HandleRef;
+export default handleRef;

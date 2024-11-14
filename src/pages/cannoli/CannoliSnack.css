@@ -1,0 +1,45 @@
+.cannoli-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+    gap: 2em;
+}
+
+.cards-snack-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    margin: 3em auto;
+    max-width: 1200px;
+    gap: 2em;
+}
+
+.cards-snack-container .button {
+    display: inline-block;
+    color: #308382;
+    padding: 12px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+.cards-snack-container .button-primary {
+    background-color: #308382;
+    border: 2px solid #308382;
+}
+
+.cards-snack-container .button-secondary {
+    border: 2px solid rgba(48, 131, 130, 0.85);
+}
+
+.cards-snack-container .button-secondary:hover {
+    background-color: rgba(48, 131, 130, 0.65);
+}
+
+.search-result__go-up-icon {
+    width: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}

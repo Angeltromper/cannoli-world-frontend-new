@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import {useNavigate } from "react-router-dom";
 import pageImg from "../../assets/img.header/homepage-background-2400.jpg";
 import cannoliSnack from "./../../assets/img.background/background-cannoli-snack.png";
 import cannoliGlutenFree from "./../../assets/img.background/background cannoli-glutenfree.png";
@@ -11,8 +11,8 @@ import TextContainer from "../../components/pageLayout/designElement/container/t
 import TextContainerResp from "../../components/pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import HandleRef from "./../../helpers/HandleRef";
 import goUp from "./../../assets/navIcon/goUp.png";
+import Button from "../../components/button/button/Button";
 import './Homepage.css';
-
 
 
 // eslint-disable-next-line react/prop-types
@@ -25,11 +25,15 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
         pageTitleHandler();
     }, [headerImageHandler, pageTitleHandler]);
 
+    /*
     const [cannoliQuery, setCannoliQuery] = useState("");
+    */
+
     const refSearch = useRef(null);
 
     function handleSelect(e){
-        setCannoliQuery(e.target.value)
+        /*setCannoliQuery(e.target.value)*/
+
         navigate(`/${e.target.value}`)
         console.log('test')
     }
@@ -86,8 +90,8 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                 >
                                     <option disabled value='DEFAULT'>-- choose one option --</option>
                                     <option value="cannolisnack">Cannoli snack</option>
-                                    <option value="cannolisnack">Cannoli snack ingredient</option>
-                                    <option value="Cannoli Snack prijslijst">Cannoli snack prijslijst</option>
+                                    <option value="cannoli-ingredient">Cannoli snack ingredient</option>
+                                    <option value="cannoli-pricelist">Cannoli snack prijslijst</option>
                                 </select>
                             </label>
                         </fieldset>
@@ -99,42 +103,48 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                 <select
                                     id="search-by-cannoli-glutenfree"
                                     className="input-field__reusable input-field__select-information"
-                                    value={ cannoliQuery }
-                                    onChange={ (e) => setCannoliQuery (e.target.value) }
+                                    onChange={ handleSelect }
+                                    defaultValue='DEFAULT'
                                 >
-                                    <option value="Cannoli GlutenFree">Cannoli glutenvrij</option>
-                                    <option value="Cannoli GlutenFree ingredient">Cannoli glutenvrij ingredient</option>
-                                    <option value="Cannoli GlutenFree prijslijst">Cannoli glutenvrij prijslijst</option>
+                                    <option disabled value='DEFAULT'>-- choose one option --</option>
+                                    <option value="cannoliglutenfree">Cannoli glutenvrij</option>
+                                    <option value="cannoli-ingredient">Cannoli glutenvrij ingredient</option>
+                                    <option value="cannoli-pricelist">Cannoli glutenvrij prijslijst</option>
                                 </select>
                             </label>
                         </fieldset>
 
 
+                        <fieldset>
+                            <label htmlFor="search-by-cannoli-vegan">
+                                <select
+                                    id="search-by-cannoli-vegan"
+                                    className="input-field__reusable input-field__select-information"
+                                    onChange={ handleSelect }
+                                    defaultValue='DEFAULT'
+                                >
+                                    <option disabled value='DEFAULT'>-- choose one option --</option>
+                                    <option value="cannolivegan">Cannoli vegan</option>
+                                    <option value="cannoli-ingredient">Cannoli vegan ingredient</option>
+                                    <option value="cannoli-pricelist">Cannoli vegan prijslijst</option>
+                                </select>
+                            </label>
+                        </fieldset>
 
-                        <label htmlFor="search-by-cannoli-vegan">
-                            <select
-                                id="search-by-cannoli-vegan"
-                                className="input-field__reusable input-field__select-information"
-                                value={ cannoliQuery }
-                                onChange={ (e) => setCannoliQuery (e.target.value) }
-                            >
-                                <option value="Cannoli Vegan">Cannoli vegan</option>
-                                <option value="Cannoli Vegan ingredient">Cannoli vegan ingredient</option>
-                                <option value="Cannoli Vegan prijslijst">Cannoli vegan prijslijst</option>
-                            </select>
-                        </label>
 
                         <fieldset>
                             <label htmlFor="search-by-giftbox">
                                 <select
                                     id="search-by-giftbox"
                                     className="input-field__reusable input-field__select-information"
-                                    value={ cannoliQuery }
-                                    onChange={ (e) => setCannoliQuery (e.target.value) }
+                                    onChange={ handleSelect }
+                                    defaultValue='DEFAULT'
                                 >
-                                    <option value="Giftbox">Giftbox</option>
-                                    <option value="Giftbox prijslijst">Giftbox prijslijst</option>
-                                </select></label>
+                                    <option disabled value='DEFAULT'>-- choose one option --</option>
+                                    <option value="giftbox">Giftbox</option>
+                                    <option value="giftbox-pricelist">Giftbox prijslijst</option>
+                                </select>
+                            </label>
                         </fieldset>
 
                         <fieldset>
@@ -142,18 +152,19 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                 <select
                                     id="search-by-franchise"
                                     className="input-field__reusable input-field__select-information"
-                                    value={ cannoliQuery }
-                                    onChange={ (e) => setCannoliQuery (e.target.value) }
+                                    onChange={ handleSelect }
+                                    defaultValue='DEFAULT'
                                 >
-                                    <option value="Franchise">Franchise</option>
-                                    <option value="Franchise informatie">Franchise informatie</option>
+                                    <option disabled value='DEFAULT'>-- choose one option --</option>
+                                    <option value="franchise">Franchise</option>
+                                    <option value="franchise-information">Franchise informatie</option>
                                 </select>
                             </label>
                         </fieldset>
                     </div>
                     <br/>
 
-                    <SearchButton
+                    <Button
                         onClick={ () => HandleRef (refSearch) }
                         type="submit"
                         text="zoeken"

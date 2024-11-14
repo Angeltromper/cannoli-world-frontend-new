@@ -1,32 +1,29 @@
-.navbar {
+.navbar__main-container {
     background: linear-gradient(180deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
     background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr= '#3B1C11FF', endColorstr='#150A06FF', GradientType=0 );
-    background: -webkit-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgb(59, 28, 17, 99) 100%);
-    background: -o-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 99) 100%);
 
     width: 100%;
     position: fixed;
     flex-direction: row;
     align-items: flex-start;
-    height: 20em;
+    height: 22em;
     z-index: 9;
 }
 
-.navbar a,
-.navbar a:visited {
+.navbar__main-container a,
+.navbar__main-container a:visited {
     color: var(--text-light);
     text-decoration: none;
 }
 
-.navbar a:hover {
+.navbar__main-container a:hover {
     text-decoration: underline;
     color: var(--figure-color-2);
     transition: transform 300ms ease-in-out;
     transform: scale(1.10);
 }
 
-.navbar .nav-container {
+.navbar__main-container .nav-container {
     display: flex;
     background-color: green;
     align-items: center;
@@ -40,17 +37,17 @@
 }
 
 .logo {
-    max-height: 10em;
+    max-height: 2.5em;
 }
 
-.navbar .navbar-menu {
+.navbar__main-container .navbar-menu {
     display: flex;
-    font-family: var(--font), sans-serif;
+    font: var(--font);
     font-size: 1.2rem;
     font-weight: 400;
     list-style: none;
     justify-content:space-between;
-    padding: 1em;
+    padding: 1.5em;
 }
 
 .navbar .navbar-menu a:hover:after {
@@ -80,6 +77,10 @@
 
 .navbar .navbar-menu .logo {
     width: 6em;
+}
+
+button header button {
+    color: var(--text-light);
 }
 
 button, header button:visited {
@@ -151,14 +152,12 @@ button, header .btn-text::after {
 
 .navbar__register-login {
     display: flex;
-    font-size: 1.2rem;
-    flex-direction: row;
-    list-style: none;
-    justify-content: space-between;
-    align-items: center;
-    width: 50rem;
 }
 
+.navbar-register-menu {
+    display: flex;
+    justify-content: flex-end;
+}
 
 .navbar__button-register {
     display: flex;
