@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from "../navbar/Navbar";
-import NavRegister from "../navRegister/NavRegister";
+import SignIn from "../../../pages/signIn/SignIn";
 import { AiOutlineMenu } from "react-icons/ai";
 import MobileNavbar from "../mobileNavbar/MobileNavbar";
 import './Navbar.css';
@@ -34,7 +34,7 @@ function NavbarLinks() {
                         />
 
                         <div className="navbar__register-login">
-                            <NavRegister/>
+                            <SignIn/>
                         </div>
                     </div>
                 </div>

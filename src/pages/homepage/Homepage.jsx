@@ -11,9 +11,8 @@ import TextContainer from "../../components/pageLayout/designElement/container/t
 import TextContainerResp from "../../components/pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import HandleRef from "./../../helpers/HandleRef";
 import goUp from "./../../assets/navIcon/goUp.png";
-import './Homepage.css';
 import Button from "../../components/button/button/Button";
-
+import './Homepage.css';
 
 
 // eslint-disable-next-line react/prop-types
