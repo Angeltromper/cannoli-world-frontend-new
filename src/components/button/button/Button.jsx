@@ -11,5 +11,5 @@ function Button({onClick, text, type}) {
 
 export default Button;
 
-export class Button {
-}
+
+

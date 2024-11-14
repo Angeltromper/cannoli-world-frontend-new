@@ -1,11 +1,11 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
+import {Cart} from "./components/cart/Cart";
 import NavbarLinks from "./components/pageLayout/navbar/NavbarLinks";
 import Header from "./components/pageLayout/header/Header";
 import Homepage from "./pages/homepage/Homepage";
 import Footer from "./components/pageLayout/footer/Footer";
-import Assortiment from "./pages/assortiment/Assortiment";
 import Cannolis from "./pages/categorien/Cannolis";
 import CannoliSnack from "./pages/cannoli/CannoliSnack";
 import CannoliGlutenFree from "./pages/cannoli/CannoliGlutenFree";
@@ -72,9 +72,6 @@ function App () {
                         <Route path="/"
                                element={<NavbarLinks headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/assortiment"
-                               element={<Assortiment headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
-
                         <Route path="/cannoli"
                                element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
@@ -135,10 +132,10 @@ function App () {
                         <Route path="cookies/"
                                element={<Cookies headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/login/"
+                        <Route path="/login"
                                element={<SignIn headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/register/"
+                        <Route path="/register"
                                element={<SignUp headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/logout/"
@@ -161,6 +158,9 @@ function App () {
 
                         <Route path="/admin-users/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+
+                        <Route path="/checkout/"
+                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
                                element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function CannoliIngredient() {
+function CannoliIngredient({headerImageHandler, pageTitleHandler}) {
+    useEffect (() => {
+        headerImageHandler ();
+        pageTitleHandler ();
+    }, []);
+
+
+
     return (
         <div>
 

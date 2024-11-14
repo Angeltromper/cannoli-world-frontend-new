@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import pageImg from './../../assets/img.background/background-cannoli-glutenfree.jpg';
 import glutenfreepistacchio from "../../assets/img.cannoli-glutenfree/Glutenfree Pistacchio.png";
 import glutenfreenocciola from "../../assets/img.cannoli-glutenfree/Glutenfree Nocciola (hazelnoot).png";
@@ -30,7 +30,7 @@ function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
 
 
             <div>
-                <h2>Almond Cannoli (glutenvrij)</h2>
+                <h2>Almond Cannoli</h2>
             </div>
 
             <div className="cards-glutenfree-container">

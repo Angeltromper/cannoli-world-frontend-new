@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function SearchResutl() {
+
+function SearchResutl({headerImageHandler, pageTitleHandler}) {
+
+    useEffect(() => {
+        headerImageHandler();
+        pageTitleHandler();
+    }, []);
+
+
     return (
         <div>
 

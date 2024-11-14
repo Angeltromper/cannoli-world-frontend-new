@@ -1,8 +1,9 @@
 import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate} from "react-router-dom";
-import isTokenValid from "../helpers/isTokenValid";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import axios from "axios";
+import isTokenValid from "../helpers/isTokenValid";
+
 
 export const AuthContext = createContext({});
 
@@ -12,7 +13,7 @@ function AuthContextProvider({children}) {
         user: null,
         status:'pending',
     });
-    const navigate = useNavigate();
+    const history = useNavigate();
 
     // is er een token? En zo ja, is deze nog geldig?
     useEffect (() => {
@@ -46,6 +47,10 @@ function AuthContextProvider({children}) {
             status: 'done',
         });
         navigate('/');
+    }
+
+    function navigate(redirectUrl) {
+
     }
 
     async function getData(id, token, redirectUrl) {

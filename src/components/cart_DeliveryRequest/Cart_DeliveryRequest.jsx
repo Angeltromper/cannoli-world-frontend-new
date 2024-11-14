@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
-function Cart_DeliveryRequest() {
+function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
+    useEffect(() => {
+        headerImageHandler();
+        pageTitleHandler();
+    }, []);
+
+
+
     return (
         <div>
 

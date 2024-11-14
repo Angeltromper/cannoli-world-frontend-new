@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import pageImg from './../../assets/img.background/background cannoli-snack.jpg';
 import snackvanille from "../../assets/img.cannoli-snack/Snack Vanille.png";
 import snacklimoncello from "../../assets/img.cannoli-snack/Snack Limoncello.png";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {useNavigate } from "react-router-dom";
 import pageImg from "../../assets/img.header/homepage-background-2400.jpg";
 import cannoliSnack from "./../../assets/img.background/background-cannoli-snack.png";
@@ -12,6 +12,7 @@ import TextContainerResp from "../../components/pageLayout/designElement/contain
 import HandleRef from "./../../helpers/HandleRef";
 import goUp from "./../../assets/navIcon/goUp.png";
 import './Homepage.css';
+import Button from "../../components/button/button/Button";
 
 
 
@@ -25,11 +26,15 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
         pageTitleHandler();
     }, [headerImageHandler, pageTitleHandler]);
 
+    /*
     const [cannoliQuery, setCannoliQuery] = useState("");
+    */
+
     const refSearch = useRef(null);
 
     function handleSelect(e){
-        setCannoliQuery(e.target.value)
+        /*setCannoliQuery(e.target.value)*/
+
         navigate(`/${e.target.value}`)
         console.log('test')
     }
@@ -160,7 +165,7 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                     </div>
                     <br/>
 
-                    <SearchButton
+                    <Button
                         onClick={ () => HandleRef (refSearch) }
                         type="submit"
                         text="zoeken"

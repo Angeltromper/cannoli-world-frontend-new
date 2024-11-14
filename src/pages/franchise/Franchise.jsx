@@ -4,7 +4,7 @@ import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import './Franchise.css';
 
-function Franchise({headerImageHandler,pageTitleHandler}) {
+function Franchise({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
         headerImageHandler(pageImg);

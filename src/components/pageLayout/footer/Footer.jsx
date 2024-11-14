@@ -30,8 +30,8 @@ function Footer() {
                             <li><NavLink to="/contact">Contact</NavLink></li>
                             <li><NavLink to="/account">Account</NavLink></li>
 
-                            { isAuth ? <li><NavLink to="/inloggen">Uitloggen</NavLink></li> :
-                                <li><NavLink to="/inloggen">Inloggen</NavLink></li> }
+                            { isAuth ? <li><NavLink to="/logout">Uitloggen</NavLink></li> :
+                                <li><NavLink to="/login">Inloggen</NavLink></li> }
                             { isAuth && <li><NavLink to="/profiel">Profiel</NavLink></li> }
                         </ul>
                     </div>
