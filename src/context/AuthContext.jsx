@@ -1,14 +1,13 @@
-// eslint-disable-next-line no-unused-vars
 import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate} from "react-router-dom";
-import isTokenValid from "../helpers/isTokenValid";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
+import isTokenValid from "../helpers/isTokenValid";
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const AuthContext = createContext({});
 
-// eslint-disable-next-line react/prop-types
+
 function AuthContextProvider({children}) {
     const [isAuth, toggleIsAuth] = useState ({
         isAuth: false,

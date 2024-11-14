@@ -1,3 +1,14 @@
-export default class SearchResult {
+import React from 'react';
 
+
+function SearchResutl() {
+    return (
+        <div>
+
+
+        </div>
+    );
 }
+
+
+export default SearchResutl;

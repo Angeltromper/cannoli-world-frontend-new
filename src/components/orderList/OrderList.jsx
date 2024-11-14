@@ -1,3 +1,14 @@
-export default class OrderList {
+import React from 'react';
 
+
+function OrderList() {
+    return (
+        <div>
+
+
+        </div>
+    );
 }
+
+
+export default OrderList;

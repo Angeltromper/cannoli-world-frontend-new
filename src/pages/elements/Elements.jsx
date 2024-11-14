@@ -1,3 +1,14 @@
-export default class Elements {
+import React from 'react';
 
+
+function Elements() {
+    return (
+        <div>
+
+
+        </div>
+    );
 }
+
+
+export default Elements;
