@@ -7,6 +7,7 @@ import isTokenValid from "../helpers/isTokenValid";
 
 export const AuthContext = createContext({});
 
+
 function AuthContextProvider({children}) {
     const [isAuth, toggleIsAuth] = useState ({
         isAuth: false,
