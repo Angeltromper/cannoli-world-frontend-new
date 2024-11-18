@@ -13,7 +13,7 @@ function AuthContextProvider({children}) {
         user: null,
         status:'pending',
     });
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     // is er een token? En zo ja, is deze nog geldig?
     useEffect (() => {
@@ -47,10 +47,6 @@ function AuthContextProvider({children}) {
             status: 'done',
         });
         navigate('/');
-    }
-
-    function navigate(redirectUrl) {
-
     }
 
     async function getData(id, token, redirectUrl) {

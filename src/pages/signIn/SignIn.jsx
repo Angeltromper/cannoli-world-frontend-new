@@ -1,7 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useForm } from "react-hook-form";
-import { NavLink, useNavigate } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import pageImg from "../../../src/assets/img.background/background cannolis.jpg";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -28,7 +29,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
 
     useEffect(() => {
-        headerImageHandler();
+        headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 
@@ -117,7 +118,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         <section className="form-footer">
                             Heeft u nog geen account?<br/>
                             <span className="line">
-                                <NavLink to="/registreren" exact activeClassName="active-link">Registreer</NavLink>
+                                <Link to="/registreren" exact activeClassName="active-link">Registreer</Link>
                             </span>
                         </section>
                     </form>
@@ -127,7 +128,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
                     <p>Mocht u niet automatisch doorgestuurd worden<br/>
-                    <NavLink to="/persoonsgegevens" exact activeClassName="active-link">klik dan hier!</NavLink>
+                    <Link to="/persoonsgegevens" exact activeClassName="active-link">klik dan hier!</Link>
                     </p>
                 </span>
             }
