@@ -4,16 +4,15 @@ import {jwtDecode} from "jwt-decode";
 import axios from "axios";
 import isTokenValid from "../helpers/isTokenValid";
 
-
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-    const [isAuth, toggleIsAuth] = useState ({
+    const [auth, toggleAuth] = useState ({
         isAuth: false,
         user: null,
         status:'pending',
     });
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     // is er een token? En zo ja, is deze nog geldig?
     useEffect (() => {
@@ -24,7 +23,7 @@ function AuthContextProvider({children}) {
             getData (decodedToken.sub, token);
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
-            toggleIsAuth ( {
+            toggleAuth ( {
                 isAuth: false,
                 user: null,
                 status: 'done',
@@ -35,22 +34,18 @@ function AuthContextProvider({children}) {
     function login(token) {
         const decodedToken = jwtDecode (token);
         localStorage.setItem ('token', token);
-        getData(decodedToken.sub, token, "/profiel");
+        getData(decodedToken.sub, token, "/profile");
     }
 
     function logout(e) {
         localStorage.clear ();
         e.preventDefault ();
-        toggleIsAuth ({
+        toggleAuth ({
             isAuth: false,
             user: null,
             status: 'done',
         });
         navigate('/');
-    }
-
-    function navigate(redirectUrl) {
-
     }
 
     async function getData(id, token, redirectUrl) {
@@ -61,8 +56,8 @@ function AuthContextProvider({children}) {
                     "Authorization": `Bearer ${token}`,
                 }
             });
-            toggleIsAuth({
-                ...isAuth,
+            toggleAuth({
+                ...auth,
                 isAuth: true,
                 user: {
                     username: response.data.username,
@@ -92,15 +87,15 @@ function AuthContextProvider({children}) {
 
 
     const contextData = {
-        "auth": isAuth.isAuth,
-        "login": login,
-        "logout": logout,
-        "user": isAuth.user,
+        auth: auth.isAuth,
+        user: auth.user,
+        login: login,
+        logout: logout,
     };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {isAuth.status === 'done' ? children : <h2>Ogenblik geduld alstublieft...</h2>}
+            {auth.status === 'done' ? children : <h2>Ogenblik geduld alstublieft...</h2>}
         </AuthContext.Provider>
     );
 }

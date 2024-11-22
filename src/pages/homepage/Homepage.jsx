@@ -23,7 +23,7 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, [headerImageHandler, pageTitleHandler]);
+    }, []);
 
     /*
     const [cannoliQuery, setCannoliQuery] = useState("");

@@ -1,21 +1,21 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useForm } from "react-hook-form";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import './SignIn.css';
 
-const userRegex = /^[A-z][A-z0-9-_]{4,12}$/;
-const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
+const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
+const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
 
 
 function SignIn({headerImageHandler, pageTitleHandler}) {
 
     const {register, formState: {errors}, handleSubmit} = useForm();
-    const navigate= useNavigate ();
-    const {login, isAuth} = useContext(AuthContext);
+    const navigate= useNavigate();
+    const {login, logout, auth} = useContext(AuthContext);
 
     const [user] = useState('');
     const [validName, setValidName] = useState(false);
@@ -33,11 +33,11 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
     }, []);
 
     useEffect( () => {
-        setValidName (userRegex.test(user));
+        setValidName (USER_REGEX.test(user));
     }, [user]);
 
     useEffect( () => {
-        setValidPassword (passwordRegex.test(password));
+        setValidPassword (PASSWORD_REGEX.test(password));
     }, [password]);
 
     async function signIn(e) {
@@ -45,7 +45,10 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
             const response = await axios.post ('http://localhost:8080/authenticate', {
                 username: e.username,
                 password: e.password,
-            });
+            }, {
+                cancelToken: source.token,
+
+                });
 
             login(response.data.jwt);
             toggleAddSucces (true);
@@ -62,10 +65,10 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
     return (
         <>
-            {!isAuth ?
+            {!auth ?
                 <div className="page-login">
                     <form className="form-login"
-                          onSubmit={ handleSubmit (signIn) }>
+                          onSubmit={ handleSubmit (signIn)}>
 
                         <h2 className="legend">Inloggen</h2>
                         <br/>
@@ -76,7 +79,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                                 className="details-username"
                                 type="text"
                                 id="details-username"
-                                { ...register ("text", {
+                                { ...register ("details-username", {
                                     required: "gebruikersnaam is verplicht!",
                                 }) }
                                 aria-invalid={ validName ? "false" : "true" }
@@ -98,36 +101,33 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                                 aria-invalid={ validPassword ? "false" : "true" }
                                 placeholder="wachtwoord"
                             />
-
                         </label>
-                        { errors.password && <p>{ errors.password.message }</p> }
+                        { errors.password && <p>{ errors.password.message }</p>}
                         <br/>
-
-                        <div className="error-inlog">
-                            { error && "Er ging iets mis, controleer uw gegevens en probeer het later nog een keer." }
-                        </div>
 
                         <button
                             type="submit"
                             className="button-inlog"
                             disabled={ !validName || !validPassword }>Inloggen
                         </button>
-
+                    </form>
+                    : <button type="button" onClick={logout}>Uitloggen</button>
+                    {error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw."}
 
                         <section className="form-footer">
                             Heeft u nog geen account?<br/>
                             <span className="line">
-                                <NavLink to="/registreren" exact activeClassName="active-link">Registreer</NavLink>
+                                <Link to="/register" exact activeClassName="active-link">Registreer</Link>
                             </span>
                         </section>
-                    </form>
+
                 </div>
                 :
                 <span className="timeout-succes-signin succes-slide-bottom">
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
                     <p>Mocht u niet automatisch doorgestuurd worden<br/>
-                    <NavLink to="/persoonsgegevens" exact activeClassName="active-link">klik dan hier!</NavLink>
+                    <Link to="/persoonsgegevens" exact activeClassName="active-link">klik dan hier!</Link>
                     </p>
                 </span>
             }
