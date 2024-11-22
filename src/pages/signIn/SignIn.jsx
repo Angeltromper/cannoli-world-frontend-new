@@ -28,7 +28,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
 
     useEffect(() => {
-        headerImageHandler();
+        headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 
@@ -117,7 +117,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         <section className="form-footer">
                             Heeft u nog geen account?<br/>
                             <span className="line">
-                                <Link to="/register" exact activeClassName="active-link">Registreer</Link>
+                              <Link to="/register" exact activeClassName="active-link">Registreer</Link>
                             </span>
                         </section>
 
