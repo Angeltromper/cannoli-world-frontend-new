@@ -65,4 +65,4 @@ Wachtwoord: 123123
 
 
 
-###### Eindopdracht Full-Stack Developer NOVI College / Angelique Tromper / Copyright © 2022-2023 Cannoli-world/ Alle rechten voorbehouden.
+###### Eindopdracht Full-Stack Developer NOVI College / Angelique Tromper / Copyright © 2024 Cannoli-world/ Alle rechten voorbehouden.
