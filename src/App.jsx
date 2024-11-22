@@ -120,7 +120,7 @@ function App () {
                         <Route path="/search-result"
                                element={<SearchResult headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/profile/"
+                        <Route path="/profile"
                                element={<PrivateRoute><Profile headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="privacy/"
