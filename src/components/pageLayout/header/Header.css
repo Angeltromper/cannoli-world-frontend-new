@@ -17,8 +17,7 @@ header::before {
 }
 
 header::after {
-    content: '';
-    display: block;
+    display: flex ;
     position:absolute;
     left: 0;
     top: 0;
