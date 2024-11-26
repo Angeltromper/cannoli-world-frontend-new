@@ -4,7 +4,10 @@ import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import './CannoliVegan.css';
 import Card from "../../components/card_Menu/Card";
-import snackvanille from "../../assets/img.cannoli-snack/Snack Vanille.png";
+import veganpistache from "../../assets/img.cannoli-vegan/Vegan Pistache.png";
+import veganlimoncello from "../../assets/img.cannoli-vegan/Vegan Limoncello.png";
+import veganstrawberry from "../../assets/img.cannoli-vegan/Vegan Strawberry.png";
+import './CannoliVegan.css';
 
 function CannoliVegan({headerImageHandler, pageTitleHandler}) {
 
@@ -17,16 +20,16 @@ function CannoliVegan({headerImageHandler, pageTitleHandler}) {
 
 
     return (
-        <div className="cards-vegan-container">
+        <div className="cannoli-container">
 
             <div>
                 <h2>Cannoli vegan</h2>
             </div>
 
             <div className="cards-vegan-container">
-                <Card image={ snackvanille } imageAlt="cannoli vanille" title="Vanille" content="Krokant koekje gevuld met zachte vanille crème "/>
-
-
+                <Card image={ veganpistache } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan pistache crème "/>
+                <Card image={ veganlimoncello } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan limoncello crème "/>
+                <Card image={ veganstrawberry } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan strawberry crème "/>
             </div>
 
 
