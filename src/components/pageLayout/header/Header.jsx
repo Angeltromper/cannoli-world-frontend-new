@@ -20,7 +20,7 @@ function Header({headerImage, pageTitle}) {
                 </div>
             </header>
 
-            <image className="header-img-container">
+            <div className="header-img-container">
                 <span>
                     <img src={ headerImage } className="header-img" alt="/"/>
                 </span>
@@ -28,7 +28,7 @@ function Header({headerImage, pageTitle}) {
                 <div className="page-title">
                     <h1>{ pageTitle }</h1>
                 </div>
-            </image>
+            </div>
         </>
     );
 }

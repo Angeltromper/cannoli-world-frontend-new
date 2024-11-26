@@ -17,10 +17,10 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
     const navigate= useNavigate();
     const {login, logout, auth} = useContext(AuthContext);
 
-    const [user] = useState('');
+    const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
 
-    const [password] = useState('');
+    const [password, setPassword] = useState('');
     const [validPassword, setValidPassword] = useState(false);
 
     const [error, setError] = useState(false);
