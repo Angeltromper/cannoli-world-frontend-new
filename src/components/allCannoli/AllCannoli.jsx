@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Button} from "../button/button/Button";
+import {Button} from "../button/Button";
 import './AllCannolis.css';
 
 

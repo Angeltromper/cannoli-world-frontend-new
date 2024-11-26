@@ -11,7 +11,7 @@ import TextContainer from "../../components/pageLayout/designElement/container/t
 import TextContainerResp from "../../components/pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import HandleRef from "./../../helpers/HandleRef";
 import goUp from "./../../assets/navIcon/goUp.png";
-import Button from "../../components/button/button/Button";
+import Button from "../../components/button/Button";
 import './Homepage.css';
 
 
