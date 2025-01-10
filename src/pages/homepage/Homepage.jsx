@@ -18,7 +18,7 @@ import './Homepage.css';
 // eslint-disable-next-line react/prop-types
 function Homepage ({headerImageHandler, pageTitleHandler}) {
 
-    const navigate = useNavigate()
+   const navigate = useNavigate()
 
     useEffect(() => {
         headerImageHandler(pageImg);

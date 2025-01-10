@@ -1,7 +1,9 @@
+/*
 import React, { useEffect, useRef } from "react";
 import pageImg from './../../assets/img.background/background cannoli-snack.jpg';
 import snackvanille from "../../assets/img.cannoli-snack/Snack Vanille.png";
 import snacklimoncello from "../../assets/img.cannoli-snack/Snack Limoncello.png";
+import snackchampagne from "../../assets/img.cannoli-snack/Snack Champagne Proseco.png";
 import snackamandel from "../../assets/img.cannoli-snack/Snack Mandorla Amandel.png";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
@@ -30,9 +32,10 @@ function CannoliSnack({headerImageHandler, pageTitleHandler})  {
 
 
             <div className="cards-snack-container">
-                <Card image={ snackamandel } id={1002} imageAlt="cannoli Amandel" title="Amandel" content="Krokant koekje gevuld met zachte amandel crème"/>
-                <Card image={ snacklimoncello } id={1006} imageAlt="cannoli limoncello" title="Limoncello" content="Krokant koekje gevuld met zachte limoncello crème"/>
-                <Card image={ snackvanille } id={1009}  imageAlt="cannoli vanille" title="Vanille" content="Krokant koekje gevuld met zachte vanille crème"/>
+                <Card image={ snackvanille } imageAlt="cannoli vanille" title="Vanille" content="Krokant koekje gevuld met zachte vanille crème"/>
+                <Card image={ snacklimoncello } imageAlt="cannoli limoncello" title="Limoncello" content="Krokant koekje gevuld met zachte limoncello crème"/>
+                <Card image={ snackchampagne } imageAlt="cannoli cioccolatonero" title="Champagne" content="Krokant koekje gevuld met zachte champagne crème"/>
+                <Card image={ snackamandel } imageAlt="cannoli Amandel" title="Amandel" content="Krokant koekje gevuld met zachte amandel crème"/>
             </div>
 
             <img alt="go-up-search-section" src={ goUp } onClick={ () => HandleRef (refSearch) }
@@ -44,7 +47,7 @@ function CannoliSnack({headerImageHandler, pageTitleHandler})  {
 export default CannoliSnack;
 
 
-
+*/
 
 
 

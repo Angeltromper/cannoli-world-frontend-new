@@ -1,44 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Admin_UserComponent.css';
-import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import pageImg from "../../assets/img.background/Background cannolis.jpg";
+import DeleteIcon from "../../assets/navIcon/delete.svg";
+import './Admin_UserComponent.css';
+import { useNavigate } from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 
 
-function Admin_UserComponent(username) {
-    const [users, setUsers] = useState([]);
-    const [isAdmin, setIsAdmin] = useState (false);
-    const [adminInput, setAdminInput] = useState ([]);
+function Admin_UserComponent() {
+    const navigate = useNavigate();
     const token = localStorage.getItem ('token');
     const {user} = useContext (AuthContext);
+    const [isAdmin, setIsAdmin] = useState (false);
+    const [users, setUsers] = useState([]);
+    const [adminInput, setAdminInput] = useState ([]);
 
+    function goBack() {
+        navigate(`/persoonsgegevens`)
+    }
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get(`http://localhost:8080/users/${username}/`,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        }
-                    }
-                );
-
-                setAdminInput(response.data);
-
-                if (response.data.authorities[0].authority === 'ROLE_ADMIN') {
-                    setIsAdmin (true)
-                } else {
-                    setIsAdmin (false)
-                }
-            } catch (error) {
-                console.error ('There was an error!', error);
-            }
-        }
-
-        fetchData ();
-    }, [isAdmin, token]);
 
     async function deleteUser(username) {
         try {
@@ -59,7 +38,7 @@ function Admin_UserComponent(username) {
 
         async function fetchUsers() {
             try {
-                const response = await axios.get (`http://localhost:8080/users/all`,
+                const response = await axios.get('http://localhost:8080/users',
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -74,7 +53,7 @@ function Admin_UserComponent(username) {
             }
         }
 
-        fetchUsers ().then ();
+        fetchUsers ();
     }, [users]);
 
     return (
@@ -113,24 +92,23 @@ function Admin_UserComponent(username) {
                                 <th>Toevoeging</th>
                                 <th>Postcode</th>
                                 <th>Woonplaats</th>
+
                             </tr>
                             </thead>
 
-                            <tbody className="admin_tbody">
+                            <tbody className="admin-user">
 
                             {users.map((user) => {
-                                user.person = undefined;
                                 return <tr key={ user.id }>
 
                                     <td>
-                                        <button className="delete"
-                                                onClick={ () => deleteUser (user.username) }>
-                                            <Delete/>
+                                        <button className="delete-button-user"
+                                                onClick={() => deleteUser(user.username)}>
+                                            <DeleteIcon/>
                                         </button>
                                     </td>
                                     <td>{user.id}</td>
                                     <td>{user.id}</td>
-                                    <td>{user.picture && <img src={user.picture.url} alt={user.picture.fileName}/>}</td>
                                     <td>{user.email}</td>
                                     <td>{user.personFirstname}</td>
                                     <td>{user.personLastname}</td>

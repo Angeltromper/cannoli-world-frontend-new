@@ -1,0 +1,47 @@
+.cannoli-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.image-preview {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+}
+
+.image-button {
+    display: flex;
+    justify-content: center;
+}
+
+.image-upload-button {
+    display: flex;
+    background-color: black;
+    box-shadow: var(--shadow-color);
+    color: white;
+    transition: 0.7s;
+    border-radius: 40px 20px 40px 20px;
+    width: 10rem;
+    height: 2.5rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: none;
+}
+
+.image-upload-button:hover {
+    background-color: rgb(215, 203, 203);
+    color: white;
+    transition: 0.7s;
+    transform: scale(1.10);
+    cursor: pointer;
+}

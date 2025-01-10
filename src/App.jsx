@@ -10,7 +10,6 @@ import Cannolis from "./pages/categorien/Cannolis";
 import CannoliSnack from "./pages/cannoli/CannoliSnack";
 import CannoliGlutenFree from "./pages/cannoli/CannoliGlutenFree";
 import CannoliVegan from "./pages/cannoli/CannoliVegan";
-import CannoliView from "./components/cannoliList/CannoliView";
 import CannoliIngredient from "./components/cannoliIngredient/CannoliIngredient";
 import CannoliPriceList from "./pages/priceList/CannoliPriceList";
 import Giftbox from "./pages/giftbox/Giftbox";
@@ -22,9 +21,9 @@ import Contact from "./pages/contact/Contact";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import SearchCannoli from "./pages/searchCannoli/SearchCannoli";
 import SearchResult from "./pages/searchResult/SearchResult";
-import Admin_CannoliComponent from "./components/admin/Admin_CannoliComponent";
-import Admin_EditCannoliComponent from "./components/admin/Admin_EditCannoliComponent";
+import Admin_CannoliWholesaleComponent from "./components/admin/Admin_CannoliWholesaleComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
+import Image_CannoliComponent from "./components/image/Image_CannoliComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
 import Profile from "./pages/profile/Profile";
 import Privacy from "./pages/privacy/Privacy";
@@ -33,6 +32,7 @@ import Cookies from "./pages/privacy/Cookies";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
+import Wholesale from "./pages/wholesale/Wholesale";
 import Cart_DeliveryRequest from "./components/cart_DeliveryRequest/Cart_DeliveryRequest";
 import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
@@ -41,6 +41,7 @@ import OrderList from "./components/orderList/OrderList";
 import OrderLists from "./pages/orderLists/OrderLists";
 import FooterNav from "./components/pageLayout/footerNav/FooterNav";
 import './App.css';
+
 
 
 function App () {
@@ -83,9 +84,6 @@ function App () {
 
                         <Route path="/cannolivegan"
                                element={<CannoliVegan headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
-
-                        <Route path="/cannoli-view"
-                               element={<CannoliView headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannoli-ingredient"
                                element={<CannoliIngredient headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -141,6 +139,9 @@ function App () {
                         <Route path="/logout/"
                                element={<SignOut headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
+                        <Route path="/wholesale/:id"
+                               element={<Wholesale headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
                         <Route path="/design-elements/"
                                element={<Elements headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
@@ -150,14 +151,14 @@ function App () {
                         <Route path="/404/"
                                element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/admin-addcannoli/"
-                               element={<PrivateRoute><Admin_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
-
-                        <Route path="/admin-cannoliinfo/"
-                               element={<PrivateRoute><Admin_EditCannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/admin-cannoliwholesale/"
+                               element={<PrivateRoute><Admin_CannoliWholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/admin-users/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+
+                        <Route path="/cannolis/image/:cannoli_id"
+                               element={<PrivateRoute><Image_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/checkout/"
                                element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>

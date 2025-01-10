@@ -1,19 +1,19 @@
+
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
 import Button from "../button/Button";
 import './Admin_CannoliComponent.css';
 
 
 function Admin_CannoliComponent() {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const {user} = useContext(AuthContext);
     const message = ".. veld is verplicht";
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    const {user} = useContext(AuthContext);
-
 
     const [ cannolis, setCannolis] = useState([]);
 
@@ -28,7 +28,6 @@ function Admin_CannoliComponent() {
                     cannoliDescription: cannolidata.cannoli_description,
                     cannoliIngredients: cannolidata.cannoli_ingredients,
                     cannoliPrice: cannolidata.cannoli_price,
-
                 }).then(addedNewCannoli)
 
         } catch (error) {
@@ -248,7 +247,7 @@ function Admin_CannoliComponent() {
                                     </td>
                                     <td>{cannoli.id}</td>
                                     <td>{cannoli.cannoliName}</td>
-                                    <td>{cannoli.picture && <img src={cannoli.picture.url} alt={cannoli.picture.fileName}/>}</td>
+                                    <td>{cannoli.image && <img src={cannoli.picture.url} alt={cannoli.image.fileName}/>}</td>
                                     <td>{cannoli.price}</td>
                                     <td>{cannoli.description}</td>
                                     <td>{cannoli.ingredient}</td>
@@ -264,3 +263,4 @@ function Admin_CannoliComponent() {
 }
 
 export default Admin_CannoliComponent;
+

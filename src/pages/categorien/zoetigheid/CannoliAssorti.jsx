@@ -1,18 +1,9 @@
+/*
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import AllCannoli from "../../../components/allCannoli/AllCannoli";
 import './CannoliAssorti.css';
-import '../../../components/allCannoli/AllCannoli.css';
-import * as PropTypes from "prop-types";
 
-function AllCannolis(props) {
-    return null;
-}
-
-AllCannolis.propTypes = {
-    cannoliName: PropTypes.any,
-    cannoliPrice: PropTypes.any
-};
 
 function CannoliAssorti() {
 
@@ -60,7 +51,6 @@ function CannoliAssorti() {
                                                 cannoli_id={cannoli.id}
                                                 cannoliName={cannoli.cannoliName}
                                                 cannoliPrice={cannoli.price}
-
                                     />
 
                             )
@@ -73,3 +63,4 @@ function CannoliAssorti() {
 }
 
 export default CannoliAssorti;
+*/
