@@ -1,27 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import TwoColumn from "../../components/pageLayout/designElement/column/TwoColumn";
 import Column from "../../components/pageLayout/designElement/column/Column";
+import { useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import './Wholesale.css';
-import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import cannolis from "../categorien/Cannolis";
+
+
+
 
 
 function Wholesale({headerImageHandler, pageTitleHandler}){
     const {id} = useParams();
-    const navigate = useNavigate();
-    /*const token = localStorage.getItem('token');*/
-
-    const [cannoils, setCannolis] = useState([]);
 
 
-    /*
+/*  const [loading, setLoading] = useState(false);*/
+    const [cannolis, setCannolis] = useState([]);
+    const [cannoliImage, setCannoliImage] = useState([]);
+
+
+
+/*    const {user: {username}} = useContext(AuthContext);*/
+/*    const navigate = useNavigate();*/
+/*    const token = localStorage.getItem('token');*/
+
+
+/*
     useEffect(() => {
         headerImageHandler ();
         pageTitleHandler();
     }, []);
-    */
+*/
 
 /*
     async function sendCannoliData(cannolidata) {
@@ -46,14 +56,14 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     function updatedCannoli() {
         navigate(`/cannoli`)
     }
-*/
+
 
     async function sendCannoliData(cannolidata) {
         try {
             await axios.post (`http://localhost:8080/cannoli/create`,
                 {
 
-                    id: cannolidata.cannoli_id,
+                    id: cannolidata.id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
                     cannoliDescription: cannolidata.cannoli_description,
@@ -67,53 +77,62 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     }
 
     console.log();
+*/
 
-    function addedNewCannoli() {
-        navigate('/cannolis')
-    }
+
 
     useEffect( () => {
         async function fetchCannolis() {
             try {
-                const result = await axios.get (`http://localhost:8080/cannolis/${id}`,
+                const cannolis = await axios.get (`http://localhost:8080/cannolis/${id}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
 /*                            "Authorization": `Bearer ${token}`,*/
                         }
-                    }
-                );
-                console.log (result)
+                    });
+
+
+
+           setCannolis(cannolis.data)
+
             } catch (error) {
                 console.error ('There was an error', error);
             }
         }
-
         fetchCannolis ();
-    },[cannolis]);
+    },[]);
+
+
 
 
     return(
-        <wholesale className="wholesale">
+        <section className="wholesale">
             <TextContainer>
                 <h2> Cannoli </h2>
             </TextContainer>
 
-            <TwoColumn>
-                <Column>
+            <div className="wholesale-container">
+                <section className="wholesale-layout">
+
+
+                {cannolis.image ?
 
 
 
+                    <img src={cannolis.image.url}  alt={cannolis.image.fileName}/>
+                    :
+                    <p className="cannoli-image-style">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci cupiditate dolores id
+                        illum nemo officia officiis quos sed vero.
+
+                    </p>
+
+                }
+                </section>
+            </div>
 
 
-                </Column>
-                <Column>
-
-
-
-
-                </Column>
-            </TwoColumn>
 
 
             <div className="beoordeling-container">
@@ -129,18 +148,10 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 
 
                     </div>
-
-
                 </div>
-
-
             </div>
-
-        </wholesale>
-
-
+        </section>
     )
-
 }
 
 export default Wholesale;

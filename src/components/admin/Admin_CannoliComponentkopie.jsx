@@ -1,4 +1,4 @@
-
+/*
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useFormContext } from "react-hook-form";
@@ -17,10 +17,9 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
     const [ cannolis, setCannolis] = useState([]);
 
-
     async function sendCannoliData(cannolidata) {
         try {
-          await axios.post (`http://localhost:8080/cannoli/create`,
+            const response = await axios.post(`http://localhost:8080/${postLink}`,
                 {
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
@@ -264,4 +263,4 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
 export default Admin_CannoliComponent;
 
-
+*/

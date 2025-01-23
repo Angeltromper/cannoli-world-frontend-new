@@ -8,7 +8,7 @@ import Button from "../../components/button/Button";
 import './Admin_CannoliWholesaleComponent.css';
 
 function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler}) {
-    const {cannoli_id} = useParams();
+    const {id} = useParams();
     const {user} = useContext(AuthContext);
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "..veld is verplicht";
@@ -22,7 +22,7 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
 
     async function sendCannoliData(cannolidata) {
         try {
-            await axios.put(`http://localhost:8080/cannolis/${cannoli_id}`,
+            await axios.put(`http://localhost:8080/cannolis/${id}`,
                 {
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
