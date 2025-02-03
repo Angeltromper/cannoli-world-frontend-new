@@ -5,7 +5,7 @@ import './Card.css';
 
 
 
-function Card({title, content, image, imageAlt}) {
+function Card({title, content, image, imageAlt, id}) {
 
 
     return (
@@ -17,13 +17,13 @@ function Card({title, content, image, imageAlt}) {
                 { content }
             </div>
 
-            <ButtonInfo url={`/cannolis/$`} variation="secondary" size="small">Meer informatie</ButtonInfo>
+            <ButtonInfo url={`/wholesale/${id}`} variation="secondary" size="small">Meer informatie</ButtonInfo>
 
-            <Link to={ "/registreren/" }>
+
+
+            <Link to={ "/register" }>
                 <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>
             </Link>
-
-
         </div>
     );
 }

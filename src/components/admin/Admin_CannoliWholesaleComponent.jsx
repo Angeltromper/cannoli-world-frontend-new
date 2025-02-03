@@ -1,30 +1,28 @@
-import React, { useContext, useEffect } from "react";
-import axios from "axios";
-import { useFormContext } from "react-hook-form";
+import React, { useContext, useEffect } from 'react';
+import pageImg from './../../assets/img.background/background cannolis.jpg';
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "../button/Button";
 import { AuthContext } from "../../context/AuthContext";
-import pageImg from "../../assets/img.background/Background cannolis.jpg";
+import { useFormContext } from "react-hook-form";
+import axios from "axios";
+import Button from "../../components/button/Button";
+import './Admin_CannoliWholesaleComponent.css';
 
-
-
-function Admin_EditCannoliComponent({headerImageHandler, pageTitleHandler}) {
+function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler}) {
     const {cannoli_id} = useParams();
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
-    const message = ".. veld is verplicht";
-    const navigate = useNavigate();
     const {user} = useContext(AuthContext);
+    const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const message = "..veld is verplicht";
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 
-
-
     async function sendCannoliData(cannolidata) {
         try {
-            await axios.put (`https://localhost:8080/cannolis/${cannoli_id}`,
+            await axios.put(`http://localhost:8080/cannolis/${cannoli_id}`,
                 {
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
@@ -34,19 +32,21 @@ function Admin_EditCannoliComponent({headerImageHandler, pageTitleHandler}) {
                     cannoliPrice: cannolidata.cannoli_price
                 }, {
                     headers: {
-                        "Content-Type": "application/json",
+                        'Content-Type': "application/json",
                     }
-                }).then(updatedCannoli)
+                }).then (updatedCannoli)
         } catch (error) {
-            console.error (error);
+            console.error(error);
         }
     }
     function updatedCannoli() {
-        navigate('/cannoli')
+        navigate(`/cannoli`)
     }
 
     return (
         <>
+
+
             {user.roles !== 'ROLE_ADMIN' ?
 
                 <div className="admin-info-container">
@@ -59,7 +59,6 @@ function Admin_EditCannoliComponent({headerImageHandler, pageTitleHandler}) {
                 </div>
                 :
                 <div className="cannoli-form-container">
-
                     <div className="cannoli-form-text">
 
                         <br/>
@@ -124,11 +123,6 @@ function Admin_EditCannoliComponent({headerImageHandler, pageTitleHandler}) {
                                     <option value="Cannoli Vegan">
                                         Cannoli Vegan
                                     </option>
-
-                                    <option value="Giftbox">
-                                        Giftbox
-                                    </option>
-
                                 </select>
 
                             </label>
@@ -203,11 +197,15 @@ function Admin_EditCannoliComponent({headerImageHandler, pageTitleHandler}) {
                 </div>
             }
 
-        </>
+            </>
 
     )
 
 }
 
-export default Admin_EditCannoliComponent;
+export default Admin_CannoliWholesaleComponent;
+
+
+
+
 

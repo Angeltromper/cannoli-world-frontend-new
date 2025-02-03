@@ -1,0 +1,18 @@
+.admin-info-container {
+    display: flex;
+    color: #FFF4A0;
+}
+
+.cannoli-form-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.cannoli-form-text {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}

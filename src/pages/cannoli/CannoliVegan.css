@@ -14,9 +14,11 @@
     gap: 2em;
 }
 
+
+
 .cards-vegan-container .button {
     display: inline-block;
-    color: #FFDA5B;
+    color: #1f315d;
     padding: 12px 20px;
     text-decoration: none;
     text-transform: uppercase;
@@ -26,16 +28,16 @@
 }
 
 .cards-vegan-container .button-primary {
-    background-color: #FFDA5B;
-    border: 2px solid #FFDA5B;
+    background-color: #1f485d;
+    border: 2px solid #1f485d;
 }
 
 .cards-vegan-container .button-secondary {
-    border: 2px solid rgba(255, 218, 91, 0.85);
+    border: 2px solid rgba(31, 74, 93, 0.95);
 }
 
 .cards-vegan-container .button-secondary:hover {
-    background-color: rgba(255, 218, 91, 0.65);
+    background-color: rgba(31, 74, 93, 0.76);
 }
 
 .search-result__go-up-icon {

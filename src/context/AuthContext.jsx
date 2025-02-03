@@ -33,9 +33,9 @@ function AuthContextProvider({children}) {
     }, [])
 
     function login(token) {
-        const decodedToken = jwtDecode (token);
         localStorage.setItem ('token', token);
-        getData(decodedToken.sub, token, "/profile");
+        const decodedToken = jwtDecode (token);
+        getData(decodedToken.sub, token);
     }
 
     function logout(e) {
@@ -63,8 +63,8 @@ function AuthContextProvider({children}) {
                 user: {
                     username: response.data.username,
                     password: response.data.password,
-                    userId:response.data.id,
-                    roles: response.data.authorities[0].authority,
+                    userId: response.data.id,
+                    roles: response.data.authorized[0].authority,
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
@@ -76,6 +76,7 @@ function AuthContextProvider({children}) {
                 },
                 status: 'done',
             });
+
             if (redirectUrl) {
                 navigate(redirectUrl);
             }
@@ -85,7 +86,6 @@ function AuthContextProvider({children}) {
             localStorage.clear();
         }
     }
-
 
     const contextData = {
         auth: auth.isAuth,
