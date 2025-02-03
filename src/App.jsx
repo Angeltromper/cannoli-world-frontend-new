@@ -13,6 +13,8 @@ import CannoliGlutenFree from "./pages/cannoli/CannoliGlutenFree";
 import CannoliVegan from "./pages/cannoli/CannoliVegan";
 import CannoliIngredient from "./components/cannoliIngredient/CannoliIngredient";
 import CannoliPriceList from "./pages/priceList/CannoliPriceList";
+import CannoliImage from "./components/cannoli/CannoliImage";
+import CannoliInfo from "./components/cannoli/CannoliInfo";
 import Giftbox from "./pages/giftbox/Giftbox";
 import GiftboxPriceList from "./pages/priceList/GiftboxPriceList";
 import Service from "./pages/service/Service";
@@ -94,6 +96,12 @@ function App () {
 
                         <Route path="/cannoli-pricelist"
                                element={<CannoliPriceList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/cannolis/image/:id"
+                               element={<CannoliImage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/cannolis/info/:id"
+                               element={<CannoliInfo headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/giftbox"
                                element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>

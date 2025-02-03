@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {Cannoli} from "../../../components";
 import './SnackCannoli.css';
-import Cannoli from "../../../components/cannoli/Cannoli";
-
+import './CannoliAssorti.css';
 
 
 function SnackCannoli() {
@@ -11,7 +11,7 @@ function SnackCannoli() {
     useEffect(() => {
         async function fetchSnack(e) {
             try {
-                const response = await axios.get ('http://localhost:8080/cannolis/');
+                const response= await axios.get (`http://localhost:8080/cannolis/`);
 
                 setSnack (response.data);
 

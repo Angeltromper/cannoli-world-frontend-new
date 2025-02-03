@@ -1,14 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
-import TwoColumn from "../../components/pageLayout/designElement/column/TwoColumn";
-import Column from "../../components/pageLayout/designElement/column/Column";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
 import './Wholesale.css';
-
-
-
 
 
 function Wholesale({headerImageHandler, pageTitleHandler}){
@@ -17,11 +13,8 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 
 /*  const [loading, setLoading] = useState(false);*/
     const [cannolis, setCannolis] = useState([]);
-    const [cannoliImage, setCannoliImage] = useState([]);
 
-
-
-/*    const {user: {username}} = useContext(AuthContext);*/
+    /*    const {user: {username}} = useContext(AuthContext);*/
 /*    const navigate = useNavigate();*/
 /*    const token = localStorage.getItem('token');*/
 
@@ -88,7 +81,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                     {
                         headers: {
                             "Content-Type": "application/json",
-/*                            "Authorization": `Bearer ${token}`,*/
+/*                           "Authorization": `Bearer ${token}` */
                         }
                     });
 
@@ -100,40 +93,48 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                 console.error ('There was an error', error);
             }
         }
+
         fetchCannolis ();
     },[]);
-
-
 
 
     return(
         <section className="wholesale">
             <TextContainer>
-                <h2> Cannoli </h2>
+                <h1> Cannoli </h1>
             </TextContainer>
 
             <div className="wholesale-container">
+
+
                 <section className="wholesale-layout">
+                    {cannolis.image ?
 
+                        <WholesaleInfo key={cannolis.id}
 
-                {cannolis.image ?
+                                       fileName={cannolis.image.fileName}
+                                       url={cannolis.image.url}
 
+                                       cannoli_id={cannolis.id}
+                                       cannoliType={cannolis.cannoliType}
+                                       cannoliName={cannolis.cannoliName}
+                                       cannoliPrice={cannolis.price}
+                                       cannoliDescription={cannolis.description}
+                                       cannoliIngredients={cannolis.ingredients}
+                        />
+                        :
+                        <WholesaleInfo key={cannolis.id}
 
-
-                    <img src={cannolis.image.url}  alt={cannolis.image.fileName}/>
-                    :
-                    <p className="cannoli-image-style">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci cupiditate dolores id
-                        illum nemo officia officiis quos sed vero.
-
-                    </p>
-
-                }
+                                       cannoli_id={cannolis.id}
+                                       cannoliType={cannolis.cannoliType}
+                                       cannoliName={cannolis.cannoliName}
+                                       cannoliPrice={cannolis.price}
+                                       cannoliDescription={cannolis.description}
+                                       cannoliIngredients={cannolis.ingredients}
+                        />
+                    }
                 </section>
             </div>
-
-
-
 
             <div className="beoordeling-container">
                 <h3> Beoordelingen </h3>
@@ -150,7 +151,8 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                     </div>
                 </div>
             </div>
-        </section>
+            </section>
+
     )
 }
 

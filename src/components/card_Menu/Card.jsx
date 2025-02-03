@@ -27,4 +27,5 @@ function Card({title, content, image, imageAlt, id}) {
     );
 }
 
+
 export default Card;

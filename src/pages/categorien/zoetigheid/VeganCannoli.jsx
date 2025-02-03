@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {Cannoli} from "../../../components";
 import './VeganCannoli.css';
+import './CannoliAssorti.css';
 
 
 
@@ -11,7 +13,7 @@ function VeganCannoli() {
     useEffect(() => {
         async function fetchVegan(e) {
             try {
-                const response = await axios.get ('http://localhost:8080/cannolis/');
+                const response = await axios.get('http://localhost:8080/cannolis/');
 
                 setVegan (response.data);
 

@@ -4,10 +4,11 @@ import { CartContext } from "../../context/CartContext";
 import { FaInfoCircle } from "react-icons/fa";
 import './Cannoli.css';
 
-
 export const Cannoli = (props) => {
+
     const navigate = useNavigate();
     const [cart, setCart] = useContext(CartContext);
+
     const addToCart = () => {
         const cannoli = {
             artikelnummer: props.cannoli_id,
@@ -32,7 +33,7 @@ export const Cannoli = (props) => {
 
 
     function redirect() {
-        navigate.push( `cannolis/${props.cannoli_id}`)
+        navigate( `cannolis/${props.cannoli_id}`)
     }
 
     return(
@@ -72,3 +73,5 @@ export const Cannoli = (props) => {
 }
 
 export default Cannoli;
+
+

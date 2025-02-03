@@ -1,17 +1,15 @@
 .wholesale {
     display: flex;
-    width: 100%;
     font: var(--font);
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin: 10em;
 }
 
 .beoordeling-container {
     display: flex;
     align-items: start;
-    margin: 25em;
+    margin: 10em;
     padding: 5em;
     flex-direction: column;
 }
@@ -21,11 +19,10 @@
     align-items: start;
     flex-shrink: 1;
     text-transform: uppercase;
-    margin: 10em;
+    margin: 2em 0 0;
 }
 
 .form-beoordeling {
-    display: flex;
     box-shadow: #FF003D 2px 2px 3px;
     border: 1px solid black;
     border-radius: 0.5rem;
@@ -34,45 +31,22 @@
     min-width: auto;
     align-items: start;
     justify-content: start;
-
-}
-
-.wholesale_tbody {
-    display: flex;
-    background-color: #FFDDE6;
-
-}
-
-table {
-    background-color: #FFDDE6;
-}
-
-.download-container {
-    display: flex;
-    justify-content: center;
-}
-
-.image-container {
-    width: 100vw;
-    height: 100vh;
-}
-
-.cannoli-image-style {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin: 4rem 3rem 3rem;
-    padding: 4rem;
-    border-radius: 20rem 8rem;
 }
 
 .wholesale-container {
     display: flex;
-    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    padding: 4rem 2rem;
 }
 
 .wholesale-layout {
-    background-color: var(--background-color-light);
-    box-shadow: rgba(140, 140, 140, 0.6) 5px 5px 5px;
-
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    border-radius: 0.5rem;
+    min-width: auto;
+    justify-content: start;
+    padding: 4rem 2rem;
 }
