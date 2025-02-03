@@ -28,7 +28,6 @@ function CannoliSnack({headerImageHandler, pageTitleHandler})  {
                 <h2>Cannoli snack</h2>
             </div>
 
-
             <div className="cards-snack-container">
                 <Card image={ snackamandel } id={1002} imageAlt="cannoli Amandel" title="Amandel" content="Krokant koekje gevuld met zachte amandel crème"/>
                 <Card image={ snacklimoncello } id={1006} imageAlt="cannoli limoncello" title="Limoncello" content="Krokant koekje gevuld met zachte limoncello crème"/>

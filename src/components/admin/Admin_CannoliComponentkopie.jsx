@@ -1,3 +1,4 @@
+/*
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useFormContext } from "react-hook-form";
@@ -8,27 +9,24 @@ import './Admin_CannoliComponent.css';
 
 
 function Admin_CannoliComponent({postLink, preloadValues}) {
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const {register, formState: {errors}, handleSubmit} = useFormContext({defaultValues: preloadValues});
     const {user} = useContext(AuthContext);
-    const token = localStorage.getItem('token');
     const message = ".. veld is verplicht";
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
 
-
-    const [cannolis, setCannolis] = useState([]);
-
+    const [ cannolis, setCannolis] = useState([]);
 
     async function sendCannoliData(cannolidata) {
         try {
-          await axios.post (`http://localhost:8080/cannolis/create`,
+            const response = await axios.post(`http://localhost:8080/${postLink}`,
                 {
-
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
-                    description: cannolidata.cannoli_description,
-                    ingredients: cannolidata.cannoli_ingredients,
-                   price: cannolidata.cannoli_price,
+                    cannoliDescription: cannolidata.cannoli_description,
+                    cannoliIngredients: cannolidata.cannoli_ingredients,
+                    cannoliPrice: cannolidata.cannoli_price,
                 }).then(addedNewCannoli)
 
         } catch (error) {
@@ -39,7 +37,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
     console.log();
 
     function addedNewCannoli() {
-        navigate(`/cannoli`)
+        navigate('/cannolis')
     }
 
     useEffect(() => {
@@ -49,7 +47,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
                     {
                         headers: {
                             "Content-Type": "application/json",
-/*                            "Authorization": `Bearer ${token}`,*/
+                            "Authorization": `Bearer ${token}`,
                         }
                     }
                 );
@@ -68,7 +66,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
                 {
                     headers: {
                         "Content-Type": "application/json",
-/*                        "Authorization": `Bearer ${token}`,*/
+                        "Authorization": `Bearer ${token}`,
                     }
                 })
         } catch (error) {
@@ -76,8 +74,8 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
         }
 
         setTimeout(() => {
-            navigate ('/cannolis-toevoegen');
-        }, 500)
+            navigate ('/cannoli-toevoegen');
+        }, 1000)
     }
 
     return (
@@ -265,4 +263,4 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
 export default Admin_CannoliComponent;
 
-
+*/

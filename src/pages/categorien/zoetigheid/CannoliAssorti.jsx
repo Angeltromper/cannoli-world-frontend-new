@@ -1,66 +1,33 @@
-/*
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import AllCannoli from "../../../components/allCannoli/AllCannoli";
+import React, { useEffect } from "react";
+import GlutenfreeCannoli from "./../../categorien/zoetigheid/GlutenfreeCannoli";
+import SnackCannoli from "./../../categorien/zoetigheid/SnackCannoli";
+import VeganCannoli from "./../../categorien/zoetigheid/VeganCannoli";
 import './CannoliAssorti.css';
 
 
-function CannoliAssorti() {
 
-    const [cannoliDivers, setCannoliDivers] = useState([ ]);
+function CannoliAssorti({headerImageHandler, pageTitleHandler}) {
 
-    useEffect (() => {
-        async function fetchCannoliDivers(e) {
-            try{
-                const response = await axios.get ('https;//localhost:8080/cannolis/');
+    useEffect(() => {
+        headerImageHandler()
+        pageTitleHandler();
+    },[]);
 
-                setCannoliDivers(response.data);
-
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchCannoliDivers();
-    }, []);
 
     return (
         <>
-            <section className="zoetwaar-container">
+            <section className="cannoliAssorti-container">
 
-                <h2> Cannoli assortiment </h2>
+                <GlutenfreeCannoli/>
 
-                <div className="cannoli-container">
+                <SnackCannoli/>
 
-                    {cannoliDivers.map((cannoli) => {
-                        if (cannoli.cannoliType === 'Cannoli')
-
-                            return (
-                                cannoli.image !== null ?
-
-                                    <AllCannoli key={cannoli.id}
-
-                                                url={cannoli.image.url}
-                                                cannoli_id={cannoli.id}
-                                                cannoliName={cannoli.cannoliName}
-                                                cannoliPrice={cannoli.price}
-                                    />
-                                    :
-                                    <AllCannoli key={cannoli.id}
-
-                                                cannoli_id={cannoli.id}
-                                                cannoliName={cannoli.cannoliName}
-                                                cannoliPrice={cannoli.price}
-                                    />
-
-                            )
-                    })}
-                </div>
+                <VeganCannoli/>
 
             </section>
         </>
     );
+
 }
 
 export default CannoliAssorti;
-*/

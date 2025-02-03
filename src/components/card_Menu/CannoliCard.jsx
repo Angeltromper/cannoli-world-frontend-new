@@ -1,6 +1,6 @@
 import React from "react";
 import "./CannoliCard.css";
-import { Link } from "react-router-dom";
+
 
 function CannoliCard
 ({ image, imageAlt, description, formattedPrice, onClick }) {

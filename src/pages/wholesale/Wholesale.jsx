@@ -1,27 +1,30 @@
-import React, { useEffect, useState } from "react";
-import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
-import TwoColumn from "../../components/pageLayout/designElement/column/TwoColumn";
-import Column from "../../components/pageLayout/designElement/column/Column";
-import './Wholesale.css';
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
-import cannolis from "../categorien/Cannolis";
+import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
+import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
+import './Wholesale.css';
 
 
 function Wholesale({headerImageHandler, pageTitleHandler}){
     const {id} = useParams();
-    const navigate = useNavigate();
-    /*const token = localStorage.getItem('token');*/
-
-    const [cannoils, setCannolis] = useState([]);
 
 
-    /*
+/*  const [loading, setLoading] = useState(false);*/
+    const [cannolis, setCannolis] = useState([]);
+
+    /*    const {user: {username}} = useContext(AuthContext);*/
+/*    const navigate = useNavigate();*/
+/*    const token = localStorage.getItem('token');*/
+
+
+/*
     useEffect(() => {
         headerImageHandler ();
         pageTitleHandler();
     }, []);
-    */
+*/
 
 /*
     async function sendCannoliData(cannolidata) {
@@ -46,14 +49,14 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     function updatedCannoli() {
         navigate(`/cannoli`)
     }
-*/
+
 
     async function sendCannoliData(cannolidata) {
         try {
             await axios.post (`http://localhost:8080/cannoli/create`,
                 {
 
-                    id: cannolidata.cannoli_id,
+                    id: cannolidata.id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
                     cannoliDescription: cannolidata.cannoli_description,
@@ -67,54 +70,71 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     }
 
     console.log();
+*/
 
-    function addedNewCannoli() {
-        navigate('/cannolis')
-    }
+
 
     useEffect( () => {
         async function fetchCannolis() {
             try {
-                const result = await axios.get (`http://localhost:8080/cannolis/${id}`,
+                const cannolis = await axios.get (`http://localhost:8080/cannolis/${id}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
-/*                            "Authorization": `Bearer ${token}`,*/
+/*                           "Authorization": `Bearer ${token}` */
                         }
-                    }
-                );
-                console.log (result)
+                    });
+
+
+
+           setCannolis(cannolis.data)
+
             } catch (error) {
                 console.error ('There was an error', error);
             }
         }
 
         fetchCannolis ();
-    },[cannolis]);
+    },[]);
 
 
     return(
-        <wholesale className="wholesale">
+        <section className="wholesale">
             <TextContainer>
-                <h2> Cannoli </h2>
+                <h1> Cannoli </h1>
             </TextContainer>
 
-            <TwoColumn>
-                <Column>
+            <div className="wholesale-container">
 
 
+                <section className="wholesale-layout">
+                    {cannolis.image ?
 
+                        <WholesaleInfo key={cannolis.id}
 
+                                       fileName={cannolis.image.fileName}
+                                       url={cannolis.image.url}
 
-                </Column>
-                <Column>
+                                       cannoli_id={cannolis.id}
+                                       cannoliType={cannolis.cannoliType}
+                                       cannoliName={cannolis.cannoliName}
+                                       cannoliPrice={cannolis.price}
+                                       cannoliDescription={cannolis.description}
+                                       cannoliIngredients={cannolis.ingredients}
+                        />
+                        :
+                        <WholesaleInfo key={cannolis.id}
 
-
-
-
-                </Column>
-            </TwoColumn>
-
+                                       cannoli_id={cannolis.id}
+                                       cannoliType={cannolis.cannoliType}
+                                       cannoliName={cannolis.cannoliName}
+                                       cannoliPrice={cannolis.price}
+                                       cannoliDescription={cannolis.description}
+                                       cannoliIngredients={cannolis.ingredients}
+                        />
+                    }
+                </section>
+            </div>
 
             <div className="beoordeling-container">
                 <h3> Beoordelingen </h3>
@@ -129,18 +149,11 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 
 
                     </div>
-
-
                 </div>
-
-
             </div>
-
-        </wholesale>
-
+            </section>
 
     )
-
 }
 
 export default Wholesale;

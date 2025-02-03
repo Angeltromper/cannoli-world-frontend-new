@@ -27,9 +27,9 @@ function CannoliVegan({headerImageHandler, pageTitleHandler}) {
             </div>
 
             <div className="cards-vegan-container">
-                <Card image={ veganpistache } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan pistache crème "/>
-                <Card image={ veganlimoncello } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan limoncello crème "/>
-                <Card image={ veganstrawberry } imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan strawberry crème "/>
+                <Card image={ veganstrawberry } id={1018} imageAlt="cannoli strawberry" title="Strawberry" content="Vegan koekje gevuld met zachte vegan hazelnoot crème "/>
+                <Card image={ veganlimoncello } id={1019} imageAlt="cannoli limoncello" title="Limoncello" content="Vegan koekje gevuld met zachte vegan limoncello crème "/>
+                <Card image={ veganpistache } id={1020} imageAlt="cannoli vanille" title="Vanille" content="Vegan koekje gevuld met zachte vegan pistache crème "/>
             </div>
 
 
