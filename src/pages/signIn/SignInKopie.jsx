@@ -1,6 +1,7 @@
+/*
 import React, {useContext, useEffect, useState} from 'react';
-import { useFormContext } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -12,9 +13,10 @@ const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])
 
 
 function SignIn({headerImageHandler, pageTitleHandler}) {
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const {register, formState: {errors}, handleSubmit} = useForm();
+    /* const source = axios.CancelToken.source();*/
 
-
+/*    const navigate = useNavigate();
     const {login, logout, auth} = useContext(AuthContext);
 
     const [user] = useState('');
@@ -40,6 +42,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
         setValidPassword (PASSWORD_REGEX.test(password));
     }, [password]);
 
+
     async function signIn(e) {
         console.log(e)
         try {
@@ -47,16 +50,18 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                 {
                     username: e.username,
                     password: e.password,
-               }, {
-            });
+                               }, {
+
+                               cancelToken: source.token,
+                });
 
             login(response.data.jwt);
             toggleAddSuccess (true);
 
 
-     /*      setTimeout (() => {
-                navigate ("/persoonsgegevens");
-            }, 2500) */
+            setTimeout (() => {
+                navigate ('/persoonsgegevens');
+            }, 2500)
 
         } catch (error) {
             console.error('There was an error', error);
@@ -69,7 +74,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
             {!auth ?
                 <div className="page-login">
                     <form className="form-login"
-                          onSubmit={ handleSubmit (signIn) }>
+                          onSubmit={ handleSubmit (signIn)}>
 
                         <h2 className="legend">Inloggen</h2>
                         <br/>
@@ -77,10 +82,10 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         <label htmlFor="details-username">
                             Gebruikersnaam:
                             <input
-                                /*   className="details-username"*/
+                                className="details-username"
                                 type="text"
                                 id="details-username"
-                                { ...register ("username", {
+                                { ...register ("details-username", {
                                     required: "gebruikersnaam is verplicht!",
                                 }) }
                                 aria-invalid={ validName ? "false" : "true" }
@@ -93,27 +98,33 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         <label htmlFor="details-password">
                             Wachtwoord:
                             <input
-                                /*   className="details-password"*/
+                                className="details-password"
                                 type="password"
                                 id="details-password"
                                 { ...register ("password", {
                                     required: "wachtwoord is verplicht!"
-                                }) }
+                                })}
                                 aria-invalid={ validPassword ? "false" : "true" }
                                 placeholder="wachtwoord"
                             />
                         </label>
-
-                        { errors.password && <p>{ errors.password.message }</p> }
+                        { errors.password && <p>{ errors.password.message }</p>}
                         <br/>
 
-                        <button type="submit">Inloggen</button>
+                        <button
+                            className="button-inlog"
+                            type="submit"
+
+                                         disabled={ !validName || !validPassword }
+                        >Inloggen
+                        </button>
+
+
                     </form>
 
-                    <button type="button" onClick={ logout }>Uitloggen</button>
+                    <button type="button" onClick={logout}>Uitloggen</button>
 
-                    { error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw." }
-
+                    {error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw."}
 
                     <section className="form-footer">
                         Heeft u nog geen account?<br/>
@@ -127,11 +138,16 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                 <span className="timeout-succes-signin succes-slide-bottom">
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
+                    <p>Mocht u niet automatisch doorgestuurd worden<br/>
+                    <Link to="/persoonsgegevens" exact activeClassName="active-link">klik dan hier!</Link>
+                    </p>
                 </span>
             }
         </>
     )
+
 }
 
 
 export default SignIn;
+*/

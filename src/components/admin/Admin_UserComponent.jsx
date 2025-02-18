@@ -14,9 +14,9 @@ function Admin_UserComponent() {
     const [users, setUsers] = useState([]);
     const [adminInput, setAdminInput] = useState ([]);
 
-    function goBack() {
+ /*   function goBack() {
         navigate(`/persoonsgegevens`)
-    }
+    } */
 
 
     async function deleteUser(username) {
@@ -107,7 +107,6 @@ function Admin_UserComponent() {
                                             <DeleteIcon/>
                                         </button>
                                     </td>
-                                    <td>{user.id}</td>
                                     <td>{user.id}</td>
                                     <td>{user.email}</td>
                                     <td>{user.personFirstname}</td>

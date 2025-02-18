@@ -1,18 +1,16 @@
 .button__reusable {
+    display: flex;
     background-color: var(--button-color);
     color: var(--text-intro-white);
-    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
     font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
-    justify-content: center;
     align-items: center;
-    letter-spacing: 1px;
+    gap: 1em;
     border: none;
-    border-radius: 5px;
-    text-align: left;
-    padding: 6px 40px;
-    margin:  14px 40%;
+    border-radius: 0.5em;
+    padding: 10px 30px;
 }
 
 .button__reusable:hover {

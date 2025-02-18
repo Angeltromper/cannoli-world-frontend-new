@@ -1,14 +1,19 @@
 import React from 'react';
+import { FormProvider, useForm } from "react-hook-form";
 
 
-function FormContext() {
+function FormContextProvider(props) {
+    const data = useForm();
+
     return (
-        <div>
+       <FormProvider
 
+           {...data}>
+           {props.children}
 
-        </div>
+       </FormProvider>
     );
 }
 
 
-export default  FormContext;
+export default  FormContextProvider;

@@ -1,15 +1,17 @@
+/*
 import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
-
+import isTokenValid from "../helpers/isTokenValid";
 
 export const AuthContext = createContext({});
 
 
+
 function AuthContextProvider({children}) {
     const [auth, toggleAuth] = useState ({
-        auth: false,
+        isAuth: false,
         user: null,
         status:'pending',
     });
@@ -19,14 +21,13 @@ function AuthContextProvider({children}) {
     useEffect (() => {
         const token = localStorage.getItem ('token');
 
-  /*    if (token && isTokenValid (token)) {*/
-        if (token) {
+        if (token && isTokenValid (token)) {
             const decodedToken = jwtDecode (token);
-           getData (decodedToken.sub, token);
+            getData (decodedToken.sub, token);
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
             toggleAuth ( {
-                auth: false,
+                isAuth: false,
                 user: null,
                 status: 'done',
             });
@@ -43,29 +44,29 @@ function AuthContextProvider({children}) {
         localStorage.clear ();
         e.preventDefault ();
         toggleAuth ({
-            auth: false,
+            isAuth: false,
             user: null,
             status: 'done',
         });
         navigate('/');
     }
 
-    async function getData(id, token) {
+    async function getData(id, token, redirectUrl) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-           /*       "Authorization": `Bearer ${token}`,*/
+                    "Authorization": `Bearer ${token}`,
                 }
             });
             toggleAuth({
                 ...auth,
-                auth: true,
+                isAuth: true,
                 user: {
                     username: response.data.username,
                     password: response.data.password,
                     userId: response.data.id,
-                    roles: response.data.authorities[0].authority,
+                    roles: response.data.authorized[0].authority,
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
@@ -78,9 +79,9 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
 
-  /*        if (redirectUrl) {
+            if (redirectUrl) {
                 navigate(redirectUrl);
-            }*/
+            }
 
         } catch (error) {
             console.error('There was an error!', error);
@@ -89,7 +90,7 @@ function AuthContextProvider({children}) {
     }
 
     const contextData = {
-        auth: auth.auth,
+        auth: auth.isAuth,
         user: auth.user,
         login: login,
         logout: logout,
@@ -103,3 +104,5 @@ function AuthContextProvider({children}) {
 }
 
 export default AuthContextProvider;
+
+*/

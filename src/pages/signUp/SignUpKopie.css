@@ -1,3 +1,4 @@
+/*
 .form-register {
     display: flex;
     border: 1px solid black;
@@ -59,8 +60,8 @@ a, a:visited {
 }
 
 .form-register input [type="text"],
-input [type="e-mail"],
-input [type="password-user"],
+input [type="email"],
+input [type="password"],
 button,
 textarea {
     font-family: 'Roboto', sans-serif;
@@ -78,6 +79,8 @@ textarea {
     border-radius: 0.5em;
 }
 
+
+
 .email {
     padding: 20px;
     font-size: 20px;
@@ -91,12 +94,12 @@ textarea {
     border-radius: 0.5em;
 }
 
-/*.input-container {
+.input-container {
     position: relative;
     margin-bottom: 2rem;
 
 }
-*/
+
 
 .repeat {
     padding: 20px;
@@ -160,9 +163,12 @@ button.form-button {
 
 
 }
+*/
+
 
 /*Keyframes*/
 
+/*
 .succes-slide-down {
     -webkit-animation: succes-slide-bottom 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
     animation: succes-slide-bottom 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
@@ -190,3 +196,5 @@ button.form-button {
         transform: translateY(100px);
     }
 }
+
+*/

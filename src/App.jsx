@@ -142,7 +142,7 @@ function App () {
                         <Route path="cookies/"
                                element={<Cookies headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/login"
+                        <Route exact path="/login"
                                element={<SignIn headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/register"

@@ -7,7 +7,7 @@
     text-transform: uppercase;
 }
 
-.page-login input [type="text"],
+.page-login input[type="text"],
 input [type="email"],
 input [type="password"],
 textarea {
@@ -59,14 +59,25 @@ textarea {
 
 .timeout-succes-signin {
     display: flex;
+    color: #083e43;
+    background-size: cover;
+    background: url('../../assets/img.background/background signin.png') no-repeat center center;
     margin: auto;
+    max-width: 25rem;
+    min-height: 12rem;
+    justify-content: center;
+    flex-direction: column;
+
 }
 
 .valid-check {
+    color: greenyellow;
 
 }
 
+/*
 .button-inlog {
     display: flex;
     color: white;
 }
+*/

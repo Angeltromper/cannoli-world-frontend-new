@@ -1,6 +1,7 @@
 .cannoli-info-container {
     display: flex;
     flex-direction: row;
+    max-width: 1200px;
 }
 
 .cannoli-info-Image {
@@ -28,5 +29,48 @@
     font-weight: bold;
     margin: 1em 1em;
     flex-direction: column;
-
 }
+
+/*
+.cannoli-counters article button {
+    margin: 0 6px;
+    padding: 2px 6px;
+    font-size: 14px;
+    width: auto;
+}
+
+.cannoli-counters button,
+form button {
+    margin: 6px 0;
+    width: 100%;
+    padding: 6px 0;
+}
+
+form,
+.cannoli-counters {
+    width: 500px;
+    padding: 8px 14px;
+    margin: 8px;
+    box-shadow: rgba(30, 30, 70, 0.25) -9px 1px 10px -4px, rgba(0, 0, 0, 0.1) -1px 0 0 0;
+    border: none;
+}
+
+.button-sent {
+    display: inline-block;
+    background-color: var(--button-color);
+    color: white;
+    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.button-sent:hover {
+    color: #1AE216;
+    box-shadow: var(--dropshadow);
+}
+*/

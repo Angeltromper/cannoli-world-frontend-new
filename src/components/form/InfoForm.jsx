@@ -50,9 +50,9 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
             setTimeout(() => {
 
-                navigate( `/persoonsgegevens`)
+      /*          navigate( `/persoonsgegevens`) */
 
-            }, 500);
+            }, 2500);
 
         } catch (error) {
             console.error(error);

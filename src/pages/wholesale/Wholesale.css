@@ -3,39 +3,14 @@
     font: var(--font);
     align-items: center;
     justify-content: center;
+    margin: 5em;
     flex-direction: column;
-}
-
-.beoordeling-container {
-    display: flex;
-    align-items: start;
-    margin: 10em;
-    padding: 5em;
-    flex-direction: column;
-}
-
-.beoordeling-page {
-    flex-direction: column;
-    align-items: start;
-    flex-shrink: 1;
-    text-transform: uppercase;
-    margin: 2em 0 0;
-}
-
-.form-beoordeling {
-    box-shadow: #FF003D 2px 2px 3px;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    font-size: 14px;
-    padding: 10rem 20rem;
-    min-width: auto;
-    align-items: start;
-    justify-content: start;
 }
 
 .wholesale-container {
     display: flex;
     width: 100%;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     flex-shrink: 1;
@@ -47,6 +22,94 @@
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
     border-radius: 0.5rem;
     min-width: auto;
-    justify-content: start;
-    padding: 4rem 2rem;
+    padding: 10rem 2rem;
 }
+
+/*
+.cannoli-counters article button {
+    margin: 0 6px;
+    padding: 2px 6px;
+    font-size: 14px;
+    width: auto;
+}
+
+/*
+.cannoli-counters button,
+form button {
+    margin: 6px 0;
+    width: 100%;
+    padding: 6px 0;
+}
+*/
+
+/*
+form,
+.cannoli-counters {
+    width: 500px;
+    padding: 10px 14px;
+    margin: 8px;
+    box-shadow: rgba(30, 30, 70, 0.25) -9px 1px 10px -4px, rgba(0, 0, 0, 0.1) -1px 0 0 0;
+    border: none;
+}
+*/
+
+
+.button-sent {
+    display: inline-block;
+    background-color: var(--button-color);
+    color: white;
+    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.5em;
+    text-transform: uppercase;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.button-sent:hover {
+    color: #1AE216;
+    box-shadow: var(--dropshadow);
+}
+
+.form-bezorgen {
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 2em 2em;
+    gap: 1em;
+
+}
+
+.form-bezorgen h3 {
+    color: #FF003D;
+}
+
+
+.beoordelingen {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 2em 2em;
+}
+
+textarea {
+    display: block;
+}
+
+.beoordelingen h3 {
+    color: #FF003D;
+}
+
+
+.form-beoordeling {
+    box-shadow: rgba(30, 30, 70, 0.25) -9px 1px 10px -4px, rgba(0, 0, 0, 0.1) -1px 0 0 0;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 14px;
+    margin: 2em 2em;
+    padding: 2rem 2rem;
+}
+

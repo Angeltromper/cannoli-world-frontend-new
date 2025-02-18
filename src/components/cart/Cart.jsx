@@ -36,7 +36,7 @@ export const Cart = () => {
                         <div className="cart-layout">
 
                             <div className="cart-button">
-                                <h1>Winkelwagen</h1>
+                                <h1>Winkelmand</h1>
                                 <div>
 
                                     <button className="cart-checkout-button"

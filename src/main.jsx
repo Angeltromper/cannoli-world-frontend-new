@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 import AuthContextProvider from "./context/AuthContext";
-import CannoliContextProvider from "./context/CannoliContext";
+import FormContextProvider from "./context/FormContext";
 import {CartProvider} from "./context/CartContext";
 import './index.css';
 import App from './App';
+
 
 
 
@@ -18,11 +19,11 @@ root.render(
         <Router>
 
             <AuthContextProvider>
-                <CannoliContextProvider>
+                <FormContextProvider>
                     <CartProvider>
                         <App />
                     </CartProvider>
-                </CannoliContextProvider>
+                </FormContextProvider>
             </AuthContextProvider>
 
         </Router>

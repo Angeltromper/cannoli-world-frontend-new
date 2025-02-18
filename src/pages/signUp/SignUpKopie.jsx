@@ -1,3 +1,4 @@
+/*
 import React, {useRef, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,7 @@ import './SignUp.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
 const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
-const EMAIL_REGEX = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEX =/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function SignUp({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
@@ -70,10 +71,10 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
             setErrorMessage ('Ongeldige invoer');
             return;
         }
-        console.log(user, password, email)
+        console.log(user,  password, email)
 
         try {
-            const result = await axios.post ("http://localhost:8080/users/create",
+            const result =   await axios.post ("http://localhost:8080/users/create",
                 {
                     username: user,
                     password: password,
@@ -131,8 +132,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         </label>
 
                         <input
-                            className="user"
                             type="text"
+                            className="user"
                             id="user"
                             ref={ userRef }
                             autoComplete="off"
@@ -161,8 +162,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
 
                         <input
-                            className="email"
                             type="e-mail"
+                            className="email"
                             id="email"
                             onChange={ (e) => setEmail (e.target.value) }
                             value={ email }
@@ -188,8 +189,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         </label>
 
                         <input
-                            className="password"
                             type="password-user"
+                            className="password"
                             id="password"
                             onChange={ (e) => setPassword (e.target.value) }
                             value={ password }
@@ -219,8 +220,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         </label>
 
                         <input
-                            className="repeat"
                             type="repeat-password"
+                            className="repeat"
                             id="repeat"
                             onChange={ (e) => setRepeat (e.target.value) }
                             value={ repeat }
@@ -239,8 +240,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
 
                         <button
-                            className="button-register"
                             type="submit"
+                            className="button-register"
                             disabled={ !validName || !validPassword || !validRepeat || !validEmail }>Registreren
                         </button>
 
@@ -271,4 +272,4 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
 export default SignUp;
 
-
+*/
