@@ -9,7 +9,7 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
     const [auth, toggleAuth] = useState ({
-        auth: false,
+        isAuth: false,
         user: null,
         status:'pending',
     });
@@ -26,7 +26,7 @@ function AuthContextProvider({children}) {
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
             toggleAuth ( {
-                auth: false,
+                isAuth: false,
                 user: null,
                 status: 'done',
             });
@@ -43,7 +43,7 @@ function AuthContextProvider({children}) {
         localStorage.clear ();
         e.preventDefault ();
         toggleAuth ({
-            auth: false,
+            isAuth: false,
             user: null,
             status: 'done',
         });
@@ -55,12 +55,12 @@ function AuthContextProvider({children}) {
             const response = await axios.get(`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-           /*       "Authorization": `Bearer ${token}`,*/
+         /*        "Authorization": `Bearer ${token}`,*/
                 }
             });
             toggleAuth({
                 ...auth,
-                auth: true,
+                isAuth: true,
                 user: {
                     username: response.data.username,
                     password: response.data.password,
@@ -89,7 +89,7 @@ function AuthContextProvider({children}) {
     }
 
     const contextData = {
-        auth: auth.auth,
+        auth: auth.isAuth,
         user: auth.user,
         login: login,
         logout: logout,

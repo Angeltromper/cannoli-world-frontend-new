@@ -39,7 +39,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
     console.log();
 
     function addedNewCannoli() {
-        navigate(`/cannoli`)
+        navigate(`cannoli-assorti`)
     }
 
     useEffect(() => {
@@ -49,11 +49,12 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
                     {
                         headers: {
                             "Content-Type": "application/json",
-/*                            "Authorization": `Bearer ${token}`,*/
+                            "Authorization": `Bearer ${token}`,
                         }
                     }
                 );
                 setCannolis(response.data)
+
             } catch (error) {
                 console.error ('There was an error', error);
             }
@@ -68,16 +69,21 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
                 {
                     headers: {
                         "Content-Type": "application/json",
-/*                        "Authorization": `Bearer ${token}`,*/
+                       "Authorization": `Bearer ${token}`,
                     }
                 })
         } catch (error) {
             console.error (error)
         }
 
-        setTimeout(() => {
+    /*    setTimeout(() => {
             navigate ('/cannolis-toevoegen');
-        }, 500)
+        }, 500)   */
+
+           setTimeout(() => {
+           navigate ('/cannolis-add');
+       }, 500)
+
     }
 
     return (
@@ -114,7 +120,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
                             <div>
                                 <label htmlFor="cannoli-name">
-                                    Productnaam:
+                                    Cannolinaam:
                                     <input
                                         type="text"
                                         id="cannoli_name"

@@ -61,23 +61,26 @@ textarea {
     display: flex;
     color: #083e43;
     background-size: cover;
-    background: url('../../assets/img.background/background signin.png') no-repeat center center;
+/*  background: url('../../assets/img.background/background signin.png') no-repeat center center;*/
     margin: auto;
-    max-width: 25rem;
-    min-height: 12rem;
+
+
+    min-height: 30rem;
     justify-content: center;
     flex-direction: column;
 
 }
+
+.succes-slide-bottom {
+
+
+}
+
 
 .valid-check {
     color: greenyellow;
 
 }
 
-/*
-.button-inlog {
-    display: flex;
-    color: white;
-}
-*/
+
+

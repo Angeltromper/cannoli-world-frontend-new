@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { useFormContext } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])
 
 function SignIn({headerImageHandler, pageTitleHandler}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
-
+    const navigate = useNavigate();
 
     const {login, logout, auth} = useContext(AuthContext);
 
@@ -54,9 +54,9 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
             toggleAddSuccess (true);
 
 
-     /*      setTimeout (() => {
-                navigate ("/persoonsgegevens");
-            }, 2500) */
+           setTimeout (() => {
+                navigate (`/profile-info`);
+            }, 2500)
 
         } catch (error) {
             console.error('There was an error', error);
@@ -127,6 +127,9 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                 <span className="timeout-succes-signin succes-slide-bottom">
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
+
+                    <button type="button" onClick={ logout }>Uitloggen</button>
+
                 </span>
             }
         </>

@@ -13,12 +13,8 @@ import './Wholesale.css';
 
 function Wholesale({headerImageHandler, pageTitleHandler}){
     const {id} = useParams();
-
-
-/*  const [loading, setLoading] = useState(false) */
+    /*  const [loading, setLoading] = useState(false) */
     const [cannolis, setCannolis] = useState([]);
-
-
 
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
@@ -45,16 +41,13 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
         console.log (`Cannoli bestelling - cannolis: ${cannoliCount}`);
     }
 
-
-
-
     useEffect(() => {
         headerImageHandler ();
         pageTitleHandler();
     }, []);
 
 
-
+/*
     async function sendCannoliData(cannolidata) {
         try {
             await axios.put(`http://localhost:8080/cannolis/${cannoli_id}`,
@@ -77,7 +70,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     function updatedCannoli() {
         navigate(`/cannoli`)
     }
-
+*/
 
 /*    async function sendCannoliData(cannolidata) {
         try {
@@ -256,18 +249,6 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                        </form>
                    </div>
                </Column>
-
-
-
-
-
-
-
-
-
-
-
-
            </TwoColumn>
        </section>
    );

@@ -40,13 +40,11 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
         }
     }
     function updatedCannoli() {
-        navigate(`/cannoli`)
+        navigate(`/cannoli-assorti`)
     }
 
     return (
         <>
-
-
             {user.roles !== 'ROLE_ADMIN' ?
 
                 <div className="admin-info-container">
@@ -57,7 +55,9 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                         </h1>
                     </div>
                 </div>
+
                 :
+
                 <div className="cannoli-form-container">
                     <div className="cannoli-form-text">
 
@@ -81,7 +81,7 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                                 <input
                                     type="text"
                                     id="cannoli_id"
-                                    {...register("cannoli_id", {
+                                    {...register("id", {
                                         required: {value: true, message: message}
                                     })}
                                     placeholder={id}

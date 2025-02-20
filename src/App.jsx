@@ -25,13 +25,14 @@ import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import SearchCannoli from "./pages/searchCannoli/SearchCannoli";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Admin_CannoliWholesaleComponent from "./components/admin/Admin_CannoliWholesaleComponent";
+import Admin_CannoliComponent from "./components/admin/Admin_CannoliComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import Image_CannoliComponent from "./components/image/Image_CannoliComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
-import Profile from "./pages/profile/Profile";
-import Privacy from "./pages/privacy/Privacy";
-import General from "./pages/privacy/General";
+import ProfileInfo from "./pages/profileInfo/ProfileInfo";
 import Cookies from "./pages/privacy/Cookies";
+import General from "./pages/privacy/General";
+import Privacy from "./pages/privacy/Privacy";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
@@ -130,8 +131,8 @@ function App () {
                         <Route path="/search-result"
                                element={<SearchResult headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/profile"
-                               element={<PrivateRoute><Profile headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/profile-info"
+                               element={<PrivateRoute><ProfileInfo headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="privacy/"
                                element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -169,7 +170,10 @@ function App () {
                         <Route path="/cannolis/image/:id"
                                element={<Image_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/admin-users/"
+                        <Route path="/cannolis-add/"
+                               element={<PrivateRoute><Admin_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+
+                        <Route path="/user-view/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/checkout/"
