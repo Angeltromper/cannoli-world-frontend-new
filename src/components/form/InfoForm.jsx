@@ -28,7 +28,7 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
                         Authorization: `Bearer ${token}`,
                     },
 
-                    id: user.id,
+                    person_id: user.id,
                     personFirstname: persondata.person_firstname,
                     personLastname: persondata.person_lastname,
                     personStreetName: persondata.person_street_name,
@@ -50,9 +50,9 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
             setTimeout(() => {
 
-                navigate( `/persoonsgegevens`)
+              navigate( `/profile-info`)
 
-            }, 500);
+            }, 2500);
 
         } catch (error) {
             console.error(error);

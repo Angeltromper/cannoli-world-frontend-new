@@ -4,8 +4,8 @@ import axios from "axios";
 
 export const Image_CannoliComponent = (props) => {
 
-    const token = localStorage.getItem('token');
-    const {cannoli_id} = useParams();
+/*  const token = localStorage.getItem('token'); */
+    const {id} = useParams();
     const [file, setFile] = useState([]);
     const [previewUrl, setPreviewUrl] = useState('');
     const navigate = useNavigate();
@@ -21,11 +21,11 @@ export const Image_CannoliComponent = (props) => {
         const formData = new FormData();
         formData.append("file", file);
         try {
-            await axios.put(`http://localhost:8080/cannolis/${cannoli_id}/image/`, formData,
+            await axios.put(`http://localhost:8080/cannolis/${id}/image/`, formData,
                 {
                     headers: {
                         "Content-Type": "multipart/form-data",
-                        "Authorization": `Bearer ${token}`,
+ /*                       "Authorization": `Bearer ${token}`, */
                     },
                 }).then(savedImage)
         } catch (e) {
@@ -44,7 +44,7 @@ export const Image_CannoliComponent = (props) => {
             <form onSubmit={sendimage}>
                 <label htmlFor="cannoli-image">
                     Kies afbeelding:
-                    <input type="file" id="cannoli-picture" onChange={handleImageChange}/>
+                    <input type="file" id="cannoli-image" onChange={handleImageChange}/>
                 </label>
                 {previewUrl &&
                     <label>

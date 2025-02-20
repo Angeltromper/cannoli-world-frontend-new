@@ -1,3 +1,4 @@
+/*
 import {jwtDecode} from "jwt-decode";
 
 function isTokenValid(jwtToken) {
@@ -16,5 +17,5 @@ function isTokenValid(jwtToken) {
 }
 
 export default isTokenValid;
-
+*/
 

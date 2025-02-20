@@ -4,11 +4,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
-import Button from "../../components/button/Button";
+import SaveButton from "../button/saveButton/SaveButton";
 import './Admin_CannoliWholesaleComponent.css';
 
 function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler}) {
-    const {cannoli_id} = useParams();
+    const {id} = useParams();
     const {user} = useContext(AuthContext);
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "..veld is verplicht";
@@ -22,31 +22,29 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
 
     async function sendCannoliData(cannolidata) {
         try {
-            await axios.put(`http://localhost:8080/cannolis/${cannoli_id}`,
+            await axios.put(`http://localhost:8080/cannolis/${id}`,
                 {
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
-                    cannoliDescription: cannolidata.cannoli_description,
-                    cannoliIngredients: cannolidata.cannoli_ingredients,
-                    cannoliPrice: cannolidata.cannoli_price
+                    description: cannolidata.cannoli_description,
+                    ingredients: cannolidata.cannoli_ingredients,
+                    price: cannolidata.cannoli_price
                 }, {
                     headers: {
                         'Content-Type': "application/json",
                     }
-                }).then (updatedCannoli)
+                }).then(updatedCannoli)
         } catch (error) {
             console.error(error);
         }
     }
     function updatedCannoli() {
-        navigate(`/cannoli`)
+        navigate(`/cannoli-assorti`)
     }
 
     return (
         <>
-
-
             {user.roles !== 'ROLE_ADMIN' ?
 
                 <div className="admin-info-container">
@@ -57,7 +55,9 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                         </h1>
                     </div>
                 </div>
+
                 :
+
                 <div className="cannoli-form-container">
                     <div className="cannoli-form-text">
 
@@ -81,10 +81,10 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                                 <input
                                     type="text"
                                     id="cannoli_id"
-                                    {...register("cannoli_id", {
+                                    {...register("id", {
                                         required: {value: true, message: message}
                                     })}
-                                    placeholder={cannoli_id}
+                                    placeholder={id}
                                 />
                             </label>
                             {errors.cannoli_id && <p>{errors.cannoli_id.message}</p>}
@@ -145,7 +145,6 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                                     })}
                                     placeholder="Cannoli's is een Italiaanse koekje gevuld met
                                     cremé in diverse smaken."
-
                                 />
 
                             </label>
@@ -163,11 +162,11 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                                         required: {value: false, message: message}
                                     })}
                                     placeholder="Room, tiramisu-créme (52%, suiker, plantaardig vet
-                                (palmolie, zonnebloemolie)."
+                               (palmolie, zonnebloemolie)."
                                 />
 
                             </label>
-                            {errors.cannoli_ingredients && <p>{errors.cannoli_ingedrients.message}</p>}
+                            {errors.cannoli_ingredients && <p>{errors.cannoli_ingredients.message}</p>}
                             <br/>
 
                         </div>
@@ -184,12 +183,13 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                                     })}
                                     placeholder="prijs"
                                 />
+
                             </label>
                             {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
                             <br/>
 
                             <div className="cannoli-form-saveButton">
-                                <Button/>
+                                <SaveButton/>
                             </div>
                         </div>
                     </form>

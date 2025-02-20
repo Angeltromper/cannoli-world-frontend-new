@@ -58,10 +58,9 @@ a, a:visited {
     color: white;
 }
 
-.form-register
-input [type="text"],
-input [type="email"],
-input [type="password"],
+.form-register input [type="text"],
+input [type="e-mail"],
+input [type="password-user"],
 button,
 textarea {
     font-family: 'Roboto', sans-serif;
@@ -82,6 +81,7 @@ textarea {
 .email {
     padding: 20px;
     font-size: 20px;
+    width: auto;
     border-radius: 0.5em;
 }
 
@@ -90,6 +90,13 @@ textarea {
     font-size: 20px;
     border-radius: 0.5em;
 }
+
+/*.input-container {
+    position: relative;
+    margin-bottom: 2rem;
+
+}
+*/
 
 .repeat {
     padding: 20px;

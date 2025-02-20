@@ -7,7 +7,7 @@ function AccountButton() {
     const navigate = useNavigate ();
 
     function redirect() {
-        navigate('/persoonsgegevens')
+  /*      navigate('/persoonsgegevens')*/
     }
 
     return (

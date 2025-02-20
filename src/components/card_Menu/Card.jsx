@@ -20,12 +20,12 @@ function Card({title, content, image, imageAlt, id}) {
             <ButtonInfo url={`/wholesale/${id}`} variation="secondary" size="small">Meer informatie</ButtonInfo>
 
 
-
             <Link to={ "/register" }>
                 <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>
             </Link>
         </div>
     );
 }
+
 
 export default Card;

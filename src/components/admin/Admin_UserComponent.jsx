@@ -10,12 +10,12 @@ function Admin_UserComponent() {
     const navigate = useNavigate();
     const token = localStorage.getItem ('token');
     const {user} = useContext (AuthContext);
-    const [isAdmin, setIsAdmin] = useState (false);
+/*  const [isAdmin, setIsAdmin] = useState (false);*/
     const [users, setUsers] = useState([]);
-    const [adminInput, setAdminInput] = useState ([]);
+/*  const [adminInput, setAdminInput] = useState ([]);*/
 
     function goBack() {
-        navigate(`/persoonsgegevens`)
+            navigate(`/profile-info`)
     }
 
 
@@ -69,7 +69,9 @@ function Admin_UserComponent() {
                         </h1>
                     </div>
                 </div>
+
                 :
+
                 <div className="admin-user-page">
 
                     <section className="admin_UserInfo">
@@ -108,7 +110,7 @@ function Admin_UserComponent() {
                                         </button>
                                     </td>
                                     <td>{user.id}</td>
-                                    <td>{user.id}</td>
+                                    <td>{user.username}</td>
                                     <td>{user.email}</td>
                                     <td>{user.personFirstname}</td>
                                     <td>{user.personLastname}</td>

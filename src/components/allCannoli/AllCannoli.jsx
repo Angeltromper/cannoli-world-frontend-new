@@ -1,3 +1,4 @@
+/*
 import { useEffect, useState } from 'react';
 import {Button} from "../button/Button";
 import './AllCannolis.css';
@@ -58,3 +59,4 @@ export function AllCannolis({image, cannoliName, flavour, price, id}) {
 
 export default class AllCannoli {
 }
+*/
