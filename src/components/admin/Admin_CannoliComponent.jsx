@@ -39,7 +39,7 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
     console.log();
 
     function addedNewCannoli() {
-        navigate(`cannoli-assorti`)
+        navigate(`/cannoli-assorti`)
     }
 
     useEffect(() => {

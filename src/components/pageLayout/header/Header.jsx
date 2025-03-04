@@ -1,10 +1,8 @@
 import React from 'react';
-import Navbar from "./../navbar/Navbar.jsx";
+import Navbar  from "../../navbar/Navbar.jsx";
 import rightColor from "../../../assets/img.header/rightColor.png";
 import leftColor from "../../../assets/img.header/leftColor.png";
 import './Header.css';
-
-
 
 // eslint-disable-next-line react/prop-types
 function Header({headerImage, pageTitle}) {

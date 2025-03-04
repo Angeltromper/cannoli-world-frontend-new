@@ -7,7 +7,11 @@
 }
 
 .profile-info-button {
-
+    background-color: #FF003D;
+    padding: 2em;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-color) ;
+    transition: 0.5s;
 
 }
 

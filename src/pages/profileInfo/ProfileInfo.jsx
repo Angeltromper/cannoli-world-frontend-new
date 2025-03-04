@@ -5,6 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 import './ProfileInfo.css';
+import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 
 function ProfileInfo({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
         async function fetchAdmin() {
 
             try {
-                const response = await axios.get (`http://localhost:8080/cannolis/${ username }/`,
+                const response = await axios.get (`http://localhost:8080/cannolis/${username}/`,
                     {
                         headers: {
                             "Content-type": "application/json",
@@ -57,23 +58,40 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
 
     return (
         <>
+            <TextContainer>
+                <h2>Welkom op uw persoonlijke pagina</h2>
+            </TextContainer>
+
+            <div className="profile-info-container">
+                <h5>Op deze pagina kunt u uw gegevens bekijken en of wijzigen.
+                    Producten bestellen en of aanpassen.
+                </h5>
+            </div>
+
+
+
+
+
+
+
+
 
             { isAdmin &&
                 <div className="profile-info">
 
                     <div className="profile-info-button"
-                         onClick={ editUsers }>Gebruiker toevoegen
+                         onClick={ editUsers }>Gegevens bekijken/wijzigen
                     </div>
 
                     <div className="profile-info-button"
-                         onClick={ editCannolis }>Cannolis toevoegen
+                         onClick={ editCannolis }>Cannolis toevoegen/aanpassen
                     </div>
 
                 </div>
             }
 
 
-            </>
+        </>
     );
 }
 

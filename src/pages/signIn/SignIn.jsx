@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import { useFormContext } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import pageImg from '../../assets/img.background/background cannolis.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -28,7 +29,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
 
     useEffect(() => {
-        headerImageHandler();
+        headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 

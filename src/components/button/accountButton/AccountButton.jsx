@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import NavIcon from '../../../assets/navIcon/account.svg';
+import NavIcon from '../../../assets/navIcon/login.png';
 
 
 function AccountButton() {
@@ -7,7 +7,7 @@ function AccountButton() {
     const navigate = useNavigate ();
 
     function redirect() {
-  /*      navigate('/persoonsgegevens')*/
+        navigate("/profile-info")
     }
 
     return (

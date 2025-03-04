@@ -18,7 +18,6 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-
     const [cannoliCount, setCannoliCount] = useState(0);
     const [assessement, setAssessement] = useState('');
     const [deliveryFrequency, toggleDeliveryFrequency] = useState('week');

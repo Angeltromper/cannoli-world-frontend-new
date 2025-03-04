@@ -55,7 +55,7 @@ function AuthContextProvider({children}) {
             const response = await axios.get(`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-         /*        "Authorization": `Bearer ${token}`,*/
+           /*         "Authorization": `Bearer ${token}`,*/
                 }
             });
             toggleAuth({

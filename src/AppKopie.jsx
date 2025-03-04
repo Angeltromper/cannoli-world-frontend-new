@@ -1,7 +1,9 @@
+/*
 import {Route, Routes, useLocation} from "react-router-dom";
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
 import {Cart} from "./components/cart/Cart";
+import NavbarLinks from "./components/pageLayout/navbar/NavbarLinks";
 import Header from "./components/pageLayout/header/Header";
 import Homepage from "./pages/homepage/Homepage";
 import Footer from "./components/pageLayout/footer/Footer";
@@ -46,8 +48,6 @@ import './App.css';
 
 
 
-
-
 function App () {
     const [headerImage, setHeaderImage] = useState(headerImg);
     const [pageTitle, setPageTitle] = useState();
@@ -63,22 +63,19 @@ function App () {
 
     return (
 
-
         <Wrapper>
-
 
             <div className="container">
                 <div className="inner-container__reusable default-area-padding default-text-restrict">
 
-
-
-
                     <Header headerImage={headerImage} pageTitle={pageTitle}/>
-
 
                     <Routes>
                         <Route path="/"
                                element={<Homepage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/"
+                               element={<NavbarLinks headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannoli"
                                element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -203,3 +200,4 @@ function App () {
 }
 
 export default App;
+*/

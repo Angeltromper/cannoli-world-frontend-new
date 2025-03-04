@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {Cannoli} from "../../../components";
-import './VeganCannoli.css';
+import Cannoli from "./../../../components/cannoli/Cannoli";
 import './CannoliAssorti.css';
 
 

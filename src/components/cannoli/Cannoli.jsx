@@ -11,7 +11,7 @@ export const Cannoli = (props) => {
 
     const addToCart = () => {
         const cannoli = {
-            artikelnummer: props.cannoli_id,
+            artikelnummer: props.id,
             naam: props.cannoliName,
             prijs: props.cannoliPrice,
             url: props.url
@@ -33,7 +33,7 @@ export const Cannoli = (props) => {
 
 
     function redirect() {
-        navigate( `cannolis/${props.cannoli_id}`)
+        navigate(`wholesale/${props.id}`)
     }
 
     return(
