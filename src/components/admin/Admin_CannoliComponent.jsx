@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useFormContext } from "react-hook-form";
@@ -8,26 +7,28 @@ import Button from "../button/Button";
 import './Admin_CannoliComponent.css';
 
 
-function Admin_CannoliComponent() {
+function Admin_CannoliComponent({postLink, preloadValues}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const {user} = useContext(AuthContext);
+    const token = localStorage.getItem('token');
     const message = ".. veld is verplicht";
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
 
-    const [ cannolis, setCannolis] = useState([]);
+
+    const [cannolis, setCannolis] = useState([]);
+
 
     async function sendCannoliData(cannolidata) {
         try {
-            await axios.post (`http://localhost:8080/cannoli/create`,
+          await axios.post (`http://localhost:8080/cannolis/create`,
                 {
 
                     id: cannolidata.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
-                    cannoliDescription: cannolidata.cannoli_description,
-                    cannoliIngredients: cannolidata.cannoli_ingredients,
-                    cannoliPrice: cannolidata.cannoli_price,
+                    description: cannolidata.cannoli_description,
+                    ingredients: cannolidata.cannoli_ingredients,
+                   price: cannolidata.cannoli_price,
                 }).then(addedNewCannoli)
 
         } catch (error) {
@@ -38,7 +39,7 @@ function Admin_CannoliComponent() {
     console.log();
 
     function addedNewCannoli() {
-        navigate('/cannolis')
+        navigate(`/cannoli-assorti`)
     }
 
     useEffect(() => {
@@ -53,6 +54,7 @@ function Admin_CannoliComponent() {
                     }
                 );
                 setCannolis(response.data)
+
             } catch (error) {
                 console.error ('There was an error', error);
             }
@@ -67,16 +69,21 @@ function Admin_CannoliComponent() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
+                       "Authorization": `Bearer ${token}`,
                     }
                 })
         } catch (error) {
             console.error (error)
         }
 
-        setTimeout(() => {
-            navigate ('/cannoli-toevoegen');
-        }, 1000)
+    /*    setTimeout(() => {
+            navigate ('/cannolis-toevoegen');
+        }, 500)   */
+
+           setTimeout(() => {
+           navigate ('/cannolis-add');
+       }, 500)
+
     }
 
     return (
@@ -113,7 +120,7 @@ function Admin_CannoliComponent() {
 
                             <div>
                                 <label htmlFor="cannoli-name">
-                                    Productnaam:
+                                    Cannolinaam:
                                     <input
                                         type="text"
                                         id="cannoli_name"
@@ -247,7 +254,7 @@ function Admin_CannoliComponent() {
                                     </td>
                                     <td>{cannoli.id}</td>
                                     <td>{cannoli.cannoliName}</td>
-                                    <td>{cannoli.image && <img src={cannoli.picture.url} alt={cannoli.image.fileName}/>}</td>
+                                    <td>{cannoli.image && <img src={cannoli.image.url} alt={cannoli.image.fileName}/>}</td>
                                     <td>{cannoli.price}</td>
                                     <td>{cannoli.description}</td>
                                     <td>{cannoli.ingredient}</td>
@@ -263,4 +270,5 @@ function Admin_CannoliComponent() {
 }
 
 export default Admin_CannoliComponent;
+
 

@@ -7,7 +7,7 @@
     text-transform: uppercase;
 }
 
-.page-login input [type="text"],
+.page-login input[type="text"],
 input [type="email"],
 input [type="password"],
 textarea {
@@ -45,7 +45,6 @@ textarea {
     padding: 6rem 8rem;
     min-width: auto;
     justify-content: center;
-
 }
 
 .details-username::placeholder {
@@ -60,14 +59,28 @@ textarea {
 
 .timeout-succes-signin {
     display: flex;
+    color: #083e43;
+    background-size: cover;
+/*  background: url('../../assets/img.background/background signin.png') no-repeat center center;*/
     margin: auto;
+
+
+    min-height: 30rem;
+    justify-content: center;
+    flex-direction: column;
+
 }
+
+.succes-slide-bottom {
+
+
+}
+
 
 .valid-check {
+    color: greenyellow;
 
 }
 
-.button-inlog {
-    display: flex;
-    color: white;
-}
+
+

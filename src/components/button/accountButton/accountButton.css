@@ -1,5 +1,6 @@
 .account-button {
     display: flex;
+    color: white;
     align-items: center;
     justify-content: center;
     width: 12rem;

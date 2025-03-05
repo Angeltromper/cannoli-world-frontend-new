@@ -8,7 +8,7 @@ import './SignUp.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
 const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
-const EMAIL_REGEX =/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGEX = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 function SignUp({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
@@ -70,15 +70,17 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
             setErrorMessage ('Ongeldige invoer');
             return;
         }
+        console.log(user, password, email)
 
         try {
-            await axios.post ("http://localhost:8080/users/create",
+            const result = await axios.post ("http://localhost:8080/users/create",
                 {
                     username: user,
                     password: password,
                     email: email,
                 });
             setSuccess (true);
+            console.log(result)
 
             setTimeout (() => {
 
@@ -129,8 +131,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         </label>
 
                         <input
-                            type="text"
                             className="user"
+                            type="text"
                             id="user"
                             ref={ userRef }
                             autoComplete="off"
@@ -159,8 +161,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
 
                         <input
-                            type="e-mail"
                             className="email"
+                            type="e-mail"
                             id="email"
                             onChange={ (e) => setEmail (e.target.value) }
                             value={ email }
@@ -182,13 +184,12 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         <label htmlFor="password">
                             Wachtwoord:
                             <FontAwesomeIcon icon={ faCheck } className={ validPassword ? "valid" : "hide" }/>
-                            <FontAwesomeIcon icon={ faTimes }
-                                             className={ validPassword || !password ? "hide" : "invalid" }/>
+                            <FontAwesomeIcon icon={ faTimes } className={ validPassword || !password ? "hide" : "invalid" }/>
                         </label>
 
                         <input
-                            type="password-user"
                             className="password"
+                            type="password-user"
                             id="password"
                             onChange={ (e) => setPassword (e.target.value) }
                             value={ password }
@@ -218,8 +219,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         </label>
 
                         <input
-                            type="repeat-password"
                             className="repeat"
+                            type="repeat-password"
                             id="repeat"
                             onChange={ (e) => setRepeat (e.target.value) }
                             value={ repeat }
@@ -238,8 +239,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
 
                         <button
-                            type="submit"
                             className="button-register"
+                            type="submit"
                             disabled={ !validName || !validPassword || !validRepeat || !validEmail }>Registreren
                         </button>
 

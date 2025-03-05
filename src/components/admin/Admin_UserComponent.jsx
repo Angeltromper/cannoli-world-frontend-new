@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
-import DeleteIcon from "../../assets/navIcon/delete.svg";
-import './Admin_UserComponent.css';
+import DeleteIcon from "../../assets/navIcon/delete.png";
 import { useNavigate } from "react-router-dom";
+import './Admin_UserComponent.css';
 import {AuthContext} from "../../context/AuthContext";
 
 
@@ -10,12 +10,11 @@ function Admin_UserComponent() {
     const navigate = useNavigate();
     const token = localStorage.getItem ('token');
     const {user} = useContext (AuthContext);
-    const [isAdmin, setIsAdmin] = useState (false);
     const [users, setUsers] = useState([]);
-    const [adminInput, setAdminInput] = useState ([]);
+
 
     function goBack() {
-        navigate(`/persoonsgegevens`)
+            navigate(`/profile-info`)
     }
 
 
@@ -25,7 +24,7 @@ function Admin_UserComponent() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
+                       "Authorization": `Bearer ${token}`,
                     }
                 })
         } catch (error) {
@@ -69,7 +68,9 @@ function Admin_UserComponent() {
                         </h1>
                     </div>
                 </div>
+
                 :
+
                 <div className="admin-user-page">
 
                     <section className="admin_UserInfo">
@@ -104,11 +105,13 @@ function Admin_UserComponent() {
                                     <td>
                                         <button className="delete-button-user"
                                                 onClick={() => deleteUser(user.username)}>
+
                                             <DeleteIcon/>
+
                                         </button>
                                     </td>
                                     <td>{user.id}</td>
-                                    <td>{user.id}</td>
+                                    <td>{user.username}</td>
                                     <td>{user.email}</td>
                                     <td>{user.personFirstname}</td>
                                     <td>{user.personLastname}</td>
@@ -128,11 +131,6 @@ function Admin_UserComponent() {
         </>
     )
 }
-
-
-
-
-
 
 
 export default Admin_UserComponent;

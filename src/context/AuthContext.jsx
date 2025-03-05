@@ -2,7 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
-import isTokenValid from "../helpers/isTokenValid";
+
 
 export const AuthContext = createContext({});
 
@@ -19,9 +19,10 @@ function AuthContextProvider({children}) {
     useEffect (() => {
         const token = localStorage.getItem ('token');
 
-        if (token && isTokenValid (token)) {
+  /*    if (token && isTokenValid (token)) {*/
+        if (token) {
             const decodedToken = jwtDecode (token);
-            getData (decodedToken.sub, token);
+           getData (decodedToken.sub, token);
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
             toggleAuth ( {
@@ -49,12 +50,12 @@ function AuthContextProvider({children}) {
         navigate('/');
     }
 
-    async function getData(id, token, redirectUrl) {
+    async function getData(id, token) {
         try {
             const response = await axios.get(`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
+                   "Authorization": `Bearer ${token}`
                 }
             });
             toggleAuth({
@@ -64,7 +65,7 @@ function AuthContextProvider({children}) {
                     username: response.data.username,
                     password: response.data.password,
                     userId: response.data.id,
-                    roles: response.data.authorized[0].authority,
+                    roles: response.data.authorities[0].authority,
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
@@ -77,9 +78,9 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
 
-            if (redirectUrl) {
+  /*        if (redirectUrl) {
                 navigate(redirectUrl);
-            }
+            }*/
 
         } catch (error) {
             console.error('There was an error!', error);
@@ -102,19 +103,3 @@ function AuthContextProvider({children}) {
 }
 
 export default AuthContextProvider;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

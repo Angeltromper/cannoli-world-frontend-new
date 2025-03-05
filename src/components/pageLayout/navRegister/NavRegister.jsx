@@ -1,3 +1,4 @@
+/*
 import React, { useContext } from 'react';
 import {NavLink} from "react-router-dom";
 import AccountButton from "../../button/accountButton/AccountButton";
@@ -42,4 +43,5 @@ function NavRegister() {
 
 export default NavRegister;
 
+*/
 
