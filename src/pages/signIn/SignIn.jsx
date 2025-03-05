@@ -122,6 +122,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
                     </form>
 
+
                     <button type="button" onClick={ logout }>Uitloggen</button>
 
                     { error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw." }
@@ -131,6 +132,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         Heeft u nog geen account?<br/>
                         <span className="line">
                                 <Link to="/register" exact activeClassName="active-link">Registreer</Link>
+
                             </span>
                     </section>
 

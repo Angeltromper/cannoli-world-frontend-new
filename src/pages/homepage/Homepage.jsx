@@ -54,18 +54,18 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                             <section id="intro" className="intro-container">
                                 <br/>
                                 <h5>Graag willen wij de liefde voor Italië en de overheerlijke lekkernijen met u delen.We nemen u mee op reis.</h5>
-                                <h5><strong>De reis begint hier:<em>`hoe de liefde voor cannoli is ontstaan`</em></strong></h5>
-                                <h5><strong><em>Italië</em></strong> een land vol prachtige dorpjes en <strong><em>`heerlijke`</em></strong> gerechten. Het prachtige gardameer,</h5>
+                                <h5><strong>De reis begint hier:<em> &#34;hoe de liefde voor cannoli is ontstaan&#34;</em></strong></h5>
+                                <h5><strong><em>Italië</em></strong> een land vol prachtige dorpjes en <strong><em>&#34;heerlijke&#34;</em></strong> gerechten. Het prachtige gardameer,</h5>
                                 <h5>vrolijke huisjes, bergen en wijnheuvels. <strong><em>Italië</em></strong> een land met een geschiedenis.</h5>
                                 <h5>De liefde voor Italië is ontstaan door het velen reizen door mooie gebieden van het land.</h5>
                                 <br/>
                                 <br/>
-                                <h5>Banketbakkerijen met de overheerlijke cannolis. De bekende cannoli met ricotta.</h5><h5>De smaak mogelijkheden zouden oneindig moeten zijn.</h5>
+                                <h5>Banketbakkerijen met de overheerlijke cannoli&#39;s. De bekende cannoli met ricotta.</h5><h5>De smaakmogelijkheden zouden oneindig moeten zijn.</h5>
                                 <h5>Dit in een nieuw cannoli jasje alleen wel in de goede smaak combinatie.</h5>
                                 <br/>
                                 <br/>
                                 <h5>Door de ervaringen en de Italiaanse banketbakkerij zijn wij toen begonnen met het</h5>
-                                <h5>opzetten van een breed assortiment van verkoop van verse cannolis.</h5>
+                                <h5>opzetten van een breed assortiment van verkoop van verse cannoli&#39;s.</h5>
                             </section>
                         </div>
                     </div>
@@ -175,11 +175,11 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
 
 
                 <TextContainerResp>
-                    <h3>We nemen u verder mee op reis:<em>`geschiedenis over de oorsprong van de cannoli`</em></h3>
+                    <h3>We nemen u verder mee op reis:<em>&#34;geschiedenis over de oorsprong van de cannoli&#34;</em></h3>
                     <br/>
                     <h4>De geschiedenis over de oorsprong van de cannoli is waarschijnlijk een mix van alle legendes en
                         overtuigingen verzamelden doorgegeven door de eeuwen heen.
-                        <em><strong>`Twee daarvan zijn de legendes` </strong></em>die vertellen over de oorsprong van
+                        <em><strong>&#34;Twee daarvan zijn de legendes&#34; </strong></em>die vertellen over de oorsprong van
                         de cannoli. Beide van hen het eens over één ding: vrouwen zijn achter hun schepping die
                         plaatsvond
                         in of rond de stad Caltanissetta</h4>
@@ -192,12 +192,12 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                         De Arabische oorsprong van de cannoli wordt ondersteund door het feit dat de stad Capitalises
                         historisch verbonden is met de
                         aanwezigheid van de Moren in Sicilië, zoals blijkt uit de
-                        naam zelf, die voorkomt uit `kalf el nissa`, een Arabische locatie die `vrouwenkasteel` betekent.
+                        naam zelf, die voorkomt uit &#34;kalf el nissa&#34;, een Arabische locatie die &#34;vrouwenkasteel&#34;betekent.
                         Interessant, gezien de legende is gevestigd in een
                         kasteel en de uitvinding van de cannoli, volgens het, ligt in de vaardige handen van vrouwen.</h4>
 
                     <h3><strong><em>Volgens een ander verhaal:</em></strong></h3>
-                    <h4>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, `verzonnen`
+                    <h4>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, &#34;verzonnen&#34;
                         de nonnen een buisvormig gebak gevuld met ricotta crème, chocoladeschilfers en gehakte hazelnoten.
                         Concubines of nonnen, het is zeker dat cannoli voor het eerst werden gemaakt ten tijde van de Arabische overheersing van
                         Sicillié suikerriet, rijst, amandelen, jasmijn, anijs, sesam, saffraan en kaneel gebracht, alle ingredienten sterk aanwezig in
@@ -205,12 +205,12 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                         waarschijnlijk een mix van alle legendes en overtuigingen verzameld en doorgegeven door de eeuwen heen.</h4>
 
                     <h3><strong><em>Het amandelkoekje:</em></strong></h3>
-                    <h4>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de `Frutta di Martorana` Deze traditionele lekkernij werd gemaakt
+                    <h4>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de &#34;Frutta di Martina&#34; Deze traditionele lekkernij werd gemaakt
                         in de 16e eeuw door nonnen die in het klooster leefden. De aanleiding hiervan waren de voorbereidingen voor de festiviteiten die waren opgesteld
                         voor 2 november, de dag van aller zielen. Op deze dag zou de bisschop het klooster bezoeken, omdat zogezegd hij vele verhalen had gehoord over
-                        de prachtige tuin met vele fruitbomen waar de nonnen het idee om van amandelspijs fruit te creëren omm zo de bomen en de tuin ermee te versieren.
+                        de prachtige tuin met vele fruitbomen waar de nonnen het idee om van amandelspijs fruit te creeren omm zo de bomen en de tuin ermee te versieren.
                         Vandaag de dag vind je nog in vele winkeltjes in Sicillie deze frutta martorana, vaak prachtig verpakt in een rieten mandje of houten kistje.
-                        De bijnaam van het Siciliaanse amandelkoekje is `pasta reale` dit omdat het geschikt voor de koning zou zijn vanwege de zoetigheid en de goedheid
+                        De bijnaam van het Siciliaanse amandelkoekje is &#39;pasta real&#39; dit omdat het geschikt voor de koning zou zijn vanwege de zoetigheid en de goedheid
                         van het koekje. Aan wie de eer van deze lekkernijen toe komt is nog steeds niet helemaal 100% zeker. Er gaat namelijk ook het verhaal te ronde
                         dat de Arabieren al in de 6e eeuw aan het experimenteren waren met suiker en amandelen.</h4>
                 </TextContainerResp>
