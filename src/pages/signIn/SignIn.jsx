@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
@@ -13,7 +13,7 @@ const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])
 
 
 function SignIn({headerImageHandler, pageTitleHandler}) {
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const {register, formState: {errors}, handleSubmit} = useForm();
     const navigate = useNavigate();
 
     const {login, logout, auth} = useContext(AuthContext);
@@ -41,13 +41,14 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
         setValidPassword (PASSWORD_REGEX.test(password));
     }, [password]);
 
-    async function signIn(e) {
-        console.log(e)
+    async function signIn(data) {
+        console.log(data)
+        console.log("hoi")
         try {
             const response = await axios.post('http://localhost:8080/authenticate',
                 {
-                    username: e.username,
-                    password: e.password,
+                    username: data.username,
+                    password: data.password,
                }, {
             });
 
@@ -65,8 +66,17 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
         }
     }
 
+    function handleClick() {
+        console.log("hoi")
+    }
     return (
         <>
+
+            <button onClick={handleClick}>
+                klik
+
+
+            </button>
             {!auth ?
                 <div className="page-login">
                     <form className="form-login"
@@ -108,7 +118,8 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         { errors.password && <p>{ errors.password.message }</p> }
                         <br/>
 
-                        <button type="submit">Inloggen</button>
+                        <button type="submit" onClick={handleClick}>Inloggen</button>
+
                     </form>
 
                     <button type="button" onClick={ logout }>Uitloggen</button>

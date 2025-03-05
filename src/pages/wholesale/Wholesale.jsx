@@ -3,9 +3,8 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from "../../context/AuthContext";
 import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
-
 import TwoColumn from "../../components/pageLayout/designElement/column/TwoColumn";
 import Column from "../../components/pageLayout/designElement/column/Column";
 import './Wholesale.css';
@@ -101,7 +100,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                    {
                        headers: {
                            "Content-Type": "application/json",
-/*                                                      "Authorization": `Bearer ${token}` */
+                                                    // "Authorization": `Bearer ${token}`
                        }
                    });
 

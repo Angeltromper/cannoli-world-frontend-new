@@ -15,7 +15,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 */
 
     /*  const [loading, setLoading] = useState(false);*/
-    const [cannolis, setCannolis] = useState([]);
+    // const [cannolis, setCannolis] = useState([]);
 
     /*    const {user: {username}} = useContext(AuthContext);*/
     /*    const navigate = useNavigate();*/

@@ -4,10 +4,8 @@ import { CartContext } from "../../context/CartContext";
 import CannoliImage from "../cannoli/CannoliImage";
 import CannoliInfo from "../cannoli/CannoliInfo";
 import shoppingBasket from "../../assets/navIcon/shoppingBasket.png";
-import './WholesaleInfo.css';
 import { AuthContext } from "../../context/AuthContext";
-
-
+import './WholesaleInfo.css';
 
 
 export const WholesaleInfo = (props) => {
