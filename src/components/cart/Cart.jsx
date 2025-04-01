@@ -27,36 +27,31 @@ export const Cart = () => {
             <div>
                 <div className="shoppingcart__menu-X">
 
+                    {toggleCart ? <RiCloseLine size={25} onClick={() => setToggleCart(false)}/>
+                        :
+                        <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)}/>
+                    }
 
-                {toggleCart ? <RiCloseLine size={30} onClick={() => setToggleCart(false)}/>
-                    :
-                    <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)}/>
-                }
+                    { toggleCart   && (
 
-                { toggleCart   && (
+                        <div className="shoppingcart-layout">
+                            {/*<div className="shoppingcart-button">*/}
+                                <h3>Winkelmandje</h3>
 
-                    <div className="shoppingcart-layout">
-                        <div className="shoppingcart-button">
-                            <h3>Winkelmandje</h3>
+                                <button className="shoppingcart-checkout-button"
+                                        onClick={cart_deliveryRequest}>
+                                    Checkout
+                                </button>
+                            {/*</div>*/}
 
-                            <button className="shoppingcart-checkout-button"
-                                    onClick={cart_deliveryRequest}>
-                               Checkout
-                            </button>
-                        </div>
+                            <hr/>
 
-                        <hr/>
-
-
-                        <div className="image-animation">
-                            <img /*height="85px" width="85px"*/ alt="shoppingbasket" src= "https://cdn-icons-png.flaticon.com/512/17911/17911491.png"/>
-                        </div>
-                        <div className="shoppingcart-number">
-                            {Object.keys(cart).length}
-                        </div>
-
-
-
+                            <div className="image-animation">
+                                <img /*height="85px" width="85px"*/ alt="shoppingbasket" src= "https://cdn-icons-png.flaticon.com/512/17911/17911491.png"/>
+                            </div>
+                            <div className="shoppingcart-number">
+                                {Object.keys(cart).length}
+                            </div>
 
 
                         {cart.map((cannoli,index) => {
@@ -64,7 +59,7 @@ export const Cart = () => {
                                 <ul key={index}>
 
                                     <div className="shoppingcart-items">
-                                        <div className="shoppingcart-items-left">
+                                        <div className="shoppingcart-items-right">
 
                                             <button
                                                 className="shoppingcart-button-remove"
@@ -81,7 +76,6 @@ export const Cart = () => {
 
                                     </div>
                                 </ul>
-
                             )
                         })}
 

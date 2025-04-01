@@ -26,10 +26,12 @@
     font-family: var(--second-font), sans-serif ;
     font-size: 1.2rem;
     align-items: center;
-    margin: 2.5rem;
-    justify-content: space-between;
+    margin-top: 5rem;
+    /*margin: 10rem;*/
+    /*height: 8rem;*/
+    justify-content: space-evenly;
     flex-direction: row;
-    z-index: 500;
+    z-index: 99;
 }
 
 .logo-wrapper {
@@ -91,26 +93,46 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    margin: -3rem 3em -2em 0;
+    margin: -7rem 3em -2em 0;
+    /*margin-top: -5em;*/
     align-items: center;
-    padding: 1em 2em;
-
-
-    position: relative;
+    padding: 0 14px;
+    /*position: relative;*/
     z-index: 99;
 }
 
-.button-logout-menu {
+
+.logout-menu {
     display: flex;
     background-color: transparent;
-    /*padding: 4px 2px;*/
-    margin: 1em 4em;
-
-    width: 4em;
-
-    height: 1em;
+    font-size: 10px;
+    /*padding: 2px;*/
+    margin: 1em 2em;
+    /*width: 2em;*/
 }
 
+/*
+.logout-menu img {
+    width: 2em;
+}
+*/
+
+.login-menu {
+    /*display: flex;*/
+    background-color: transparent;
+    font-size: 10px;
+    border-color: transparent;
+    /*padding: 4px 2px;*/
+    margin: 1em 2em;
+    /*width: 4em;*/
+}
+
+/*
+.login-menu img {
+    width: 2em;
+    color: white;
+    }
+*/
 
 .navbar__menu-X svg  {
     display: none;
@@ -150,17 +172,22 @@
     .navbar__inlog-X {
         display: flex;
         right: -12rem;
-        /*padding: 2px ;*/
         position: absolute;
     }
 
-
     .navbar-menu {
         display: flex;
+        background: linear-gradient(180deg, rgb(255, 231, 130) 0%, rgb(255, 231, 130) 40%, rgb(255, 231, 130) 100%);
+        background: -ms-linear-gradient(0deg, rgba(255, 231, 130, 100) 0%, rgba(255, 231, 130, 100) 40%, rgba(255, 231, 130, 100) 100%);
+        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
         font-size: 1.2rem;
-        margin: 5rem;
+        box-sizing: border-box;
+        min-width: 50vh;
+        min-height: 30vh;
+        top: 0;
         position: fixed;
         flex-direction: column;
+
         z-index: 500;
     }
 
@@ -171,16 +198,106 @@
     .navbar__menu-X svg {
         display: flex;
         margin: var(--margin);
-        /*background-color: #FFF4A0;*/
-        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+        top: -2em;
         position: relative;
-        /*padding: 16px;*/
         z-index: 99;
     }
 
 
-    .navbar__menu-X   {
+    .navbar__menu-X {
+
+ }
+
+    .navbar__menu .logo {
+        width: 4em;
+    }
+
+    .navbar-inlog-menu {
+        display: flex;
+        flex-direction: row;
+        margin-top: -7.5em;
+        align-items: center;
+        padding: 0 14px;
+        z-index: 99;
+    }
+
+    .logout-menu {
+            display: flex;
+            background-color: transparent;
+            font-size: 10px;
+            /*padding: 2px;*/
+            margin: 1em 2em;
+            /*width: 2em;*/
+        }
+
+        .login-menu {
+            display: flex;
+            font-size: 10px;
+            margin: 1em 2em;
+        }
+}
+
+
+@media screen and (max-width: 740px) {
+
+    .navbar__main-container  {
         /*display: flex;*/
+    }
+
+    .navbar__main-container a,
+    .navbar__main-container a:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .navbar__main-container a:hover {
+        text-decoration: none;
+        color: var(--figure-color-1);
+        transition: transform 300ms ease-in-out;
+        transform: scale(1.10);
+    }
+
+    .navbar__inlog-X svg  {
+        /*display: flex;*/
+    }
+
+    .navbar__inlog-X {
+        display: flex;
+        right: -12rem;
+        position: absolute;
+    }
+
+    .navbar-menu {
+        display: flex;
+        background: linear-gradient(180deg, rgb(255, 231, 130) 0%, rgb(255, 231, 130) 40%, rgb(255, 231, 130) 100%);
+        background: -ms-linear-gradient(0deg, rgba(255, 231, 130, 100) 0%, rgba(255, 231, 130, 100) 40%, rgba(255, 231, 130, 100) 100%);
+        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+        font-size: 1.2rem;
+        box-sizing: border-box;
+        min-width: 50vh;
+        min-height: 30vh;
+        top: 0;
+        position: fixed;
+        flex-direction: column;
+
+        z-index: 500;
+    }
+
+    .logo {
+        width: 4em;
+    }
+
+    .navbar__menu-X svg {
+        display: flex;
+        margin: var(--margin);
+        top: -2em;
+        position: relative;
+        z-index: 99;
+    }
+
+
+    .navbar__menu-X {
+
     }
 
 
@@ -191,50 +308,31 @@
     .navbar-inlog-menu {
         display: flex;
         flex-direction: row;
-        /*box-sizing: border-box;*/
-        /*right: 11em;*/
-        /*top: 1.2em;*/
+        margin-top: -7.5em;
+        align-items: center;
+        padding: 0 14px;
         z-index: 99;
     }
-}
 
-@media screen and (max-width: 740px) {
-
-    .navbar__inlog-X svg {
+    .logout-menu {
         display: flex;
-        right: 4rem;
-        max-width: 3em;
-        margin: 2em;
-        position: absolute;
-    }
-
-
-
-
-    .inlog-button {
-        color: transparent;
         background-color: transparent;
-        box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
-        padding: 5px 0 1px 0;
-        min-height: 1.5em;
-        border-radius: 1em;
+        font-size: 10px;
+        /*padding: 2px;*/
+        margin: 1em 2em;
+        /*width: 2em;*/
     }
 
-    .navbar-inlog-menu {
+    .login-menu {
         display: flex;
-        position: absolute;
-        right: -2em;
-        padding: 2.5em 0;
-        z-index: 99;
-    }
-
-    .navbar__menu-X svg {
-        display: flex;
-        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
-        padding: 10px;
-        z-index: 99;
+        font-size: 10px;
+        margin: 1em 2em;
     }
 }
+
+
+
+
 
 
 

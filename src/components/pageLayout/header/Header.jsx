@@ -13,11 +13,11 @@ function Header({headerImage, pageTitle}) {
     return (
         <>
             <header className="header">
-
-                <Navbar/>
                 <div className="cartMenu slide-side">
                     <Cart/>
                 </div>
+
+                <Navbar/>
 
                 <div className="color-container">
                     <figure><img src={ rightColor } alt="right-color" className="right"/></figure>

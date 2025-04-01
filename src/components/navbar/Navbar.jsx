@@ -3,8 +3,9 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo/Logo Cannoli.png";
 import { AuthContext } from "../../context/AuthContext";
 import { RiAccountCircleFill, RiAccountCircleLine, RiCloseLine, RiMenu3Line } from "react-icons/ri";
-import login from "../../assets/navIcon/login.png";
-import signOut from "../../assets/navIcon/signOut.png";
+import signout from "../../assets/svg/signout.svg";
+import user from "../../assets/svg/user.svg";
+
 import './../pageLayout/header/Header.css'
 import './Navbar.css';
 
@@ -40,7 +41,7 @@ function Navbar() {
 
                 {(toggleMenu || screenWidth > 990) && (
 
-                    <div className="navbar-menu">
+                    <div className="navbar-menu slide-side ">
                         <NavLink to="/" exact activeClassName='active-link'>Home</NavLink>
                         <NavLink to="/cannoli" exact activeClassName='active-link'>Cannoli</NavLink>
                         <NavLink to="/giftbox" exact activeClassName='active-link'>Giftbox</NavLink>
@@ -58,11 +59,11 @@ function Navbar() {
 
 
                 <div className="navbar-inlog-menu">
-                    { toggleLogin ? <button className="button-logout-menu" onClick={()  => setToggleLogin (false)}>
-                            <NavLink to="/" exact activeClassName='active-link'><img src={signOut} alt="uitloggen"/></NavLink></button>
+                    { toggleLogin ? <button className="logout-menu" onClick={()  => setToggleLogin (false)}>
+                            <NavLink to="/" exact activeClassName='active-link'><img src={signout} alt="uitloggen"/>uitloggen</NavLink></button>
                         :
-                        <button onClick={() => setToggleLogin(true)}>
-                            <NavLink to="/login" exact activeClassName='active-link'><img src={login} alt="inloggen"/>Inloggen</NavLink></button>
+                        <button className="login-menu" onClick={() => setToggleLogin(true)}>
+                            <NavLink to="/login" exact activeClassName='active-link'><img src={user} alt="inloggen"/>Inloggen</NavLink></button>
                     }
                 </div>
             </div>
