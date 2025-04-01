@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import pageImg from "../../assets/img.background/background design.jpg";
 import { AuthContext } from "../../context/AuthContext";
-
 import axios from "axios";
 import './ProfileInfo.css';
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
@@ -67,13 +66,6 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
                     Producten bestellen en of aanpassen.
                 </h5>
             </div>
-
-
-
-
-
-
-
 
 
             { isAdmin &&

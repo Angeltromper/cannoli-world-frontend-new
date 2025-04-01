@@ -1,42 +1,62 @@
-.cart-layout {
-    display: flex;
+.shoppingcart-layout {
+    /*display: flex;*/
+    margin-top: 2em;
+    padding: 14px 8px;
     flex-direction: column;
     transition: 0.3s;
+    /*justify-content: space-between;*/
+    width: 95%;
+    /*position: relative;*/
 }
 
-.cart-button {
+.shoppingcart-button {
     display: flex;
+    top: -1.5em;
     justify-content: space-between;
     flex-direction: row;
+    align-items: center;
+    position: relative;
 }
 
-.cart-number {
+
+.shoppingcart-number {
     display: flex;
-    color: white;
-    background-color: #FFF4A0;
+    background-color: var(--background-color-light-green);
+    color: black;
     border-radius: 18rem;
+    border: black;
     justify-content: center;
-    width: 1.2rem;
+    width: 1.5rem;
     position: fixed;
     transition: 0.3s;
-    margin: -2rem 0 0 2.5rem;
+    margin: -1.8rem 0 0 3.5rem;
 }
 
-.cart-items {
+
+
+.shoppingcart-items {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 1rem;
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    /*padding-right: 1rem;*/
 }
 
-.cart-items-name-padding {
+/*
+.shoppingcart-items-left {
+    display: flex;
+    background-color: #FFF4A0;
+}
+*/
+
+
+.shoppingcart-items-name-padding {
     display: flex;
     text-align: center;
     justify-content: center;
     padding-left: 0.5rem;
 }
 
-.cart-button-remove {
+.shoppingcart-button-remove {
     display: flex;
     color: #FFFFFF;
     background-color: rgba(89, 89, 89, 0) ;
@@ -47,23 +67,144 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+
 }
 
-.cart-button-remove:hover {
+.shoppingcart-button-remove:hover {
     background-color: rgba(255, 255, 255, 0.40);
+    transition: 0.4s;
+    transform: scale(1.2);
 }
 
-.cart-checkout-button {
-    background-color: #FFF4A0;
+.shoppingcart-checkout-button {
+    display: flex;
+    background-color: var(--figure-color-1);
     box-shadow: rgba(0, 0, 0, 0.3) 3px 5px 5px;
     font: var(--second-font);
+    top: 4em;
+    left: 5em;
     width: fit-content;
+    border-radius: 0.1em;
     border: none;
+    position: absolute;
     transition: 0.3s;
 }
 
-.cart-checkout-button:hover {
-    background-color: #FFFFFF;
+.shoppingcart-checkout-button:hover {
+    /*background-color: #FFFFFF;*/
     transform: scale(1.05);
     transition: 0.3s;
+
 }
+
+.shoppingcart-number {
+    display: flex;
+    background-color: var(--background-color-light-green);
+    color: black;
+    border-radius: 18rem;
+    border: black;
+    justify-content: center;
+    width: 1.5rem;
+    position: fixed;
+    transition: 0.3s;
+    margin: -1.8rem 0 0 3.5rem;
+}
+
+.shoppingcart__menu-X {
+    display: flex;
+    color: white;
+    flex-direction: row;
+    align-items: center;
+    margin-top: -5rem;
+    padding: 2px 38px;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 99;
+}
+
+.image-animation {
+    display: flex;
+    width: 85px;
+    height: 85px;
+}
+
+
+
+
+
+@media screen and (max-width: 992px) {
+
+    .shoppingcart-menu {
+        display: flex;
+        color: #010101;
+        margin: 2em 1em -4em 0;
+        justify-content: flex-end;
+    }
+
+    .shoppingcart-layout {
+        /*display: flex;*/
+        margin-top: 2em;
+        padding: 14px 8px;
+        flex-direction: column;
+        transition: 0.3s;
+        /*justify-content: space-between;*/
+        width: 95%;
+        /*position: relative;*/
+    }
+
+    .shoppingcart-button {
+        display: flex;
+        top: -1.5em;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+    }
+
+    .image-animation {
+        display: flex;
+        width: 65px;
+        height: 65px;
+
+    }
+
+    .shoppingcart-number {
+        display: flex;
+        background-color: var(--background-color-light-green);
+        color: black;
+        border-radius: 14rem;
+        border: black;
+        justify-content: center;
+        width: 1.2rem;
+        position: fixed;
+        transition: 0.3s;
+        margin: -1.6rem 0 0 2.7rem;
+    }
+
+    .shoppingcart-checkout-button:hover {
+        background-color: #010101;
+        transform: scale(1.05);
+        transition: 0.3s;
+    }
+    .shoppingcart__menu-X  {
+        display: flex;
+        color: white;
+        flex-direction: row;
+        align-items: center;
+        margin-top: -4rem;
+        padding: 2px 38px;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 99;
+    }
+
+    .shoppingcart__menu-X svg {
+        display: flex;
+
+    }
+
+
+
+
+}
+

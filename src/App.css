@@ -5,8 +5,9 @@
     1.  Global Styles
     2.  Typography
     3.  Page-layout
-    4.  Scroll-bar
-    5.  Media Queries
+    4.  Elementen
+    5.  Scroll-bar
+    6.  Media Queries
 /////////////////////////*/
 
 /*--------------------- 1. Global Styles ---------------------*/
@@ -21,6 +22,8 @@
   --background-color: rgba(59, 28, 17, 99);
   --background-color-light: #FFFFFF;
   --background-color-yellow: #FFF4A0;
+  --background-color-light-orange: #FFE782FF;
+  --background-color-light-green: #1AE216;
   --figure-color-1: #FF003D;
   --figure-color-2: #1AE216;
   --button-color: #FF003D;
@@ -39,8 +42,8 @@
 
   --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
   --border: 0.2em solid var(--focus-color);
-  --margin: 1.5em;
-  --minusTop: -8rem;
+  --margin: 2em;
+  --minusTop: -2.5rem;
 
   /*--------------------- Mobile Styles  ---------------------*/
   --background-color-light-mobile: #E7FFC7;
@@ -55,14 +58,15 @@
   justify-content: center;
 }
 
+/*Met de padding worden de hoogtes en breedtes van de elementen berekend en inclusief padding en borders*/
 * {
   padding:0;
-  /*Met de padding worden de hoogtes en breedtes van de elementen berekend en inclusief padding en borders*/
   margin: 0;
   box-sizing: border-box;
 }
 
 body {
+  background-color: var(--background-color-light);
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
 }
@@ -90,9 +94,9 @@ h1, h2, h3, h4, h5 {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 0.2em;
-  padding: 16px 0;
+  padding: 20px 0;
 }
 
 h2 {
@@ -141,6 +145,7 @@ strong {
   width: 100%;
 }
 
+
 .outer-container__reusable {
   display: flex;
   max-width: 100%;
@@ -148,6 +153,7 @@ strong {
   justify-content: center;
   flex-wrap: wrap;
 }
+
 
 .inner-container__reusable  {
   display: flex;
@@ -159,20 +165,26 @@ strong {
   justify-content: space-between;
 }
 
+
+/*
 .default-area-padding {
   padding: 0 0 100px 0;
 }
+*/
+
 
 .default-text-restrictor {
+  /*display: flex;*/
   max-width: 100%;
   text-align: center;
 }
+
 
 .page-content {
   color: var(--text-intro-pink);
   display: flex;
   height: 1.5em;
-  margin: 2em 0;
+  margin: 5em 0;
   position: relative;
   justify-content: center;
   z-index: 5;
@@ -185,7 +197,7 @@ strong {
 
 .page-content-two h3 {
   color: var(--text-intro-pink);
-  height: 1.5ch;
+  height: 3ch;
 }
 
 .page-content-two {
@@ -194,42 +206,89 @@ strong {
   font-weight: bold;
 }
 
+
+
+
 .image-preview {
   width: 100%;
 }
 
 
-.slide-bottom {
-  -webkit-animation: slide-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-  animation: slide-bottom 1s cubic-bezier(0.230, 2.000, 0.320, 1.000) both;
+/*--------------------- 5.Scroll-bar -----------------*/
+
+
+
+  .slide-side {
+    -webkit-animation: slide-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    animation: slide-bottom 1s cubic-bezier(0.230, 2.000, 0.320, 1.000) both;
+  }
+
+  @-webkit-keyframes slide-side {
+    0% {
+      -webkit-transform: translateY(-100px);
+      transform: translateY(-100px);
+    }
+    100% {
+      -webkit-transform: translateY(10px);
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes slide-bottom {
+    0% {
+      -webkit-transform: translateX(-100px);
+      transform: translateX(-100px);
+    }
+    100% {
+      -webkit-transform: translateX(10px);
+      transform: translateX(10px);
+    }
+  }
+
+
+  .slide-bar {
+    -webkit-animation: side-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) reverse both;
+    animation: side-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) reverse both;
+  }
+
+
+  @-webkit-keyframes side-bottom {
+    0% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+      transform: rotateX(-180deg);
+    }
+  }
+  @keyframes side-bottom {
+    0% {
+      -webkit-transform: rotateX(0);
+      transform: rotateX(0);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+      transform: rotateX(-180deg);
+    }
+  }
+
+
+
+@media screen and (max-width: 740px) {
+
+
+
 }
 
-@-webkit-keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
-  }
-  100% {
-    -webkit-transform: translateY(10px);
-    transform: translateY(10px);
-  }
-}
+  /*--------------------- 6.Media-queries -----------------*/
 
-@keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-100px);
-    transform: translateY(-100px);
-  }
-  100% {
-    -webkit-transform: translateY(10px);
-    transform: translateY(10px);
-  }
-}
 
-/*--------------------- 4.Media-queries -----------------*/
-
-@media screen and (min-width: 600px) {
-  :root {
-    font-size: 14px;
+@media screen and (max-width: 600px) {
+    :root {
+      font-size: 12px;
+    }
   }
-}
+
+
+

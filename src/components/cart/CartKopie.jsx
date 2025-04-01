@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+/*
+import React, {useContext, useState} from 'react';
 import {CartContext} from "../../context/CartContext";
-import {RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
-
+import {RiCloseLine, RiShoppingBasket2Line} from "react-icons/ri";
 import {useNavigate} from "react-router-dom";
 import './Cart.css'
 
 export const Cart = () => {
     const navigate = useNavigate();
-    const [toggleCart, setToggleCart] = useState('');
+    const [toggleCart, setToggleCart] = useState(false);
     const [cart, setCart] = useContext(CartContext);
-
 
     const totalPrice = cart.reduce((acc, cart) => acc + cart.prijs, 0);
 
@@ -18,46 +17,35 @@ export const Cart = () => {
     };
 
     function cart_deliveryRequest() {
-        navigate( "/cart-instruction/checkout")
+        navigate( `/cart items/checkout`)
     }
 
-
     return (
+        <div>
+            <div className="shoppingcart-menu">
+                <div className="shoppingcart-number">
+                    {Object.keys(cart).length}
+                </div>
 
-            <div>
-                <div className="shoppingcart__menu-X">
-
-
-                {toggleCart ? <RiCloseLine size={30} onClick={() => setToggleCart(false)}/>
+                {toggleCart ?
+                    <RiCloseLine size={30} onClick={() => setToggleCart(false)}/>
                     :
-                    <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)}/>
+                    <RiShoppingBasket2Line size={30} onClick={() => setToggleCart(true)}/>
                 }
 
-                { toggleCart   && (
+                { toggleCart  && (
 
                     <div className="shoppingcart-layout">
                         <div className="shoppingcart-button">
-                            <h3>Winkelmandje</h3>
+                            <h1>Winkelmand</h1>
+                            <div>
 
-                            <button className="shoppingcart-checkout-button"
-                                    onClick={cart_deliveryRequest}>
-                               Checkout
-                            </button>
+                                <button className="shoppingcart-checkout-button"
+                                        onClick={cart_deliveryRequest}>
+                                    Checkout
+                                </button>
+                            </div>
                         </div>
-
-                        <hr/>
-
-
-                        <div className="image-animation">
-                            <img /*height="85px" width="85px"*/ alt="shoppingbasket" src= "https://cdn-icons-png.flaticon.com/512/17911/17911491.png"/>
-                        </div>
-                        <div className="shoppingcart-number">
-                            {Object.keys(cart).length}
-                        </div>
-
-
-
-
 
                         {cart.map((cannoli,index) => {
                             return (
@@ -85,7 +73,7 @@ export const Cart = () => {
                             )
                         })}
 
-                        {cart.length === 0 && <div> Je winkelmandje is nog leeg...</div>}
+                        {cart.length === 0 && <div> Winkelwagen is leeg</div>}
                         <br/>
 
                         {Object.keys(cart).length} cannoli(s)
@@ -95,10 +83,9 @@ export const Cart = () => {
 
                     </div>
                 )}
-                </div>
             </div>
+        </div>
     )
 };
 
-
-
+*/

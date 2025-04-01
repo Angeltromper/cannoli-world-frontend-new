@@ -7,6 +7,8 @@ function Button({onClick, text, type}) {
             {text}
         </button>
     )
+
+
 }
 
 export default Button;

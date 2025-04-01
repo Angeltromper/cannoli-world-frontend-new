@@ -5,12 +5,14 @@
     flex-direction: column;
 }
 
+
 #intro {
     background-color: var(--background-color-light);
     color: var(--background-color-dark);
     font-weight: bold;
     position: relative;
 }
+
 
 #intro::before {
     display: 'block';
@@ -20,10 +22,10 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    font-size: 300px;
+    font-size: 250px;
     font-weight: var(--font-weight);
-    letter-spacing: -16px;
-    top: -100px;
+    letter-spacing: -18px;
+    top: -60px;
     left: 0;
 }
 
@@ -54,18 +56,21 @@
     position: relative;
 }
 
+/*
 .cannoliSnack {
     display: flex;
     background: #FFDDE6;
     flex-direction: column;
     border: #150A06;
-
 }
+*/
 
+/*
 .label {
     display: flex;
     flex-direction: column;
 }
+*/
 
 .input-field__reusable {
     display: flex;
@@ -74,9 +79,11 @@
     float: left; width:200px; height:20px;
 }
 
+/*
 .select {
     width: 100%;
 }
+*/
 
 .search-result__go-up-icon {
     width: 1.5em;
@@ -84,6 +91,7 @@
     align-self: center;
 }
 
+/*
 .skewer--top {
     position: relative;
     top: 0;
@@ -93,13 +101,24 @@
     border-bottom: 100px solid var(--background-color-light);
     z-index: 9;
 }
-
+*/
 
 
 /*--------------------- Media-queries -----------------*/
 
+@media screen and (max-width: 992px) {
+
+
+}
+
+
+
+/*
 @media screen and (max-width: 768px) {
     .homepage {
+        display: flex;
+        flex-direction: column;
+
 
     }
 }
@@ -115,7 +134,7 @@
     }
 }
 
-
+*/
 
 
 

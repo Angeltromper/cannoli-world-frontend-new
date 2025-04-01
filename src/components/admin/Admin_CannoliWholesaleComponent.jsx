@@ -4,8 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
-import SaveButton from "../button/saveButton/SaveButton";
 import './Admin_CannoliWholesaleComponent.css';
+import Button from "../button/Button";
 
 function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler}) {
     const {id} = useParams();
@@ -189,7 +189,7 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
                             <br/>
 
                             <div className="cannoli-form-saveButton">
-                                <SaveButton/>
+                                <Button/>
                             </div>
                         </div>
                     </form>

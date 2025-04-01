@@ -1,7 +1,7 @@
 /*
 import React, { useContext } from 'react';
 import {NavLink} from "react-router-dom";
-import AccountButton from "../../button/accountButton/AccountButton";
+import InlogButton from "../../button/accountButton/InlogButton";
 import { AuthContext } from "../../../context/AuthContext";
 import '../navbar/Navbar.css';
 import '../../../App.css';
@@ -31,7 +31,7 @@ function NavRegister() {
                 <span className="login__account-button">
                     <br/>
 
-                    <AccountButton/>
+                    <InlogButton/>
 
                 </span>
             }

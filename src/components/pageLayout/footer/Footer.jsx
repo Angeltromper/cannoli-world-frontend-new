@@ -1,12 +1,12 @@
 import React, { useContext, useRef } from 'react';
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
-import Column from "../designElement/column/Column";
-import TwoColumn from "../designElement/column/TwoColumn";
+// import Column from "../designElement/column/Column";
+// import TwoColumn from "../designElement/column/TwoColumn";
 import mail from "../../../assets/navIcon/mail.png";
 import phone from "../../../assets/navIcon/phone.png";
 import './Footer.css';
-
+// import TextContainer from "../designElement/container/textContainer/TextContainer";
 
 
 function Footer() {
@@ -17,11 +17,9 @@ function Footer() {
 
 
     return (
-        <footer className="footer-container">
-
-            <TwoColumn>
-                <Column>
-                    <div className="footer-menu">
+       <div className="footer-container">
+           <footer className="footer">
+               <div className="footer-menu">
                         <h3>navigatie</h3>
                         <ul>
                             <li><NavLink to="/home">Home</NavLink></li>
@@ -35,37 +33,45 @@ function Footer() {
                             { isAuth && <li><NavLink to="/profiel">Profiel</NavLink></li> }
                         </ul>
                     </div>
-                </Column>
 
-                <Column>
-                    <div className="footer-contact">
-                        <h3>contact</h3>
-                        <ul>
-                            <figure><img src={ mail } alt="mail" className="mail"/><NavLink
-                                to="mail">srruffino@outlook.com</NavLink></figure>
-                            <figure><img src={ phone } alt="phone" className="phone"/><NavLink
-                                to="phone">SR.Ruffino:(+31)620940691</NavLink></figure>
-                            <figure><img src={ phone } alt="phone" className="phone"/><NavLink to="phone">E.Jongh
-                                Visscher:(+31)648889093</NavLink></figure>
-                        </ul>
-                    </div>
+               <div className="footer-contact">
 
-                    <div className="register-content">
-                        <h3 className="register-subtitle">Wilt u onze nieuwsbrief ontvangen?</h3>
-                        <form className="register-form">
-                            <label>
-                                <input className="register-input" type="text" placeholder="E-mail adres..."/>
-                            </label>
-                            <button className="button" type="submit">inschrijven</button>
-                        </form>
-                    </div>
-                </Column>
+                   <h3>contact</h3>
 
-            </TwoColumn>
-            <div className="skewer--footer-top"></div>
-        </footer>
+                   <ul>
+                       <figure><img src={ mail } alt="mail" className="mail"/><NavLink
+                           to="mail">srruffino@outlook.com</NavLink></figure>
+                       <figure><img src={ phone } alt="phone" className="phone"/><NavLink
+                           to="phone">SR.Ruffino:(+31)620940691</NavLink></figure>
+                       <figure><img src={ phone } alt="phone" className="phone"/><NavLink to="phone">E.Jongh
+                           Visscher:(+31)648889093</NavLink></figure>
+                   </ul>
+
+                   <br/>
+                   <br/>
+
+                       <div className="register-content">
+                       <h3 className="register-subtitle">Wilt u onze nieuwsbrief ontvangen?</h3>
+                       <form className="register-form">
+                           <label>
+                               <input className="register-input" type="text" placeholder="E-mail adres..."/>
+                           </label>
+                           <button className="register-btn" type="submit">inschrijven</button>
+                       </form>
+                       </div>
+               </div>
+
+               <hr/>
+               <div className="footer-bottom">
+                   <p>Eindopdracht Full-Stack Developer NOVI College || Angelique Tromper || Copyright © 2025 Cannoli-world.nl
+                       || Alle rechten voorbehouden.  </p>
+               </div>
+           </footer>
+           <div className="skewer--footer-top"></div>
+       </div>
     );
 }
 
 export default Footer;
+
 
