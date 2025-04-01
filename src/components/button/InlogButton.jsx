@@ -1,8 +1,10 @@
+/*
 import { useNavigate } from "react-router-dom";
-import Svg from "../../assets/svg/user-svgrepo-com.svg";
+import {ReactComponent as Svg} from "../../assets/svg/user-svgrepo-com.svg";
 
 
-function AccountButton() {
+
+function InlogButton() {
 
     const navigate = useNavigate ();
 
@@ -11,15 +13,14 @@ function AccountButton() {
     }
 
     return (
-        <div className="account-button"
-             type="button"
+        <div className="inlog-button"
+             icon type="button"
              onClick={ redirect } >
-
             <Svg/>
         </div>
     )
 }
 
-export default AccountButton;
+export default InlogButton;
 
-
+*/

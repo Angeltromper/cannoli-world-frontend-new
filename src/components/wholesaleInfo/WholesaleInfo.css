@@ -10,7 +10,7 @@
     margin-right: 3rem;
 }
 
-.cannoli-info-Button {
+.cannoli-info-description {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -30,6 +30,12 @@
     margin: 1em 1em;
     flex-direction: column;
 }
+
+.shoppingbasket {
+    width: 3em;
+}
+
+
 
 /*
 .cannoli-counters article button {

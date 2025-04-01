@@ -8,6 +8,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import './SignIn.css';
 
+
 const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
 const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
 
@@ -42,14 +43,16 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
     }, [password]);
 
     async function signIn(data) {
-        console.log(data)
-        console.log("hoi")
+
+
         try {
             const response = await axios.post('http://localhost:8080/authenticate',
                 {
                     username: data.username,
                     password: data.password,
                }, {
+
+                    // cancelToken: source.token,
             });
 
             login(response.data.jwt);
@@ -58,7 +61,7 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
 
            setTimeout (() => {
                 navigate (`/profile-info`);
-            }, 2500)
+            }, 2000)
 
         } catch (error) {
             console.error('There was an error', error);
@@ -67,16 +70,10 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
     }
 
     function handleClick() {
-        console.log("hoi")
+
     }
     return (
         <>
-
-            <button onClick={handleClick}>
-                klik
-
-
-            </button>
             {!auth ?
                 <div className="page-login">
                     <form className="form-login"
@@ -118,30 +115,31 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                         { errors.password && <p>{ errors.password.message }</p> }
                         <br/>
 
-                        <button type="submit" onClick={handleClick}>Inloggen</button>
+                        <button className="button-login"
+                            type="submit" onClick={ handleClick }>Inloggen
+                        </button>
 
                     </form>
 
-                    <button type="button" onClick={ logout }>Uitloggen</button>
+                    <button className="button-logout" type="button" onClick={ logout }>Uitloggen</button>
 
                     { error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw." }
 
 
-                    <section className="form-footer">
-                        Heeft u nog geen account?<br/>
-                        <span className="line">
-                                <Link to="/register" exact activeClassName="active-link">Registreer</Link>
-                            </span>
+                    <section className="footer-login">
+                        Heeft u nog geen account?
+                        <span className="line-footer-login">
+                            <Link to="/register" exact activeClassName="active-link">Registreer</Link>
+                        </span>
                     </section>
-
                 </div>
                 :
                 <span className="timeout-succes-signin succes-slide-bottom">
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
 
-                    <button type="button" onClick={ logout }>Uitloggen</button>
 
+                    <button className="button-logout" type="button" onClick={ logout }>Uitloggen</button>
                 </span>
             }
         </>

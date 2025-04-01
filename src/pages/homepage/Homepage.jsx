@@ -6,7 +6,6 @@ import cannoliGlutenFree from "./../../assets/img.background/background cannoli-
 import cannoliVegan from "./../../assets/img.background/background cannoli vegan.png";
 import cannoliGiftbox from "./../../assets/img.background/background giftbox.png";
 import cannoliFranchise from "./../../assets/img.background/background-franchise.png";
-import SearchButton from "../../components/button/searchButton/SearchButton.jsx";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import TextContainerResp from "../../components/pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import HandleRef from "./../../helpers/HandleRef";
@@ -41,7 +40,7 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
     return (
 
         <homepage className="homepage">
-            <div className="skewer--top"></div>
+            {/*<div className="skewer--top"></div>*/}
             <div className="inner-container__reusable">
                 <div className="search-query__section" ref={refSearch}>
 
@@ -165,27 +164,25 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                     <br/>
 
                     <Button
-                        onClick={ () => HandleRef (refSearch) }
+                        onClick={() => HandleRef (refSearch) }
                         type="submit"
                         text="zoeken"
                     />
                 </div>
 
-
-
-
                 <TextContainerResp>
-                    <h3>We nemen u verder mee op reis:<em>`geschiedenis over de oorsprong van de cannoli`</em></h3>
+                    <h3>We nemen u verder mee op reis:<em> geschiedenis over de oorsprong van de cannoli`</em></h3>
                     <br/>
-                    <h4>De geschiedenis over de oorsprong van de cannoli is waarschijnlijk een mix van alle legendes en
+                    <h5>De geschiedenis over de oorsprong van de cannoli is waarschijnlijk een mix van alle legendes en
                         overtuigingen verzamelden doorgegeven door de eeuwen heen.
                         <em><strong>`Twee daarvan zijn de legendes` </strong></em>die vertellen over de oorsprong van
                         de cannoli. Beide van hen het eens over één ding: vrouwen zijn achter hun schepping die
                         plaatsvond
-                        in of rond de stad Caltanissetta</h4>
+                        in of rond de stad Caltanissetta</h5>
+                    <br/>
 
                     <h3><strong><em>Het eerste verhaal:</em></strong></h3>
-                    <h4>Brengt ons in de harem van een Arabische prins, tijdens de Arabische overheersing van het
+                    <h5>Brengt ons in de harem van een Arabische prins, tijdens de Arabische overheersing van het
                         eiland.Men zegt dat de concubines van
                         de emir gebak bakken als afleiding, onder hen, een cilinder-vorm pastei geval gevuld met
                         ricotta, amandelen en honing.
@@ -194,25 +191,27 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                         aanwezigheid van de Moren in Sicilië, zoals blijkt uit de
                         naam zelf, die voorkomt uit `kalf el nissa`, een Arabische locatie die `vrouwenkasteel` betekent.
                         Interessant, gezien de legende is gevestigd in een
-                        kasteel en de uitvinding van de cannoli, volgens het, ligt in de vaardige handen van vrouwen.</h4>
+                        kasteel en de uitvinding van de cannoli, volgens het, ligt in de vaardige handen van vrouwen.</h5>
+                    <br/>
 
                     <h3><strong><em>Volgens een ander verhaal:</em></strong></h3>
-                    <h4>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, `verzonnen`
+                    <h5>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, `verzonnen`
                         de nonnen een buisvormig gebak gevuld met ricotta crème, chocoladeschilfers en gehakte hazelnoten.
                         Concubines of nonnen, het is zeker dat cannoli voor het eerst werden gemaakt ten tijde van de Arabische overheersing van
                         Sicillié suikerriet, rijst, amandelen, jasmijn, anijs, sesam, saffraan en kaneel gebracht, alle ingredienten sterk aanwezig in
                         de Siciliaanse keuken nog steeds vandaag. Zoals zo vaak het geval is, de waarheid over de historische oorsprong van cannoli is
-                        waarschijnlijk een mix van alle legendes en overtuigingen verzameld en doorgegeven door de eeuwen heen.</h4>
+                        waarschijnlijk een mix van alle legendes en overtuigingen verzameld en doorgegeven door de eeuwen heen.</h5>
+                    <br/>
 
                     <h3><strong><em>Het amandelkoekje:</em></strong></h3>
-                    <h4>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de `Frutta di Martorana` Deze traditionele lekkernij werd gemaakt
+                    <h5>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de `Frutta di Martorana` Deze traditionele lekkernij werd gemaakt
                         in de 16e eeuw door nonnen die in het klooster leefden. De aanleiding hiervan waren de voorbereidingen voor de festiviteiten die waren opgesteld
                         voor 2 november, de dag van aller zielen. Op deze dag zou de bisschop het klooster bezoeken, omdat zogezegd hij vele verhalen had gehoord over
                         de prachtige tuin met vele fruitbomen waar de nonnen het idee om van amandelspijs fruit te creëren omm zo de bomen en de tuin ermee te versieren.
                         Vandaag de dag vind je nog in vele winkeltjes in Sicillie deze frutta martorana, vaak prachtig verpakt in een rieten mandje of houten kistje.
                         De bijnaam van het Siciliaanse amandelkoekje is `pasta reale` dit omdat het geschikt voor de koning zou zijn vanwege de zoetigheid en de goedheid
                         van het koekje. Aan wie de eer van deze lekkernijen toe komt is nog steeds niet helemaal 100% zeker. Er gaat namelijk ook het verhaal te ronde
-                        dat de Arabieren al in de 6e eeuw aan het experimenteren waren met suiker en amandelen.</h4>
+                        dat de Arabieren al in de 6e eeuw aan het experimenteren waren met suiker en amandelen.</h5>
                 </TextContainerResp>
                 <br/>
 

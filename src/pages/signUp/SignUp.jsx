@@ -34,6 +34,8 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
     const [errorMessage, setErrorMessage] = useState ('');
     const [succes, setSuccess] = useState (false);
 
+    const [agreeTerms, toggleAgreeTerms] = useState(false);
+
 
     useEffect(() => {
         headerImageHandler(pageImg);
@@ -124,7 +126,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         <h2>Registreren</h2>
                         <br/>
 
-                        <label htmlFor="user">
+                        <label htmlFor="username">
                             Gebruikersnaam:
                             <FontAwesomeIcon icon={ faCheck } className={ validName ? "valid" : "hide" }/>
                             <FontAwesomeIcon icon={ faTimes } className={ validName || !user ? "hide" : "invalid" }/>
@@ -133,7 +135,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         <input
                             className="user"
                             type="text"
-                            id="user"
+                            id="username"
                             ref={ userRef }
                             autoComplete="off"
                             onChange={ (e) => setUser (e.target.value) }
@@ -145,7 +147,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                             onBlur={ () => setUserFocus (false) }
                         />
 
-                        <p id="uidnote" className={ userFocus && !validName ? "instructions" : "offscreen" }>
+                        <p id="uidnote" className={ userFocus && user && !validName ? "instructions" : "offscreen" }>
                             <FontAwesomeIcon icon={ faInfoCircle }/>
                             <em>4 tot 12 karakters. <br/>
                                 Moet met een letter beginnen.<br/>
@@ -244,21 +246,30 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                             disabled={ !validName || !validPassword || !validRepeat || !validEmail }>Registreren
                         </button>
 
-                        <div className="akkoord-registratie">
-                            <Link to={ "/registreren/" }>
+                        <br/>
 
-                                <h4>Door te registreren ga ik akkoord met de algemene voorwaarden <br/>
-                                    en het privacybeleid</h4>
+                        <section className="akkoord-registratie">
+                            <br/>
+                            <input
+                                type="checkbox"
+                                name="agree"
+                                id="agree-field"
+                                value={ agreeTerms }
+                                onChange={ (e) => toggleAgreeTerms (e.target.checked) }
+                            />
 
-                            </Link>
-                        </div>
+
+                            <label htmlFor="agree-field">Door te registreren ga ik akkoord met de algemene voorwaarden
+                                en het privacybeleid</label>
+
+                       </section>
 
                         <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>
 
 
-                        <section className="form-footer">
-                            Heeft u al een account?<br/>
-                            <span className="line">
+                        <section className="form-footer-logout">
+                            Heeft u al een account?
+                            <span className="line-footer-logout">
                                  <NavLink to="/login" exact activeClassName="active-link">Log hier in!</NavLink>
                              </span>
                         </section>

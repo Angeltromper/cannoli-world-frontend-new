@@ -1,7 +1,7 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
-import {Cart} from "./components/cart/Cart";
+ import {Cart} from "./components/cart/Cart";
 import Header from "./components/pageLayout/header/Header";
 import Homepage from "./pages/homepage/Homepage";
 import Footer from "./components/pageLayout/footer/Footer";
@@ -41,7 +41,6 @@ import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
 import FourZeroFour from "./pages/404/FourZeroFour";
 import OrderList from "./components/orderList/OrderList";
-import FooterNav from "./components/pageLayout/footerNav/FooterNav";
 import './App.css';
 
 
@@ -69,9 +68,6 @@ function App () {
 
             <div className="container">
                 <div className="inner-container__reusable default-area-padding default-text-restrict">
-
-
-
 
                     <Header headerImage={headerImage} pageTitle={pageTitle}/>
 
@@ -161,9 +157,6 @@ function App () {
                         <Route path="/design-elements/"
                                element={<Elements headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route patch="/footer-nav"
-                               element={<FooterNav headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
-
                         <Route path="/404/"
                                element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
@@ -180,7 +173,7 @@ function App () {
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/checkout/"
-                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                              element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
                                element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>

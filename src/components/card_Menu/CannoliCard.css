@@ -32,3 +32,6 @@
     font-weight: bold;
 }
 
+.cannoli-card__buttonlist {
+    display: flex;
+}

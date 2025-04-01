@@ -1,5 +1,6 @@
 .columnContainer {
     display: flex;
+    width: 100%;
     align-items: flex-start;
     gap: 1em;
 }

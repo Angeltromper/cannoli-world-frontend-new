@@ -44,7 +44,7 @@ export const WholesaleInfo = (props) => {
 
                 </div>
 
-                <div className="cannoli-info-Button">
+                <div className="cannoli-info-description">
                     <div className="cannoli-info">
 
                         <h2>{ props.cannoliName }</h2>
@@ -72,7 +72,7 @@ export const WholesaleInfo = (props) => {
                     <div>
                         <button className="button__reusable"
                                 onClick={ addToCart }>
-                            <img src={ shoppingBasket } alt="winkelmand"/><NavLink to="winkelmand">in
+                            <img src={ shoppingBasket } alt="winkelmand" className="shoppingbasket"/><NavLink to="shoppingbasket">in
                             winkelmand</NavLink>
                         </button>
                     </div>
