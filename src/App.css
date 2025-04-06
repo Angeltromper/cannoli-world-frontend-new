@@ -21,7 +21,7 @@
   --background-color-dark:  #150A06;
   --background-color: rgba(59, 28, 17, 99);
   --background-color-light: #FFFFFF;
-  --background-color-yellow: #FFF4A0;
+  --background-color-yellow: #fff8d7;
   --background-color-light-orange: #FFE782FF;
   --background-color-light-green: #1AE216;
   --figure-color-1: #FF003D;
@@ -37,7 +37,8 @@
   --text: #7A7A7A;
   --text-intro-white: #FFFFFF;
   --text-light: #FFFFFF;
-  --text-faded: #FFDDE6;
+  --text-faded: rgba(177, 142, 130, 0.47);
+  --text-faded-light: #FFDDE6;
   --text-dark: #010101;
 
   --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
@@ -82,13 +83,13 @@ a, a:hover {
 
 /*--------------------- 2. Typography ---------------------*/
 
-.page-title {
-  font-size: 10px;
-  margin: -12rem;
+.page-title  {
+  font-size: 2em;
+  margin: -4.5em;
   background-size: auto;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4 {
   font-family: Merriweather, 'Times New Roman', serif;
   letter-spacing: 0.02em;
 }
@@ -96,11 +97,11 @@ h1, h2, h3, h4, h5 {
 h1 {
   font-size: 2em;
   margin-bottom: 0.2em;
-  padding: 20px 0;
+
 }
 
 h2 {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 h3 {
@@ -109,7 +110,7 @@ h3 {
 
 h4 {
   font-size: 1.2rem;
-  padding: 12px 0;
+
 }
 
 h4::after {
@@ -130,7 +131,7 @@ h6 {
 }
 
 p {
-  font-size: 0.6em;
+  font-size: 1em;
 }
 
 strong {
@@ -166,15 +167,8 @@ strong {
 }
 
 
-/*
-.default-area-padding {
-  padding: 0 0 100px 0;
-}
-*/
-
-
 .default-text-restrictor {
-  /*display: flex;*/
+  display: flex;
   max-width: 100%;
   text-align: center;
 }
@@ -203,14 +197,12 @@ strong {
 .page-content-two {
   position: relative;
   margin: var(--margin);
-  font-weight: bold;
+
 }
-
-
-
 
 .image-preview {
   width: 100%;
+  height: auto;
 }
 
 
@@ -279,11 +271,36 @@ strong {
   /*--------------------- 6.Media-queries -----------------*/
 
 
+@media screen and (max-width: 992px) {
+  .container {
+    display: flex;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 762px) {
+  .container {
+    display: flex;
+    font-size: 12px;
+  }
+}
+
+
 @media only screen and (max-width: 576px) {
-    :root {
+    .container {
+      display: flex;
       font-size: 12px;
     }
-  }
+}
+
+
+
+
+
+
+
+
+
 
 
 

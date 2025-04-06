@@ -7,83 +7,55 @@
 
 
 #intro {
-    background-color: var(--background-color-light);
-    color: var(--background-color-dark);
-    font-weight: bold;
+    color: black ;
     position: relative;
 }
 
 
 #intro::before {
-    display: block;
     content: 'Welkom';
-    color: var(--text-faded);
+    color: var(--text-faded-light);
     opacity: 0.3;
     position: absolute;
     width: 100%;
     text-align: center;
-    font-size: 250px;
+    font-size: 230px;
     font-weight: var(--font-weight);
     letter-spacing: -18px;
     top: -60px;
     left: 0;
 }
 
-.cannoli-image {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 6;
-}
-
-.cannoli-img {
-    position: relative;
-    flex: 0 0 90%;
-    -ms-flex: 0 0 90%;
-    -webkit-box-flex: 0;
-    width: 15em;
-    max-width: 100%;
-    padding: 0.1em 0.3em;
-}
-
 .product-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+    padding: 10px 20px;
+    margin-left: 1em;
 }
 
-/*
-.cannoliSnack {
-    display: flex;
-    background: #FFDDE6;
-    flex-direction: column;
-    border: #150A06;
+.cannoli-image {
+    height: auto;
+    max-width: 90%;
 }
-*/
-
-/*
-.label {
-    display: flex;
-    flex-direction: column;
-}
-*/
 
 .input-field__reusable {
     display: flex;
+    background-color: rgba(246, 130, 130, 0.07);
     border-width: thin;
-    padding: 0.1em 0.3em;
-    float: left; width:200px; height:20px;
+    font-size: 12px;
+    font-style: italic;
+    width: 90%;
+    margin: 0.5em 0;
+    padding: 1px 20px;
 }
 
-/*
-.select {
-    width: 100%;
+
+.input-field__select-information {
+    display: flex;
 }
-*/
+
+
 
 .search-result__go-up-icon {
     width: 1.5em;
@@ -91,50 +63,152 @@
     align-self: center;
 }
 
-/*
-.skewer--top {
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: -7em 0 1em auto;
-    border-left: 100vw solid transparent;
-    border-bottom: 100px solid var(--background-color-light);
-    z-index: 9;
-}
-*/
-
 
 /*--------------------- Media-queries -----------------*/
-
 @media screen and (max-width: 992px) {
+    #intro {
+        color: black;
+        font-weight: bold;
+        position: relative;
+    }
+
+    #intro::before {
+        content: 'Welkom';
+        color: var(--text-faded);
+        opacity: 0.2;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 200px;
+        font-weight: var(--font-weight);
+        letter-spacing: -14px;
+        top: -60px;
+        left: 0;
+    }
 
 
+    .product-container {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: baseline;
+        padding: 10px 0;
+        margin-left: 1em;
+    }
+
+    .cannoli-image {
+        height: auto;
+        max-width: 80%;
+    }
+
+    .input-field__reusable {
+        display: flex;
+        border-width: thin;
+        flex-direction: column;
+    }
+
+    .input-field__select-information {
+        display: flex;
+        font-size: 11px;
+        padding-left: 0;
+    }
 }
 
-
-
-/*
 @media screen and (max-width: 768px) {
-    .homepage {
+    #intro {
+        color: black;
+        font-weight: bold;
+        position: relative;
+    }
+
+    #intro::before {
+        content: 'Welkom';
+        color: var(--text-faded);
+        opacity: 0.2;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 170px;
+        font-weight: var(--font-weight);
+        letter-spacing: -12px;
+        top: -60px;
+        left: 0;
+    }
+
+    .product-container {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+    }
+
+    .cannoli-image {
+        height: auto;
+        max-width: 70%;
+    }
+
+    .input-field__reusable {
+        display: inline-flex;
+        border-width: thin;
+        width: 70%;
+        flex-wrap: wrap;
+    }
+
+    .input-field__select-information {
         display: flex;
-        flex-direction: column;
-
-
+        font-size: 12px;
+        padding: 2px 20px;
     }
 }
 
 @media screen and (max-width: 576px) {
-    .homepage {
-        padding: 2rem 0;
+    #intro {
+        color: black;
+        font-weight: bold;
+        position: relative;
     }
 
-    .homepage .column:nth-of-type(1) {
+    #intro::before {
+        content: 'Welkom';
+        color: var(--text-faded);
+        opacity: 0.2;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 150px;
+        font-weight: var(--font-weight);
+        letter-spacing: -10px;
+        top: -60px;
+        left: 0;
+    }
+
+    .cannoli-image {
+        height: auto;
+        max-width: 60%;
+    }
+
+    .input-field__reusable {
+        display: inline-flex;
+        border-width: thin;
+        width: 60%;
+        flex-wrap: wrap;
+    }
+
+    .input-field__select-information {
+        display: flex;
+        font-size: 11px;
+        padding: 2px 2px;
+    }
+
+    .homepage {
+        display: flex;
         padding-right: 0;
         align-items: center;
     }
 }
 
-*/
+
+
+
+
 
 
 

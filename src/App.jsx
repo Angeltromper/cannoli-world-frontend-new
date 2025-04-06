@@ -67,7 +67,7 @@ function App () {
 
 
             <div className="container">
-                <div className="inner-container__reusable default-area-padding default-text-restrict">
+                <div className="inner-container__reusable default-text-restrict">
 
                     <Header headerImage={headerImage} pageTitle={pageTitle}/>
 

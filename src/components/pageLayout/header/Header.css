@@ -55,8 +55,9 @@ header::after {
 
 .header-img {
     display: flex;
-    width: 100%;
-    margin: 18em auto ;
+    max-width: 100%;
+    height: auto;
+    margin: 20em auto ;
 }
 
 /*--------------------- Elementen -----------------*/
@@ -148,16 +149,15 @@ button, header .btn-text::after {
          align-items: flex-start;
          position: fixed;
          justify-content: space-between;
-         z-index: 99;
+         z-index: 999;
      }
 
-
-
-
-
-
-
-
+     .header-img {
+         display: flex;
+         max-width: 100%;
+         height: auto;
+         margin: 22em auto ;
+     }
 
      .color-container {
          /*display: flex;*/
@@ -186,7 +186,7 @@ button, header .btn-text::after {
          /*margin: 20em 0;*/
          left: 0;
          top: 0;
-         z-index: 50;
+         z-index:200;
      }
 
  }

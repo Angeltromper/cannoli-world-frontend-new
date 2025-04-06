@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import {useNavigate } from "react-router-dom";
 import pageImg from "../../assets/img.header/homepage-background-2400.jpg";
@@ -12,6 +13,10 @@ import HandleRef from "./../../helpers/HandleRef";
 import goUp from "./../../assets/navIcon/goUp.png";
 import Button from "../../components/button/Button";
 import './Homepage.css';
+import Column from "../../components/pageLayout/designElement/column/Column";
+
+
+
 
 
 // eslint-disable-next-line react/prop-types
@@ -31,7 +36,7 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
     const refSearch = useRef(null);
 
     function handleSelect(e){
-        /*setCannoliQuery(e.target.value)*/
+        // setCannoliQuery(e.target.value)
 
         navigate(`/${e.target.value}`)
         console.log('test')
@@ -48,10 +53,9 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                         <h1>Welkom op de site van Cannoli World</h1>
                     </TextContainer>
 
-                    <div className="inner-container__reusable default-area-padding default-text-restrictor">
+                    <div className="inner-container__reusable default-text-restrictor">
                         <div>
                             <section id="intro" className="intro-container">
-                                <br/>
                                 <h5>Graag willen wij de liefde voor Italië en de overheerlijke lekkernijen met u delen.We nemen u mee op reis.</h5>
                                 <h5><strong>De reis begint hier:<em>`hoe de liefde voor cannoli is ontstaan`</em></strong></h5>
                                 <h5><strong><em>Italië</em></strong> een land vol prachtige dorpjes en <strong><em>`heerlijke`</em></strong> gerechten. Het prachtige gardameer,</h5>
@@ -69,37 +73,35 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                         </div>
                     </div>
                     <br/>
-                    <image className="cannoli-image">
-                        <figure><img src={cannoliSnack} alt="cannoli-snack" className="cannoli-img"/></figure>
-                        <figure><img src={cannoliGlutenFree} alt="cannoli-glutenfree" className="cannoli-img"/></figure>
-                        <figure><img src={cannoliVegan} alt="cannoli-vegan" className="cannoli-img"/></figure>
-                        <figure><img src={cannoliGiftbox} alt="cannoli-giftbox" className="cannoli-img"/></figure>
-                        <figure><img src={cannoliFranchise} alt="cannoli-franchise" className="cannoli-img"/></figure>
-                    </image>
+
 
                     <div className="product-container">
+                        <Column>
+                            <div>
+                                <img src={cannoliSnack} alt="cannoli-snack" className="cannoli-image"/>
+                            </div>
 
-                        <fieldset>
-                            <label htmlFor="search-by-cannoli-snack">
-                                <select
-                                    id="search-by-cannoli-snack"
-                                    className="input-field__reusable input-field__select-information"
-                                    onChange={ handleSelect }
-                                    defaultValue='DEFAULT'
-                                >
-                                    <option disabled value='DEFAULT'>-- choose one option --</option>
-                                    <option value="cannolisnack">Cannoli snack</option>
-                                    <option value="cannoli-ingredient">Cannoli snack ingredient</option>
-                                    <option value="cannoli-pricelist">Cannoli snack prijslijst</option>
-                                </select>
-                            </label>
-                        </fieldset>
+                            <select
+                                id="search-by-cannoli-snack"
+                                className="input-field__reusable input-field__select-information"
+                                onChange={ handleSelect }
+                                defaultValue='DEFAULT'
+                            >
+
+                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option value="cannolisnack">Cannoli snack</option>
+                                <option value="cannoli-ingredient">Cannoli snack ingredient</option>
+                                <option value="cannoli-pricelist">Cannoli snack prijslijst</option>
+                            </select>
+                        </Column>
+
+                        <Column>
+                            <div>
+                                <img src={cannoliGlutenFree} alt="cannoli-glutenfree" className="cannoli-image"/>
+                            </div>
 
 
-
-                        <fieldset>
-                            <label htmlFor="search-by-cannoli-glutenfree">
-                                <select
+                            <select
                                     id="search-by-cannoli-glutenfree"
                                     className="input-field__reusable input-field__select-information"
                                     onChange={ handleSelect }
@@ -110,15 +112,17 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                     <option value="cannoli-ingredient">Cannoli glutenvrij ingredient</option>
                                     <option value="cannoli-pricelist">Cannoli glutenvrij prijslijst</option>
                                 </select>
-                            </label>
-                        </fieldset>
 
+                        </Column>
 
-                        <fieldset>
-                            <label htmlFor="search-by-cannoli-vegan">
+                        <Column>
+                            <div>
+                                <img src={cannoliVegan} alt="cannoli-vegan" className="cannoli-image"/>
+                            </div>
+
                                 <select
                                     id="search-by-cannoli-vegan"
-                                    className="input-field__reusable input-field__select-information"
+                                   className="input-field__reusable input-field__select-information"
                                     onChange={ handleSelect }
                                     defaultValue='DEFAULT'
                                 >
@@ -127,12 +131,13 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                     <option value="cannoli-ingredient">Cannoli vegan ingredient</option>
                                     <option value="cannoli-pricelist">Cannoli vegan prijslijst</option>
                                 </select>
-                            </label>
-                        </fieldset>
+                        </Column>
 
+                        <Column>
+                            <div>
+                                <img src={cannoliGiftbox} alt="cannoli-giftbox" className="cannoli-image"/>
+                            </div>
 
-                        <fieldset>
-                            <label htmlFor="search-by-giftbox">
                                 <select
                                     id="search-by-giftbox"
                                     className="input-field__reusable input-field__select-information"
@@ -143,11 +148,13 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                     <option value="giftbox">Giftbox</option>
                                     <option value="giftbox-pricelist">Giftbox prijslijst</option>
                                 </select>
-                            </label>
-                        </fieldset>
+                        </Column>
 
-                        <fieldset>
-                            <label htmlFor="search-by-franchise">
+                        <Column>
+                            <div>
+                                <img src={cannoliFranchise} alt="cannoli-franchise" className="cannoli-image"/>
+                            </div>
+
                                 <select
                                     id="search-by-franchise"
                                     className="input-field__reusable input-field__select-information"
@@ -158,9 +165,9 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                                     <option value="franchise">Franchise</option>
                                     <option value="franchise-information">Franchise informatie</option>
                                 </select>
-                            </label>
-                        </fieldset>
+                        </Column>
                     </div>
+
                     <br/>
 
                     <Button
@@ -170,42 +177,41 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
                     />
                 </div>
 
+                <br/>
+
+
+
                 <TextContainerResp>
-                    <h3>We nemen u verder mee op reis:<em> geschiedenis over de oorsprong van de cannoli`</em></h3>
+                    <h3>We nemen u verder mee op reis:<em> geschiedenis over de oorsprong van de cannoli</em></h3>
                     <br/>
+
                     <h5>De geschiedenis over de oorsprong van de cannoli is waarschijnlijk een mix van alle legendes en
                         overtuigingen verzamelden doorgegeven door de eeuwen heen.
-                        <em><strong>`Twee daarvan zijn de legendes` </strong></em>die vertellen over de oorsprong van
-                        de cannoli. Beide van hen het eens over één ding: vrouwen zijn achter hun schepping die
-                        plaatsvond
-                        in of rond de stad Caltanissetta</h5>
+                        Twee daarvan zijn de legendes die vertellen over de oorsprong van de cannoli. Beide van hen waren
+                        het eens over één ding: vrouwen zijn achter hun schepping die plaatsvond in of rond de stad Caltanissetta</h5>
                     <br/>
 
                     <h3><strong><em>Het eerste verhaal:</em></strong></h3>
-                    <h5>Brengt ons in de harem van een Arabische prins, tijdens de Arabische overheersing van het
-                        eiland.Men zegt dat de concubines van
-                        de emir gebak bakken als afleiding, onder hen, een cilinder-vorm pastei geval gevuld met
-                        ricotta, amandelen en honing.
-                        De Arabische oorsprong van de cannoli wordt ondersteund door het feit dat de stad Capitalises
-                        historisch verbonden is met de
-                        aanwezigheid van de Moren in Sicilië, zoals blijkt uit de
-                        naam zelf, die voorkomt uit `kalf el nissa`, een Arabische locatie die `vrouwenkasteel` betekent.
-                        Interessant, gezien de legende is gevestigd in een
-                        kasteel en de uitvinding van de cannoli, volgens het, ligt in de vaardige handen van vrouwen.</h5>
+                    <h5>Brengt ons in de harem van een Arabische prins, tijdens de Arabische overheersing van het eiland.
+                        Men zegt dat de concubines van de emir gebak bakken als afleiding, onder hen, een cilinder-vorm pastei geval
+                        gevuld met ricotta, amandelen en honing. De Arabische oorsprong van de cannoli wordt ondersteund door het feit dat
+                        de stad Capitalises historisch verbonden is met de aanwezigheid van de Moren in Sicilië, zoals blijkt uit de naam zelf,
+                        die voorkomt uit kalf el nissa, een Arabische locatie die vrouwenkasteel betekent. Interessant, gezien de legende is
+                        gevestigd in een kasteel en de uitvinding van de cannoli, volgens het, ligt in de vaardige handen van vrouwen.</h5>
                     <br/>
 
                     <h3><strong><em>Volgens een ander verhaal:</em></strong></h3>
-                    <h5>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, `verzonnen`
-                        de nonnen een buisvormig gebak gevuld met ricotta crème, chocoladeschilfers en gehakte hazelnoten.
-                        Concubines of nonnen, het is zeker dat cannoli voor het eerst werden gemaakt ten tijde van de Arabische overheersing van
-                        Sicillié suikerriet, rijst, amandelen, jasmijn, anijs, sesam, saffraan en kaneel gebracht, alle ingredienten sterk aanwezig in
-                        de Siciliaanse keuken nog steeds vandaag. Zoals zo vaak het geval is, de waarheid over de historische oorsprong van cannoli is
-                        waarschijnlijk een mix van alle legendes en overtuigingen verzameld en doorgegeven door de eeuwen heen.</h5>
+                    <h5>Werden cannoli voor het eerst gemaakt in een klooster in de buurt van Caltanissetta. Om het carnaval te vieren, verzonnen
+                        de nonnen een buisvormig gebak gevuld met ricotta crème, chocoladeschilfers en gehakte hazelnoten. Concubines of nonnen, het is
+                        zeker dat cannolis voor het eerst werden gemaakt ten tijde van de Arabische overheersing van Sicillié suikerriet, rijst, amandelen,
+                        jasmijn, anijs, sesam, saffraan en kaneel gebracht, alle ingrediënten sterk aanwezig in de Siciliaanse keuken nog steeds vandaag.
+                        Zoals zo vaak het geval is, de waarheid over de historische oorsprong van cannoli is waarschijnlijk een mix van alle legendes en
+                        overtuigingen verzameld en doorgegeven door de eeuwen heen.</h5>
                     <br/>
 
                     <h3><strong><em>Het amandelkoekje:</em></strong></h3>
-                    <h5>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de `Frutta di Martorana` Deze traditionele lekkernij werd gemaakt
-                        in de 16e eeuw door nonnen die in het klooster leefden. De aanleiding hiervan waren de voorbereidingen voor de festiviteiten die waren opgesteld
+                    <h5>Is ontstaan vanuit een andere Siciliaanse zoet lekkernij, de `Frutta di Martorana.` Deze traditionele lekkernij werd gemaakt in de 16e
+                        eeuw door nonnen die in het klooster leefden. De aanleiding hiervan waren de voorbereidingen voor de festiviteiten die waren opgesteld
                         voor 2 november, de dag van aller zielen. Op deze dag zou de bisschop het klooster bezoeken, omdat zogezegd hij vele verhalen had gehoord over
                         de prachtige tuin met vele fruitbomen waar de nonnen het idee om van amandelspijs fruit te creëren omm zo de bomen en de tuin ermee te versieren.
                         Vandaag de dag vind je nog in vele winkeltjes in Sicillie deze frutta martorana, vaak prachtig verpakt in een rieten mandje of houten kistje.
@@ -217,6 +223,7 @@ function Homepage ({headerImageHandler, pageTitleHandler}) {
 
                 <img alt="go-up-search-section" src={goUp} onClick={() => HandleRef(refSearch)}
                      className="search-result__go-up-icon"/>
+
             </div>
         </homepage>
     );
