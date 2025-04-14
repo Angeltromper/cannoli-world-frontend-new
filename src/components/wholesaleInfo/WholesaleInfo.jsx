@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import CannoliImage from "../cannoli/CannoliImage";
 import CannoliInfo from "../cannoli/CannoliInfo";
+import plus from '../../assets/navIcon/plus.png';
 import shoppingBasket from "../../assets/navIcon/shoppingBasket.png";
 import { AuthContext } from "../../context/AuthContext";
 import './WholesaleInfo.css';
@@ -55,26 +56,58 @@ export const WholesaleInfo = (props) => {
 
 
                         <Link to={ "/cannoli" }>
-                            <h5 className="cannoli-return">Cannoli</h5>
+                            <h4 className="cannoli-return">Cannoli</h4>
                         </Link>
                         { auth && <><h2>€ { props.cannoliPrice }</h2><h5>p.st (groothandelsprijs)</h5></> }
-
+                    </div>
                         <br/>
-                        <br/>
-                        <h5>Omschrijving:</h5>
-                        <h6>{ props.cannoliDescription }</h6>
                         <br/>
 
-                        <h5>Ingrediënten:</h5>
-                        <h6>{ props.cannoliIngredients }</h6>
+
+
+                        <div className="cannoli-description">
+                        <h4>Omschrijving:</h4>
+                        <h5>{ props.cannoliDescription }</h5>
+                            <br/>
+                            <br/>
+
+                        <h4>Ingrediënten:</h4>
+                        <h5>{ props.cannoliIngredients }</h5>
                     </div>
 
+
                     <div>
-                        <button className="button__reusable"
-                                onClick={ addToCart }>
-                            <img src={ shoppingBasket } alt="winkelmand" className="shoppingbasket"/><NavLink to="shoppingbasket">in
-                            winkelmand</NavLink>
-                        </button>
+                        <div className="button-basket">
+                            <button className="button__reusable"
+                                    onClick={ addToCart }
+                                /*<img src={ shoppingBasket } alt="winkelmand" className="shoppingbasket"*/>Toevoegen aan mandje</button>
+                        </div>
+
+                        <section className="cannoli-counters">
+                            <article>
+                                    <h2>
+
+
+
+                                    </h2>
+
+
+
+                            </article>
+
+
+
+                        </section>
+
+
+
+
+
+
+
+                        <Link to={'/register'}>
+                            <p className="btn-text-order"><em>Registreer/Log in om online te kunnen bestellen</em></p>
+                        </Link>
                     </div>
 
                     <div>
@@ -84,12 +117,12 @@ export const WholesaleInfo = (props) => {
                         </div>
 
                         <div
+
                             onClick={ editCannoli }>
                             <CannoliInfo/>
                         </div>
                         <br/>
                     </div>
-
                 </div>
         </section>
     );

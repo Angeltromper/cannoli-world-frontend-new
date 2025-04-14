@@ -67,7 +67,6 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
                 </h5>
             </div>
 
-
             { isAdmin &&
                 <div className="profile-info">
 
@@ -78,10 +77,8 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
                     <div className="profile-info-button"
                          onClick={ editCannolis }>Cannolis toevoegen/aanpassen
                     </div>
-
                 </div>
             }
-
 
         </>
     );
