@@ -9,7 +9,7 @@ import glutenfreecaramello from "../../assets/img.cannoli-glutenfree/Glutenfree 
 import glutenfreefruttidibosco from "../../assets/img.cannoli-glutenfree/Glutenfree Frutti di Bosco (bosvruchten).png";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
-import Card from "../../components/card_Menu/Card";
+import Card from "../../components/cardMenu/Card";
 import './CannoliGlutenFree.css';
 
 

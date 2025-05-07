@@ -1,3 +1,10 @@
+.profile-info-container {
+    display: flex;
+    margin: 10em 2em;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-info {
     display: flex;
     margin: 4em;
@@ -15,6 +22,12 @@
 
 }
 
-.profile-info-button {
 
+.profile-welcomepage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    margin: 0.5em;
 }

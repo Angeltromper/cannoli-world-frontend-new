@@ -1,7 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+
+
+
+
 
 
 function SignOut({headerImageHandler, pageTitleHandler}) {
+
     useEffect(() => {
         headerImageHandler();
         pageTitleHandler();
@@ -9,6 +15,7 @@ function SignOut({headerImageHandler, pageTitleHandler}) {
 
     return (
         <div>
+
 
 
         </div>

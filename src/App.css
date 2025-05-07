@@ -19,10 +19,10 @@
   --second-font-line-height: 10px;
 
   --background-color-dark:  #150A06;
-  --background-color: rgba(59, 28, 17, 99);
-  --background-color-light: #FFFFFF;
+  --background-color: rgba(59, 28, 17, 0.22);
+  --background-color-light: rgba(59, 28, 17, 0);
   --background-color-yellow: #fff8d7;
-  --background-color-light-orange: #FFE782FF;
+  --background-color-light-orange: rgba(255, 231, 130, 0);
   --background-color-light-green: #1AE216;
   --figure-color-1: #FF003D;
   --figure-color-2: #1AE216;
@@ -201,7 +201,7 @@ strong {
 }
 
 .image-preview {
-  width: 100%;
+  width: 110%;
   height: auto;
 }
 
@@ -265,6 +265,39 @@ strong {
     }
   }
 
+.scale-up-hor-left-right {
+  -webkit-animation: scale-up-hor-left-right 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-hor-left-right 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes scale-up-hor-left-right {
+  0% {
+    -webkit-transform: scaleX(0.3);
+    transform: scaleX(0.3);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+@keyframes scale-up-hor-left-right {
+  0% {
+    -webkit-transform: scaleX(0.3);
+    transform: scaleX(0.3);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
 
 
 
@@ -284,7 +317,6 @@ strong {
     font-size: 12px;
   }
 }
-
 
 @media only screen and (max-width: 576px) {
     .container {

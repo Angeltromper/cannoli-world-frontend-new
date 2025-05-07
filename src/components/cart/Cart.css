@@ -1,12 +1,18 @@
 .shoppingcart-layout {
-    /*display: flex;*/
-    margin-top: 20em;
-    /*padding: 10px 8px;*/
+    /*background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgba(73, 31, 14, 0.59) 40%, rgba(140, 75, 57, 0.01) 100%);*/
+    /*background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 0.31) 40%, rgba(59, 28, 17, 0.04) 100%);*/
+    background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgb(184, 138, 124) 40%, rgb(232, 207, 173) 100%);
+    background: -ms-linear-gradient(0deg, rgb(73, 36, 8) 0%, rgb(21, 10, 6) 40%, rgb(59, 28, 17) 100%);
+    padding: 24px 20px ;
+    margin-top: 12em;
     flex-direction: column;
-    transition: 0.3s;
+    /*transition: 0.3s;*/
     justify-content: space-between;
-    width: 95%;
-    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    border-radius: 1.5em;
+    top: 0;
+    position: fixed;
 }
 
 .shoppingcart-button {
@@ -77,11 +83,11 @@
     background-color: var(--figure-color-1);
     box-shadow: rgba(0, 0, 0, 0.3) 3px 5px 5px;
     font: var(--second-font);
-    top: 4em;
+    top: 6em;
     left: 5em;
     width: fit-content;
-    border-radius: 0.1em;
-    border: none;
+    border-radius: 1em;
+    border: 1em;
     position: absolute;
     transition: 0.3s;
 }
@@ -115,9 +121,9 @@
     height: 13em;
     /*width: 100%;*/
     /*margin: 0 7em;*/
-    padding: 12px 34px;
+    padding: 6px 30px;
     /*right: 2em;*/
-    /*position: relative;*/
+    position: relative;
     z-index: 200;
 }
 
@@ -127,12 +133,32 @@
     height: 85px;
 }
 
+.cart-register-login {
+    display: flex;
+
+}
 
 
 
 
 @media screen and (max-width: 992px) {
 
+    .shoppingcart-layout {
+        /*background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgba(73, 31, 14, 0.59) 40%, rgba(140, 75, 57, 0.01) 100%);*/
+        /*background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 0.31) 40%, rgba(59, 28, 17, 0.04) 100%);*/
+        background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgb(248, 243, 240) 60%, rgb(223, 214, 199) 100%);
+        background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgb(217, 173, 102) 60%, rgb(217, 173, 102) 100%);
+        padding: 24px 20px ;
+        margin-top: 12em;
+        flex-direction: column;
+        /*transition: 0.3s;*/
+        justify-content: space-between;
+        width: 50%;
+        box-sizing: border-box;
+        border-radius: 1.5em;
+        top: 0;
+        position: fixed;
+    }
     .shoppingcart__menu-X {
         /*display: flex;*/
         color: #3B1C11FF;

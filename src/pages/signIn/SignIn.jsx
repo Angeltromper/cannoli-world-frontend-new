@@ -43,24 +43,19 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
     }, [password]);
 
     async function signIn(data) {
-
-
         try {
             const response = await axios.post('http://localhost:8080/authenticate',
                 {
                     username: data.username,
                     password: data.password,
-               }, {
-
-                    // cancelToken: source.token,
-            });
+                });
 
             login(response.data.jwt);
             toggleAddSuccess (true);
 
 
            setTimeout (() => {
-                navigate (`/profile-info`);
+                navigate ('/profile');
             }, 2000)
 
         } catch (error) {
@@ -137,7 +132,6 @@ function SignIn({headerImageHandler, pageTitleHandler}) {
                 <span className="timeout-succes-signin succes-slide-bottom">
                     <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
                     <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
-
 
                     <button className="button-logout" type="button" onClick={ logout }>Uitloggen</button>
                 </span>

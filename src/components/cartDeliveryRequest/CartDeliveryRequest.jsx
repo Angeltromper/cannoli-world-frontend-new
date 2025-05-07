@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import {CartContext} from "../../context/CartContext";
 import {AuthContext} from "../../context/AuthContext";
 import {useFormContext} from "react-hook-form";
-import {NavLink, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
-import './Cart_DeliveryRequest.css'
+import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
+import './CartDeliveryRequest.css'
 
 
-function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
+
+function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
     const {user} = useContext(AuthContext);
     const token = localStorage.getItem('token');
@@ -29,7 +31,7 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
     const message = "..veld is verplicht";
     const navigate= useNavigate();
 
-    const [productListLong, setProductListLong] = useState([])
+    const [cannoliListLong, setCannoliListLong] = useState([])
 
     useEffect(() => {
         headerImageHandler(pageImg);
@@ -38,17 +40,17 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
 
     useEffect(() => {
-        setProductListLong (cart.map (product => {
-            return product.artikelnummer
+        setCannoliListLong (cart.map (cannoli => {
+            return cannoli.artikelnummer
         }))
     }, [cart])
 
-    async function sendProductData(e) {
+    async function sendCannoliData(e) {
         try {
             await axios.post (
                 `http://localhost:8080/deliveryRequests/create`,
                 {
-                    productList: productListLong,
+                    cannoliList: cannoliListLong,
                     comment: comment,
                     applier: user.person_id
                 }, {
@@ -68,22 +70,23 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
     return (
         <div>
-            <section className="cartlayout">
+            <section className="shoppingcart-layout-menu">
                 <section>
-
-                    <h1>Winkelmand-checkout</h1>
+                    <TextContainer>
+                        <h1>Order checkout</h1>
+                    </TextContainer>
                     <br/>
 
-                    {cart && cart.map((product, index) => {
+                    {cart && cart.map((cannoli, index) => {
                         return (
                             <ul key={index}>
 
-                                <div className="cart-checkout-items">
+                                <div className="shoppingcart-items-order">
                                     <div>
-                                        {product.naam}
+                                        {cannoli.naam}
                                     </div>
                                     <div>
-                                        € {product.prijs}
+                                        € {cannoli.prijs}
                                     </div>
                                 </div>
                             </ul>
@@ -91,23 +94,27 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
                     })}
                     <br/>
 
-                    <div className="cart-checkout-items-price">
+                    <div className="shoppingcart-price-order">
                         <h3><strong>Totaal prijs: € {totalPrice.toFixed(2)} </strong></h3>
                     </div>
 
                     <br/>
-                    <div className="naw_deliveryRequest">
-                        <h5>*Controleer uw persoongegevens of deze juist zijn ingevuld.</h5>
+
+                    <div className="naw-deliveryRequest">
+                        <h5> *Controleer of uw persoongegevens juist zijn ingevuld.</h5>
+                    </div>
+                    <br/>
+
+                    <div className="naw-deliveryRequest-information">
+                       <h5> <Link to={'/users/:user_id'} exact activeClassName='active-link'><strong><em>Klik hier</em></strong>
+                           </Link>voor het invullen van uw persoongegevens</h5>
                     </div>
 
-                    <h5 className="naw_deliveryRequest_information">voor het invullen van uw persoongegevens, klik
-                        <NavLink to="/users/:user_id" exact activeClassName="active-link">hier</NavLink>
-                    </h5>
-
+                    <br/>
                     <br/>
 
                     <div>
-                        <h1>Gebruikersgegevens:</h1>
+                        <h3>Gebruikersgegevens:</h3>
                     </div>
 
                     {firstname} {lastname}  <br/>
@@ -116,8 +123,8 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
                     <br/>
 
-                    <form className="form-cart-checkout"
-                          onSubmit={handleSubmit(sendProductData)}>
+                    <form className="form-shoppingcart-order"
+                          onSubmit={handleSubmit(sendCannoliData)}>
 
                         <section>
                             <label htmlFor="remark-field">Opmerking</label>
@@ -130,7 +137,7 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
                                 onChange={(e) => setComment(e.target.value)}
                                 rows={8}
                                 cols={50}
-                                placeholder="eventuele opmerkingen kunt u hier achter laten"
+                                placeholder="Voor vragen en opmerkingen kunt u hier een reactie achterlaten"
                             />
                         </section>
 
@@ -143,4 +150,4 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
     )
 }
 
-export default Cart_DeliveryRequest;
+export default CartDeliveryRequest;

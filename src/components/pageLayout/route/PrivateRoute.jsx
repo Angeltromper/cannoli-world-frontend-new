@@ -7,7 +7,7 @@ function PrivateRoute({children}) {
 
     return (
 
-        auth === true ? children : <Navigate to={{pathname : "/login"}}/>
+        auth === true ? children : <Navigate to={{pathname : '/login'}}/>
 
     );
 }

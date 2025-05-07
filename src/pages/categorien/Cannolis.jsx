@@ -6,7 +6,7 @@ import HandleRef from "../../helpers/HandleRef";
 import cannolisnack from "../../assets/img.cannoli-snack/Cannolisnack-image.png";
 import cannoliglutenfree from "../../assets/img.cannoli-glutenfree/Cannoliglutenfree-image.png";
 import cannolivegan from "../../assets/img.cannoli-vegan/Cannolivegan-image.png";
-import CannoliCard from "../../components/card_Menu/CannoliCard";
+import CannoliCard from "../../components/cardMenu/CannoliCard";
 import ThreeColumn from "./../../components/pageLayout/designElement/column/ThreeColumn";
 import Column from "../../components/pageLayout/designElement/column/Column";
 import './Cannolis.css';

@@ -1,18 +1,18 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import pageImg from '../../assets/img.background/background cannolis.jpg';
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import { Link, useNavigate, useParams } from "react-router-dom";
-// import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
 import TwoColumn from "../../components/pageLayout/designElement/column/TwoColumn";
 import Column from "../../components/pageLayout/designElement/column/Column";
 import './Wholesale.css';
 
 
-function Wholesale({headerImageHandler, pageTitleHandler}){
+function Wholesale({headerImageHandler, pageTitleHandler}) {
     const {id} = useParams();
-    /*  const [loading, setLoading] = useState(false) */
+    const [loading, setLoading] = useState(false)
     const [cannolis, setCannolis] = useState([]);
 
     const navigate = useNavigate();
@@ -40,7 +40,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     }
 
     useEffect(() => {
-        headerImageHandler ();
+        headerImageHandler (pageImg);
         pageTitleHandler();
     }, []);
 
@@ -68,9 +68,9 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
     function updatedCannoli() {
         navigate(`/cannoli`)
     }
-*/
 
-/*    async function sendCannoliData(cannolidata) {
+
+   async function sendCannoliData(cannolidata) {
         try {
             await axios.post (`http://localhost:8080/cannoli/create`,
                 {
@@ -130,7 +130,6 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
 
                                       fileName={cannolis.image.fileName}
                                       url={cannolis.image.url}
-
                                       cannoli_id={cannolis.id}
                                       cannoliType={cannolis.cannoliType}
                                       cannoliName={cannolis.cannoliName}
@@ -151,6 +150,11 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                    }
                </section>
            </div>
+
+
+
+
+           <br/>
 
            <TwoColumn>
                <Column>
@@ -199,6 +203,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                                </select>
                            </section>
                            <section>
+                               <br/>
                                <input
                                    type="radio"
                                    value="daytime"
@@ -218,6 +223,8 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                                <label htmlFor="timeslot-field-evening">'s Avonds</label>
                            </section>
                            <section>
+                               <br/>
+                               <br/>
                                <label htmlFor="remark-field">Opmerking</label>
                                <textarea
                                    name="remark"
@@ -248,6 +255,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}){
                    </div>
                </Column>
            </TwoColumn>
+
        </section>
    );
 }

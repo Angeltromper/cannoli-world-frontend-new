@@ -1,0 +1,4 @@
+.orderinfo-container {
+    display: flex;
+    margin: var(--margin);
+}

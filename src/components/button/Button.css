@@ -1,17 +1,17 @@
 
 .button__reusable {
-    display: flex;
     background-color: var(--button-color);
+    box-shadow: var(--shadow-color);
     color: var(--text-intro-white);
-    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
     font-size: 14px;
-    font-weight: 500;
-    /*text-transform: uppercase;*/
+    font-weight: 400;
+    justify-content: center;
+    margin: var(--margin);
+    width: 12rem;
+    height: 2rem;
+    gap: 1rem;
     align-items: center;
-    gap: 1em;
-    border: none;
-    border-radius: 1.5em;
-    /*padding: 10px 30px;*/
+    border-radius: 24px 24px 24px 6px;
 }
 
 .button__reusable:hover {

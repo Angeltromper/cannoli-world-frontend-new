@@ -3,13 +3,13 @@ import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
 import {useFormContext} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
-import Button from "../button/Button";
+import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import './InfoForm.css';
 
 
 function InfoForm({headerImageHandler, pageTitleHandler}) {
     useEffect (() => {
-        headerImageHandler ();
+        headerImageHandler (pageImg);
         pageTitleHandler ();
     }, []);
 
@@ -35,9 +35,8 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
                     personStreetName: persondata.person_street_name,
                     personHouseNumber: persondata.person_house_number,
                     personHouseNumberAdd: persondata.person_house_number_add,
-                    personCity: persondata.person_city,
                     personZipcode: persondata.person_zipcode,
-
+                    personCity: persondata.person_city,
                 });
 
         } catch (error) {
@@ -45,15 +44,13 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
         }
     }
 
-    async function onSubmit(personData) {
+    async function onSubmit(persondata) {
         try {
-            await sendPersonData(personData);
+            await sendPersonData(persondata);
 
             setTimeout(() => {
-
-              navigate( `/profile-info`)
-
-            }, 2500);
+                navigate( `/profile`)
+            }, 2000);
 
         } catch (error) {
             console.error(error);
@@ -62,15 +59,14 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
     return (
         <>
+            <div className="form-container">
+                <form className="user-form"
+                    onSubmit={ handleSubmit (onSubmit)}>
 
-            <form className="form-container">
-                <div className="user-form">
-                    onSubmit={handleSubmit(onSubmit)}
+                    <h4>U kunt hier uw persoonsgegevens wijzigen/aanpassen</h4>
 
-                    <h1>U kunt hier uw persoonsgegevens wijzigen</h1>
-                    <p>Na het invullen van elk veld kunt u de gegevens opslaan... </p>
 
-                    <div className="form-name-user">
+                    <div className="form-naw-user">
                         <label htmlFor="details-firstname">
                             Voornaam:
                             <input
@@ -103,9 +99,7 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
                         <br/>
 
-                    </div>
 
-                    <div className="form-adress-user">
                         <label htmlFor="details-streetname">
                             Straatnaam
                             <input
@@ -136,7 +130,7 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
                         </label>
                         {errors.person_house_number && <p className="form-error">{errors.person_house_number.message}</p>}
 
-                        <br/>
+                       <br/>
 
                         <label htmlFor="details-housenumberadd">
                             Toevoeging
@@ -144,30 +138,13 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
                                 type="text"
                                 id="housenumberadd"
                                 {...register("person_house_number_add", {
-                                    required: {value: true, message: message}
+                                    required: {value: false, message: message}
                                 })}
                                 placeholder="Toevoeging"
 
                             />
                         </label>
                         {errors.person_house_number_add && <p className="form-error">{errors.person_house_number_add.message}</p>}
-
-                    </div>
-
-                    <div className="form-place-user">
-                        <label htmlFor="details-city">
-                            Woonplaats
-                            <input
-                                type="text"
-                                id="city"
-                                {...register("person_city", {
-                                    required: {value: true, message: message}
-                                })}
-                                placeholder="Woonplaats"
-
-                            />
-                        </label>
-                        {errors.person_city && <p className="form-error">{errors.person_city.message}</p>}
 
                         <br/>
 
@@ -187,11 +164,25 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
                         <br/>
 
+                        <label htmlFor="details-city">
+                            Woonplaats
+                            <input
+                                type="text"
+                                id="city"
+                                {...register("person_city", {
+                                    required: {value: true, message: message}
+                                })}
+                                placeholder="Woonplaats"
+                            />
+                        </label>
+                        {errors.person_city && <p className="form-error">{errors.person_city.message}</p>}
+                        <br/>
                     </div>
 
-                    <Button/>
-                </div>
-            </form>
+                    <button className="button__reusable " type="submit">Opslaan</button>
+
+                </form>
+            </div>
         </>
     );
 }

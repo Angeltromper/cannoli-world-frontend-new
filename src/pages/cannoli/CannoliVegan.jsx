@@ -3,7 +3,7 @@ import pageImg from './../../assets/img.background/background cannoli-vegan.jpg'
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import './CannoliVegan.css';
-import Card from "../../components/card_Menu/Card";
+import Card from "../../components/cardMenu/Card";
 import veganpistache from "../../assets/img.cannoli-vegan/Vegan Pistache.png";
 import veganlimoncello from "../../assets/img.cannoli-vegan/Vegan Limoncello.png";
 import veganstrawberry from "../../assets/img.cannoli-vegan/Vegan Strawberry.png";

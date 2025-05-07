@@ -1,0 +1,9 @@
+.button__count {
+    display: flex;
+    background-color: white;
+    color: black;
+    font-weight: 800;
+    /*margin: 0 0.5em 0.1em 0.3em;*/
+    margin: 0 8px 2px 5px;
+}
+

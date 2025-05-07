@@ -34,3 +34,9 @@
 .cannoli-assorti__column2 h3 {
     color: #FF003D;
 }
+
+.go-up-search-section {
+    width: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}

@@ -1,7 +1,7 @@
 import {Route, Routes, useLocation} from "react-router-dom";
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
- import {Cart} from "./components/cart/Cart";
+import {Cart} from "./components/cart/Cart";
 import Header from "./components/pageLayout/header/Header";
 import Homepage from "./pages/homepage/Homepage";
 import Footer from "./components/pageLayout/footer/Footer";
@@ -14,6 +14,7 @@ import CannoliIngredient from "./components/cannoliIngredient/CannoliIngredient"
 import CannoliPriceList from "./pages/priceList/CannoliPriceList";
 import CannoliImage from "./components/cannoli/CannoliImage";
 import CannoliInfo from "./components/cannoli/CannoliInfo";
+import Counter from "./components/counter/Counter";
 import Giftbox from "./pages/giftbox/Giftbox";
 import GiftboxPriceList from "./pages/priceList/GiftboxPriceList";
 import Service from "./pages/service/Service";
@@ -28,7 +29,7 @@ import Admin_CannoliComponent from "./components/admin/Admin_CannoliComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import Image_CannoliComponent from "./components/image/Image_CannoliComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
-import ProfileInfo from "./pages/profileInfo/ProfileInfo";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 import Cookies from "./pages/privacy/Cookies";
 import General from "./pages/privacy/General";
 import Privacy from "./pages/privacy/Privacy";
@@ -36,7 +37,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import Wholesale from "./pages/wholesale/Wholesale";
-import Cart_DeliveryRequest from "./components/cart_DeliveryRequest/Cart_DeliveryRequest";
+import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRequest";
 import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
 import FourZeroFour from "./pages/404/FourZeroFour";
@@ -103,6 +104,9 @@ function App () {
                         <Route path="/cannolis/info/:id"
                                element={<CannoliInfo headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
+                        <Route path="/counter"
+                               element={<Counter headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
                         <Route path="/giftbox"
                                element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
@@ -130,8 +134,8 @@ function App () {
                         <Route path="/search-result"
                                element={<SearchResult headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/profile-info"
-                               element={<PrivateRoute><ProfileInfo headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/profile"
+                               element={<PrivateRoute><ProfilePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="privacy/"
                                element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -176,7 +180,7 @@ function App () {
                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
-                               element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/orderlist/:deliveryRequest_id"
                                element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
@@ -186,7 +190,6 @@ function App () {
 
                         <Route exact path="/users/:user_id"
                                element={<PrivateRoute><InfoForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
-
                     </Routes>
                     <Footer/>
                 </div>

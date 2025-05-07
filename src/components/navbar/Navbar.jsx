@@ -5,38 +5,55 @@ import { AuthContext } from "../../context/AuthContext";
 import { RiAccountCircleFill, RiAccountCircleLine, RiCloseLine, RiMenu3Line } from "react-icons/ri";
 import signout from "../../assets/svg/signout.svg";
 import user from "../../assets/svg/user.svg";
-
 import './../pageLayout/header/Header.css'
 import './Navbar.css';
 
 
 function Navbar() {
-    const { auth } = useContext ( AuthContext );
-    const [toggleMenu, setToggleMenu] = useState('');
-    const [toggleLogin, setToggleLogin] = useState('');
-    const [screenWidth, setScreenWidth] = useState( window.innerWidth );
+    const {login, logout, auth} = useContext (AuthContext);
+    const [toggleMenu, setToggleMenu] = useState ('');
+    const [toggleLogin, setToggleLogin] = useState ('');
+    const [screenWidth, setScreenWidth] = useState (window.innerWidth);
 
-    useEffect(() => {
+    /*
+    const logout= (e) => {
+        e.preventDefault();
+        logout();
+    }
+    */
+
+    const navigate = useNavigate()
+
+    useEffect (() => {
         const changeWidth = () => {
-            setScreenWidth( window.innerWidth );
+            setScreenWidth (window.innerWidth);
         }
 
-        window.addEventListener('resize', changeWidth);
+        window.addEventListener ('resize', changeWidth);
 
-        return() => {
-            window.removeEventListener('resize', changeWidth);
+        return () => {
+            window.removeEventListener ('resize', changeWidth);
         }
 
-        }, []);
+    }, []);
 
+    function handleLogin(test){
+        if(test === 'uitloggen'){
+            setToggleLogin(false)
+            navigate('/')
+        } else {
+            setToggleLogin(true)
+            navigate('/login')
+        }
+    }
 
     return (
 
         <nav className="navbar__main-container">
             <div className="navbar__menu-X">
-                { toggleMenu ? <RiCloseLine  size={ 30 } onClick={() => setToggleMenu (false) }/>
+                { toggleMenu ? <RiCloseLine size={ 30 } onClick={ () => setToggleMenu (false) }/>
                     :
-                    <RiMenu3Line  size={ 30 } onClick={() => setToggleMenu (true) }/>
+                    <RiMenu3Line size={ 30 } onClick={ () => setToggleMenu (true) }/>
                 }
 
                 {(toggleMenu || screenWidth > 990) && (
@@ -53,17 +70,17 @@ function Navbar() {
                         <NavLink to="/service" exact activeClassName='active-link'>Service</NavLink>
                         <NavLink to="/franchise" exact activeClassName='active-link'>Franchise</NavLink>
                         <NavLink to="/contact" exact activeClassName='active-link'>Contact</NavLink>
-                        { auth && <NavLink to="/orderlist" exact activeClassName='active-link'>Online Bestellen</NavLink> }
+                        { auth && <NavLink to='/cart-instruction/checkout' exact activeClassName='active-link'>Online Bestellen</NavLink> }
                     </div>
                 )}
 
-
                 <div className="navbar-inlog-menu">
-                    { toggleLogin ? <button className="logout-menu" onClick={()  => setToggleLogin (false)}>
-                            <NavLink to="/" exact activeClassName='active-link'><img src={signout} alt="uitloggen"/>uitloggen</NavLink></button>
+                    { toggleLogin ? <button className="logout-menu" onClick={logout}>
+                            <img src={ signout } alt="uitloggen"/>Uitloggen</button>
                         :
-                        <button className="login-menu" onClick={() => setToggleLogin(true)}>
-                            <NavLink to="/login" exact activeClassName='active-link'><img src={user} alt="inloggen"/>Inloggen</NavLink></button>
+                        <button className="login-menu" onClick={() => handleLogin('inloggen')}>
+                            <img src={ user } alt="inloggen"/>Inloggen
+                        </button>
                     }
                 </div>
             </div>

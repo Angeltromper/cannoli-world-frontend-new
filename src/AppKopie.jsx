@@ -30,7 +30,7 @@ import Admin_CannoliComponent from "./components/admin/Admin_CannoliComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import Image_CannoliComponent from "./components/image/Image_CannoliComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
-import ProfileInfo from "./pages/profileInfo/ProfileInfo";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 import Cookies from "./pages/privacy/Cookies";
 import General from "./pages/privacy/General";
 import Privacy from "./pages/privacy/Privacy";
@@ -38,7 +38,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import Wholesale from "./pages/wholesale/Wholesale";
-import Cart_DeliveryRequest from "./components/cart_DeliveryRequest/Cart_DeliveryRequest";
+import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRequest";
 import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
 import FourZeroFour from "./pages/404/FourZeroFour";
@@ -132,7 +132,7 @@ function App () {
                                element={<SearchResult headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/profile-info"
-                               element={<PrivateRoute><ProfileInfo headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><ProfilePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="privacy/"
                                element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -180,7 +180,7 @@ function App () {
                                element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
-                               element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/orderlist/:deliveryRequest_id"
                                element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>

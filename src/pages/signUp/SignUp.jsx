@@ -264,7 +264,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
                        </section>
 
-                        <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>
+                        {/*<p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>*/}
 
 
                         <section className="form-footer-logout">

@@ -1,19 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import pageImg from "../../assets/img.background/background design.jpg";
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import './ProfileInfo.css';
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
+import './ProfilePage.css';
 
-function ProfileInfo({headerImageHandler, pageTitleHandler}) {
+
+function ProfilePage({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
 
     const token = localStorage.getItem('token');
     const {user: {username}} = useContext(AuthContext);
-
     const [isAdmin, setIsAdmin] = useState(false);
     const [adminInput, setAdminInput] = useState([]);
+
 
     useEffect(() => {
         headerImageHandler(pageImg);
@@ -58,8 +59,12 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
     return (
         <>
             <TextContainer>
-                <h2>Welkom op uw persoonlijke pagina</h2>
+                <h2>Welkom</h2>
             </TextContainer>
+
+            <div className="profile-welcomepage scale-up-hor-left-right">
+                <h2> {username} op uw persoonlijke pagina</h2>
+            </div>
 
             <div className="profile-info-container">
                 <h5>Op deze pagina kunt u uw gegevens bekijken en of wijzigen.
@@ -84,4 +89,4 @@ function ProfileInfo({headerImageHandler, pageTitleHandler}) {
     );
 }
 
-export default ProfileInfo;
+export default ProfilePage;

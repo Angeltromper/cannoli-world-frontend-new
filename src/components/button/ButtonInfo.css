@@ -1,15 +1,16 @@
+
 .button {
     display: inline-block;
     padding: 12px 10px;
     margin: 2em 4em;
     flex-direction: column;
-    border-radius: 18px;
+    border-radius: 1em;
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: bold;
+    /*font-weight: bold;*/
     transition: all 200ms ease-in;
     cursor: pointer;
-    flex-grow: 2;
+    /*flex-grow: 2;*/
 }
 
 

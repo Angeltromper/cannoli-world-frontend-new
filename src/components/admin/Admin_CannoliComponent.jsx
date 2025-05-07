@@ -76,9 +76,9 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
             console.error (error)
         }
 
-    /*    setTimeout(() => {
+        setTimeout(() => {
             navigate ('/cannolis-toevoegen');
-        }, 500)   */
+        }, 500)
 
            setTimeout(() => {
            navigate ('/cannolis-add');

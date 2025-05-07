@@ -14,7 +14,7 @@ function Admin_UserComponent() {
 
 
     function goBack() {
-            navigate(`/profile-info`)
+            navigate(`/profile`)
     }
 
 

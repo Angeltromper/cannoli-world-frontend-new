@@ -52,20 +52,20 @@ function AuthContextProvider({children}) {
 
     async function getData(id, token) {
         try {
-            const response = await axios.get(`http://localhost:8080/users/${id}`, {
+            const response = await axios.get (`http://localhost:8080/users/${ id }`, {
                 headers: {
                     "Content-Type": "application/json",
-                   // "Authorization": `Bearer ${token}`
+                    // "Authorization": `Bearer ${token}`
                 }
             });
-            toggleAuth({
+            toggleAuth ({
                 ...auth,
                 isAuth: true,
                 user: {
                     username: response.data.username,
                     password: response.data.password,
                     userId: response.data.id,
-                    // roles: response.data.authorities[0].authority,
+                    roles: response.data./*authorities[0]*/authority,
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
@@ -78,15 +78,18 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
 
-  /*        if (redirectUrl) {
-                navigate(redirectUrl);
-            }*/
+             if (redirectUrl) {
+                 navigate (redirectUrl);
+             }
 
-        } catch (error) {
-            console.error('There was an error!', error);
-            localStorage.clear();
         }
-    }
+        catch
+            (error)
+            {
+                console.error ('There was an error!', error);
+                localStorage.clear ();
+            }
+        }
 
     const contextData = {
         auth: auth.isAuth,

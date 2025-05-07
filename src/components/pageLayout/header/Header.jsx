@@ -19,10 +19,11 @@ function Header({headerImage, pageTitle}) {
 
                 <Navbar/>
 
-                <div className="color-container">
-                    <figure><img src={ rightColor } alt="right-color" className="right"/></figure>
-                    <figure><img src={ leftColor } alt="left-color" className="left"/></figure>
-                </div>
+                {/*<div className="color-container">*/}
+                {/*    <figure><img src={ rightColor } alt="right-color" className="right"/></figure>*/}
+                {/*    <figure><img src={ leftColor } alt="left-color" className="left"/></figure>*/}
+                {/*</div>*/}
+
             </header>
 
 
