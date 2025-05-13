@@ -8,35 +8,36 @@ import './InfoForm.css';
 
 
 function InfoForm({headerImageHandler, pageTitleHandler}) {
+    const {register, formState: {errors}, handleSubmit} = useFormContext();
+    const token = localStorage.getItem( 'token');
+    const message = "...dit veld is verplicht";
+    const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
+
     useEffect (() => {
         headerImageHandler (pageImg);
         pageTitleHandler ();
     }, []);
 
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
-    const message = "...dit veld is verplicht";
-    const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
-    const token = localStorage.getItem( 'token');
 
 
-    async function sendPersonData(persondata) {
+    async function sendPersonData(data) {
         try {
-            await axios.put(`http://localhost:8080/person/${user.person_id}`,
+            await axios.put(`http://localhost:8080/persons/${user.person_id}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
+                        "Authorization": `Bearer ${ token }`,
                     },
 
-                    person_id: user.id,
-                    personFirstname: persondata.person_firstname,
-                    personLastname: persondata.person_lastname,
-                    personStreetName: persondata.person_street_name,
-                    personHouseNumber: persondata.person_house_number,
-                    personHouseNumberAdd: persondata.person_house_number_add,
-                    personZipcode: persondata.person_zipcode,
-                    personCity: persondata.person_city,
+                    id: user.id,
+                    personFirstname: data.person_firstname,
+                    personLastname: data.person_lastname,
+                    personStreetName: data.person_street_name,
+                    personHouseNumber: data.person_house_number,
+                    personHouseNumberAdd: data.person_house_number_add,
+                    personZipcode: data.person_zipcode,
+                    personCity: data.person_city,
                 });
 
         } catch (error) {
@@ -44,13 +45,13 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
         }
     }
 
-    async function onSubmit(persondata) {
+    async function onSubmit(data) {
         try {
-            await sendPersonData(persondata);
+            await sendPersonData(data);
 
             setTimeout(() => {
-                navigate( `/profile`)
-            }, 2000);
+                navigate( '/profile')
+            }, 800);
 
         } catch (error) {
             console.error(error);

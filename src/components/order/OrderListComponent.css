@@ -1,0 +1,43 @@
+.orderlist {
+    display: flex;
+    background-color: #FFFFFF;
+    box-shadow: var(--shadow-color);
+    padding: 1.2rem;
+}
+
+.orderlist-comment {
+    display: flex;
+    flex-direction: column;
+    max-width: 18rem;
+}
+
+
+.orderlist-status-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.order-status-buttons {
+    display: flex;
+    color: white;
+    flex-direction: row;
+}
+
+.orderstatus-buttons button {
+    display: flex;
+    background-color:var(--button-color) ;
+    color: black;
+    font-size: 1.2em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    border: none;
+    transition: 0.3s;
+}
+
+.orderlist-page {
+    display: flex;
+    padding-top: 2rem;
+}
