@@ -20,16 +20,16 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
         pageTitleHandler();
     }, []);
 
-    async function sendCannoliData(cannolidata) {
+    async function sendCannolis(data) {
         try {
             await axios.put(`http://localhost:8080/cannolis/${id}`,
                 {
                     id: cannolidata.cannoli_id,
-                    cannoliName: cannolidata.cannoli_name,
-                    cannoliType: cannolidata.cannoli_type,
-                    description: cannolidata.cannoli_description,
-                    ingredients: cannolidata.cannoli_ingredients,
-                    price: cannolidata.cannoli_price
+                    cannoliName: data.cannoli_name,
+                    cannoliType: data.cannoli_type,
+                    description: data.cannoli_description,
+                    ingredients: data.cannoli_ingredients,
+                    price: data.cannoli_price
                 }, {
                     headers: {
                         'Content-Type': "application/json",
@@ -49,10 +49,10 @@ function Admin_CannoliWholesaleComponent({headerImageHandler, pageTitleHandler})
 
                 <div className="admin-info-container">
                     <div className="admin-info">
-                        <h1>U moet ingelogd zijn als
+                        <h3>U moet zijn ingelogd als
                             <br/> ADMINISTRATOR
-                            <br/> om deze content te mogen zien..
-                        </h1>
+                            <br/> voor het wijzigen of inzien van deze gegevens
+                        </h3>
                     </div>
                 </div>
 

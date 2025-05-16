@@ -58,7 +58,7 @@ export const Image_CannoliComponent = (props) => {
                     <button
                         className="image-upload-button"
                         type="submit">
-                        Uploaden
+                        Uploaden afbeelding
                     </button>
                 </div>
             </form>

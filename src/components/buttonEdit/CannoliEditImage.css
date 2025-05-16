@@ -1,0 +1,14 @@
+.cannoli-editInfoImage {
+    display: flex;
+    background-color: #fff8d7;
+    box-shadow: var(--shadow-color);
+    margin-top: 1em;
+    border: none;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.cannoli-editInfoImage {
+    background-color: #f8e499;
+    transform: scale(1.0);
+}

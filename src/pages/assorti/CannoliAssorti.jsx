@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import GlutenfreeCannoli from "./../../categorien/zoetigheid/GlutenfreeCannoli";
-import SnackCannoli from "./../../categorien/zoetigheid/SnackCannoli";
-import VeganCannoli from "./../../categorien/zoetigheid/VeganCannoli";
+import GlutenfreeCannoli from "./GlutenfreeCannoli";
+import SnackCannoli from "./SnackCannoli";
+import VeganCannoli from "./VeganCannoli";
 import './CannoliAssorti.css';
 
 

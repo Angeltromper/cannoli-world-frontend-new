@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Cannoli from "./../../../components/cannoli/Cannoli";
+import Cannoli from "../../../components/cannoli/Cannoli";
 import './SnackCannoli.css';
 import './CannoliAssorti.css';
 
@@ -37,7 +37,6 @@ function SnackCannoli() {
                                 cannoli.image !== null ?
 
                                     <Cannoli key={cannoli.id}
-
                                              url={cannoli.image.url}
                                              cannoli_id={cannoli.id}
                                              cannoliName={cannoli.cannoliName}
@@ -45,7 +44,6 @@ function SnackCannoli() {
                                     />
                                     :
                                     <Cannoli key={cannoli.id}
-
                                              cannoli_id={cannoli.id}
                                              cannoliName={cannoli.cannoliName}
                                              cannoliPrice={cannoli.price}

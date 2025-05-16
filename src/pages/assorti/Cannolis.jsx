@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import pageImg from '../../assets/img.background/background cannolis.jpg';
-import goUp from "../../assets/navIcon/goUp.png";
-import HandleRef from "../../helpers/HandleRef";
-import cannolisnack from "../../assets/img.cannoli-snack/Cannolisnack-image.png";
-import cannoliglutenfree from "../../assets/img.cannoli-glutenfree/Cannoliglutenfree-image.png";
-import cannolivegan from "../../assets/img.cannoli-vegan/Cannolivegan-image.png";
-import CannoliCard from "../../components/cardMenu/CannoliCard";
-import ThreeColumn from "./../../components/pageLayout/designElement/column/ThreeColumn";
-import Column from "../../components/pageLayout/designElement/column/Column";
+import pageImg from '../../../assets/img.background/background cannolis.jpg';
+import goUp from "../../../assets/navIcon/goUp.png";
+import HandleRef from "../../../helpers/HandleRef";
+import cannolisnack from "../../../assets/img.cannoli-snack/Cannolisnack-image.png";
+import cannoliglutenfree from "../../../assets/img.cannoli-glutenfree/Cannoliglutenfree-image.png";
+import cannolivegan from "../../../assets/img.cannoli-vegan/Cannolivegan-image.png";
+import CannoliCard from "../../../components/cardMenu/CannoliCard";
+import ThreeColumn from "../../../components/pageLayout/designElement/column/ThreeColumn";
+import Column from "../../../components/pageLayout/designElement/column/Column";
 import './Cannolis.css';
 
 

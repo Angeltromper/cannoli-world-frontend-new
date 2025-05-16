@@ -1,4 +1,3 @@
-/*
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useFormContext } from "react-hook-form";
@@ -8,57 +7,56 @@ import Button from "../button/Button";
 import './Admin_CannoliComponent.css';
 
 
-function Admin_CannoliComponent({postLink, preloadValues}) {
-    const {register, formState: {errors}, handleSubmit} = useFormContext({defaultValues: preloadValues});
+function Admin_CannoliComponent() {
+    const {register, formState: {errors}, handleSubmit} = useFormContext();
     const {user} = useContext(AuthContext);
+    const token = localStorage.getItem('token');
     const message = ".. veld is verplicht";
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    const [cannolis, setCannolis] = useState([]);
 
-    const [ cannolis, setCannolis] = useState([]);
 
-    async function sendCannoliData(cannolidata) {
+    async function sendCannoli(cannolidata) {
         try {
-            const response = await axios.post(`http://localhost:8080/${postLink}`,
+          await axios.post (`http://localhost:8080/cannolis/create`,
                 {
-                    id: cannolidata.cannoli_id,
+                    id: data.cannoli_id,
                     cannoliName: cannolidata.cannoli_name,
                     cannoliType: cannolidata.cannoli_type,
-                    cannoliDescription: cannolidata.cannoli_description,
-                    cannoliIngredients: cannolidata.cannoli_ingredients,
-                    cannoliPrice: cannolidata.cannoli_price,
-                }).then(addedNewCannoli)
+                    description: cannolidata.cannoli_description,
+                    ingredients: cannolidata.cannoli_ingredients,
+                    price: cannolidata.cannoli_price,
+                }).then(addedCannoli)
 
         } catch (error) {
             console.error (error);
         }
     }
 
-    console.log();
-
-    function addedNewCannoli() {
-        navigate('/cannolis')
+    function addedCannoli() {
+        navigate(`/cannoli-assorti`)
     }
 
-    useEffect(() => {
-        async function fetchCannolis() {
-            try {
+     useEffect(() => {
+         async function fetchCannolis() {
+             try {
                 const response = await axios.get (`http://localhost:8080/cannolis`,
-                    {
+                     {
                         headers: {
                             "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
+                             "Authorization": `Bearer ${token}`,
                         }
-                    }
-                );
-                setCannolis(response.data)
-            } catch (error) {
-                console.error ('There was an error', error);
-            }
-        }
+                     }
+                 );
+                 setCannolis(response.data)
 
-        fetchCannolis() ();
-    }, [cannolis]);
+             } catch (error) {
+                console.error ('There was an error', error);
+             }
+       }
+
+         fetchCannolis();
+     }, [cannolis]);
 
     async function deleteCannoli(cannoliName) {
         try {
@@ -74,8 +72,9 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
         }
 
         setTimeout(() => {
-            navigate ('/cannoli-toevoegen');
-        }, 1000)
+            navigate (`/cannolis-add/`);
+        }, 600)
+
     }
 
     return (
@@ -85,14 +84,13 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
                 <div className="admin-info-container">
                     <div className="admin-info">
-                        <h1>U moet ingelogd zijn als
+                        <h3>U moet zijn ingelogd als
                             <br/> ADMINISTRATOR
-                            <br/> om deze content te mogen zien..
-                        </h1>
+                            <br/> voor het wijzigen of inzien van deze gegevens
+                        </h3>
                     </div>
                 </div>
                 :
-
                 <section>
                     <div className="cannoli-form-container">
                         <div className="cannoli-form-text">
@@ -108,11 +106,11 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
                         </div>
 
                         <form className="cannoliform"
-                              onSubmit={handleSubmit(sendCannoliData)}>
+                              onSubmit={handleSubmit(sendCannoli)}>
 
                             <div>
                                 <label htmlFor="cannoli-name">
-                                    Productnaam:
+                                    Cannolinaam:
                                     <input
                                         type="text"
                                         id="cannoli_name"
@@ -263,4 +261,4 @@ function Admin_CannoliComponent({postLink, preloadValues}) {
 
 export default Admin_CannoliComponent;
 
-*/
+

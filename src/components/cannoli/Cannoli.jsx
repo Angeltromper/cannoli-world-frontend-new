@@ -33,7 +33,7 @@ export const Cannoli = (props) => {
 
 
     function redirect() {
-        navigate(`wholesale/${props.id}`)
+        navigate(`cannolis/${props.cannoli_id}`)
     }
 
     return(
