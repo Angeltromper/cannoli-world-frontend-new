@@ -23,7 +23,7 @@
 
 .image-upload-button {
     display: flex;
-    background-color: black;
+    background-color: #fff8d7;
     box-shadow: var(--shadow-color);
     color: white;
     transition: 0.7s;
@@ -39,7 +39,7 @@
 }
 
 .image-upload-button:hover {
-    background-color: rgb(215, 203, 203);
+    background-color: var(--background-color-light-green);
     color: white;
     transition: 0.7s;
     transform: scale(1.10);

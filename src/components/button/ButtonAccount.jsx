@@ -1,6 +1,6 @@
 /*
 import { useNavigate } from "react-router-dom";
-import {ReactComponent as Svg} from "../../assets/svg/user-svgrepo-com.svg";
+import {ReactComponent as UserIcon} from '../../assets/svg/user.svg';
 
 
 
@@ -14,9 +14,9 @@ function InlogButton() {
 
     return (
         <div className="inlog-button"
-             icon type="button"
+             button type="button"
              onClick={ redirect } >
-            <Svg/>
+            <UserIcon />
         </div>
     )
 }
