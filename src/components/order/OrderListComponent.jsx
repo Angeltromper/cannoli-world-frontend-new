@@ -1,23 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import Order_InfoComponent from "./Order_InfoComponent";
-import './Order_ListComponent.css';
+import './OrderListComponent.css';
 
-
-
-function Order_ListComponent() {
-    const {deliveryRequest_id} = useParams();
+function OrderListComponent() {
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const [deliveryRequests, setDeliveryRequests] = useState([]);
-
-
+    const {deliveryRequest_id} = useParams();
+    const [data, setData] = useState(false);
 
     useEffect(() => {
         async function fetchDeliveryRequest() {
+          console.log(deliveryRequest_id);
             try {
-                const response = await axios.get(`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
+                const response = await axios.get (`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
                     {
                         headers: {
                             "Content-Type": "application/json",
@@ -25,87 +24,100 @@ function Order_ListComponent() {
                         }
                     }
                 );
-                setDeliveryRequests(response.data);
+                setDeliveryRequests (response.data);
             } catch (error) {
-                console.error('There was an error!', error);
+                console.log ('There was an error!',error);
             }
         }
 
-        fetchDeliveryRequest();
-    }, [deliveryRequest_id]);
+        fetchDeliveryRequest ();
+    }, [deliveryRequest_id,data]);
 
-
-    async function updateConfirm() {
+    async function updateStatusConfirmed() {
         try {
-            await axios.put(`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
+            await axios.put (`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     },
-
                     id: deliveryRequest_id,
-                    status: "CONFIRMED"
-                }).then(updateStatus)
+                    status: "CONFIRMED",
+                }).then (updateStatusClick)
+
+            setData(!data)
         } catch (error) {
-            console.error('There was an error!', error);
+        console.error (error);
         }
     }
 
-
-    async function updateFinish() {
+    async function updateStatusFinished() {
         try {
-            await axios.put(`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
+            await axios.put (`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
-                         "Authorization": `Bearer ${ token }`,
+                        "Authorization": `Bearer ${token}`,
                     },
                     id: deliveryRequest_id,
                     status: "FINISHED",
-                }).then(updateStatus)
+                }).then(updateStatusClick)
+
+            setData(!data)
         } catch (error) {
-            console.error('There was an error!', error);
+            console.error (error);
         }
     }
 
-
-    function updateStatus() {
-     navigate(`/deliveryRequest/${deliveryRequest_id}`)
+    function updateStatusClick() {
+        navigate(`/deliveryRequests/${deliveryRequest_id}`)
     }
-
 
     return (
         <>
-            <div className="orderlist-status-page">
-                <h5>Op deze pagina kunt u aangeven of de producten beschikbaar zijn voor levering en het bezorgen daarvan.</h5>
+            <TextContainer>
+                <h3>Overzicht Bestellijst</h3>
+            </TextContainer>
 
-                <h5>
-                    'AVAILABLE'= Als de bestelling beschikbaar is voor bezorging.
-                    'CONFIRMED'= Voor het aannemen en bezorgen van de bestelling.
-                    'FINISHED'=  Zodra de bestelling is bezorgt.
-                </h5>
+            <div className="orderlistComponent-container">
+                <div className="orderlistComponent-status-update">
+                <div className="orderlistComponent-status-deliver">
+                    <h5>Hier kunt u de status in aangeven wanneer deze is aangenomen en is bezorgt</h5>
+                    <br/>
+                    <h5><i>*AVAILABLE</i> = De bestelling is beschikbaar voor bezorging.</h5>
+                    <h5><i>*CONFIRMED</i> = De bestelling is ontvangen en wordt verwerkt.</h5>
+                    <h5><i>*FINISHED</i> =  De bestelling is verwerkt en bezorgt.</h5>
+                </div>
+                    <br/>
+                    <br/>
+
+                    <div className="orderlistComponent-status-button">
+                        <button onClick={updateStatusConfirmed}>Bevestigen</button>
+                        <button onClick={updateStatusFinished}>Bezorgt</button>
+                    </div>
+                </div>
+
+                <section className="orderlistComponent-info-page">
+                    {deliveryRequests.applier &&
+                        <Order_InfoComponent key={deliveryRequests.id}
+                                             id={deliveryRequests.id }
+                                             applier={deliveryRequests.applier}
+                                             cannoliList={deliveryRequests.cannoliList}
+                                             status={deliveryRequests.status}
+                                             comment={deliveryRequests.comment}
+                        />
+                    }
+                </section>
             </div>
-
-            <div className="order-status-buttons">
-                <button onClick={updateConfirm}> Bevestigen </button>
-                <button onClick={updateFinish}> Bezorgt </button>
-            </div>
-
-
-            <section className="orderlist-page">
-                {deliveryRequests.applier &&
-                    <Order_InfoComponent key={deliveryRequests.id}
-                                         id={deliveryRequests.id}
-                                         applier={deliveryRequests.applier}
-                                         cannoliList={deliveryRequests.cannoliList}
-                                         comments={deliveryRequests.comments}
-                                         status={deliveryRequests.status}
-                    />
-                }
-            </section>
         </>
     )
 }
 
-export default Order_ListComponent;
+export default OrderListComponent;
+
+
+
+
+
+
+

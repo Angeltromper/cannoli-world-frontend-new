@@ -1,43 +1,52 @@
-.orderlist {
+.orderlistComponent-container {
     display: flex;
-    background-color: #FFFFFF;
-    box-shadow: var(--shadow-color);
-    padding: 1.2rem;
-}
-
-.orderlist-comment {
-    display: flex;
-    flex-direction: column;
-    max-width: 18rem;
-}
-
-
-.orderlist-status-page {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-.order-status-buttons {
+.orderlistComponent-status-update {
+    margin-top: var(--margin);
+}
+
+.orderlistComponent-status-deliver {
+    padding-left: 1em;
+}
+
+.orderlistComponent-status-deliver i {
+    color: red;
+}
+
+.orderlistComponent-status-button {
     display: flex;
-    color: white;
     flex-direction: row;
+    justify-content: flex-start;
 }
 
-.orderstatus-buttons button {
-    display: flex;
-    background-color:var(--button-color) ;
+.orderlistComponent-status-button button  {
     color: black;
-    font-size: 1.2em;
-    flex-direction: row;
+    background-color: transparent;
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    width: 12rem;
+    height: 2rem;
+    padding: 0 1em 0 3em;
     align-items: center;
-    justify-content: center;
-    width: 10rem;
-    border: none;
-    transition: 0.3s;
+    border-color: rgb(255, 167, 0);
+    border-radius: 0.5rem;
+    transform: scale(0.8);
+    z-index: 99;
 }
 
-.orderlist-page {
+.orderlistComponent-status-button button:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.0);
+}
+
+.orderlistComponent-info-page {
     display: flex;
-    padding-top: 2rem;
+    padding: 2rem 1rem 2rem 2rem;
+    justify-content: center;
 }

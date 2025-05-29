@@ -1,4 +1,37 @@
-.orderinfo-container {
+.orderinfoComponent-container {
     display: flex;
-    margin: var(--margin);
+    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;;
+    margin: 2rem 2rem 2rem 2rem;
+    padding: 2em 2em 2em 2em;
+    text-align: center;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
 }
+
+.orderinfoComponent table {
+    border: 1px solid rgb(255, 161, 7);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.orderinfoComponent th {
+    background-color: white;
+    padding: 2px 15px;
+}
+
+.orderinfoComponent-cannolis {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orderinfoComponent-comments  {
+    display: flex;
+    font-size: 14px;
+}
+
+
+
+
