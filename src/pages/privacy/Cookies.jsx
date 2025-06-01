@@ -1,22 +1,20 @@
+/*
 import React, { useEffect } from 'react';
+import './CookiesPage.css';
 
-
-function Cookies([headerImageHandler, pageTitleHandler]) {
+function Cookies({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
         headerImageHandler();
-        pageTitleHandler("Cookies");
+        pageTitleHandler();
     }, []);
 
-
     return (
-        <div>
-
+       <>
             <div className="cookies-title">
-                <h1>{ pageTitleHandler }</h1>
-            </div>
+                <h1>Cookiesbeleid</h1>
 
-            <h5>
+                <h5>
                 Deze website maakt gebruik van cookies
                 Wij gebruiken analytische cookies om je een optimale gebruikerservaring te bieden en we gebruiken
                 functionele cookies om jouw voorkeuren op te slaan. Bovendien plaatsen wij cookies van derde partijen om
@@ -28,9 +26,14 @@ function Cookies([headerImageHandler, pageTitleHandler]) {
                 ga je akkoord met het gebruik van alle cookies zoals omschreven
                 in onze Cookieverklaring.
             </h5>
+
+            <h5>Cookies wordt gebruikt om ervaring te verbeteren. <a href="" style={{color: "#FFD700"}}>voor meer informatie</a></h5>
+
         </div>
+           </>
     );
 }
 
 
 export default Cookies;
+*/
