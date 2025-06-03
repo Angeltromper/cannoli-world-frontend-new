@@ -8,9 +8,7 @@ import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import './CartDeliveryRequest.css'
 
-
-
-function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
+function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
     const {user} = useContext(AuthContext);
     const token = localStorage.getItem('token');
@@ -150,4 +148,4 @@ function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
     )
 }
 
-export default Cart_DeliveryRequest;
+export default CartDeliveryRequest;

@@ -1,0 +1,101 @@
+Index: src/components/imageUploaden/ImageUploadCannoli.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/imageUploaden/ImageUploadCannoli.jsx b/src/components/imageUploaden/ImageUploadCannoli.jsx
+--- a/src/components/imageUploaden/ImageUploadCannoli.jsx	
++++ b/src/components/imageUploaden/ImageUploadCannoli.jsx	(date 1748950596400)
+@@ -1,92 +1,0 @@
+-/*
+-import React, { useState } from 'react';
+-import { useNavigate, useParams } from "react-router-dom";
+-import axios from "axios";
+-import './ImageUploadCannoli.css'
+-import useCannolis from "../../hooks/UseCannolis";
+-
+-
+-
+-function ImageUploadCannoli() {
+-    // const token = localStorage.getItem('token');
+-    const {cannoli_id} = useParams();
+-    const [cannoliId, setCannoliId] = useState(0);
+-    const [file, setFile] = useState();
+-    const [previewUrl, setPreviewUrl] = useState('');
+-    const navigate = useNavigate();
+-
+-
+-    function handleImageChange(e) {
+-        // Gekozen bestand opslaan
+-        const uploadedFile = e.target.files[0];
+-        console.log(uploadedFile);
+-        // Sla het gekozen bestand in de state op
+-        setFile(uploadedFile);
+-        // Sla de preview URL op zodat we deze kunnen laten zien in de <img>
+-            setPreviewUrl(URL.createObjectURL(uploadedFile));
+-    }
+-
+-    async function sendImage(e) {
+-        // Voorkom een refresh op submit
+-        e.preventDefault();
+-        // maak een nieuwe FormData objecet (ingebouwd type van JavaScript)
+-        const formData = new FormData();
+-        // Voeg daar ons bestand uit de state aan toe onder de key "file"
+-        formData.append('file', file);
+-
+-        try {
+-            // verstuur ons formData object en geef in de header aan dat het om een form-data type gaat
+-            // Let op: we wijzigen nu Altijd de afbeelding voor één student, wijzig en pas de url aan als je dit dynamisch wilt maken.
+-            const result = await axios.post(`http://localhost:8080/cannolis/${cannoli_id}/image`,formData,
+-                {
+-                    headers: {
+-                        "Content-Type": "multipart/form-data",
+-                        // "Authorization": `Bearer ${token}`,
+-                    },
+-                })
+-
+-            console.log(result.data);
+-        } catch (e) {
+-            console.error(e)
+-        }
+-    }
+-
+-    const { cannolis } = useCannolis('http://localhost:8080/cannolis');
+-
+-    function handleCannoliId(e) {
+-        setCannoliId(e.target.value);
+-    }
+-
+-    return (
+-        <div className="upload-page-container">
+-            <div className="cannoli-page-container">
+-                <h1>Uploaden van afbeelding</h1>
+-                <h3>Afbeelding van cannoli uploaden</h3>
+-                <select name="cannoli" id="cannoli" onChange={handleCannoliId}>
+-                    {cannolis && cannolis.map((cannoli_id) => {
+-                        return <option value={cannoli_id.cannoli_id}>{cannoli_id.name}</option>
+-                    })}
+-                </select>
+-                <form onSubmit={sendImage}>
+-                    <label htmlFor="cannoli-image">
+-                        Kies afbeelding:
+-                        <input type="file" name="image-field" id="cannoli-image" onChange={handleImageChange}/>
+-                    </label>
+-                    {previewUrl &&
+-                        <label>
+-                            Preview:
+-                            <img src={previewUrl} alt="Voorbeeld van de afbeelding die zojuist gekozen is"
+-                                 className="image-preview"/>
+-                        </label>
+-                    }
+-
+-                    <button type="submit">Uploaden</button>
+-                </form>
+-            </div>
+-        </div>
+-    )}
+-
+-
+-export default ImageUploadCannoli;
+-
+-*/
