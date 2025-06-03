@@ -1,11 +1,10 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import {CartContext} from "../../context/CartContext";
 import {RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
-
 import { Link, useNavigate } from "react-router-dom";
-import './Cart.css'
 import { AuthContext } from "../../context/AuthContext";
+import './Cart.css'
+
 
 
 export const Cart = () => {

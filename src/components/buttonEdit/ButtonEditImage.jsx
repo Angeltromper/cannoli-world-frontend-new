@@ -1,11 +1,9 @@
-/*
-
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import './CannoliEditImage.css'
+import './ButtonEditImage.css'
 
-function CannoliEditImage() {
+function ButtonEditImage() {
     const token = localStorage.getItem('token');
     const {user: {username}} = useContext(AuthContext);
     const [isAdmin, setIsAdmin] = useState(false);
@@ -50,8 +48,8 @@ function CannoliEditImage() {
         </>
     );
 }
-export default CannoliEditImage;
-*/
+export default ButtonEditImage;
+
 
 
 

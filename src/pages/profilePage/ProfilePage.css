@@ -19,7 +19,6 @@
     border-radius: 1rem;
     box-shadow: var(--shadow-color) ;
     transition: 0.5s;
-
 }
 
 
@@ -30,4 +29,9 @@
     height: auto;
     width: 100%;
     margin: 0.5em;
+}
+
+.admin-button {
+    background-color: #FF003D;
+
 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Cannoli from "../../../components/cannoli/Cannoli";
+import { Cannoli } from "../../components";
 import './GlutenfreeCannoli.css';
-import './CannoliAssorti.css';
+
+
 
 function GlutenfreeCannoli() {
     const [glutenfree, setGlutenfree] = useState([]);

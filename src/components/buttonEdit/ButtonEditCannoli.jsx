@@ -1,52 +1,53 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-import './CannoliEditInfo.css';
+import './ButtonEditCannoli.css';
 
-
-function CannoliEditInfo() {
+function ButtonEditCannoli() {
     const token = localStorage.getItem('token');
-    const {user: {username}} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    const username = user?.username;
+
     const [isAdmin, toggleIsAdmin] = useState(false);
     const [adminInput, toggleAdminInput] = useState([]);
 
-    useEffect (() => {
-
+    useEffect(() => {
         async function fetchAdmin() {
             try {
-                const response = await axios.get (`http//localhost:8080/users/${username}/`,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        }
+                const response = await axios.get(`http://localhost:8080/users/${username}/`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
                     }
-                    );
-                toggleAdminInput (response.data)
-                if (response.data.roles[0].authority === 'ROLE_ADMIN') {
-                    toggleIsAdmin (true);
+                });
+
+                toggleAdminInput(response.data);
+
+                if (response.data.roles?.some(role => role.authority === 'ROLE_ADMIN')) {
+                    toggleIsAdmin(true);
                 } else {
-                    toggleIsAdmin (false);
+                    toggleIsAdmin(false);
                 }
 
             } catch (error) {
-                console.error ('There was an error!', error);
+                console.error('There was an error!', error);
             }
         }
 
-        fetchAdmin ();
-    }, [isAdmin, token]);
+        if (username) {
+            fetchAdmin();
+        }
+    }, [username, token]);
 
     return (
         <>
-
-            { isAdmin &&
+            {isAdmin && (
                 <button className="cannoli-editInfoCannoli">
                     Wijzig Product
                 </button>
-            }
-
-            </>
+            )}
+        </>
     );
 }
-export default CannoliEditInfo;
+
+export default ButtonEditCannoli;

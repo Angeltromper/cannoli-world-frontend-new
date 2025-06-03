@@ -1,92 +1,84 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
+import ButtonEditCannoli from "../buttonEdit/ButtonEditCannoli";
 import Counter from "../counter/Counter";
 import ShoppingCart from './../../assets/svg/shoppingCart.svg';
-import { AuthContext } from "../../context/AuthContext";
+import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
+import TwoColumn from "../pageLayout/designElement/column/TwoColumn";
+import Column from "../pageLayout/designElement/column/Column";
+import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
+import ButtonEditImage from "../buttonEdit/ButtonEditImage";
 import './WholesaleInfo.css';
-
-
 
 export const WholesaleInfo = (props) => {
 
     const navigate = useNavigate();
     const [cart, setCart] = useContext(CartContext);
     const [cannoliProduct, setCannoliProduct]= useState(0);
-    const [cannoliCount, setCannoliCount] = useState(0);
     const [toggleCount, setToggleCount] = useState(false);
     const {auth} = useContext(AuthContext);
 
     const addToCart = () => {
         const cannoli = {
-            artikelnummer: props.id,
+            artikelnummer: props.cannoli_id,
             naam: props.cannoliName,
             prijs: props.cannoliPrice,
             url: props.url
         }
         setCart(curr => [...curr, cannoli]);
     }
+    const removeFromCart = () => {
 
-    const removeFromCart = (index) => {
-        setCart(cart.filter((o, i) => index!== i));
+        setCart(cart.filter((o, i) => cannoliProduct!== i));
     };
 
 
-    function addImage() {
-        navigate(`/cannolis/image/${props.id}`)
+    function editImage() {
+        navigate(`/cannolis/image/${props.cannoli_id}`)
     }
 
     function editCannoli() {
-        navigate(`/cannolis/info/${props.id}`)
+        navigate(`/cannolis/info/${props.cannoli_id}`)
     }
 
     return (
-
         <section className="cannoli-info-container">
-            <div className="cannoli-info-Image">
-                <img
-                    alt={props.fileName}
-                    src={props.url}/>
-            </div>
+            <div className="cannoli-info-page">
 
-            <div className="cannoli-info-description">
-                <div className="cannoli-info">
-                    <h2>{ props.cannoliName }</h2>
+                    <TextContainer>
+                        <h1> Cannoli </h1>
+                    </TextContainer>
 
-                    <h5>Artikelnummer: { props.cannoli_id }</h5>
+                <TwoColumn>
+                    <Column>
+                        <div className="cannoli-info-description">
+                            <img
+                                alt={props.fileName}
+                                src={props.url}/>
+                        </div>
+                    </Column>
+
+                    <Column>
+                        <h2>{ props.cannoliName }</h2>
+
+                        <h5>Artikelnummer: { props.cannoli_id }</h5>
 
                         <h5>Categorie: { props.cannoliType }</h5>
 
-                        <Link to={ "/cannoli" }>
-                            <h4 className="cannoli-return">Cannoli</h4>
-                        </Link>
-                        { auth && <><h2>€ { props.cannoliPrice }</h2><h5>p.st (groothandelsprijs)</h5></> }
-                    </div>
+                       { auth && <><h2>€ { props.cannoliPrice }</h2><h5>p.st (groothandelsprijs)</h5></> }
 
-                    <br/>
-                    <br/>
-
-                    <div className="cannoli-description">
-                        <h4>Omschrijving:</h4>
-                        <h5>{ props.cannoliDescription }</h5>
-                        <br/>
                         <br/>
 
-                        <h4>Ingrediënten:</h4>
-                        <h5>{ props.cannoliIngredients }</h5>
-                    </div>
+                        <div className="cannoli-count-info">
+                            {cannoliProduct>= 1 ? <div onClick={() => setCannoliProduct(1)}>
 
-
-
-
-                    <div className="cannoli-count-info">
-                        {cannoliProduct>= 1 ? <div onClick={() => setCannoliProduct(1)}>
-                        </div>
-                            :
-                            <button className="button-added" onClick={() => setToggleCount(true)}><img src={ShoppingCart} alt="toevoegen"/>toevoegen aan mandje</button>
-                        }
-
-                        { toggleCount &&  (
+                            </div>
+                                :
+                                <button className="button-added" onClick={() => setToggleCount(true)}><img src={ShoppingCart} alt="toevoegen"/>toevoegen aan mandje</button>
+                            }
+                            { toggleCount &&  (
 
                                 <div className="cannoli-counters">
 
@@ -96,22 +88,38 @@ export const WholesaleInfo = (props) => {
                                         setCannoliCount={setCannoliProduct}
                                         removeFromCart={removeFromCart}/>
                                 </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                    </Column>
+                </TwoColumn>
 
-
-                    <br/>
-                    <br/>
-
+                <TextContainerResp>
+                    <h3>Omschrijving:</h3>
                     <div>
-                        <Link to={ '/register' }>
-                            <p className="btn-text-order"><em>Registreer/Log in om online te kunnen bestellen</em></p>
-                        </Link>
+                        <h5>{ props.cannoliDescription }</h5>
                     </div>
+                </TextContainerResp>
+                <br/>
+
+                <TextContainerResp>
+                    <div>
+                        <h3>Ingrediënten:</h3>
+                        <h5>{ props.cannoliIngredients }</h5>
+                    </div>
+                </TextContainerResp>
+
+                <div
+                    onClick={editImage}>
+                    <ButtonEditImage/>
                 </div>
 
-            </section>
-        );
+                <div
+                    onClick={editCannoli}>
+                    <ButtonEditCannoli/>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default WholesaleInfo;

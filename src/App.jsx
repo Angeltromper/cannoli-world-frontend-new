@@ -3,37 +3,44 @@ import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
 import {Cart} from "./components/cart/Cart";
 import Header from "./components/pageLayout/header/Header";
-import Homepage from "./pages/homepage/Homepage";
+import HomePage from "./pages/homepage/HomePage";
 import Footer from "./components/pageLayout/footer/Footer";
+import Cannolis from "./pages/assorti/Cannolis";
+import CannoliAssorti from "./pages/assorti/CannoliAssorti";
 import CannoliSnack from "./pages/cannoli/CannoliSnack";
 import CannoliGlutenFree from "./pages/cannoli/CannoliGlutenFree";
 import CannoliVegan from "./pages/cannoli/CannoliVegan";
+import Counter from "./components/counter/Counter";
 import Giftbox from "./pages/giftbox/Giftbox";
 import Service from "./pages/service/Service";
 import Franchise from "./pages/franchise/Franchise";
 import FranchiseInformation from "./pages/franchise/FranchiseInformation";
 import Contact from "./pages/contact/Contact";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
-import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
 import Admin_WholesaleEditComponent from "./components/admin/Admin_WholesaleEditComponent";
+import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
+import ProfilePage from "./pages/profilePage/ProfilePage";
 import Cookies from "./pages/privacy/Cookies";
 import General from "./pages/privacy/General";
 import Privacy from "./pages/privacy/Privacy";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Wholesale from "./pages/wholesale/Wholesale";
-import Cart_DeliveryRequest from "./components/cartDeliveryRequest/Cart_DeliveryRequest";
-import InfoForm from "./components/form/UserForm"
+import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRequest";
+import UserForm from "./components/form/UserForm"
 import FourZeroFour from "./pages/404/FourZeroFour";
+import OrderListComponent from "./components/order/OrderListComponent";
+import OrderList from "./pages/orderList/OrderList";
+import ButtonEditPage from "./pages/buttonEdit/ButtonEditPage";
+import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
 import './App.css';
 
 
 function App () {
     const [headerImage, setHeaderImage] = useState(headerImg);
     const [pageTitle, setPageTitle] = useState();
-
 
     const Wrapper = ({ children }) => {
         const location = useLocation();
@@ -45,19 +52,21 @@ function App () {
 
     return (
 
-
         <Wrapper>
-
-
             <div className="container">
-                <div className="inner-container__reusable default-area-padding default-text-restrict">
+                <div className="inner-container__reusable default-text-restrict">
 
                     <Header headerImage={headerImage} pageTitle={pageTitle}/>
 
-
                     <Routes>
                         <Route path="/"
-                               element={<Homepage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+                               element={<HomePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/cannoli"
+                               element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/cannoli-assorti"
+                               element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannolisnack"
                                element={<CannoliSnack headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -67,6 +76,9 @@ function App () {
 
                         <Route path="/cannolivegan"
                                element={<CannoliVegan headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/counter"
+                               element={<Counter headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/giftbox"
                                element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
@@ -107,25 +119,39 @@ function App () {
                         <Route path="/404/"
                                element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/wholesale/:id"
-                               element={<Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+                        <Route path="/cannolis/image/:cannoli_id"
+                             element={<ImageCannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/cannolis/info/:cannoli_id"
+                               element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/profile"
+                               element={<PrivateRoute><ProfilePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cannolis-add/"
-                               element={<PrivateRoute><Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/user-view/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
-                        <Route path="/checkout/"
-                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/checkout"
+                              element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
-                               element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
-                        <Route exact path="/users/:user_id"
-                               element={<PrivateRoute><InfoForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/deliveryRequests/:deliveryRequest_id"
+                               element={<PrivateRoute><OrderListComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
-                    </Routes>
+                        <Route path="/deliveryRequests"
+                               element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+
+                        <Route path="/button-edit"
+                               element={<PrivateRoute><ButtonEditPage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+
+                        <Route exact path="/userform/:user_id"
+                               element={<PrivateRoute><UserForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        </Routes>
                     <Footer/>
                 </div>
             </div>

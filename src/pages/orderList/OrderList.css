@@ -1,0 +1,68 @@
+.orderlist-container {
+    display: flex;
+    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;;
+    margin: 2rem 2rem 2rem 2rem;
+    padding: 2em 2em 5em 2em;
+    text-align: center;
+    flex-direction: column;
+    height: auto;
+
+    justify-content: center;
+}
+
+.orderlist-container h4 {
+    color: red;
+    font-weight: bold;
+}
+
+.orderlist-container table  {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.orderlist-container th {
+    background-color: white;
+    text-align: center;
+}
+
+.orderlist-deliver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.orderlist-deliver i {
+    color: red;
+}
+
+.orderlist-page-menu {
+    color: black;
+    background-color: transparent;
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 6px 1px;
+    border-radius: 0.5rem;
+    align-items: center;
+    transform: scale(0.8);
+    z-index: 500;
+}
+
+
+.orderlist-page-menu:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    transform: scale(1.0);
+    z-index: 500;
+}
+
+
+.deliveryRequest_list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+

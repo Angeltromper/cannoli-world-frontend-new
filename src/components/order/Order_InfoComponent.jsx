@@ -1,54 +1,65 @@
-import React, from 'react';
-import './OrderInfo.css'
+import React,{useState} from 'react';
+import './Order_InfoComponent.css';
 
+function Order_InfoComponent({id, cannoliList, status, comment, applier}) {
+    const [cannolis, setCannolis] = useState([cannoliList]);
+    const [products, setProduct] = useState([Object.values(cannolis[0])]);
 
-function OrderInfo({cannoliList, id, status, comments, user}) {
-    const [cannolis, setCannolis] = React.useState([cannoliList]);
-    const [products, setProduct] = React.useState([Object.values(cannolis[0])]);
+    return (
+        <div className="orderinfoComponent-container">
+            <span className="orderinfoComponent">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Ordernummer:</th>
+                        <th>Status</th>
+                        <th>Naam</th>
+                        <th>Achternaam</th>
+                        <th>Adres</th>
+                    </tr>
+                    </thead>
 
-return (
-    <>
-        <div className="orderinfo-container">
-            <span className="orderinfo">
-                <span className="orderinfo-id"><h2>Ordernummer: {id} </h2></span>
-                <span> <h4><i>Status: {status} </i></h4> </span>
+                    <tbody className="orderinfoComponent_body">
+                    <tr>
+                        <td>
+                           {id}
+                        </td>
+
+                        <td>
+                            {status}
+                        </td>
+
+                        <td>{applier.personFirstname}</td> <td>{applier.personLastname}</td>
+                        <td>{applier.personStreetName} {applier.personHouseNumber} {applier.personHouseNumberAdd} <br/>{applier.personZipcode} {applier.personCity}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </span>
             <br/>
 
-            <span className="orderinfo-user">
-                Persoongegevens:
-                <h4>{user.personFirstname} {user.personLastname}</h4>
-                <h4>{user.personStreetName} {user.personHouseNumber}</h4>
-                <h4>{user.personHouseNumberAdd} {user.personLastname}</h4>
-                <h4>{user.personZipcode} {user.personCity}</h4>
-            </span>
+            <span className= "orderinfoComponent-cannolis">
+                <h5>Cannolis:</h5>
 
-            <br/>
-
-            <span className="orderinfo-comments">
-                Opmerkingen:
-                <h4>{comments}</h4>
-            </span>
-
-            <br/>
-
-            <span className="orderlist-producten">
-                Producten:
-                <ul>
-                    {products.map((producten) => {
+                    {products.map((product) => {
                         return (
-                            producten.map ((product, index) => {
-
+                            product.map ((product1, index) => {
                                 return (
-                                    <li key={ index }>
-                                        <h4> {product.replaceAll("-", "").replaceAll("-", "")} </h4>
-                                    </li>
+                                    <ul key={ index }>
+                                        {product1.replaceAll("-", "").replaceAll("-", " ")}
+                                    </ul>
                                 )
                             }))
                     })}
-                </ul>
+            </span>
+            <br/>
+
+            <span className="orderinfoComponent-comments">
+                <h5>Opmerking:</h5>
+                {comment}
             </span>
         </div>
-    </>
-);
+    );
 }
+
+export default Order_InfoComponent;
+

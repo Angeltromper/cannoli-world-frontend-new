@@ -29,7 +29,7 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
     const message = "..veld is verplicht";
     const navigate= useNavigate();
 
-    const [cannoliListLong, setCannoliListLong] = useState([])
+    const [cannoliListLong, setCannoliList] = useState([])
 
     useEffect(() => {
         headerImageHandler(pageImg);
@@ -38,7 +38,7 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
 
     useEffect(() => {
-        setCannoliListLong (cart.map (cannoli => {
+        setCannoliList (cart.map (cannoli => {
             return cannoli.artikelnummer
         }))
     }, [cart])

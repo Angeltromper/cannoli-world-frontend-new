@@ -1,30 +1,15 @@
-/*
-import React, {useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
-import Button from "./../../components/button/Button";
-import './Order_ListComponent.css';
+import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
+import './OrderList.css';
 
-function OrderListpage() {
+function OrderList() {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+    const {user: {username}} = useContext(AuthContext);
     const [deliveryRequests, setDeliveryRequests] = useState([]);
-
-
-    async function deleteDeliveryRequest(id) {
-        try {
-            await axios.delete(`http://localhost:8080/deliveryRequests/delete/${id}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    }
-                });
-
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     useEffect(() => {
         async function fetchDeliveryRequest() {
@@ -43,8 +28,22 @@ function OrderListpage() {
             }
         }
 
-        fetchDeliveryRequest().then ();
+        fetchDeliveryRequest();
     }, [deliveryRequests]);
+
+    async function deleteDeliveryRequest(id) {
+        try {
+            await axios.delete(`http://localhost:8080/deliveryRequests/delete/${id}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    }
+                });
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     function redirect(deliveryRequest) {
         navigate(`deliveryRequests/${deliveryRequest}`)
@@ -52,86 +51,68 @@ function OrderListpage() {
 
     return (
         <>
-            <section className="orderlist-container">
+            <TextContainer>
+                <h2>Bestellijst</h2>
+            </TextContainer>
 
-                <h4>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam cum dignissimos labore
-                    quae quo reiciendis repellendus sequi similique unde!
-                </h4>
+            <section className="orderlist-container">
+                
+
+
+                <h4>Overzicht status bestellijst</h4>
+                <h5>Voor meer informatie over bezorging kunt u hier de status bekijken van de voortgang van de bestelling.</h5>
                 <br/>
 
-                <h4><i>
-                    *AVAILABLE = Beschikbaar voor bezorging<br/>
-                    *CONFIRMED = Bestelling opgepakt en bevestigd<br/>
-                    *FINISHED = Bestelling bezorgd en afgehandeld
-                </i></h4>
+                <div className="orderlist-deliver">
+                    <h5><i>*AVAILABLE</i> = De bestelling is beschikbaar voor bezorging.</h5>
+                    <h5><i>*CONFIRMED</i> = De bestelling is ontvangen en wordt verwerkt.</h5>
+                    <h5><i>*FINISHED</i>  = De bestelling is verwerkt en bezorgt.</h5>
+                </div>
+                <br/>
 
-                <section className="orderlist-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Bestelling</th>
+                        <th>Status</th>
+                        <th>ID/Ordernr.</th>
+                        <th>Naam</th>
+                        <th>Achternaam</th>
+                        <th>Adres</th>
+                        <th>Verwijderen</th>
+                    </tr>
+                    </thead>
 
-                    <div>
-                        <h2>
-                            Bestellijst
-                        </h2>
-                    </div>
+                    <tbody className="orderlist_body">
+                            {deliveryRequests && deliveryRequests.map((deliveryRequest, index) => {
+                                return <tr key={ index }>
+                                    <td>
+                                        <div className="orderlist-page-menu"
+                                             onClick={() => navigate(`${deliveryRequest.id}`)}>
+                                            Overzicht
+                                        </div>
+                                    </td>
 
-                    <br/>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>
-                                X
-                            </th>
-                            <th> -</th>
-                            <th>ID/Ordernummer.</th>
-                            <th>Naam</th>
-                            <th>Achternaam</th>
-                            <th>Adres</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
+                                    <td>{ deliveryRequest.status }</td>
+                                    <td>{ deliveryRequest.id }</td>
+                                    <td>{ deliveryRequest.applier.personFirstname } </td> <td>{ deliveryRequest.applier.personLastname }</td>
+                                    <td>{ deliveryRequest.applier.personStreetName } { deliveryRequest.applier.personHouseNumber } { deliveryRequest.applier.personHouseNumberAdd }<br/>
+                                        { deliveryRequest.applier.personZipcode } { deliveryRequest.applier.personCity }</td>
 
-                        <tbody className="orderlist_tbody">
-
-                        {deliveryRequests && deliveryRequests.map((deliveryRequest, index) => {
-                            return <tr key={ index }>
-
-                                <td>
-                                    <div
-                                        onClick={() => deleteDeliveryRequest (deliveryRequest.id) }>
-                                        <Button/>
-                                    </div>
-                                </td>
-
-                                <td>
-                                    <div className="orderlist-page-view"
-                                         onClick={() => redirect (deliveryRequest.id) }>
-                                        Overzicht
-                                    </div>
-
-                                </td>
-                                <td>{ deliveryRequest.id }</td>
-                                <td>{ deliveryRequest.applier.personFirstname }</td>
-                                <td>{ deliveryRequest.applier.personLastname }</td>
-                                <td>{ deliveryRequest.applier.personStreetName } { deliveryRequest.applier.personHouseNumber }
-                                    { deliveryRequest.applier.personHouseNumberAdd }
-                                    <br/>
-                                    <strong> { deliveryRequest.applier.personZipcode } { deliveryRequest.applier.personCity }</strong>
-                                </td>
-                                <td>
-                                    { deliveryRequest.status }
-                                </td>
-                            </tr>
-                        })}
-
-                        </tbody>
-
-                    </table>
-                </section>
+                                    <td>
+                                        <div className="delete-button"
+                                             onClick={() => deleteDeliveryRequest (deliveryRequest.id)}>
+                                            Verwijder
+                                        </div>
+                                    </td>
+                                </tr>
+                            })}
+                    </tbody>
+                </table>
             </section>
-
         </>
-    )
+    );
 }
 
-export default OrderListpage;
-*/
+export default OrderList;
+

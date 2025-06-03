@@ -20,7 +20,7 @@ function Admin_UserComponent() {
             const response = await axios.get("http://localhost:8080/users", {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                 },
             });
             setUsers(response.data);
@@ -34,7 +34,7 @@ function Admin_UserComponent() {
             await axios.delete(`http://localhost:8080/users/delete/${username}`, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
                 },
             });
 

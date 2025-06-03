@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import './Image_CannoliComponent.css';
+import './ImageCannoliComponent.css';
 
 
-export const Image_CannoliComponent = (props) => {
+export const ImageCannoliComponent = (props) => {
     const token = localStorage.getItem('token');
     const {cannoli_id} = useParams();
     const [file, setFile] = useState([]);
@@ -67,4 +67,4 @@ export const Image_CannoliComponent = (props) => {
     );
 }
 
-export default Image_CannoliComponent;
+export default ImageCannoliComponent;

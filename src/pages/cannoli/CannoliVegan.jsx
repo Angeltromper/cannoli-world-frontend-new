@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import pageImg from './../../assets/img.background/background cannoli-vegan.jpg';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
-import './CannoliVegan.css';
 import Card from "../../components/cardMenu/Card";
 import veganpistache from "../../assets/img.cannoli-vegan/Vegan Pistache.png";
 import veganlimoncello from "../../assets/img.cannoli-vegan/Vegan Limoncello.png";
