@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import {useFormContext} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
-import './InfoForm.css';
+import './UserForm.css';
 
 
 function InfoForm({headerImageHandler, pageTitleHandler}) {

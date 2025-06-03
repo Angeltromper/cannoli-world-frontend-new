@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import CannoliImage from "../cannoli/CannoliImage";
-import CannoliInfo from "../cannoli/CannoliInfo";
 import Counter from "../counter/Counter";
 import ShoppingCart from './../../assets/svg/shoppingCart.svg';
 import { AuthContext } from "../../context/AuthContext";

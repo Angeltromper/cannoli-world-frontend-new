@@ -1,0 +1,126 @@
+.cannoli-form-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2rem 3rem;
+    background-color: #fdfdfb;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+.cannoli-form-text {
+    background-color: #f0f8ff;
+    border-left: 6px solid #4caf50;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.cannoli-form-text li {
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.cannoli-form-text p {
+    margin: 0.2rem 0 0.8rem 1rem;
+    font-weight: 400;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+
+.cannoli-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cannoli-form label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.cannoli-form input,
+.cannoli-form select,
+.cannoli-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.cannoli-form input:focus,
+.cannoli-form select:focus,
+.cannoli-form textarea:focus {
+    border-color: #3f51b5;
+    outline: none;
+    background-color: #fcfcff;
+}
+
+
+.cannoli-form p {
+    color: #e53935;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+
+.cannoli-omschrijving {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+
+.cannoli-form-saveButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+
+.admin-info-container {
+    max-width: 700px;
+    margin: 4rem auto;
+    background-color: #fff3f3;
+    border-left: 6px solid #e53935;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    color: #b71c1c;
+    box-shadow: 0 2px 10px rgba(229, 57, 53, 0.1);
+}
+
+.admin-info h3 {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+    .cannoli-form-container {
+        padding: 1.5rem;
+    }
+
+    .cannoli-form-text {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+
+    .cannoli-form input,
+    .cannoli-form textarea,
+    .cannoli-form select {
+        font-size: 0.95rem;
+    }
+
+    .cannoli-form-saveButton {
+        justify-content: center;
+    }
+}

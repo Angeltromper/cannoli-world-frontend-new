@@ -10,7 +10,7 @@ import './CartDeliveryRequest.css'
 
 
 
-function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
+function Cart_DeliveryRequest({headerImageHandler, pageTitleHandler}) {
 
     const {user} = useContext(AuthContext);
     const token = localStorage.getItem('token');
@@ -150,4 +150,4 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
     )
 }
 
-export default CartDeliveryRequest;
+export default Cart_DeliveryRequest;

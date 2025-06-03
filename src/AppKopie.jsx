@@ -25,8 +25,8 @@ import Contact from "./pages/contact/Contact";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import SearchCannoli from "./pages/searchCannoli/SearchCannoli";
 import SearchResult from "./pages/searchResult/SearchResult";
-import Admin_CannoliWholesaleComponent from "./components/admin/Admin_CannoliWholesaleComponent";
-import Admin_CannoliComponent from "./components/admin/Admin_CannoliComponent";
+import Admin_WholesaleEditComponent from "./components/admin/Admin_WholesaleEditComponent";
+import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import Image_CannoliComponent from "./components/image/Image_CannoliComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
@@ -38,7 +38,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import SignOut from "./pages/signOut/SignOut";
 import Wholesale from "./pages/wholesale/Wholesale";
-import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRequest";
+import Cart_DeliveryRequest from "./components/cartDeliveryRequest/Cart_DeliveryRequest";
 import InfoForm from "./components/form/InfoForm"
 import Elements from "./pages/elements/Elements";
 import FourZeroFour from "./pages/404/FourZeroFour";
@@ -165,13 +165,13 @@ function App () {
                                element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/admin-cannoliwholesale/:id"
-                               element={<Admin_CannoliWholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+                               element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannolis/image/:id"
                                element={<Image_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannolis-add/"
-                               element={<PrivateRoute><Admin_CannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/user-view/"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
@@ -180,7 +180,7 @@ function App () {
                                element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cart-instruction/checkout"
-                               element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><Cart_DeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/orderlist/:deliveryRequest_id"
                                element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
