@@ -1,12 +1,13 @@
 .cannoli-editInfoImage {
-    display: flex;
-    background-color: #fff8d7;
-    box-shadow: var(--shadow-color);
-    margin-top: 1em;
-    border: none;
-    width: fit-content;
-    transition: 0.3s;
-}
+        display: flex;
+        background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        margin-top: 1em;
+        border: none;
+        width: fit-content;
+        transition: 0.3s;
+    }
+
 
 .cannoli-editInfoImage {
     background-color: #f8e499;

@@ -1,18 +1,12 @@
 import React, { useContext, useRef } from 'react';
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
-// import Column from "../designElement/column/Column";
-// import TwoColumn from "../designElement/column/TwoColumn";
 import mail from "../../../assets/navIcon/mail.png";
 import phone from "../../../assets/navIcon/phone.png";
 import './Footer.css';
-// import TextContainer from "../designElement/container/textContainer/TextContainer";
-
 
 function Footer() {
 
-    // eslint-disable-next-line no-unused-vars
-    // const refSearch = useRef(null);
     const {isAuth} = useContext(AuthContext);
 
 

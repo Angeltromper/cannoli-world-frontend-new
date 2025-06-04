@@ -65,7 +65,7 @@ function Admin_WholesaleComponent() {
         }
     }
 
-    if (user.roles !== 'ROLE_ADMIN') {
+    { user.roles !== 'ROLE_ADMIN'
         return (
             <div className="admin-route-container">
                 <div className="admin-route">

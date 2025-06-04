@@ -44,13 +44,12 @@
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
     font-size: 16px;
     font-weight: 800;
-    padding: 6px 1px;
+    padding: 6px 2px;
     border-radius: 0.5rem;
     align-items: center;
     transform: scale(0.8);
     z-index: 500;
 }
-
 
 .orderlist-page-menu:hover {
     cursor: pointer;

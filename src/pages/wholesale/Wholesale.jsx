@@ -45,10 +45,6 @@ function Wholesale({headerImageHandler, pageTitleHandler}) {
 
    return(
        <section className="wholesale">
-           <TextContainer>
-               <h1> Cannoli </h1>
-           </TextContainer>
-
            <div className="wholesale-container">
                <section className="wholesale-layout">
                    {cannolis.image ?

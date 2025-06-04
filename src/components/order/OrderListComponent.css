@@ -1,43 +1,67 @@
-.orderlist {
-    display: flex;
-    background-color: #FFFFFF;
-    box-shadow: var(--shadow-color);
-    padding: 1.2rem;
-}
-
-.orderlist-comment {
-    display: flex;
-    flex-direction: column;
-    max-width: 18rem;
-}
-
-
-.orderlist-status-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.order-status-buttons {
-    display: flex;
-    color: white;
-    flex-direction: row;
-}
-
-.orderstatus-buttons button {
-    display: flex;
-    background-color:var(--button-color) ;
-    color: black;
-    font-size: 1.2em;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 10rem;
-    border: none;
-    transition: 0.3s;
-}
-
 .orderlist-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.orderlist-status-update {
+    margin-bottom: 2rem;
+}
+
+.orderlist-status-deliver {
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #333;
+}
+
+.orderlist-status-deliver h5 {
+    margin: 0.3rem 0;
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+.order-status {
     display: flex;
-    padding-top: 2rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.order-status button {
+    background-color: #f8e8bc;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.order-status button:hover {
+    background-color: white;
+}
+
+.orderlist-info-page {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .order-status {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .orderlist-page {
+        padding: 1rem;
+    }
 }

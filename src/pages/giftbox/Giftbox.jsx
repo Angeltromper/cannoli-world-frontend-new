@@ -23,7 +23,6 @@ function Giftbox({headerImageHandler, pageTitleHandler}) {
                         <h1>Cannoli in een mooi geschenkdoos</h1>
                     </TextContainer>
 
-
                     <div>
                         <section id="geschenk" className="geschenk-container">
                             <br/>
@@ -34,8 +33,10 @@ function Giftbox({headerImageHandler, pageTitleHandler}) {
                         </section>
                     </div>
                 </div>
+
                 <img alt="go-up-search-section" src={goUp} onClick={() => HandleRef(refSearch)}
                      className="search-result__go-up-icon"/>
+                <br/>
             </div>
         </div>
     );

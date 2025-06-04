@@ -1,119 +1,89 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {CartContext} from "../../context/CartContext";
-import {RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import { CartContext } from "../../context/CartContext";
+import { RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import './Cart.css'
-
-
+import './Cart.css';
 
 export const Cart = () => {
     const navigate = useNavigate();
-    const [toggleCart, setToggleCart] = useState('');
+    const [toggleCart, setToggleCart] = useState(false);
     const [cart, setCart] = useContext(CartContext);
-    const {auth} = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
 
+    const totalPrice = cart.reduce((acc, item) => acc + item.prijs * item.qty, 0);
 
-    const totalPrice = cart.reduce((acc, cart) => acc + cart.prijs, 0);
-
-    const removeToCart = (index) => {
-        setCart(cart.filter((o, i) => index !== i));
+    const removeFromCart = (id) => {
+        const updatedCart = cart.filter(item => item.id !== id);
+        setCart(updatedCart);
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
     };
 
-    function cart_deliveryRequest() {
-        navigate( '/cart-instruction/checkout')
-    }
+    const goToCheckout = () => {
+        navigate('/cart-instruction/checkout');
+    };
 
     return (
-
-        <div>
-            {/*{auth &&*/}
-
-            <div className="shoppingcart__menu-X">
-
-                <div>
-                    {toggleCart ? <RiCloseLine size={25} onClick={() => setToggleCart(false)}/>
-                        :
-                        <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)}/>
-                    }
-                </div>
-
-
-                {auth &&
-                    <>
-                        € {totalPrice.toFixed(2)}
-                    </>
-                }
-                { toggleCart  && (
-
-                        <div className="shoppingcart-layout">
-                                <h3>Winkelmandje</h3>
-
-                                <button className="shoppingcart-checkout-button"
-                                        onClick={cart_deliveryRequest}>
-                                    Order checkout
-                                </button>
-                            {/*</div>*/}
-
-                            <hr/>
-
-                            <div className="image-animation">
-                                <img src= "https://cdn-icons-png.flaticon.com/512/17911/17911491.png" alt="shoppingbasket"/>
-                            </div>
-
-                            { auth &&
-                                <>
-                                    <div className="shoppingcart-number">
-                                {Object.keys(cart).length}
-                            </div>
-
-                            {cart.map((cannoli,index) => {
-                                    return (
-                                        <ul key={index}>
-
-                                            <div className="shoppingcart-items">
-                                                <div className="shoppingcart-items-right">
-
-                                                    <button
-                                                        className="shoppingcart-button-remove"
-                                                        onClick={() => removeToCart(index)}><RiCloseLine/>
-                                                    </button>
-
-                                                    <div className="shoppingcart-items-name-padding">
-                                                {cannoli.naam}
-                                            </div>
-                                        </div>
-
-
-                                        <div>
-                                            € {cannoli.prijs.toFixed(2)}
-                                        </div>
-
-                                    </div>
-                                </ul>
-                            )
-                        })}
-
-
-                        {cart.length === 0 && <div> Je winkelmandje is nog leeg...</div>}
-                        <br/>
-
-                        {Object.keys(cart).length} cannoli(s)
-
-                        <br/>
-                        <h3><strong> Totaal prijs: € {totalPrice.toFixed(2)} </strong></h3>
-
-                        </> }
-
-                    </div>
+        <div className="shoppingcart__menu-X">
+            <div className="shoppingcart-icon">
+                {toggleCart ? (
+                    <RiCloseLine size={25} onClick={() => setToggleCart(false)} />
+                ) : (
+                    <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)} />
                 )}
-                </div>
-
-            {/*}*/}
-
             </div>
-    )
+
+            {auth && (
+                <span className="cart-total">€ {totalPrice.toFixed(2)}</span>
+            )}
+
+            {toggleCart && auth && (
+                <div className="shoppingcart-layout">
+                    <h3>Winkelmandje</h3>
+
+                    {cart.length === 0 ? (
+                        <p>Je winkelmandje is nog leeg...</p>
+                    ) : (
+                        <>
+                            <div className="shoppingcart-items">
+                                {cart.map((item, index) => (
+                                    <div key={item.id} className="shoppingcart-item">
+                                        <div className="item-info">
+                                            <button
+                                                className="shoppingcart-button-remove"
+                                                onClick={() => removeFromCart(item.id)}
+                                            >
+                                                <RiCloseLine />
+                                            </button>
+                                            <span>{item.qty} × {item.naam}</span>
+                                        </div>
+                                        <div className="item-price">€ {(item.prijs * item.qty).toFixed(2)}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <hr />
+
+                            <div className="shoppingcart-summary">
+                                <p><strong>Totaal: € {totalPrice.toFixed(2)}</strong></p>
+                                <p>{cart.reduce((acc, item) => acc + item.qty, 0)} cannoli(s)</p>
+                            </div>
+
+                            <button
+                                className="shoppingcart-checkout-button"
+                                onClick={goToCheckout}
+                            >
+                                Order afronden
+                            </button>
+                        </>
+                    )}
+                </div>
+            )}
+        </div>
+    );
 };
+
+
 
 
 

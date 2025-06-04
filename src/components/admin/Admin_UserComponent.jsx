@@ -1,112 +1,134 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
-import DeleteIcon from "../../assets/navIcon/delete.png";
 import { useNavigate } from "react-router-dom";
-import "./Admin_UserComponent.css";
-import { AuthContext } from "../../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
+import ButtonDelete from "../button/ButtonDelete";
+import './Admin_UserComponent.css';
+
 
 function Admin_UserComponent() {
-    const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
+    const {user} = useContext(AuthContext);
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
-
-    async function fetchUsers() {
-        try {
-            const response = await axios.get("http://localhost:8080/users", {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
-            setUsers(response.data);
-        } catch (error) {
-            console.error("Er ging iets mis bij het ophalen van gebruikers:", error);
-        }
-    }
-
-    async function deleteUser(username) {
-        try {
-            await axios.delete(`http://localhost:8080/users/delete/${username}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
-
-            setUsers(prevUsers => prevUsers.filter(user => user.username !== username));
-        } catch (error) {
-            console.error(`Fout bij verwijderen gebruiker ${username}:`, error);
-        }
-    }
-
-    if (user.roles !== "ROLE_ADMIN") {
-        return (
-            <div className="admin-info-container">
-                <div className="admin-info">
-                    <h1>
-                        U moet ingelogd zijn als <br />
-                        <strong>ADMINISTRATOR</strong> <br />
-                        om deze content te mogen zien.
-                    </h1>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className="admin-user-page">
-            <section className="admin_UserInfo">
-                <h3>Gebruikersoverzicht</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>ID</th>
-                        <th>Gebruikersnaam</th>
-                        <th>E-mail</th>
-                        <th>Voornaam</th>
-                        <th>Achternaam</th>
-                        <th>Straat</th>
-                        <th>Nr</th>
-                        <th>Toevoeging</th>
-                        <th>Postcode</th>
-                        <th>Woonplaats</th>
-                    </tr>
-                    </thead>
-                    <tbody className="admin-user">
-                    {users.map(user => (
-                        <tr key={user.id}>
-                            <td>
-                                <button
-                                    className="delete-button-user"
-                                    onClick={() => deleteUser(user.username)}
-                                    title="Verwijder gebruiker"
-                                >
-                                    <img src={DeleteIcon} alt="Verwijderen" />
-                                </button>
-                            </td>
-                            <td>{user.id}</td>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.personFirstname}</td>
-                            <td>{user.personLastname}</td>
-                            <td>{user.personStreetName}</td>
-                            <td>{user.personHouseNumber}</td>
-                            <td>{user.personHouseNumberAdd}</td>
-                            <td>{user.personZipcode}</td>
-                            <td>{user.personCity}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </section>
-        </div>
-    );
+function goBack() {
+    navigate(`/profile`);
 }
 
+
+
+useEffect(()=> {
+        async function fetchUsers() {
+            try {
+                const response = await axios.get(`http://localhost:8080/users/all`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`,
+                        }
+                    }
+                );
+                setUsers(response.data)
+
+            } catch (error) {
+                console.error ('There was an error', error);
+            }
+        }
+        fetchUsers();
+    }, [users]);
+
+
+
+async function deleteUser(username) {
+    try {
+        await axios.delete(`http://localhost:8080/users/delete/${username}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    }
+                });
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
+    return (
+        <>
+            {user.roles !== "ROLE_ADMIN" ?
+
+                <div className="admin-route-container">
+                    <div className="admin-route">
+                        <h3>  <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
+                        </h3>
+                    </div>
+                </div>
+                :
+                <div className="admin-user-element">
+                    <section className="Admin_UserComponent">
+                        <div>
+                            <h3> Persoon gegevens: </h3>
+                        </div>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                {/*<th></th>*/}
+
+                                <th>Persoon-ID</th>
+                                <th>Naam</th>
+                                <th>Email</th>
+                                <th>Voornaam:</th>
+                                <th>Achternaam</th>
+                                <th>Straatnaam</th>
+                                <th>Huisnummer</th>
+                                <th>Toevoeging</th>
+                                <th>Postcode</th>
+                                <th>Woonplaats</th>
+                                <th>Verwijderen</th>
+                            </tr>
+                            </thead>
+
+                            <tbody className="admin-tbody">
+
+                            {users.map((user) => {
+                                return <tr key={user.id}>
+
+                                    <td>{user.id}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.email}</td>
+
+                                    <td>{user.person.personFirstname}</td>
+                                    <td>{user.person.personLastname}</td>
+                                    <td>{user.person.personStreetName}</td>
+                                    <td>{user.person.personHouseNumber}</td>
+                                    <td>{user.person.personHouseNumberAdd}</td>
+                                    <td>{user.person.personZipcode}</td>
+                                    <td>{user.person.personCity}</td>
+
+
+                                    <td>
+                                        <div className="delete-button"
+                                             onClick={() => deleteUser(user.username)}>
+                                            <ButtonDelete/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            })}
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            }
+        </>
+    )
+}
+
+
 export default Admin_UserComponent;
+
+

@@ -39,15 +39,11 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
         }
     }
 
-    if (user.roles !== 'ROLE_ADMIN') {
+    { user.roles !== 'ROLE_ADMIN'
         return (
             <div className="admin-info-container">
                 <div className="admin-info">
-                    <h3>
-                        U moet zijn ingelogd als<br />
-                        <strong>ADMINISTRATOR</strong><br />
-                        om dit onderdeel te kunnen gebruiken.
-                    </h3>
+                    <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                 </div>
             </div>
         );

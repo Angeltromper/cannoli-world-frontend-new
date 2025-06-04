@@ -1,77 +1,101 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
 import { FaInfoCircle } from "react-icons/fa";
-import './Cannoli.css';
+import "./Cannoli.css";
 
 export const Cannoli = (props) => {
-
     const navigate = useNavigate();
     const [cart, setCart] = useContext(CartContext);
+    const { auth } = useContext(AuthContext);
 
     const addToCart = () => {
+        if (!auth) {
+            alert("Log eerst in om producten toe te voegen aan je winkelmandje.");
+            return;
+        }
+
         const cannoli = {
-            artikelnummer: props.id,
+            id: props.cannoli_id,
             naam: props.cannoliName,
             prijs: props.cannoliPrice,
-            url: props.url
-        }
+            url: props.url,
+        };
 
-        const exists = cart.find((x) => x.id === cannoli.artikelnummer);
-        if (exists) {
-            setCart(
-                cart.map((x, index) =>
+        setCart((prevCart) => {
+            const exists = prevCart.find((item) => item.id === cannoli.id);
+            let updatedCart;
 
-                    x.id === cannoli.artikelnummer ? {...exists, qty: exists.qty + 1} : x
-                )
-            );
-        } else {
-            setCart([...cart, {...cannoli, qty: 1}]);
-        }
-        localStorage.setItem(cart, JSON.stringify(cart));
+            if (exists) {
+                updatedCart = prevCart.map((item) =>
+                    item.id === cannoli.id ? { ...item, qty: item.qty + 1 } : item
+                );
+            } else {
+                updatedCart = [...prevCart, { ...cannoli, qty: 1 }];
+            }
+
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+        });
     };
 
+    const removeOne = () => {
+        setCart((prevCart) => {
+            const exists = prevCart.find((item) => item.id === props.cannoli_id);
+            if (!exists) return prevCart;
 
-    function redirect() {
-        navigate(`cannolis/${props.cannoli_id}`)
-    }
+            const updatedCart =
+                exists.qty > 1
+                    ? prevCart.map((item) =>
+                        item.id === props.cannoli_id ? { ...item, qty: item.qty - 1 } : item
+                    )
+                    : prevCart.filter((item) => item.id !== props.cannoli_id);
 
-    return(
-        <>
-            <section className="cannoli">
-                <div className="info-cannoli"
-                     onClick={redirect}>
-                    <FaInfoCircle/>
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+        });
+    };
+
+    const removeItem = () => {
+        setCart((prevCart) => {
+            const updatedCart = prevCart.filter((item) => item.id !== props.cannoli_id);
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+        });
+    };
+
+    const redirect = () => {
+        navigate(`/wholesale/${props.cannoli_id}`);
+    };
+
+    return (
+        <article className="cannoli-card">
+            <div className="cannoli-info-icon" onClick={redirect}>
+                <FaInfoCircle />
+            </div>
+
+            <div className="cannoli-image">
+                <img
+                    src={props.url || "/img/placeholder.jpg"}
+                    alt={props.cannoliName}
+                    loading="lazy"
+                />
+            </div>
+
+            <h5 className="cannoli-name">{props.cannoliName}</h5>
+            <p className="cannoli-weight">35gr</p>
+            <p className="cannoli-price">€ {Number(props.cannoliPrice).toFixed(2)}</p>
+
+            {auth && (
+                <div className="cannoli-actions">
+                    <button onClick={removeOne} className="cannoli-remove-one">–</button>
+                    <button onClick={addToCart} className="cannoli-add-one">+</button>
+                    <button onClick={removeItem} className="cannoli-remove-item">🗑</button>
                 </div>
-
-                <div className="ItemCannoli-container">
-                    <div className="plus_cannoli_button_container">
-                        <button type="button"
-                                onClick={addToCart}> +
-                        </button>
-                    </div>
-                </div>
-
-                <div className="ImageCannoli-button-container">
-                    <div className="image-cannoli">
-                        <img alt={props.fileName} src={props.url}/>
-                    </div>
-                </div>
-
-                <span className="PriceCannoli-container">
-                    <span className="cannoli-price">
-                        <p> € {props.cannoliPrice.toFixed(2)} </p>
-                    </span>
-
-                    <span className="cannoli-name">
-                        <h5> {props.cannoliName} </h5>
-                    </span>
-                </span>
-            </section>
-        </>
+            )}
+        </article>
     );
-}
+};
 
 export default Cannoli;
-
-

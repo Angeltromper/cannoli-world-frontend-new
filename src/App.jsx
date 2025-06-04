@@ -149,7 +149,7 @@ function App () {
                         <Route path="/button-edit"
                                element={<PrivateRoute><ButtonEditPage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
-                        <Route exact path="/userform/:user_id"
+                        <Route exact path="/users/:user_id"
                                element={<PrivateRoute><UserForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
                         </Routes>
                     <Footer/>

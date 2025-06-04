@@ -11,7 +11,6 @@ footer {
 
 .footer-container {
     display: flex;
-    /*align-items: center;*/
     flex-direction: column;
 }
 
@@ -58,13 +57,11 @@ footer {
 
 .footer-contact {
     display: flex;
-    /*position: relative;*/
     color: var(--text-light);
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     max-width: 40ch;
-    /*padding: 19rem 2em 0 0;*/
     gap: 1em;
 }
 
@@ -80,31 +77,12 @@ footer {
     max-width: 2.5ch;
 }
 
-/*
-.footer-logo {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    flex-grow: 1;
-    max-width: 20ch;
-}
-*/
-
-/*
-.footer .logo {
-    width: 6em;
-    padding: 1em;
-    transform: rotate(-1.3deg);
-}
-*/
-
 .register-content {
     display: flex;
     padding: 50px 2px;
     margin: 3em 0;
     flex-direction: column;
     align-items: flex-start;
-
 }
 
 .register-subtitle {
@@ -119,8 +97,7 @@ footer {
 }
 
 .register-form {
-    /*display: flex;*/
-    max-width: 6ch;
+    max-width: 60ch;
     padding:  0;
     align-items: flex-start;
 }
@@ -129,25 +106,10 @@ footer {
     display: flex;
     background-color: var(--text-intro-white);
     font-size: 1em;
-    padding: 10px 35px;
+    padding: 20px 35px;
     margin-bottom:  1em;
 }
 
-/*
-.register-btn {
-    background-color: var(--button-color);
-    color: var(--text-intro-white);
-    text-transform: uppercase;
-    padding: 4px 10px;
-    margin: 1.5em 0 4em;
-    border-radius: 14px;
-    font-size: 1em;
-    font-weight: 400;
-    font: var(--font);
-    flex-grow: 2;
-}
-
-*/
 
 hr {
     width: 95%;
@@ -162,13 +124,12 @@ hr {
     font-size: 14px;
     font-weight: 400;
     justify-content: center;
-    padding: 6px;
+    padding:6px;
     width: 10rem;
     align-items: center;
     border-radius: 20px 20px 20px 6px;
     transition: all 200ms ease-in;
 }
-
 
 .footer-bottom  {
     display: flex;
@@ -177,9 +138,6 @@ hr {
     align-items: center;
     padding-bottom: 1rem;
 }
-
-
-
 
 
 @media screen and (max-width: 992px) {
@@ -223,7 +181,6 @@ hr {
     .footer-menu h3 {
         color: var(--text-dark);
         text-transform: uppercase;
-        /*margin: 1em -1em;*/
     }
 
     .footer-menu {
@@ -246,13 +203,11 @@ hr {
 
     .footer-contact {
         display: flex;
-        /*position: relative;*/
         color: var(--text-dark);
         flex-direction: column;
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
         max-width: 40ch;
-        /*padding: 19rem 2em 0 0;*/
         gap: 1em;
     }
 

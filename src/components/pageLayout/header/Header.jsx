@@ -1,9 +1,8 @@
 import React from 'react';
 import Navbar  from "../../navbar/Navbar.jsx";
-import rightColor from "../../../assets/img.header/rightColor.png";
-import leftColor from "../../../assets/img.header/leftColor.png";
-import './Header.css';
 import { Cart } from "../../cart/Cart";
+import './Header.css';
+
 
 
 
@@ -18,11 +17,6 @@ function Header({headerImage, pageTitle}) {
                 </div>
 
                 <Navbar/>
-
-                {/*<div className="color-container">*/}
-                {/*    <figure><img src={ rightColor } alt="right-color" className="right"/></figure>*/}
-                {/*    <figure><img src={ leftColor } alt="left-color" className="left"/></figure>*/}
-                {/*</div>*/}
 
             </header>
 

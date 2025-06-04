@@ -80,6 +80,12 @@ a, a:hover {
   text-decoration: #FF003D;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 
 /*--------------------- 2. Typography ---------------------*/
 
@@ -145,6 +151,34 @@ strong {
   display: flex;
   width: 100%;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+
+.page-content {
+  flex: 1;
+}
+
 
 
 .outer-container__reusable {

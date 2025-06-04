@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
+import pageImg from './../../assets/img.background/background cannolis.jpg';
 import GlutenfreeCannoli from "./GlutenfreeCannoli";
 import SnackCannoli from "./SnackCannoli";
 import VeganCannoli from "./VeganCannoli";
 import './CannoliAssorti.css';
 
 
-
 function CannoliAssorti({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
-        headerImageHandler()
+        headerImageHandler(pageImg)
         pageTitleHandler();
     },[]);
 
@@ -18,9 +18,9 @@ function CannoliAssorti({headerImageHandler, pageTitleHandler}) {
         <>
             <section className="cannoliAssorti-container">
 
-                <GlutenfreeCannoli/>
-
                 <SnackCannoli/>
+
+                <GlutenfreeCannoli/>
 
                 <VeganCannoli/>
 

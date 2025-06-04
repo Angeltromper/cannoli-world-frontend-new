@@ -13,7 +13,7 @@ function ButtonEditImage() {
 
         async function fetchAdmin() {
             try {
-                const response = await axios.get (`http//localhost:8080/users/${username}/`,
+                const response = await axios.get (`http://localhost:8080/users/${username}/`,
                     {
                         headers: {
                             "Content-Type": "application/json",

@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    background-color: #e53935;       /* Fel rood */
+    background-color: #e53935;
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -16,7 +16,7 @@
 }
 
 .button-delete-container:hover {
-    background-color: #c62828;       /* Donkerder rood bij hover */
+    background-color: rgba(255, 0, 0, 0.55);
     transform: scale(1.03);
 }
 
