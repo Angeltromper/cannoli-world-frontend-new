@@ -100,11 +100,6 @@ function OrderListComponent() {
                                 Bevestigen
                             </button>
 
-                             {/*<div className="order-status"*/}
-                             {/*    onClick{() => navigate (`deliveryRequest_id}`)}>*/}
-                             {/*    Bevestigen*/}
-                             {/*</div>*/}
-
                              <button onClick={updateStatusFinished}>
                                  Bezorgt
                              </button>

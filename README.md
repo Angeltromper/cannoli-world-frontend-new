@@ -1,6 +1,6 @@
 ![cannoli-world](src/assets/logo/Logo%20Cannoli.png "cannoli-world logo")
 
-# Cannoli-world webapplicatie/ 2022-2023 / Novi College / Eindopdracht Full Stack Developer
+# Cannoli-world webapplicatie/ 2024-2025 / Novi College / Eindopdracht Full Stack Developer
 Dit is het frontend gedeelte voor mijn webapplicatie "cannoli-world".
 
 ## Inhoudsopgave

@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import {CartContext} from "../../context/CartContext";
 import {AuthContext} from "../../context/AuthContext";
@@ -111,18 +112,6 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
                     </div>
 
                     <br/>
-                    <br/>
-
-                    <div>
-                        <h3>Gebruikersgegevens:</h3>
-                    </div>
-
-                    {firstname} {lastname}  <br/>
-                    {streetName} {houseNumber} {houseNumberAdd} <br/>
-                    {zipcode} {city} <br/>
-
-                    <br/>
-
                     <form className="form-shoppingcart-order"
                           onSubmit={handleSubmit(sendCannoliData)}>
 

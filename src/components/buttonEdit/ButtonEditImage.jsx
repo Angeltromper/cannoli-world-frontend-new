@@ -26,7 +26,7 @@ function ButtonEditImage() {
 
                 setAdminInput(response.data);
 
-                if (response.data.roles?.[0]?.authority === 'ROLE_ADMIN') {
+                if (response.data.roles.authority === 'ROLE_ADMIN') {
                     setIsAdmin(true);
                 } else {
                     setIsAdmin(false);

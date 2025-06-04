@@ -62,21 +62,7 @@
     color: #b85c38;
 }
 
-.cannoli-card__buttonlist {
-    background-color: #1ae216;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: 1rem;
-    transition: background-color 0.3s ease;
-}
 
-.cannoli-card__buttonlist:hover {
-    background-color: #14b512;
-}
 
 @media (max-width: 600px) {
     .cannolis-container {
