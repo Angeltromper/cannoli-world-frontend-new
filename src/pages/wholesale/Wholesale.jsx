@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
-import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import { useParams } from "react-router-dom";
 import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
 import './Wholesale.css';

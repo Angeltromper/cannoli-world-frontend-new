@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react';
 import { CartContext } from "../../context/CartContext";
 import { RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
@@ -12,9 +13,9 @@ export const Cart = () => {
     const { auth } = useContext(AuthContext);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.prijs * item.qty, 0);
-
     const removeFromCart = (id) => {
-        const updatedCart = cart.filter(item => item.id !== id);
+        const updatedCart = cart.filter(item => item.artikelnummer !== id);
+        // const updatedCart = cart.filter(item => item.id !== id);
         setCart(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
     };
@@ -47,7 +48,8 @@ export const Cart = () => {
                         <>
                             <div className="shoppingcart-items">
                                 {cart.map((item, index) => (
-                                    <div key={item.id} className="shoppingcart-item">
+                                    <div key={item.artikelnummer} className="shoppingcart-item">
+                                    {/*<div key={item.id} className="shoppingcart-item">*/}
                                         <div className="item-info">
                                             <button
                                                 className="shoppingcart-button-remove"

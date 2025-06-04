@@ -1,55 +1,54 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import './ButtonEditImage.css'
+import './ButtonEditImage.css';
 
 function ButtonEditImage() {
     const token = localStorage.getItem('token');
-    const {user: {username}} = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
+    const username = authContext?.user?.username;
+
     const [isAdmin, setIsAdmin] = useState(false);
     const [adminInput, setAdminInput] = useState([]);
 
-    useEffect (() => {
+    useEffect(() => {
+        // Stop early if username is not available yet
+        if (!username) return;
 
         async function fetchAdmin() {
             try {
-                const response = await axios.get (`http://localhost:8080/users/${username}/`,
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        }
+                const response = await axios.get(`http://localhost:8080/users/${username}/`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
                     }
-                );
-                setAdminInput (response.data)
+                });
 
-                if (response.data.roles[0].authority === 'ROLE_ADMIN') {
-                    setIsAdmin (true);
+                setAdminInput(response.data);
+
+                if (response.data.roles?.[0]?.authority === 'ROLE_ADMIN') {
+                    setIsAdmin(true);
                 } else {
-                    setIsAdmin (false);
+                    setIsAdmin(false);
                 }
 
             } catch (error) {
-                console.error ('There was an error!', error);
+                console.error('There was an error fetching admin data:', error);
             }
         }
 
-        fetchAdmin ();
-    }, [isAdmin, token]);
+        fetchAdmin();
+    }, [username, token]);
 
     return (
         <>
-
-            {isAdmin &&
+            {isAdmin && (
                 <button className="cannoli-editInfoImage">
                     Wijzig Afbeelding
                 </button>
-            }
+            )}
         </>
     );
 }
+
 export default ButtonEditImage;
-
-
-
-

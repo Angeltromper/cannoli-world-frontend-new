@@ -1,4 +1,30 @@
-.orderinfo-container {
-    display: flex;
-    margin: var(--margin);
+.cannoli-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    background-color: #fff8f0;
+    border: 1px solid #d2b48c;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.cannoli-table th {
+    background-color: #f5e1c8;
+    color: #5a3e1b;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #d2b48c;
+}
+
+.cannoli-table td {
+    padding: 10px;
+    color: #3d2b1f;
+    border-bottom: 1px solid #eee2d1;
+}
+
+.cannoli-table tr:last-child td {
+    border-bottom: none;
 }

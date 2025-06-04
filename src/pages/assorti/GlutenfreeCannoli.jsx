@@ -30,7 +30,7 @@ function GlutenfreeCannoli() {
                             url={cannoli.image?.url}
                             cannoli_id={cannoli.id}
                             cannoliName={cannoli.cannoliName}
-                            cannoliPrice={cannoli.cannoliPrice}
+                            cannoliPrice={cannoli.price}
                         />
                     ))}
             </div>

@@ -1,9 +1,10 @@
+/*
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import ButtonEditCannoli from "../buttonEdit/ButtonEditCannoli";
-import Counter1 from "../counter/Counter";
+import Counter1 from "../counter/Counter1";
 import ButtonEditImage from "../buttonEdit/ButtonEditImage";
 import ShoppingCart from './../../assets/svg/shoppingCart.svg';
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
@@ -12,7 +13,7 @@ import Column from "../pageLayout/designElement/column/Column";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import './WholesaleInfo.css';
 
-export const WholesaleInfo = (props) => {
+export const WholesaleInfo1 = (props) => {
     const navigate = useNavigate();
     const [cart, setCart] = useContext(CartContext);
     const [cannoliProduct, setCannoliProduct] = useState(0);
@@ -20,47 +21,17 @@ export const WholesaleInfo = (props) => {
     const { auth } = useContext(AuthContext);
 
     const addToCart = () => {
-        const existing = cart.find(item => item.artikelnummer === props.cannoli_id);
-
-        if (existing) {
-            const updatedCart = cart.map(item =>
-                item.artikelnummer === props.cannoli_id
-                    ? { ...item, qty: item.qty + 1 }
-                    : item
-            );
-            setCart(updatedCart);
-        } else {
-            const cannoli = {
-                artikelnummer: props.cannoli_id,
-                naam: props.cannoliName,
-                prijs: Number(props.cannoliPrice),
-                url: props.url,
-                qty: 1
-            };
-            setCart(prev => [...prev, cannoli]);
-        }
-
-        setCannoliProduct(prev => prev + 1);
+        const cannoli = {
+            artikelnummer: props.cannoli_id,
+            naam: props.cannoliName,
+            prijs: props.cannoliPrice,
+            url: props.url
+        };
+        setCart(curr => [...curr, cannoli]);
     };
 
     const removeFromCart = () => {
-        const existing = cart.find(item => item.artikelnummer === props.cannoli_id);
-        if (!existing) return;
-
-        if (existing.qty > 1) {
-            const updatedCart = cart.map(item =>
-                item.artikelnummer === props.cannoli_id
-                    ? { ...item, qty: item.qty - 1 }
-                    : item
-            );
-            setCart(updatedCart);
-        } else {
-            const updatedCart = cart.filter(item => item.artikelnummer !== props.cannoli_id);
-            setCart(updatedCart);
-            setToggleCount(false); // Verberg counter als item is verwijderd
-        }
-
-        setCannoliProduct(prev => Math.max(prev - 1, 0));
+        setCart(cart.filter((_, i) => cannoliProduct !== i));
     };
 
     const addImage = () => {
@@ -82,7 +53,7 @@ export const WholesaleInfo = (props) => {
                 <TwoColumn>
                     <Column>
                         <div className="cannoli-info-description">
-                            <img src={props.url || "/img/placeholder.jpg"} alt={props.fileName || "Cannoli"} />
+                            <img src={props.url} alt={props.fileName} />
                         </div>
                     </Column>
 
@@ -93,7 +64,7 @@ export const WholesaleInfo = (props) => {
 
                         {auth && (
                             <>
-                                <h2>€ {Number(props.cannoliPrice).toFixed(2)}</h2>
+                                <h2>€ {props.cannoliPrice}</h2>
                                 <h5>p.st (groothandelsprijs)</h5>
                             </>
                         )}
@@ -102,7 +73,7 @@ export const WholesaleInfo = (props) => {
 
                         <div className="cannoli-count-info">
                             {cannoliProduct >= 1 ? (
-                                <></>
+                                <div onClick={() => setCannoliProduct(1)}></div>
                             ) : (
                                 <button className="button-added" onClick={() => setToggleCount(true)}>
                                     <img src={ShoppingCart} alt="toevoegen" />
@@ -148,5 +119,5 @@ export const WholesaleInfo = (props) => {
     );
 };
 
-export default WholesaleInfo;
-
+export default WholesaleInfo1;
+*/

@@ -1,32 +1,45 @@
-import React, { useContext, useState } from 'react';
+
+import React from 'react';
 import ButtonCount from "../button/ButtonCount";
 
-
-function Counter ({setCannoliCount, cannoliCount, addToCart, removeFromCart}) {
+function Counter({ setCannoliCount, cannoliCount, addToCart, removeFromCart }) {
 
     function handleAddToCart() {
-       addToCart && addToCart();
-       setCannoliCount(cannoliCount +1)
+        if (addToCart) {
+            addToCart();
+        }
+        setCannoliCount(cannoliCount + 1);
     }
 
-   function handleRemoveFromCart()  {
-       setCannoliCount(cannoliCount -1)
-       removeFromCart && removeFromCart(cannoliCount);
-     };
+    function handleRemoveFromCart() {
+        if (cannoliCount > 0) {
+            if (removeFromCart) {
+                removeFromCart();
+            }
+            setCannoliCount(cannoliCount - 1);
+        }
+    }
 
     return (
-        <>
-            <ButtonCount type="button" disabled={cannoliCount === 0} clickHandler={ handleRemoveFromCart}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <ButtonCount
+                type="button"
+                disabled={cannoliCount === 0}
+                clickHandler={handleRemoveFromCart}
+            >
                 -
             </ButtonCount>
 
-            <p>{cannoliCount}</p>
-            <ButtonCount type="button" clickHandler={handleAddToCart}>
+            <p style={{ margin: 0 }}>{cannoliCount}</p>
+
+            <ButtonCount
+                type="button"
+                clickHandler={handleAddToCart}
+            >
                 +
             </ButtonCount>
-        </>
-    )
+        </div>
+    );
 }
 
 export default Counter;
-

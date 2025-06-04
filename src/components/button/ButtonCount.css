@@ -6,3 +6,24 @@
     margin: 0 8px 2px 5px;
 }
 
+.button-count {
+    background-color: #1AE216;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-count:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.button-count:hover:not(:disabled) {
+    background-color: #14b214;
+}
+

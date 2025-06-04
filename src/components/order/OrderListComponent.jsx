@@ -5,7 +5,6 @@ import TextContainer from "../pageLayout/designElement/container/textContainer/T
 import Order_InfoComponent from "./Order_InfoComponent";
 import './OrderListComponent.css';
 
-
 function OrderListComponent() {
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
@@ -14,7 +13,6 @@ function OrderListComponent() {
 
     useEffect(() => {
         async function fetchDeliveryRequest() {
-          console.log(deliveryRequest_id);
             try {
                 const response = await axios.get (`http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
                     {
@@ -96,9 +94,6 @@ function OrderListComponent() {
 
                          <br/>
                          <br/>
-
-
-
 
                          <div className="order-status">
                              <button onClick={updateStatusConfirmed}>

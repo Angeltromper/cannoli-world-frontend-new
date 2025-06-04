@@ -14,7 +14,7 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
     const token = localStorage.getItem('token');
 
     const [cart] = useContext(CartContext);
-    const totalPrice = cart.reduce((acc, cart) => acc + cart.prijs, 0);
+    const totalPrice = cart.reduce((acc, item) => acc + (item.prijs * item.qty), 0);
 
     const [comment, setComment] = useState('');
     const {firstname} = useState(user.person_firstname);
@@ -37,13 +37,15 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
     }, []);
 
 
-    useEffect(() => {
-        setCannoliList (cart.map (cannoli => {
-            return cannoli.artikelnummer
-        }))
-    }, [cart])
+        useEffect(() => {
+            const expandedList = cart.flatMap(item =>
+                Array(item.qty).fill(item.artikelnummer)
+            );
+            setCannoliList(expandedList);
+        }, [cart]);
 
-    async function sendCannoliData(e) {
+
+        async function sendCannoliData(e) {
         try {
             await axios.post (
                 `http://localhost:8080/deliveryRequests/create`,
