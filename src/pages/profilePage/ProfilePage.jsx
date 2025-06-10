@@ -25,8 +25,8 @@ function ProfilePage({headerImageHandler, pageTitleHandler}) {
         navigate(`/user-view/`)
     }
 
-    function addCannolis() {
-        navigate(`/cannolis-add/`)
+    function editCannolis() {
+        navigate(`/cannolis-toevoegen/`)
     }
 
     useEffect(()=> {
@@ -43,12 +43,11 @@ function ProfilePage({headerImageHandler, pageTitleHandler}) {
                 );
                 setAdminInput (response.data)
 
-                 if (response.data.roles.authority === 'ROLE_ADMIN') {
-                     setIsAdmin (true)
-                 } else {
-                     setIsAdmin (false)
-                 }
-
+                if (response.data.roles[0].authority === 'ROLE_ADMIN') {
+                    setIsAdmin (true)
+                } else {
+                    setIsAdmin (false)
+                }
             } catch (error) {
                 console.error ('There was an error', error);
             }
@@ -74,15 +73,16 @@ function ProfilePage({headerImageHandler, pageTitleHandler}) {
             </div>
 
             { isAdmin &&
-                <div className="admin-buttons">
-                    <button className="admin-button" onClick={() => navigate('/cannolis-add/')}>
-                        Producten Toevoegen
-                    </button>
-                    <button className="admin-button" onClick={() => navigate('/user-view/')}>
-                        Gebruikers Bekijken
-                    </button>
-                </div>
+                <div className="profile-info">
 
+                    <div className="profile-info-button"
+                         onClick={ editUsers }>Gegevens bekijken/wijzigen
+                    </div>
+
+                    <div className="profile-info-button"
+                         onClick={ editCannolis }>Cannolis toevoegen/aanpassen
+                    </div>
+                </div>
             }
 
         </>
