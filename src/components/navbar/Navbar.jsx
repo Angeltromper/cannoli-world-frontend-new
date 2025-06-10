@@ -1,97 +1,77 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import logo from '../../assets/logo/Logo Cannoli.png';
-import { AuthContext } from '../../context/AuthContext';
-import { RiCloseLine, RiMenu3Line } from 'react-icons/ri';
-import signout from '../../assets/svg/signout.svg';
-import user from '../../assets/svg/user.svg';
-import './../pageLayout/header/Header.css';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo/Logo.svg';
 import './Navbar.css';
+import { RiCloseLine } from "react-icons/ri";
 
-function Navbar() {
-    const { logout, auth } = useContext(AuthContext);
+const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-    const navigate = useNavigate();
 
     useEffect(() => {
-        const handleResize = () => {
-            setScreenWidth(window.innerWidth);
-        };
+        const handleResize = () => setScreenWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleLogin = (actie) => {
-        if (actie === 'uitloggen') {
-            logout();
-            navigate('/');
-        } else {
-            navigate('/login');
-        }
+    const handleToggleMenu = () => {
+        setToggleMenu(!toggleMenu);
     };
 
-    const navLinks = [
-        { to: '/', label: 'Home' },
-        { to: '/cannoli', label: 'Cannoli' },
-        { to: '/giftbox', label: 'Giftbox' },
-        { to: '/service', label: 'Service' },
-        { to: '/franchise', label: 'Franchise' },
-        { to: '/contact', label: 'Contact' },
-        ...(auth ? [{ to: '/cart-instruction/checkout', label: 'Online Bestellen' }] : [])
-    ];
-
     return (
-        <nav className="navbar__main-container">
-            <div className="navbar__menu-X">
-                {toggleMenu ? (
-                    <RiCloseLine size={30} onClick={() => setToggleMenu(false)} />
-                ) : (
-                    <RiMenu3Line size={30} onClick={() => setToggleMenu(true)} />
-                )}
-
-                {(toggleMenu || screenWidth > 990) && (
-                    <div className="navbar-menu slide-side">
-                        {navLinks.slice(0, 3).map(link => (
-                            <NavLink
-                                key={link.to}
-                                to={link.to}
-                                className={({ isActive }) => isActive ? 'active-link' : ''}
-                            >
-                                {link.label}
-                            </NavLink>
-                        ))}
-
-                        <NavLink to="/logo" className="navbar-logo">
-                            <figure><img src={logo} alt="Cannoli World logo" className="logo" /></figure>
-                        </NavLink>
-
-                        {navLinks.slice(3).map(link => (
-                            <NavLink
-                                key={link.to}
-                                to={link.to}
-                                className={({ isActive }) => isActive ? 'active-link' : ''}
-                            >
-                                {link.label}
-                            </NavLink>
-                        ))}
-                    </div>
-                )}
-
-                <div className="navbar-inlog-menu">
-                    {auth ? (
-                        <button className="logout-menu" onClick={() => handleLogin('uitloggen')}>
-                            <img src={signout} alt="Uitloggen" /> Uitloggen
-                        </button>
+        <nav className="navbar">
+            {/* Hamburger linksboven bij mobiel */}
+            {screenWidth <= 990 && (
+                <div className="navbar-hamburger" onClick={handleToggleMenu}>
+                    {toggleMenu ? (
+                        <RiCloseLine size={30} color="black" />
                     ) : (
-                        <button className="login-menu" onClick={() => handleLogin('inloggen')}>
-                            <img src={user} alt="Inloggen" /> Inloggen
-                        </button>
+                        <div className="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     )}
                 </div>
-            </div>
+            )}
+
+            {/* Drawer menu - uitschuivend */}
+            {screenWidth <= 990 && (
+                <div className={`navbar-drawer ${toggleMenu ? 'open' : ''}`}>
+                    <ul className="navbar-links">
+                        <li><NavLink to="/" onClick={() => setToggleMenu(false)}>Home</NavLink></li>
+                        <li><NavLink to="/cannoli" onClick={() => setToggleMenu(false)}>Cannoli</NavLink></li>
+                        <li><NavLink to="/giftbox" onClick={() => setToggleMenu(false)}>Giftbox</NavLink></li>
+
+                        <li className="navbar-logo">
+                            <img src={logo} alt="Logo" />
+                        </li>
+
+                        <li><NavLink to="/service" onClick={() => setToggleMenu(false)}>Service</NavLink></li>
+                        <li><NavLink to="/franchise" onClick={() => setToggleMenu(false)}>Franchise</NavLink></li>
+                        <li><NavLink to="/contact" onClick={() => setToggleMenu(false)}>Contact</NavLink></li>
+                    </ul>
+                </div>
+            )}
+
+            {/* Normale navbar (boven 992px) */}
+            {screenWidth > 990 && (
+                <ul className="navbar-links">
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/cannoli">Cannoli</NavLink></li>
+                    <li><NavLink to="/giftbox">Giftbox</NavLink></li>
+
+                    <li className="navbar-logo">
+                        <img src={logo} alt="Logo" />
+                    </li>
+
+                    <li><NavLink to="/service">Service</NavLink></li>
+                    <li><NavLink to="/franchise">Franchise</NavLink></li>
+                    <li><NavLink to="/contact">Contact</NavLink></li>
+                </ul>
+            )}
         </nav>
     );
-}
+};
 
 export default Navbar;

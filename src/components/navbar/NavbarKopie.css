@@ -1,0 +1,348 @@
+.navbar__main-container {
+
+}
+
+.navbar__main-container a,
+.navbar__main-container a:visited {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.navbar__main-container a:hover {
+    text-decoration: underline;
+    color: var(--figure-color-2);
+    transition: transform 300ms ease-in-out;
+    transform: scale(1.10);
+}
+
+.navbar-menu {
+    display: flex;
+    font-family: var(--second-font), sans-serif;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight);
+    align-items: center;
+    margin-top: 5rem;
+    justify-content: space-evenly;
+    flex-direction: row;
+    z-index: 99;
+}
+
+.logo-wrapper {
+    margin-left: auto;
+}
+
+.logo {
+    max-height: 2.5em;
+}
+
+.navbar__menu a:hover:after {
+    background-color: var(--figure-color-2);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    text-decoration: underline;
+    transition: transform 250ms ease-in-out;
+    transform: scale(1.10);
+}
+
+.navbar__menu a.active:after {
+    background-color: white;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    width: 100%;
+}
+
+
+.navbar__menu .logo {
+    width: 6em;
+}
+
+.search-by-flavour {
+    display: inline-block;
+    background-color: #083e43;
+}
+
+.navbar-inlog-menu {
+    display: flex;
+    align-items: center;
+    /*flex-direction: row;*/
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0 50px;
+    z-index: 99;
+}
+
+.navbar-inlog-menu img {
+    width: 30px;
+    height: 30px;
+
+}
+
+
+.account-menu {
+    display: flex;
+    background: none;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-menu {
+    display: flex;
+    background-color: transparent;
+    font-size: 12px;
+    color: white;
+    margin: 1em 3em;
+    align-items: center;
+    width: 5em;
+}
+
+.logout-menu, .login-menu {
+    display: flex;
+    background: none;
+    color: white;
+    font-weight: bold;
+    border: none;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+}
+
+.login-menu {
+    background-color: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    border-color: transparent;
+    flex-direction: row;
+    align-items: flex-end;
+    color: white;
+    margin: 0.5em 3em;
+    width: 5em;
+}
+
+.navbar__menu-X svg {
+    display: none;
+}
+
+.navbar__menu-X svg {
+    cursor: pointer;
+}
+
+.navbar__inlog-X {
+    cursor: pointer;
+}
+
+.account-menu svg,
+.logout-menu svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+    .navbar__main-container {
+        /*display: flex;*/
+    }
+
+    .navbar__main-container a,
+    .navbar__main-container a:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .navbar__main-container a:hover {
+        text-decoration: none;
+        color: var(--figure-color-1);
+        transition: transform 300ms ease-in-out;
+        transform: scale(1.10);
+    }
+
+    .navbar__inlog-X svg {
+        /*display: flex;*/
+    }
+
+    .navbar__inlog-X {
+        display: flex;
+        right: -12rem;
+        position: absolute;
+    }
+
+    .navbar-menu {
+        display: flex;
+        background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+        font-size: 1.2rem;
+        box-sizing: border-box;
+        min-width: 50vh;
+        min-height: 20vh;
+        top: 0;
+        position: fixed;
+        flex-direction: column;
+
+        z-index: 500;
+    }
+
+    .logo {
+        width: 4em;
+    }
+
+    .navbar__menu-X svg {
+        display: flex;
+        margin: var(--margin);
+        top: -2em;
+        position: relative;
+        z-index: 99;
+    }
+
+
+    .navbar__menu-X {
+
+    }
+
+    .navbar__menu .logo {
+        width: 4em;
+    }
+
+    .navbar-inlog-menu {
+        display: flex;
+        flex-direction: row;
+        margin-top: -7.5em;
+        align-items: center;
+        padding: 0 14px;
+        z-index: 99;
+    }
+
+    .logout-menu {
+        display: flex;
+        color: transparent;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 0.7em 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-menu {
+        display: flex;
+        color: transparent;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 0.7em 0;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+@media screen and (max-width: 740px) {
+
+    .navbar__main-container {
+        /*display: flex;*/
+    }
+
+    .navbar__main-container a,
+    .navbar__main-container a:visited {
+        color: black;
+        text-decoration: none;
+    }
+
+    .navbar__main-container a:hover {
+        text-decoration: none;
+        color: var(--figure-color-1);
+        transition: transform 300ms ease-in-out;
+        transform: scale(1.10);
+    }
+
+    .navbar__inlog-X svg {
+        /*display: flex;*/
+    }
+
+    .navbar__inlog-X {
+        display: flex;
+        right: -12rem;
+        position: absolute;
+    }
+
+    .navbar-menu {
+        display: flex;
+        background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+        box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+        font-size: 1.2rem;
+        box-sizing: border-box;
+        min-width: 50vh;
+        min-height: 30vh;
+        top: 0;
+        position: fixed;
+        flex-direction: column;
+
+        z-index: 500;
+    }
+
+    .logo {
+        width: 4em;
+    }
+
+    .navbar__menu-X svg {
+        display: flex;
+        margin: var(--margin);
+        top: -2em;
+        position: relative;
+        z-index: 99;
+    }
+
+
+    .navbar__menu-X {
+
+    }
+
+
+    .navbar__menu .logo {
+        width: 4em;
+    }
+
+    .navbar-inlog-menu {
+        display: flex;
+        flex-direction: row;
+        margin-top: -7.5em;
+        align-items: center;
+        padding: 0 14px;
+        z-index: 99;
+    }
+
+    .logout-menu {
+        display: flex;
+        color: transparent;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 0.7em 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-menu {
+        display: flex;
+        color: transparent;
+        font-weight: 600;
+        font-size: 12px;
+        margin: 0.7em 0;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

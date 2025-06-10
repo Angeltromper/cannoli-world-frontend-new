@@ -1,4 +1,4 @@
-/*
+
 import { useNavigate } from "react-router-dom";
 import {ReactComponent as UserIcon} from '../../assets/svg/user.svg';
 
@@ -13,14 +13,14 @@ function InlogButton() {
     }
 
     return (
-        <div className="inlog-button"
+        <button className="inlog-button"
              button type="button"
              onClick={ redirect } >
             <UserIcon />
-        </div>
+        </button>
     )
 }
 
 export default InlogButton;
 
-*/
+

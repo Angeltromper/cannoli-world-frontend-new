@@ -17,19 +17,19 @@ export const Cannoli = (props) => {
         }
 
         const cannoli = {
-            id: props.cannoli_id,
+            artikelnummer: props.cannoli_id,
             naam: props.cannoliName,
             prijs: props.cannoliPrice,
             url: props.url,
         };
 
         setCart((prevCart) => {
-            const exists = prevCart.find((item) => item.id === cannoli.id);
+            const exists = prevCart.find((item) => item.id === cannoli.artikelnummer);
             let updatedCart;
 
             if (exists) {
                 updatedCart = prevCart.map((item) =>
-                    item.id === cannoli.id ? { ...item, qty: item.qty + 1 } : item
+                    item.id === cannoli.artikelnummer ? { ...item, qty: item.qty + 1 } : item
                 );
             } else {
                 updatedCart = [...prevCart, { ...cannoli, qty: 1 }];
@@ -77,9 +77,8 @@ export const Cannoli = (props) => {
 
             <div className="cannoli-image">
                 <img
-                    src={props.url || "/img/placeholder.jpg"}
-                    alt={props.cannoliName}
-                    loading="lazy"
+                    src={props.url || "/img/placeholnder.jpg"}
+                    alt={props.fileName}
                 />
             </div>
 

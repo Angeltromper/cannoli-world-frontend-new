@@ -1,42 +1,45 @@
 import React from 'react';
-import Navbar  from "../../navbar/Navbar.jsx";
+import Navbar from "../../navbar/Navbar.jsx";
 import { Cart } from "../../cart/Cart";
+import { AuthContext } from "../../../context/AuthContext";
+import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Header.css';
 
-
-
-
-// eslint-disable-next-line react/prop-types
-function Header({headerImage, pageTitle}) {
+function Header({ headerImage, pageTitle }) {
+    const { auth, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     return (
         <>
             <header className="header">
-                <div className="cartMenu slide-side">
-                    <Cart/>
+                <div className="header-top">
+                    <div className="header-actions">
+                        <Cart />
+                        {auth ? (
+                            <button onClick={logout} className="logout-btn">Uitloggen</button>
+                        ) : (
+                            <button onClick={() => navigate('/login')} className="login-btn">Inloggen</button>
+                        )}
+                    </div>
                 </div>
 
-                <Navbar/>
+                <Navbar />
 
             </header>
 
-
             <div className="header-img-container">
-                <span>
-                    <img src={ headerImage } className="header-img" alt="/"/>
-                </span>
+        <span>
+          <img src={headerImage} className="header-img" alt="/" />
+        </span>
 
                 <div className="page-title">
-                    <h1>{ pageTitle }</h1>
+                    <h1>{pageTitle}</h1>
                 </div>
             </div>
             <div className="skewer--bottom"></div>
-
         </>
     );
 }
 
 export default Header;
-
-
-

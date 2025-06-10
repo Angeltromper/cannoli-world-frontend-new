@@ -1,24 +1,24 @@
-/* Pagina-container */
 .admin-user-page {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;;
+    margin: 2rem 2rem 2rem 2rem;
+    padding: 2em 2em 5em 2em;
+    text-align: center;
+    flex-direction: column;
+    height: auto;
+
+    justify-content: center;
 }
 
-/* Header */
 .admin_UserInfo h3 {
-    font-size: 1.5rem;
-    color: #333;
-    border-bottom: 2px solid #4caf50;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    color: red;
+    font-weight: bold;
+
+
 }
 
-/* Tabel */
 .admin_UserInfo table {
     width: 100%;
     border-collapse: collapse;
@@ -48,7 +48,6 @@
     background-color: #f1f8e9;
 }
 
-/* Delete-button */
 .delete-button-user {
     background-color: transparent;
     border: none;
@@ -66,7 +65,6 @@
     height: 20px;
 }
 
-/* Niet-admin bericht */
 .admin-info-container {
     max-width: 700px;
     margin: 5rem auto;
@@ -85,7 +83,6 @@
     font-weight: 600;
 }
 
-/* Responsive layout */
 @media (max-width: 992px) {
     .admin_UserInfo table {
         font-size: 0.85rem;

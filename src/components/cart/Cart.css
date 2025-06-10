@@ -1,155 +1,106 @@
-.shoppingcart-layout {
-    background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgb(184, 138, 124) 40%, rgb(232, 207, 173) 100%);
-    padding: 24px 20px;
-    margin-top: 12em;
+/* Cart-container rechtsboven (naast buttons) */
+.shoppingcart__menu-X {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    box-sizing: border-box;
-    border-radius: 1.5em;
-    position: fixed;
-    top: 0;
-    right: 2em;
-    z-index: 1000;
-}
-
-.shoppingcart-icon {
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
     cursor: pointer;
 }
 
-.shoppingcart__menu-X {
-    display: flex;
-    color: white;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    height: 13em;
-    padding: 6px 30px;
-    position: relative;
-    z-index: 200;
+
+.shoppingcart-icon svg {
+    color: #fff;
 }
+
 
 .cart-total {
-    margin-left: 1rem;
     font-weight: bold;
+    font-size: 1rem;
 }
 
-.shoppingcart-number {
-    display: flex;
-    background-color: var(--background-color-light-green);
-    color: black;
-    border-radius: 18rem;
-    justify-content: center;
-    align-items: center;
-    width: 1.5rem;
-    height: 1.5rem;
-    position: fixed;
-    transition: 0.3s;
-    margin: -1.8rem 0 0 3.5rem;
-    font-size: 0.9rem;
-    font-weight: bold;
+/* Layout van de uitklapbare cart */
+.shoppingcart-layout {
+    position: absolute;
+    top: 3.5rem; /* Hoogte navbar-topbar */
+    right: 2rem;
+    background: #083e43;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    z-index: 500;
+    min-width: 250px;
+    color: #fff;
+}
+
+.shoppingcart-layout h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: #ffd700;
 }
 
 .shoppingcart-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .shoppingcart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.5rem;
 }
 
 .item-info {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-    color: white;
-}
-
-.item-price {
-    font-weight: bold;
-    color: white;
+    gap: 0.3rem;
 }
 
 .shoppingcart-button-remove {
-    color: #fff;
-    background-color: transparent;
-    border: 1px solid white;
-    padding: 4px 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.shoppingcart-button-remove:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.2);
-}
-
-.shoppingcart-checkout-button {
-    background-color: var(--figure-color-1);
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 1em;
+    background: none;
     border: none;
-    font-weight: bold;
+    color: #fff;
     cursor: pointer;
-    transition: 0.3s;
-    align-self: flex-start;
-    margin: 1rem 0;
 }
 
-.shoppingcart-checkout-button:hover {
-    transform: scale(1.05);
-    background-color: #d4002f;
-}
-
-.image-animation {
-    display: flex;
-    width: 85px;
-    height: 85px;
-    margin-top: 1rem;
+.item-price {
+    font-size: 0.9rem;
 }
 
 .shoppingcart-summary {
-    margin-top: 1rem;
-    color: white;
+    margin: 0.5rem 0;
 }
 
+.shoppingcart-checkout-button {
+    width: 100%;
+    padding: 0.5rem;
+    background: #ffd700;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    color: #083e43;
+    font-weight: bold;
+}
+
+.shoppingcart-checkout-button:hover {
+    background: #fff;
+    color: #083e43;
+}
+
+/*--------------------- Media-queries -----------------*/
+
 @media screen and (max-width: 992px) {
-    .shoppingcart-layout {
-        width: 90%;
-        right: 5%;
-        margin-top: 14em;
+    .shoppingcart__menu-X {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #000000FF;
+        cursor: pointer;
     }
 
-    .shoppingcart__menu-X svg {
-        margin-top: 3.5em;
-        margin-right: -0.5em;
+
+    .shoppingcart-icon svg {
+        color: #000000FF;
     }
 
-    .shoppingcart-number {
-        width: 1.2rem;
-        height: 1.2rem;
-        font-size: 0.75rem;
-        margin: -1.6rem 0 0 2.7rem;
-    }
-
-    .shoppingcart-checkout-button {
-        width: 100%;
-        text-align: center;
-    }
-
-    .image-animation {
-        width: 65px;
-        height: 65px;
-    }
 }

@@ -40,13 +40,11 @@ function AuthContextProvider({children}) {
 
     function logout(e) {
         localStorage.clear ();
-        e.preventDefault ();
         toggleAuth ({
             isAuth: false,
             user: null,
             status: 'done',
         });
-        navigate('/');
     }
 
     async function getData(id, token) {
@@ -64,7 +62,7 @@ function AuthContextProvider({children}) {
                     username: response.data.username,
                     password: response.data.password,
                     userId: response.data.id,
-                    roles: response.data.roles.authority,
+                    roles: response.data.roles[0].authority,
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
