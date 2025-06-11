@@ -44,6 +44,31 @@ header::after {
     align-items: center;
 }
 
+.account-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.account-btn {
+    display: flex;
+    background: none;
+    color: white;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    gap: 0.25rem;
+}
+
+.account-name {
+    color: white;
+    font-weight: 500;
+}
+
+.logout-btn {
+    margin-left: 1rem;
+}
+
 .logout-btn,
 .login-btn {
     background: transparent;
@@ -169,6 +194,27 @@ button, header .btn-text::after {
         z-index:200;
     }
 
+
+    .account-btn {
+        display: flex;
+        background: none;
+        color: black;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        gap: 0.25rem;
+    }
+
+    .account-name {
+        color: black;
+        font-weight: 800;
+    }
+
+
+
+
+
+
     .logout-btn,
     .login-btn {
         background: transparent;
@@ -183,8 +229,4 @@ button, header .btn-text::after {
         color: white;
         text-decoration: underline;
     }
-
-
-
-
 }

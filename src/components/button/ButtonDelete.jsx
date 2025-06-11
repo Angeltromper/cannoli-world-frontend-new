@@ -2,13 +2,15 @@ import React from "react";
 import { Trash2 } from "lucide-react";
 import './ButtonDelete.css';
 
-function ButtonDelete() {
+export default function ButtonDelete({ onClick }) {
     return (
-        <div className="button-delete-container">
-            <Trash2 size={18} />
-            <span>Verwijder</span>
-        </div>
+        <button
+            type="button"
+            className="delete-button"
+            onClick={onClick}
+        >
+            Verwijder
+        </button>
     );
 }
 
-export default ButtonDelete;

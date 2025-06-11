@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    background-color: #e53935;
+    background-color: var(--button-color);
     color: #fff;
     padding: 0.5rem 1rem;
     border: none;
@@ -13,11 +13,13 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 500;
 }
 
 .button-delete-container:hover {
     background-color: rgba(255, 0, 0, 0.55);
     transform: scale(1.03);
+    z-index: 500;
 }
 
 .button-delete-container svg {
@@ -25,8 +27,6 @@
     stroke-width: 2;
     width: 18px;
     height: 18px;
+    z-index: 500;
 }
 
-.button-delete-container span {
-    user-select: none;
-}

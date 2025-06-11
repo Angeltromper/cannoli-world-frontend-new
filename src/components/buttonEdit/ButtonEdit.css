@@ -1,20 +1,19 @@
 .edit-button {
-    display: flex;
-    background-color: #7A7A7A;
-    border-radius: 1.2em;
-    flex-direction: row;
-    margin: 1rem 1rem 3rem 2rem;
-    transition: transform 200ms ease-in-out;
+    background-color: #ffcc66; /* mooie kleur */
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .edit-button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    transition: transform 200ms ease-out;
+    transform: scale(1.05);
+    background-color: #ffb84d; /* iets donkerder bij hover */
 }
 
-.edit-pencil {
-    display: flex;
-    padding: 0;
-    width: 70px;
+.edit-button img {
+    width: 30px;
+    height: auto;
 }

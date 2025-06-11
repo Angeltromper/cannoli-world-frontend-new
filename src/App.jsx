@@ -33,7 +33,7 @@ import UserForm from "./components/form/UserForm"
 import FourZeroFour from "./pages/404/FourZeroFour";
 import OrderListComponent from "./components/order/OrderListComponent";
 import OrderList from "./pages/orderList/OrderList";
-import ButtonEditPage from "./pages/buttonEdit/ButtonEditPage";
+import ButtonEdit from "./components/buttonEdit/ButtonEdit";
 import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
 import './App.css';
 
@@ -147,9 +147,9 @@ function App () {
                                element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/button-edit"
-                               element={<PrivateRoute><ButtonEditPage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                               element={<PrivateRoute><ButtonEdit headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
-                        <Route exact path="/users/:user_id"
+                        <Route exact path="/userform/:user_id"
                                element={<PrivateRoute><UserForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
                         </Routes>
                     <Footer/>

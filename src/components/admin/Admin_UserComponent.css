@@ -1,137 +1,176 @@
-.admin-user-page {
-    display: flex;
-    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
-    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
-    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;;
-    margin: 2rem 2rem 2rem 2rem;
-    padding: 2em 2em 5em 2em;
+.admin-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-info,
+.admin-warning {
     text-align: center;
-    flex-direction: column;
-    height: auto;
-
-    justify-content: center;
+    margin-bottom: 2rem;
 }
 
-.admin_UserInfo h3 {
-    color: red;
-    font-weight: bold;
-
-
+.admin-info h3,
+.admin-warning h3 {
+    color: #a00;
+    font-size: 1.2rem;
+    line-height: 1.4;
 }
 
-.admin_UserInfo table {
+.admin-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.admin-table-container {
+    overflow-x: auto;
+}
+
+.admin-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem;
 }
 
-.admin_UserInfo th,
-.admin_UserInfo td {
-    padding: 0.75rem;
+.admin-table thead {
+    background-color: #a00;
+    color: #fff;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
-.admin_UserInfo th {
-    background-color: #f5f5f5;
+.admin-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.admin-table td span {
+    display: block;
+}
+
+.admin-form-container {
+    margin-top: 2rem;
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
     color: #333;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.85rem;
 }
 
-.admin-user tr:nth-child(even) {
-    background-color: #fafafa;
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-.admin-user tr:hover {
-    background-color: #f1f8e9;
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+    border-color: #a00;
+    outline: none;
 }
 
-.delete-button-user {
-    background-color: transparent;
-    border: none;
+.admin-form p {
+    color: #a00;
+    font-size: 0.875rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.admin-form-instructions {
+    background-color: #f9f2f2;
+    border-left: 4px solid #a00;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.admin-form-instructions ul {
+    margin: 0;
+    padding: 0;
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+.admin-form-saveButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.delete-button {
     cursor: pointer;
-    padding: 0.2rem;
-    transition: transform 0.2s ease;
-}
-
-.delete-button-user:hover {
-    transform: scale(1.15);
-}
-
-.delete-button-user img {
-    width: 20px;
-    height: 20px;
-}
-
-.admin-info-container {
-    max-width: 700px;
-    margin: 5rem auto;
-    background-color: #fff3f3;
-    border-left: 6px solid #e53935;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(229, 57, 53, 0.1);
+    color: #fff;
+    background-color: #a00;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
     text-align: center;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
 }
 
-.admin-info h1 {
-    font-size: 1.2rem;
-    color: #b71c1c;
-    line-height: 1.5;
-    font-weight: 600;
+.delete-button:hover {
+    background-color: #800;
 }
 
-@media (max-width: 992px) {
-    .admin_UserInfo table {
-        font-size: 0.85rem;
-    }
-
-    .admin_UserInfo th,
-    .admin_UserInfo td {
-        padding: 0.5rem;
-    }
+.back-button-container button {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    background-color: #FFDA5B;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
 }
+.back-button-container button:hover {
+    background-color: rgba(255, 218, 91, 0.58);
+}
+
+
+
 
 @media (max-width: 768px) {
-    .admin-user-page {
-        padding: 1.5rem;
-    }
-
-    .admin_UserInfo table,
-    .admin_UserInfo thead,
-    .admin_UserInfo tbody,
-    .admin_UserInfo th,
-    .admin_UserInfo td,
-    .admin_UserInfo tr {
-        display: block;
-    }
-
-    .admin_UserInfo tr {
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 0.75rem;
-    }
-
-    .admin_UserInfo td {
-        text-align: right;
-        padding-left: 50%;
-        position: relative;
-    }
-
-    .admin_UserInfo td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 1rem;
-        top: 0.75rem;
-        font-weight: bold;
-        text-align: left;
-        text-transform: uppercase;
-    }
-
-    .admin_UserInfo th {
+    .admin-table thead {
         display: none;
+    }
+
+    .admin-table tr {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .admin-table td:before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #555;
+    }
+
+    .admin-table td span {
+        display: inline-block;
     }
 }

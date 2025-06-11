@@ -5,6 +5,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
+import { FaUserCircle } from "react-icons/fa";
 
 function Header({ headerImage, pageTitle }) {
     const { auth, logout } = useContext(AuthContext);
@@ -17,7 +18,16 @@ function Header({ headerImage, pageTitle }) {
                     <div className="header-actions">
                         <Cart />
                         {auth ? (
-                            <button onClick={logout} className="logout-btn">Uitloggen</button>
+                            <div className="account-section">
+                                <button
+                                    onClick={() => navigate('/profile')} className="account-btn"
+                                >
+                                    <FaUserCircle size={20}/>
+                                    <span className="account-name">{auth.user?.name || 'Account'}</span>
+                                </button>
+
+                                <button onClick={logout} className="logout-btn">Uitloggen</button>
+                            </div>
                         ) : (
                             <button onClick={() => navigate('/login')} className="login-btn">Inloggen</button>
                         )}
@@ -29,9 +39,7 @@ function Header({ headerImage, pageTitle }) {
             </header>
 
             <div className="header-img-container">
-        <span>
-          <img src={headerImage} className="header-img" alt="/" />
-        </span>
+                <img src={headerImage} className="header-img" alt="/" />
 
                 <div className="page-title">
                     <h1>{pageTitle}</h1>

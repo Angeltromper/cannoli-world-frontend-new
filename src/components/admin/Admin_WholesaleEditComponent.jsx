@@ -5,7 +5,9 @@ import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
 import Button from "../button/Button";
-import './Admin_WholesaleEditComponent.css';
+
+
+
 
 function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) {
     const { id } = useParams();
@@ -39,19 +41,23 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
         }
     }
 
-    { user.roles !== 'ROLE_ADMIN'
-        return (
-            <div className="admin-info-container">
-                <div className="admin-info">
+
+    return (
+        <>
+
+            {user.roles !== 'ROLE_ADMIN' ?
+
+            <div className="admin-container">
+                <div className="admin-warning">
                     <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                 </div>
             </div>
-        );
-    }
+       :
 
-    return (
-        <div className="cannoli-form-container">
-            <div className="cannoli-form-instructions">
+
+
+        <div className="admin-container">
+            <div className="admin-instructions">
                 <ul>
                     <li><strong>Cannoli-product wijzigen:</strong> Gebruik bestaand artikelnummer.</li>
                     <li><strong>Nieuw product:</strong> Laat veld leeg; artikelnummer wordt automatisch aangemaakt.</li>
@@ -59,7 +65,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                 </ul>
             </div>
 
-            <form className="cannoli-form" onSubmit={handleSubmit(sendCannolis)}>
+            <form className="admin-form" onSubmit={handleSubmit(sendCannolis)}>
                 <label>
                     Artikelnummer:
                     <input
@@ -67,7 +73,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         {...register("id", { required: true })}
                         placeholder={id}
                     />
-                    {errors.id && <p>{message}</p>}
+                    {errors.id && <p className="error-message">{message}</p>}
                 </label>
 
                 <label>
@@ -77,7 +83,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         {...register("cannoli_name", { required: true })}
                         placeholder="Cannolinaam"
                     />
-                    {errors.cannoli_name && <p>{errors.cannoli_name.message}</p>}
+                    {errors.cannoli_name && <p className="error-message">{errors.cannoli_name.message}</p>}
                 </label>
 
                 <label>
@@ -88,7 +94,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         <option value="Cannoli Glutenfree">Cannoli Glutenfree</option>
                         <option value="Cannoli Vegan">Cannoli Vegan</option>
                     </select>
-                    {errors.cannoli_type && <p>{errors.cannoli_type.message}</p>}
+                    {errors.cannoli_type && <p className="error-message">{errors.cannoli_type.message}</p>}
                 </label>
 
                 <label>
@@ -98,7 +104,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         {...register("cannoli_description")}
                         placeholder="Bijv. Italiaanse koek gevuld met cremige vulling."
                     />
-                    {errors.cannoli_description && <p>{errors.cannoli_description.message}</p>}
+                    {errors.cannoli_description && <p className="error-message">{errors.cannoli_description.message}</p>}
                 </label>
 
                 <label>
@@ -108,7 +114,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         {...register("cannoli_ingredients")}
                         placeholder="Bijv. Room, suiker, tiramisu-créme..."
                     />
-                    {errors.cannoli_ingredients && <p>{errors.cannoli_ingredients.message}</p>}
+                    {errors.cannoli_ingredients && <p className="error-message">{errors.cannoli_ingredients.message}</p>}
                 </label>
 
                 <label>
@@ -118,14 +124,17 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                         {...register("cannoli_price", { required: true })}
                         placeholder="Bijv. 1.75"
                     />
-                    {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
+                    {errors.cannoli_price && <p className="error-message">{errors.cannoli_price.message}</p>}
                 </label>
 
-                <div className="cannoli-form-saveButton">
+                <div className="admin-form-save-button">
                     <Button />
                 </div>
             </form>
         </div>
+            }
+
+        </>
     );
 }
 

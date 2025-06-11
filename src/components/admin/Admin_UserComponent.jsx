@@ -12,9 +12,9 @@ function Admin_UserComponent() {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
-function goBack() {
-    navigate(`/profile`);
-}
+// function goBack() {
+//     navigate(`/profile`);
+// }
 
 
 
@@ -30,13 +30,12 @@ useEffect(()=> {
                     }
                 );
                 setUsers(response.data)
-
             } catch (error) {
                 console.error ('There was an error', error);
             }
         }
         fetchUsers();
-    }, [users]);
+    }, []);
 
 
 
@@ -49,6 +48,7 @@ async function deleteUser(username) {
                         "Authorization": `Bearer ${token}`,
                     }
                 });
+        setUsers(users.filter(user => user.username !== username));
 
         } catch (error) {
             console.error(error)
@@ -60,15 +60,16 @@ async function deleteUser(username) {
         <>
             {user.roles !== "ROLE_ADMIN" ?
 
-                <div className="admin-route-container">
-                    <div className="admin-route">
-                        <h3>  <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
-                        </h3>
+                <div className="admin-user-warning-container">
+                    <div className="admin-user-warning">
+                        <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                     </div>
                 </div>
-                :
-                <div className="admin-user-element">
-                    <section className="Admin_UserComponent">
+
+                 :
+
+                <div className="admin-user-page">
+                    <section className="Admin_UserComponentContainer">
                         <div>
                             <h3> Persoon gegevens: </h3>
                         </div>
@@ -76,8 +77,6 @@ async function deleteUser(username) {
                         <table>
                             <thead>
                             <tr>
-                                {/*<th></th>*/}
-
                                 <th>Persoon-ID</th>
                                 <th>Naam</th>
                                 <th>Email</th>
@@ -97,21 +96,19 @@ async function deleteUser(username) {
                             {users.map((user) => {
                                 return <tr key={user.id}>
 
-                                    <td>{user.id}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
+                                    <td data-label="Persoon-ID"><span>{user.id}</span></td>
+                                    <td data-label="Naam"><span>{user.username}</span> </td>
+                                    <td data-label="Email"><span>{user.email}</span></td>
 
-                                    <td>{user.person.personFirstname}</td>
-                                    <td>{user.person.personLastname}</td>
-                                    <td>{user.person.personStreetName}</td>
-                                    <td>{user.person.personHouseNumber}</td>
-                                    <td>{user.person.personHouseNumberAdd}</td>
-                                    <td>{user.person.personZipcode}</td>
-                                    <td>{user.person.personCity}</td>
-
-
-                                    <td>
-                                        <div className="delete-button"
+                                    <td data-label="Voornaam"><span>{user.person.personFirstname}</span></td>
+                                    <td data-label="Achternaam"><span>{user.person.personLastname}</span></td>
+                                    <td data-label="Straatnaam"><span>{user.person.personStreetName}</span></td>
+                                    <td data-label="Huisnummer"><span>{user.person.personHouseNumber}</span></td>
+                                    <td data-label="Toevoeging"><span>{user.person.personHouseNumberAdd}</span></td>
+                                    <td data-label="Postcode"><span>{user.person.personZipcode}</span></td>
+                                    <td data-label="Woonplaats"><span>{user.person.personCity}</span></td>
+                                    <td data-label="Verwijderren">
+                                        <div className="admin-user-delete-button"
                                              onClick={() => deleteUser(user.username)}>
                                             <ButtonDelete/>
                                         </div>
