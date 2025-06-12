@@ -85,24 +85,22 @@ function ProfilePage({headerImageHandler, pageTitleHandler}) {
 
             <div className="profile-welcomepage scale-up-hor-left-right">
                 <h5> Op deze pagina kunt u al uw gegevens bekijken.</h5>
-                <h5> U kun producten bestellen en of aanpassen.</h5>
+                <h5> U kunt producten bestellen en of aanpassen.</h5>
             </div>
 
 
             {isAdmin &&
                 <div>
-                    <TextContainer>
-                      <h3>Info Gegevens</h3>
-                    </TextContainer>
-
                     <div className="profile-info-container" >
                             <h5>Voor het bekijken/wijzigen van persoongegevens en het aanpassen/toevoegen van cannoli's.</h5>
                     </div>
 
                     <div className="profile-info">
+
                         <h5>Klikt u op:</h5>
 
                         <div className="profile-info-view"
+
                              onClick={ editUsers }> Persoongegevens
                         </div>
 

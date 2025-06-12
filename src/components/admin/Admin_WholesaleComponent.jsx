@@ -52,6 +52,8 @@ function Admin_WholesaleComponent() {
 
 
     async function deleteCannoli(id) {
+        console.log("Verwijderen:", id);
+
         try {
             await axios.delete(`http://localhost:8080/cannolis/delete/${id}`, {
                 headers: {
@@ -142,7 +144,7 @@ function Admin_WholesaleComponent() {
                                 Prijs:
                                 <input
                                     type="text"
-                                    {...register("cannoli_price", { required: { value: true, message } })}
+                                    {...register("cannoli_price", { required: { value: true, message }})}
                                     placeholder="prijs"
                                 />
                                 {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
@@ -180,9 +182,7 @@ function Admin_WholesaleComponent() {
                                     <td>{cannoli.description}</td>
                                     <td>{cannoli.ingredients}</td>
                                     <td>
-                                        <div className="delete-button" onClick={() => deleteCannoli(cannoli.id)}>
-                                            <ButtonDelete />
-                                        </div>
+                                        <ButtonDelete onClick={() => deleteCannoli(cannoli.id)}/>
                                     </td>
                                 </tr>
                             ))}

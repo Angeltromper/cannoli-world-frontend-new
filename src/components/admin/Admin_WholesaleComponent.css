@@ -119,23 +119,6 @@
     border-radius: 4px;
 }
 
-.delete-button {
-    display: inline-block;
-    background-color: #8b5e3c;
-    color: #fff;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.delete-button:hover {
-    background-color: #6e4a2c;
-}
-
-
 @media (max-width: 768px) {
     .admin-form {
         flex-direction: column;

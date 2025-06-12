@@ -12,11 +12,6 @@ function Admin_UserComponent() {
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
-// function goBack() {
-//     navigate(`/profile`);
-// }
-
-
 
 useEffect(()=> {
         async function fetchUsers() {
@@ -58,6 +53,10 @@ async function deleteUser(username) {
 
     return (
         <>
+
+        {/*if (user?.roles !== "ROLE_ADMIN") */}
+        {/*    return (*/}
+
             {user.roles !== "ROLE_ADMIN" ?
 
                 <div className="admin-user-warning-container">
@@ -78,15 +77,10 @@ async function deleteUser(username) {
                             <thead>
                             <tr>
                                 <th>Persoon-ID</th>
-                                <th>Naam</th>
                                 <th>Email</th>
                                 <th>Voornaam:</th>
                                 <th>Achternaam</th>
-                                <th>Straatnaam</th>
-                                <th>Huisnummer</th>
-                                <th>Toevoeging</th>
-                                <th>Postcode</th>
-                                <th>Woonplaats</th>
+                                <th>Adres</th>
                                 <th>Verwijderen</th>
                             </tr>
                             </thead>
@@ -96,17 +90,14 @@ async function deleteUser(username) {
                             {users.map((user) => {
                                 return <tr key={user.id}>
 
-                                    <td data-label="Persoon-ID"><span>{user.id}</span></td>
-                                    <td data-label="Naam"><span>{user.username}</span> </td>
-                                    <td data-label="Email"><span>{user.email}</span></td>
-
-                                    <td data-label="Voornaam"><span>{user.person.personFirstname}</span></td>
-                                    <td data-label="Achternaam"><span>{user.person.personLastname}</span></td>
-                                    <td data-label="Straatnaam"><span>{user.person.personStreetName}</span></td>
-                                    <td data-label="Huisnummer"><span>{user.person.personHouseNumber}</span></td>
-                                    <td data-label="Toevoeging"><span>{user.person.personHouseNumberAdd}</span></td>
-                                    <td data-label="Postcode"><span>{user.person.personZipcode}</span></td>
-                                    <td data-label="Woonplaats"><span>{user.person.personCity}</span></td>
+                                    <td data-label="Person-ID">{user.id}</td>
+                                    <td data-label="Email">{user.email}</td>
+                                    <td data-label="Voornaam">{user.person.personFirstname}</td>
+                                    <td data-label="Achternaam">{user.person.personLastname}</td>
+                                    <td data-label="Adres">
+                                        {user.person.personStreetName}{user.person.personHouseNumber}{user.person.personHouseNumberAdd}<br/>
+                                        {user.person.personZipcode}{user.person.personCity}
+                                    </td>
                                     <td data-label="Verwijderren">
                                         <div className="admin-user-delete-button"
                                              onClick={() => deleteUser(user.username)}>
