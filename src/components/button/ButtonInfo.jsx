@@ -11,9 +11,9 @@ export function ButtonGroup({children}) {
 }
 
 
-export function ButtonInfo({variation, url, size, children}) {
+export function ButtonInfo({variation, url, size, children, onClick}) {
     return (
-        <Link to={ url } className={ `button button-${ variation } button-${ size }` }>{ children }</Link>
+        <Link to={ url } onClick={onClick} className={ `button button-${ variation } button-${ size }` }>{ children }</Link>
     );
 }
 

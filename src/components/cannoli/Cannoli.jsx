@@ -21,6 +21,7 @@ export const Cannoli = (props) => {
             naam: props.cannoliName,
             prijs: props.cannoliPrice,
             url: props.url,
+            qty: 1
         };
 
         setCart((prevCart) => {
@@ -90,7 +91,6 @@ export const Cannoli = (props) => {
                 <div className="cannoli-actions">
                     <button onClick={removeOne} className="cannoli-remove-one">–</button>
                     <button onClick={addToCart} className="cannoli-add-one">+</button>
-                    <button onClick={removeItem} className="cannoli-remove-item">🗑</button>
                 </div>
             )}
         </article>

@@ -30,7 +30,7 @@ useEffect(()=> {
             }
         }
         fetchUsers();
-    }, []);
+    }, [users]);
 
 
 
@@ -43,20 +43,15 @@ async function deleteUser(username) {
                         "Authorization": `Bearer ${token}`,
                     }
                 });
-        setUsers(users.filter(user => user.username !== username));
 
         } catch (error) {
-            console.error(error)
+            console.error('There was an error!', error);
         }
     }
 
 
     return (
         <>
-
-        {/*if (user?.roles !== "ROLE_ADMIN") */}
-        {/*    return (*/}
-
             {user.roles !== "ROLE_ADMIN" ?
 
                 <div className="admin-user-warning-container">

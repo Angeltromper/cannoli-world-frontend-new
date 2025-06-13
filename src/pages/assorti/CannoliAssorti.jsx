@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import pageImg from './../../assets/img.background/background cannolis.jpg';
-import GlutenfreeCannoli from "./GlutenfreeCannoli";
-import SnackCannoli from "./SnackCannoli";
-import VeganCannoli from "./VeganCannoli";
+import { Link } from "react-router-dom";
 import './CannoliAssorti.css';
+
 
 
 function CannoliAssorti({headerImageHandler, pageTitleHandler}) {
@@ -17,17 +16,14 @@ function CannoliAssorti({headerImageHandler, pageTitleHandler}) {
     return (
         <>
             <section className="cannoliAssorti-container">
-
-                <SnackCannoli/>
-
-                <GlutenfreeCannoli/>
-
-                <VeganCannoli/>
-
+                <div className="cannoli-card-wrapper">
+                    <Link to="/snack-cannoli/assorti"><button>Snack</button></Link>
+                    <Link to="/glutenfree-cannoli/assorti"><button>Glutenfree</button></Link>
+                    <Link to="/vegan-cannoli/assorti"><button>Vegan</button></Link>
+                </div>
             </section>
         </>
     );
-
 }
 
 export default CannoliAssorti;

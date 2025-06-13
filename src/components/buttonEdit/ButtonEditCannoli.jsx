@@ -23,7 +23,7 @@ function ButtonEditCannoli() {
 
                 toggleAdminInput(response.data);
 
-                if (response.data.roles.authority === 'ROLE_ADMIN') {
+                if (response.data.roles[0].authority === 'ROLE_ADMIN') {
                     toggleIsAdmin(true);
                 } else {
                     toggleIsAdmin(false);
@@ -42,9 +42,11 @@ function ButtonEditCannoli() {
     return (
         <>
             {isAdmin && (
-                <button className="cannoli-editInfoCannoli">
-                    Wijzig Product
-                </button>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    <button className="cannoli-editInfoCannoli">
+                        Wijzig Product
+                    </button>
+                </div>
             )}
         </>
     );

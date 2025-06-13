@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
-import { RiCloseLine, RiShoppingBasket2Line } from 'react-icons/ri';
+import { RiCloseLine, RiDeleteBin6Line, RiShoppingBasket2Line } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './Cart.css';
@@ -50,13 +50,14 @@ export const Cart = () => {
                                                 className="shoppingcart-button-remove"
                                                 onClick={() => removeFromCart(item.artikelnummer)}
                                             >
-                                                <RiCloseLine />
                                             </button>
                                             <span>{item.qty} × {item.naam}</span>
                                         </div>
                                         <div className="item-price">
                                             € {(item.prijs * item.qty).toFixed(2)}
                                         </div>
+                                        <RiDeleteBin6Line />
+
                                     </div>
                                 ))}
                             </div>

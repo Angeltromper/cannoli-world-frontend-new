@@ -1,12 +1,14 @@
 .cannoliAssorti-container {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #fffdf7;
-    width: 100%;
+    background-color: #fffdf9;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    text-align: center;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 900px;
 }
 
-
+/*
 .cannolis-container {
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +17,31 @@
     width: 100%;
     padding: 2rem 0;
 }
+*/
+/*
+.cannoli-overview {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+*/
+
+/*
+.cannoli-overview a {
+    text-decoration: none;
+}
+*/
+
+/*
+.cannoli-overview button {
+    background: linear-gradient(135deg, #ff914d, #ffcd38);
+    color: #fff;
+
+}
+*/
+
 
 
 .cannoli-card {

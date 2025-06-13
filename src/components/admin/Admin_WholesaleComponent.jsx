@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import ButtonDelete from "../button/ButtonDelete";
 import './Admin_WholesaleComponent.css';
 
 function Admin_WholesaleComponent() {
+
     const { register, formState: { errors }, handleSubmit } = useFormContext();
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -16,56 +18,66 @@ function Admin_WholesaleComponent() {
     const [cannolis, setCannolis] = useState([]);
     const message = ".. veld is verplicht";
 
-    async function sendCannoliData(data) {
+    async function sendCannoliData(cannolidata) {
         try {
-            await axios.post("http://localhost:8080/cannolis/create", {
-                id: data.cannoli_id,
-                cannoliName: data.cannoli_name,
-                cannoliType: data.cannoli_type,
-                description: data.cannoli_description,
-                ingredients: data.cannoli_ingredients,
-                price: data.cannoli_price
-            });
-            navigate("/cannoli-assorti/");
+            await axios.post("http://localhost:8080/cannolis/create",
+                {
+                    id: cannolidata.cannoli_id,
+                    cannoliName: cannolidata.cannoli_name,
+                    cannoliType: cannolidata.cannoli_type,
+                    description: cannolidata.cannoli_description,
+                    ingredients: cannolidata.cannoli_ingredients,
+                    price: cannolidata.cannoli_price,
+                }).then(addedNewCannoli)
+
         } catch (error) {
             console.error(error);
         }
     }
 
+    function addedNewCannoli() {
+        navigate(`/cannoli-assorti`)
+    }
+
     useEffect(() => {
-        const fetchCannolis = async () => {
+        async function fetchCannolis()   {
             try {
-                const response = await axios.get("http://localhost:8080/cannolis/", {
+                const response = await axios.get(`http://localhost:8080/cannolis`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     }
                 });
                 setCannolis(response.data);
+
             } catch (error) {
-                console.error('Fout bij ophalen:', error);
+                console.error('There was an error', error);
             }
-        };
+        }
 
         fetchCannolis();
-    }, []);
+    }, [cannolis]);
 
 
-    async function deleteCannoli(id) {
-        console.log("Verwijderen:", id);
+    async function deleteCannoli(cannoliName) {
+        console.log("Verwijderen:", cannoliName);
 
         try {
-            await axios.delete(`http://localhost:8080/cannolis/delete/${id}`, {
+            await axios.delete(`http://localhost:8080/cannolis/delete/${cannoliName}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
                 }
             });
-            setTimeout(() => navigate("/cannolis-add/"), 600);
+
         } catch (error) {
             console.error(error);
         }
     }
+
+    setTimeout(() => {
+        navigate(`/cannolis-add/`)
+    }, 600)
 
     return (
         <>
@@ -75,9 +87,7 @@ function Admin_WholesaleComponent() {
                         <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                     </div>
                 </div>
-
                 :
-
                 <section className="admin-container">
                     <TextContainerResp>
                         <h3>Cannoli toevoegen/wijzigen:</h3>
@@ -94,64 +104,90 @@ function Admin_WholesaleComponent() {
 
 
                     <form className="admin-form" onSubmit={handleSubmit(sendCannoliData)}>
-                        <Column>
-                            <label>
+                            <label htmlFor="details-cannoli-name">
                                 Cannolinaam:
                                 <input
                                     type="text"
-                                    {...register("cannoli_name", { required: { value: true, message } })}
+                                    id="cannoli_name"
+                                    {...register("cannoli_name", {
+                                        required: { value: true, message: message }
+                                    })}
                                     placeholder="cannoli-naam"
                                 />
-                                {errors.cannoli_name && <p>{errors.cannoli_name.message}</p>}
                             </label>
+                            {errors.cannoli_name && <p>{errors.cannoli_name.message}</p>}
+                            <br/>
 
-                            <label>
-                                Soort:
-                                <select {...register("cannoli_type", { required: { value: true, message } })}>
-                                    <option value="Cannoli Snack">Cannoli Snack</option>
-                                    <option value="Cannoli Glutenfree">Cannoli Glutenfree</option>
-                                    <option value="Cannoli Vegan">Cannoli Vegan</option>
-                                    <option value="Giftbox">Giftbox</option>
+
+                            <label htmlFor="cannoli-type">
+                                <select
+                                    id="cannoli-type"
+                                    {...register("cannoli_name", {
+                                        required: { value: true, message: message }
+                                    })}
+                                    placeholder="cannoli-soort"
+                                >
+                                    <option value="Snack">
+                                        Snack
+                                    </option>
+                                    <option value="Glutenfree">
+                                        Glutenfree
+                                    </option>
+                                    <option value="Vegan">
+                                        Vegan
+                                    </option>
                                 </select>
-                                {errors.cannoli_type && <p>{errors.cannoli_type.message}</p>}
                             </label>
-                        </Column>
+                            {errors.cannoli_type && <p>{errors.cannoli_type.message}</p>}
+                            <br/>
 
-                        <Column>
-                            <label>
+                            <label htmlFor="details-cannoli-description">
                                 Omschrijving:
                                 <textarea
-                                    rows="5"
-                                    {...register("cannoli_description")}
-                                    placeholder="Omschrijving van de cannoli"
+                                    type="text"
+                                    id="cannoli-description"
+                                    rows="8"
+                                    cols="50"
+                                    {...register("cannoli_description", {
+                                        required: { value: false, message: message }
+                                    })}
+                                    placeholder="Bijv. Italiaanse koek gevuld met cremige vulling."
                                 />
-                                {errors.cannoli_description && <p>{errors.cannoli_description.message}</p>}
                             </label>
+                        {errors.cannoli_description && <p>{errors.cannoli_description.message}</p>}
+                        <br/>
 
-                            <label>
+                        <label htmlFor="details-cannoli-ingredients">
                                 Ingrediënten:
                                 <textarea
-                                    rows="5"
-                                    {...register("cannoli_ingredients")}
-                                    placeholder="Ingrediënten van de cannoli"
-                                />
-                                {errors.cannoli_ingredients && <p>{errors.cannoli_ingredients.message}</p>}
-                            </label>
-                        </Column>
-
-                        <Column>
-                            <label>
-                                Prijs:
-                                <input
                                     type="text"
-                                    {...register("cannoli_price", { required: { value: true, message }})}
-                                    placeholder="prijs"
+                                    id="cannoli-ingredients"
+                                    rows="8"
+                                    cols="50"
+                                    {...register("cannoli_ingredients", {
+                                        required: { value: false, message: message }
+                                    })}
+                                    placeholder="Bijv. Room, suiker, tiramisu-créme..."
                                 />
-                                {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
-                            </label>
+                        </label>
+                        {errors.cannoli_ingredients && <p>{errors.cannoli_ingredients.message}</p>}
+                        <br/>
 
-                            <button type="submit" className="admin-form-savebutton">Opslaan</button>
-                        </Column>
+                        <label htmlFor="details-cannoli-price">
+                            Prijs:
+                            <input
+                                type="text"
+                                id="cannoli_price"
+                                {...register("cannoli_price", {
+                                    required: { value: true, message: message }
+                                })}
+                                placeholder="prijs"
+                            />
+                        </label>
+                        {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
+                    <br/>
+
+                        <button type="submit" className="admin-form-savebutton">Opslaan</button>
                     </form>
 
                     <TextContainerResp>
@@ -190,7 +226,8 @@ function Admin_WholesaleComponent() {
                         </table>
                     </div>
                 </section>
-            }</>
+            }
+            </>
     );
 }
 

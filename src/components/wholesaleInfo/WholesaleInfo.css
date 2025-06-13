@@ -118,10 +118,20 @@ form,
 }
 */
 
+.edit-buttons-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+
+
 .cannoli-count-info {
     display: flex;
-    background-color: var(--button-color);
-    box-shadow: var(--shadow-color);
+    background: linear-gradient(to bottom, #ff7f00, #ffb347);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
     font-size: 14px;
     font-weight: 400;

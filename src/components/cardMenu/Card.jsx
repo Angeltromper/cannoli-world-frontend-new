@@ -5,9 +5,7 @@ import './Card.css';
 
 
 
-function Card({title, content, image, imageAlt, id}) {
-
-
+function Card({title, content, image, imageAlt, id, onMoreInfoClick }) {
     return (
         <div className="card-container">
             <img className="card-image" src={ image } alt={ imageAlt }/>
@@ -17,8 +15,17 @@ function Card({title, content, image, imageAlt, id}) {
                 { content }
             </div>
 
-            <ButtonInfo url={`/wholesale/${id}`} variation="secondary" size="small">Meer informatie</ButtonInfo>
-
+            <ButtonInfo
+                url="#"
+                variation="secondary"
+                size="small"
+                onClick={(e) => {
+                    e.preventDefault();
+                    if (onMoreInfoClick) onMoreInfoClick(title);
+                }}
+            >
+                Meer Informatie
+            </ButtonInfo>
 
             <Link to={'/register'}>
                 <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>

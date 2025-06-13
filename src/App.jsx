@@ -35,8 +35,10 @@ import OrderListComponent from "./components/order/OrderListComponent";
 import OrderList from "./pages/orderList/OrderList";
 import ButtonEdit from "./components/buttonEdit/ButtonEdit";
 import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
+import SnackCannoli from "./pages/assorti/SnackCannoli";
+import GlutenfreeCannoli from "./pages/assorti/GlutenfreeCannoli";
+import VeganCannoli from "./pages/assorti/VeganCannoli";
 import './App.css';
-
 
 function App () {
     const [headerImage, setHeaderImage] = useState(headerImg);
@@ -67,6 +69,15 @@ function App () {
 
                         <Route path="/cannoli-assorti"
                                element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/snack-cannoli/assorti"
+                               element={<SnackCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/glutenfree-cannoli/assorti"
+                               element={<GlutenfreeCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
+
+                        <Route path="/vegan-cannoli/assorti"
+                               element={<VeganCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
                         <Route path="/cannolisnack"
                                element={<CannoliSnack headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>

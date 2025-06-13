@@ -25,9 +25,9 @@
 .cannoli-info-icon {
     position: absolute;
     top: 8px;
-    right: 8px;
+    right: 10px;
     cursor: pointer;
-    color: #999;
+    color: red;
 }
 
 .cannoli-info-icon:hover {
@@ -77,10 +77,6 @@
 
 .cannoli-remove-one {
     background-color: #FFB100;
-}
-
-.cannoli-remove-item {
-    background-color: #FF003D;
 }
 
 .cannoli-actions button:hover {

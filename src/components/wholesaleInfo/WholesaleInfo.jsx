@@ -57,7 +57,7 @@ export const WholesaleInfo = (props) => {
         } else {
             const updatedCart = cart.filter(item => item.artikelnummer !== props.cannoli_id);
             setCart(updatedCart);
-            setToggleCount(false); // Verberg counter als item is verwijderd
+            setToggleCount(false);
         }
 
         setCannoliProduct(prev => Math.max(prev - 1, 0));
@@ -136,12 +136,14 @@ export const WholesaleInfo = (props) => {
                     <h5>{props.cannoliIngredients}</h5>
                 </TextContainerResp>
 
-                <div onClick={addImage}>
-                    <ButtonEditImage />
-                </div>
+                <div className="edit-buttons-row">
+                    <div onClick={addImage}>
+                        <ButtonEditImage />
+                    </div>
 
-                <div onClick={editCannoli}>
-                    <ButtonEditCannoli />
+                    <div onClick={editCannoli}>
+                        <ButtonEditCannoli />
+                    </div>
                 </div>
             </div>
         </section>

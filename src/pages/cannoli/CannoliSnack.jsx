@@ -1,48 +1,86 @@
-import React, { useEffect, useRef } from "react";
-import pageImg from './../../assets/img.background/background cannoli-snack.jpg';
-import snackvanille from "../../assets/img.cannoli-snack/Snack Vanille.png";
-import snacklimoncello from "../../assets/img.cannoli-snack/Snack Limoncello.png";
-import snackamandel from "../../assets/img.cannoli-snack/Snack Mandorla Amandel.png";
+import React, { useEffect, useState, useRef } from "react";
+import pageImg from "./../../assets/img.background/background cannolis.jpg";
+import snackVanille from "./../../assets/img.cannoli-snack/Snack Vanille.png";
+import snackAmandel from "./../../assets/img.cannoli-snack/Snack Amandel.png";
+import snackLimoncello from "./../../assets/img.cannoli-snack/Snack Limoncello.png";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
+import PopupCannoli from "../../components/popupCannoli/PopupCannoli";
 import './CannoliSnack.css';
 
 
-
-function CannoliSnack({headerImageHandler, pageTitleHandler})  {
+function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
+    const [selectedTitle, setSelectedTitle] = useState(null);
+    const [popupVariants, setPopupVariants] = useState([]);
+    const refSearch = useRef(null);
 
     useEffect(() => {
-        headerImageHandler (pageImg);
+        headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 
+    const handleMoreInfo = (title) => {
+        let variants = [];
 
-    const refSearch = useRef(null);
+        switch (title) {
+            case "Vanille":
+                variants = [
+                    { id: 1001, label: "Snack Vanille 35gr"  },
+                    { id: null, label: "Snack Vanille grootverpakking 1200gr (binnenkort beschikbaar)", available: false }
+                ];
+                break;
+            case "Amandel":
+                variants = [
+                    { id: 1002, label: "Snack Amandel 35gr"  },
+                    { id: null, label: "Snack Amandel grootverpakking 1200gr (binnekort beschikbaar)", available: false }
+                ];
+                break;
+            case "Limoncello":
+                variants = [
+                    { id: 1003, label: "Snack Limoncello 35gr" },
+                    { id: null, label: "Snack Limoncello grootverpakking 1200gr (binnekort beschikbaar)", available: false }
+                ];
+                break;
+            default:
+                break;
+        }
+
+        setSelectedTitle(title);
+        setPopupVariants(variants);
+    };
 
     return (
         <div className="cannoli-container">
-
-
             <div>
-                <h2>Cannoli snack</h2>
+                <h2>Snack Cannoli</h2>
             </div>
 
             <div className="cards-snack-container">
-                <Card image={ snackamandel } id={1002} imageAlt="cannoli Amandel" title="Amandel" content="Krokant koekje gevuld met zachte amandel crème"/>
-                <Card image={ snacklimoncello } id={1006} imageAlt="cannoli limoncello" title="Limoncello" content="Krokant koekje gevuld met zachte limoncello crème"/>
-                <Card image={ snackvanille } id={1009}  imageAlt="cannoli vanille" title="Vanille" content="Krokant koekje gevuld met zachte vanille crème"/>
+                <Card image={snackVanille} id={1001} imageAlt="snack vanille" title="Vanille" content="Gevuld met zachte vanille crème" onMoreInfoClick={handleMoreInfo} />
+                <Card image={snackAmandel} id={1002} imageAlt="snack amandel" title="Amandel" content="Gevuld met zachte amandel crème" onMoreInfoClick={handleMoreInfo} />
+                <Card image={snackLimoncello} id={1003} imageAlt="snack limoncello" title="Limoncello" content="Gevuld met zachte limoncello crème" onMoreInfoClick={handleMoreInfo} />
             </div>
 
-            <img alt="go-up-search-section" src={ goUp } onClick={ () => HandleRef (refSearch) }
-                 className="search-result__go-up-icon"/>
+            <img
+                alt="go-up-search-section"
+                src={goUp}
+                onClick={() => HandleRef(refSearch)}
+                className="search-result__go-up-icon"
+            />
+
+            {selectedTitle && (
+                <PopupCannoli
+                    title={selectedTitle}
+                    variants={popupVariants}
+                    onClose={() => setSelectedTitle(null)}
+                />
+            )}
         </div>
     );
 }
 
 export default CannoliSnack;
-
-
 
 
 
