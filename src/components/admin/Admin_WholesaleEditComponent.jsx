@@ -7,8 +7,8 @@ import axios from "axios";
 import Button from "../button/Button";
 
 function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) {
-    const { cannoli_id } = useParams();
     const { user } = useContext(AuthContext);
+    const { cannoli_id } = useParams();
     const { register, formState: { errors }, handleSubmit} = useFormContext();
     const message = "..veld is verplicht";
     const navigate = useNavigate();
@@ -45,13 +45,13 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
 
     return (
         <>
-            {user.roles !== 'ROLE_ADMIN' ?
+            {user.roles !== "ROLE_ADMIN" ?
                 <div className="admin-container">
                     <div className="admin-warning">
                         <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                     </div>
                 </div>
-                :
+                 :
                 <div className="admin-container">
                     <div className="admin-instructions">
                         <ul>
@@ -164,7 +164,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                             <br/>
 
                             <div className="admin-form-save-button">
-                                <Button />
+                                <Button text="Opslaan" type="submit" />
                             </div>
                         </div>
                     </form>

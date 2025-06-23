@@ -18,13 +18,13 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
     const totalPrice = cart.reduce((acc, item) => acc + (item.prijs * item.qty), 0);
 
     const [comment, setComment] = useState('');
-    const {firstname} = useState(user.person_firstname);
-    const {lastname} = useState(user.person_lastname);
-    const {streetName} = useState(user.person_street_name);
-    const {houseNumber} = useState(user.person_house_number);
-    const {houseNumberAdd} = useState(user.person_house_number_add);
-    const {zipcode} = useState(user.person_zipcode);
-    const {city} = useState(user.person_city);
+    const firstname = user.person_firstname;
+    const lastname = user.person_lastname;
+    const streetName = user.person_street_name;
+    const houseNumber = user.person_house_number;
+    const houseNumberAdd = user.person_house_number_add;
+    const zipcode = user.person_zipcode;
+    const city = user.person_city;
 
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "..veld is verplicht";
@@ -110,8 +110,20 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
                        <h5> <Link to={'/users/:user_id'} exact activeClassName='active-link'><strong><em>Klik hier</em></strong>
                            </Link>voor het invullen van uw persoongegevens</h5>
                     </div>
+                    <br/>
+
+
+                    <div>
+                        <h3>Persoongegevens:</h3>
+                    </div>
+
+                    {firstname} {lastname} <br/>
+                    {streetName} {houseNumber} {houseNumberAdd} <br/>
+                    {zipcode} {city} <br/>
 
                     <br/>
+                    <br/>
+
                     <form className="form-shoppingcart-order"
                           onSubmit={handleSubmit(sendCannoliData)}>
 

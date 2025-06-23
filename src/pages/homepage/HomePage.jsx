@@ -31,7 +31,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
     }
 
     return (
-        <homepage className="homepage">
+        <div className="homepage">
             <div className="inner-container__reusable">
                 <div className="search-query__section" ref={refSearch}>
 
@@ -73,7 +73,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                             >
                                 <option disabled value='DEFAULT'>-- choose one option --</option>
                                 <option value="cannolisnack">Cannoli snack</option>
-                                <option value="cannoli-assorti">Cannoli assorti</option>
+                                <option value="snack-cannoli/assorti">Cannoli snack assorti</option>
                             </select>
                         </Column>
 
@@ -88,8 +88,8 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 defaultValue='DEFAULT'
                             >
                                 <option disabled value='DEFAULT'>-- choose one option --</option>
-                                <option value="cannoliglutenfree">Cannoli glutenvrij</option>
-                                <option value="cannoli-assorti">Cannoli assorti</option></select>
+                                <option value="cannoliglutenfree">Cannoli almond</option>
+                                <option value="glutenfree-cannoli/assorti">Cannoli almond assorti</option></select>
                         </Column>
 
                         <Column>
@@ -104,7 +104,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                             >
                                 <option disabled value='DEFAULT'>-- choose one option --</option>
                                 <option value="cannolivegan">Cannoli vegan</option>
-                                <option value="cannoli-assorti">Cannoli assorti</option>
+                                <option value="vegan-cannoli/assorti">Cannoli vegan assorti</option>
                             </select>
                         </Column>
 
@@ -188,7 +188,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                      className="search-result__go-up-icon"/>
                 <br/>
             </div>
-        </homepage>
+        </div>
     );
 }
 

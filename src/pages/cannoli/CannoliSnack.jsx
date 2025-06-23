@@ -23,6 +23,7 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
     const handleMoreInfo = (title) => {
         let variants = [];
 
+
         switch (title) {
             case "Vanille":
                 variants = [
@@ -33,13 +34,13 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
             case "Amandel":
                 variants = [
                     { id: 1002, label: "Snack Amandel 35gr"  },
-                    { id: null, label: "Snack Amandel grootverpakking 1200gr (binnekort beschikbaar)", available: false }
+                    { id: null, label: "Snack Amandel grootverpakking 1200gr (binnenkort beschikbaar)", available: false }
                 ];
                 break;
             case "Limoncello":
                 variants = [
                     { id: 1003, label: "Snack Limoncello 35gr" },
-                    { id: null, label: "Snack Limoncello grootverpakking 1200gr (binnekort beschikbaar)", available: false }
+                    { id: null, label: "Snack Limoncello grootverpakking 1200gr (binnenkort beschikbaar)", available: false }
                 ];
                 break;
             default:
@@ -53,7 +54,7 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
     return (
         <div className="cannoli-container">
             <div>
-                <h2>Snack Cannoli</h2>
+                <h2>Cannoli Snack</h2>
             </div>
 
             <div className="cards-snack-container">

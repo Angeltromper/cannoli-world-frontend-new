@@ -12,7 +12,6 @@ function ProfilePage({headerImageHandler, pageTitleHandler}) {
     const token = localStorage.getItem("token");
     const {user:{username}} = useContext(AuthContext);
     const [isAdmin, setIsAdmin] = useState(false);
-    // const [adminInput, setAdminInput] = useState([]);
     const [userAddress, setUserAddress] = useState(null);
 
      useEffect(() => {

@@ -1,0 +1,92 @@
+
+.cannoli-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease-in-out;
+    padding: 1rem;
+    max-width: 250px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.cannoli-card:hover {
+    transform: translateY(-3px);
+}
+
+.cannoli-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.cannoli-info-icon {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+}
+
+.cannoli-info-icon:hover {
+    color: #333;
+}
+
+.cannoli-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    color: #2c2c2c;
+}
+
+.cannoli-weight {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+}
+
+.cannoli-price {
+    font-weight: bold;
+    color: #b85c38;
+    margin-bottom: 1rem;
+}
+
+
+.cannoli-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.cannoli-actions button {
+    font-size: 1rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    color: white;
+}
+
+.cannoli-add-one {
+    background-color: #1AE216;
+}
+
+.cannoli-remove-one {
+    background-color: #FFB100;
+}
+
+.cannoli-actions button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+
+@media screen and (max-width: 768px) {
+    .cannoli-card {
+        max-width: 100%;
+    }
+}

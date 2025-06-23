@@ -8,11 +8,12 @@ export const AuthContext = createContext({});
 
 
 function AuthContextProvider({children}) {
-    const [auth, toggleAuth] = useState ({
+    const [auth, setAuth] = useState ({
         isAuth: false,
         user: null,
         status:'pending',
     });
+    // const navigate = useNavigate();
 
     // is er een token? En zo ja, is deze nog geldig?
     useEffect (() => {
@@ -21,10 +22,10 @@ function AuthContextProvider({children}) {
   /*    if (token && isTokenValid (token)) {*/
         if (token) {
             const decodedToken = jwtDecode (token);
-           getData (decodedToken.sub, token);
+           getUserData (decodedToken.sub, token);
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
-            toggleAuth ( {
+            setAuth ( {
                 isAuth: false,
                 user: null,
                 status: 'done',
@@ -35,27 +36,27 @@ function AuthContextProvider({children}) {
     function login(token) {
         localStorage.setItem ('token', token);
         const decodedToken = jwtDecode (token);
-        getData(decodedToken.sub, token);
+        getUserData(decodedToken.sub, token);
     }
 
     function logout(e) {
         localStorage.clear ();
-        toggleAuth ({
+        setAuth ({
             isAuth: false,
             user: null,
             status: 'done',
         });
     }
 
-    async function getData(id, token) {
+    async function getUserData(id, token) {
         try {
             const response = await axios.get (`http://localhost:8080/users/${ id }`, {
                 headers: {
                     "Content-Type": "application/json",
-                    // "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`
                 }
             });
-            toggleAuth ({
+            setAuth ({
                 ...auth,
                 isAuth: true,
                 user: {
@@ -75,12 +76,14 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
 
-        }
-        catch
-            (error)
-            {
+        } catch (error) {
                 console.error ('There was an error!', error);
                 localStorage.clear ();
+                setAuth({
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
             }
         }
 

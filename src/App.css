@@ -345,7 +345,7 @@ html, body {
   }
 }
 
-@media screen and (max-width: 762px) {
+@media screen and (max-width: 768px) {
   .container {
     display: flex;
     font-size: 12px;

@@ -1,22 +1,28 @@
 import React, { useContext, useState } from 'react';
-import { CartContext } from "../../context/CartContext";
-import { RiCloseLine, RiShoppingBasket2Line } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { CartContext } from '../../context/CartContext';
+import { RiCloseLine, RiDeleteBin6Line, RiShoppingBasket2Line } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import './Cart.css';
+import ButtonDelete from "../button/ButtonDelete";
 
-export const Cart = () => {
+export const CartKopie = () => {
     const navigate = useNavigate();
     const [toggleCart, setToggleCart] = useState(false);
     const [cart, setCart] = useContext(CartContext);
     const { auth } = useContext(AuthContext);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.prijs * item.qty, 0);
+
     const removeFromCart = (id) => {
         const updatedCart = cart.filter(item => item.artikelnummer !== id);
-        // const updatedCart = cart.filter(item => item.id !== id);
         setCart(updatedCart);
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+    };
+
+    const clearCart = () => {
+        setCart([]);
+        localStorage.removeItem('cart');
     };
 
     const goToCheckout = () => {
@@ -25,19 +31,16 @@ export const Cart = () => {
 
     return (
         <div className="shoppingcart__menu-X">
-            <div className="shoppingcart-icon">
-                {toggleCart ? (
-                    <RiCloseLine size={25} onClick={() => setToggleCart(false)} />
-                ) : (
-                    <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)} />
-                )}
-            </div>
-
-            {auth && (
-                <span className="cart-total">€ {totalPrice.toFixed(2)}</span>
+            {toggleCart ? (
+                <RiCloseLine size={25} onClick={() => setToggleCart(false)} />
+            ) : (
+                <RiShoppingBasket2Line size={35} onClick={() => setToggleCart(true)} />
             )}
 
-            {toggleCart && auth && (
+
+            {auth && <span className="cart-total">€ {totalPrice.toFixed(2)}</span>}
+
+            {toggleCart && (
                 <div className="shoppingcart-layout">
                     <h3>Winkelmandje</h3>
 
@@ -46,19 +49,21 @@ export const Cart = () => {
                     ) : (
                         <>
                             <div className="shoppingcart-items">
-                                {cart.map((item, index) => (
+                                {cart.map(item => (
                                     <div key={item.artikelnummer} className="shoppingcart-item">
-                                        {/*<div key={item.id} className="shoppingcart-item">*/}
                                         <div className="item-info">
-                                            <button
-                                                className="shoppingcart-button-remove"
-                                                onClick={() => removeFromCart(item.id)}
-                                            >
-                                                <RiCloseLine />
-                                            </button>
                                             <span>{item.qty} × {item.naam}</span>
                                         </div>
-                                        <div className="item-price">€ {(item.prijs * item.qty).toFixed(2)}</div>
+                                        <div className="item-price">
+                                            € {(item.prijs * item.qty).toFixed(2)}
+                                            <button
+                                                onClick={() => removeFromCart(item.artikelnummer)}
+                                                className="icon-button"
+                                                aria-label={`Verwijder ${item.naam}`}
+                                            >
+                                                <RiDeleteBin6Line size={18} />
+                                            </button>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -69,6 +74,8 @@ export const Cart = () => {
                                 <p><strong>Totaal: € {totalPrice.toFixed(2)}</strong></p>
                                 <p>{cart.reduce((acc, item) => acc + item.qty, 0)} cannoli(s)</p>
                             </div>
+
+                            <ButtonDelete onClick={clearCart} />
 
                             <button
                                 className="shoppingcart-checkout-button"

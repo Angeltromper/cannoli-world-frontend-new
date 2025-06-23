@@ -3,58 +3,28 @@
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     text-align: center;
-    margin: 2rem auto;
+    margin: 0 auto;
     padding: 2rem;
-    max-width: 900px;
+    max-width: 1200px;
 }
 
-/*
-.cannolis-container {
+.cannoli-card-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    width: 100%;
-    padding: 2rem 0;
 }
-*/
-/*
-.cannoli-overview {
-    display: flex;
-    margin-top: 1rem;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-*/
-
-/*
-.cannoli-overview a {
-    text-decoration: none;
-}
-*/
-
-/*
-.cannoli-overview button {
-    background: linear-gradient(135deg, #ff914d, #ffcd38);
-    color: #fff;
-
-}
-*/
-
-
 
 .cannoli-card {
     display: flex;
-    width: 250px;
-    min-height: 420px;
-    background: #ffffff;
+    background-color: white;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     padding: 1rem;
+    width: 260px;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
 .cannoli-card:hover {
@@ -83,10 +53,10 @@
 }
 
 .cannoli-footer button {
-    background-color: #1AE216;
+    background-color:  #FFA500;
+    color: white;
     border: none;
     border-radius: 8px;
-    color: white;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     cursor: pointer;
@@ -94,5 +64,5 @@
 }
 
 .cannoli-footer button:hover {
-    background-color: #16c114;
+    background-color: #e69500;;
 }

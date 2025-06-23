@@ -1,14 +1,13 @@
 .admin-container {
-    background-color: #fff7f0; /* warm beige achtergrond */
-    color: #4b2e2e; /* donkerbruine tekst */
-    font-family: Arial, sans-serif;
+    color: #333;
+    font: var(--second-font);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .admin-warning {
-    background-color: #d2691e; /* warme oranje/bruin */
+    background-color: red;
     color: #fff;
     padding: 1rem;
     border-radius: 6px;
@@ -32,7 +31,7 @@
 .admin-form-text i {
     font-style: normal;
     font-weight: bold;
-    color: #8b5e3c; /* bruin */
+    color: #f7a400;
 }
 
 .admin-form-text p {
@@ -51,39 +50,44 @@
     flex-direction: column;
     flex: 1 1 300px;
     margin-bottom: 0.5rem;
+    font-weight: bold;
 }
 
 .admin-form input,
 .admin-form select,
 .admin-form textarea {
-    padding: 0.5rem;
-    border: 1px solid #d4a373;
-    border-radius: 6px;
     background-color: #fff;
     color: #4b2e2e;
+    border: 1px solid #f7a400;
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
 }
 
 .admin-form input:focus,
 .admin-form select:focus,
 .admin-form textarea:focus {
-    border-color: #8b5e3c;
+    border-color: #e09600;
+    box-shadow: 0 0 4px rgba(247, 164, 0, 0.4);
     outline: none;
 }
 
-.admin-form-savebutton {
-    background-color: #d2691e;
+.admin-form-savebutton,
+.orange-outline-button {
     color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
+    border: 2px solid #f7a400;
+    border-radius: 8px;
+    padding: 0.5rem 1.2rem;
     margin-top: 1rem;
     cursor: pointer;
-    border-radius: 6px;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 
-.admin-form-savebutton:hover {
-    background-color: #a0522d;
+.admin-form-savebutton:hover,
+.orange-outline-button:hover {
+    background-color: #f7a400;
+    color: #fff;
 }
 
 
@@ -99,19 +103,19 @@
 
 .Admin_WholesaleComponent th,
 .Admin_WholesaleComponent td {
-    border: 1px solid #d4a373;
+    border: 1px solid #f7a400;
     padding: 0.5rem;
     text-align: left;
     vertical-align: top;
 }
 
 .Admin_WholesaleComponent thead {
-    background-color: #8b5e3c;
+    background-color:  #f7a400;
     color: #fff;
 }
 
 .Admin_WholesaleComponent tbody tr:nth-child(even) {
-    background-color: #f9e8d2;
+    background-color: #fffaf0;;
 }
 
 .Admin_WholesaleComponent img {

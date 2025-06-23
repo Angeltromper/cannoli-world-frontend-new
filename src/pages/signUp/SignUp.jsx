@@ -72,7 +72,6 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
             setErrorMessage ('Ongeldige invoer');
             return;
         }
-        console.log(user, password, email)
 
         try {
             const result = await axios.post ("http://localhost:8080/users/create",
@@ -191,7 +190,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
                         <input
                             className="password"
-                            type="password-user"
+                            type="password"
                             id="password"
                             onChange={ (e) => setPassword (e.target.value) }
                             value={ password }
@@ -222,7 +221,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
                         <input
                             className="repeat"
-                            type="repeat-password"
+                            type="password"
                             id="repeat"
                             onChange={ (e) => setRepeat (e.target.value) }
                             value={ repeat }

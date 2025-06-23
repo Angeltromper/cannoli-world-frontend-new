@@ -1,143 +1,87 @@
-.shoppingcart__menu-X {
+.cart-toggle {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: white;
     cursor: pointer;
-}
-
-.cart-total {
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.shoppingcart-layout {
-    background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgb(73, 31, 14) 40%, rgba(140, 82, 57, 0.94) 100%);
-    background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgb(73, 31, 14) 40%, rgba(140, 82, 57, 0.94) 100%);
     color: white;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-    position: absolute;
-    top: 3.5rem;
-    right: 2rem;
-    padding: 1rem;
-    z-index: 500;
-    min-width: 250px;
 }
 
-.shoppingcart-layout h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-
+.page-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /*background: rgba(0,0,0,0.3);*/
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+    z-index: 999;
+}
+.page-overlay.open {
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    pointer-events: all;
 }
 
-.shoppingcart-items {
-    max-height: 200px;
-    overflow-y: auto;
+.cart-drawer {
+    background-color: #ffffff;
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%; max-width: 400px;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+.cart-drawer.open {
+    transform: translateX(0);
 }
 
-.shoppingcart-item {
+.drawer-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
 }
 
-.item-info {
+.drawer-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+.drawer-item {
     display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.shoppingcart-button-remove {
-    background: none;
+.drawer-footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+.drawer-button {
+    background-color: #f4a300;
+    color: #fff;
     border: none;
-    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.2s;
+}
+.drawer-button:hover {
+    background-color: #d18600;
 }
 
-.item-price {
-    font-size: 0.9rem;
+@media (max-width: 992px) {
+    .cart-drawer { max-width: 350px; }
 }
-
-.shoppingcart-summary p  {
-    color: white;
-    margin: 0.5rem 0;
+@media (max-width: 768px) {
+    .cart-drawer { max-width: 100%; }
 }
-
-.shoppingcart-summary p strong {
-    color: white;
-    margin: 0.5rem 0;
-}
-
-.shoppingcart-checkout-button {
-    width: 100%;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    color: #000000FF;
-    font-weight: bold;
-}
-
-.shoppingcart-checkout-button:hover {
-    background: transparent;
-    color: #000000FF;
-}
-
-/*--------------------- Media-queries -----------------*/
-
-@media screen and (max-width: 992px) {
-    .shoppingcart__menu-X {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #000000FF;
-        cursor: pointer;
-    }
-
-    .shoppingcart-icon svg {
-        color: #000000FF;
-    }
-
-    .shoppingcart-layout {
-        background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgb(253, 156, 0) 60%, rgb(217, 173, 102) 100%);
-        background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgb(253, 156, 0) 60%, rgb(217, 173, 102) 100%);
-        color: black;
-        border: 1px solid #ccc;
-        border-radius: 0.3rem;
-        position: absolute;
-        top: 3.5rem;
-        right: 2rem;
-        padding: 1rem;
-        z-index: 500;
-        min-width: 250px;
-    }
-
-    .shoppingcart-layout h3 {
-        margin-top: 0;
-        font-size: 1.2rem;
-
-    }
-
-    .shoppingcart-button-remove {
-        background: none;
-        border: none;
-        color: black;
-        cursor: pointer;
-    }
-
-    .shoppingcart-summary p  {
-        color: black;
-        margin: 0.5rem 0;
-    }
-
-    .shoppingcart-summary p strong {
-        color: black;
-        margin: 0.5rem 0;
-    }
-
-
-
-
+@media (max-width: 576px) {
+    .cart-drawer { width: 100%; max-width: none; }
 }

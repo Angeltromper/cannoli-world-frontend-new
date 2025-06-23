@@ -1,11 +1,9 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
-import Column from "../pageLayout/designElement/column/Column";
 import ButtonDelete from "../button/ButtonDelete";
 import './Admin_WholesaleComponent.css';
 
@@ -56,7 +54,7 @@ function Admin_WholesaleComponent() {
         }
 
         fetchCannolis();
-    }, [cannolis]);
+    }, []);
 
 
     async function deleteCannoli(cannoliName) {
@@ -75,19 +73,21 @@ function Admin_WholesaleComponent() {
         }
     }
 
-    setTimeout(() => {
-        navigate(`/cannolis-add/`)
-    }, 600)
+    // setTimeout(() => {
+    //     navigate(`/cannolis-add/`);
+    // }, 600)
 
     return (
         <>
-            { user.roles !== 'ROLE_ADMIN' ?
+            {user.roles !== "ROLE_ADMIN" ?
                 <div className="admin-container">
                     <div className="admin-warning">
                         <h3>U moet zijn ingelogd als<br />ADMINISTRATOR<br />om deze gegevens te beheren</h3>
                     </div>
                 </div>
-                :
+
+                 :
+
                 <section className="admin-container">
                     <TextContainerResp>
                         <h3>Cannoli toevoegen/wijzigen:</h3>

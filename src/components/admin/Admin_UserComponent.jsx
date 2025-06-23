@@ -30,7 +30,7 @@ useEffect(()=> {
             }
         }
         fetchUsers();
-    }, [users]);
+    }, []);
 
 
 

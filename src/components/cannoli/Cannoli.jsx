@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { FaInfoCircle } from "react-icons/fa";
 import "./Cannoli.css";
 
-export const Cannoli = (props) => {
+const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     const navigate = useNavigate();
     const [cart, setCart] = useContext(CartContext);
     const { auth } = useContext(AuthContext);
@@ -17,24 +17,20 @@ export const Cannoli = (props) => {
         }
 
         const cannoli = {
-            artikelnummer: props.cannoli_id,
-            naam: props.cannoliName,
-            prijs: props.cannoliPrice,
-            url: props.url,
+            artikelnummer: cannoli_id,
+            naam: cannoliName,
+            prijs: cannoliPrice,
+            url: url,
             qty: 1
         };
 
-        setCart((prevCart) => {
-            const exists = prevCart.find((item) => item.id === cannoli.artikelnummer);
-            let updatedCart;
-
-            if (exists) {
-                updatedCart = prevCart.map((item) =>
-                    item.id === cannoli.artikelnummer ? { ...item, qty: item.qty + 1 } : item
-                );
-            } else {
-                updatedCart = [...prevCart, { ...cannoli, qty: 1 }];
-            }
+        setCart(prevCart => {
+            const exists = prevCart.find(item => item.id === cannoli_id);
+            const updatedCart = exists
+                ? prevCart.map(item =>
+                    item.id === cannoli_id ? { ...item, qty: item.qty + 1 } : item
+                )
+                : [...prevCart, { ...cannoli, qty: 1 }];
 
             localStorage.setItem("cart", JSON.stringify(updatedCart));
             return updatedCart;
@@ -42,55 +38,42 @@ export const Cannoli = (props) => {
     };
 
     const removeOne = () => {
-        setCart((prevCart) => {
-            const exists = prevCart.find((item) => item.id === props.cannoli_id);
+        setCart(prevCart => {
+            const exists = prevCart.find(item => item.id === cannoli_id);
             if (!exists) return prevCart;
 
             const updatedCart =
                 exists.qty > 1
-                    ? prevCart.map((item) =>
-                        item.id === props.cannoli_id ? { ...item, qty: item.qty - 1 } : item
+                    ? prevCart.map(item =>
+                        item.id === cannoli_id ? { ...item, qty: item.qty - 1 } : item
                     )
-                    : prevCart.filter((item) => item.id !== props.cannoli_id);
+                    : prevCart.filter(item => item.id !== cannoli_id);
 
-            localStorage.setItem("cart", JSON.stringify(updatedCart));
-            return updatedCart;
-        });
-    };
-
-    const removeItem = () => {
-        setCart((prevCart) => {
-            const updatedCart = prevCart.filter((item) => item.id !== props.cannoli_id);
             localStorage.setItem("cart", JSON.stringify(updatedCart));
             return updatedCart;
         });
     };
 
     const redirect = () => {
-        navigate(`/wholesale/${props.cannoli_id}`);
+        navigate(`/wholesale/${cannoli_id}`);
     };
 
     return (
-        <article className="cannoli-card">
-            <div className="cannoli-info-icon" onClick={redirect}>
+        <article className="cannoli-card cannoli-card--snack">
+            <div className="cannoli-card__info-icon" onClick={redirect}>
                 <FaInfoCircle />
             </div>
 
-            <div className="cannoli-image">
-                <img
-                    src={props.url || "/img/placeholnder.jpg"}
-                    alt={props.fileName}
-                />
-            </div>
+            <img className="cannoli-card__image" src={url || "/img/placeholder.jpg"} alt={fileName} />
 
-            <h5 className="cannoli-name">{props.cannoliName}</h5>
-            <p className="cannoli-weight">35gr</p>
-            <p className="cannoli-price">€ {Number(props.cannoliPrice).toFixed(2)}</p>
+            <p className="cannoli-card__name">{cannoliName}</p>
+            <p className="cannoli-card__weight">35gr</p>
+            <p className="cannoli-card__price">€ {Number(cannoliPrice).toFixed(2)}</p>
 
             {auth && (
-                <div className="cannoli-actions">
-                    <button onClick={removeOne} className="cannoli-remove-one">–</button>
-                    <button onClick={addToCart} className="cannoli-add-one">+</button>
+                <div className="cannoli-card__actions">
+                    <button onClick={removeOne} className="remove-one">–</button>
+                    <button onClick={addToCart} className="add-one">+</button>
                 </div>
             )}
         </article>

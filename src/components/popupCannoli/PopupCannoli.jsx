@@ -2,33 +2,40 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PopupCannoli.css';
 
-function Popup({ title, variants, onClose }) {
+function Popup({ title = '', variants = [], onClose }) {
     const navigate = useNavigate();
 
     const handleNavigate = (id) => {
-        navigate(`/wholesale/${id}`);
+        if (id) {
+            navigate(`/wholesale/${id}`);
+        }
     };
 
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <h3>Varianten van: {title}</h3>
+                <h3 className="modal-title">Varianten van: {title}</h3>
+
                 <div className="modal-grid">
-                    {variants.map((variant,index) => (
-                        <button
-                            key={index}
-                            className={ `modal-button ${variant.available === false ? 'modal-button-disabled' : ''}`}
-                            onClick={() => {
-                                if (variant.available !== false) {
-                                    handleNavigate (variant.id);
-                                }
-                            }}
-                            disabled={ variant.available === false }
-                        >
-                            {variant.label}
-                        </button>
-                    ))}
+                    {variants.length > 0 ? (
+                        variants.map((variant, index) => {
+                            const isDisabled = variant.available === false;
+                            return (
+                                <button
+                                    key={index}
+                                    className={`modal-button ${isDisabled ? 'modal-button-disabled' : ''}`}
+                                    onClick={() => !isDisabled && handleNavigate(variant.id)}
+                                    disabled={isDisabled}
+                                >
+                                    {variant.label}
+                                </button>
+                            );
+                        })
+                    ) : (
+                        <p className="modal-empty">Geen varianten beschikbaar.</p>
+                    )}
                 </div>
+
                 <button className="modal-close-button" onClick={onClose}>
                     Sluiten
                 </button>
