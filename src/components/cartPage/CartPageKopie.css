@@ -2,28 +2,15 @@
     background-color: #ffffff;
     color:  #000;
     font: var(--second-font);
-    padding: 4rem;
+    padding: 1.5rem;
     min-height: 100vh;
 }
 
 .cart-page h3 {
     color: #333;
     font-size: 2rem;
-    text-align: start;
-    margin-bottom: 2rem;
-}
-
-.cart-main-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.cart-left {
-    flex: 1;
-    min-width: 60%;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .cart-header {
@@ -64,29 +51,36 @@
 }
 
 .cart-summary {
-    background-color:#fff2e0;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1) ;
-    text-align: center;
+    display: flex;
+    background-color: #fffaf3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) ;
+    border: 1px solid #f4a300;
     border-radius: 12px;
-    padding: 1.5rem;
-    min-width: 220px;
-    height: fit-content;
+    font-size: 1rem;
+    text-align: right;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    width: 100%;
+    max-width: 300px;
+    gap: 0.5rem;
 }
 
-.order-button {
-    background-color: white;
-    border: 2px solid orange;
-    margin-top: 1rem;
-    padding: 0.5rem 4rem;
+.checkout-button {
+    background-color: #fff3e0;;
+    border: 2px solid #f4a300;;
+    color: black;
+    padding: 0.75rem 1.5rem;
     border-radius: 12px;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
+    margin-top: 1rem;
+    transition: background-color 0.2s ease;
 }
 
-.order-button:hover {
+.checkout-button:hover {
     background-color: #ffe0b2;
-    color: white;
 }
 
 p {
@@ -185,22 +179,22 @@ p {
 /*--------------------- Media-queries -----------------*/
 
 @media screen and (max-width: 992px)  {
-        .cart-page {
-            padding: 1.5rem;
-            max-width: 600px;
-        }
-        .cart-page h3 {
-            font-size: 1.75rem;
-        }
-        .cart-item {
-            padding: 0.75rem;
-            font-size: 0.95rem;
-        }
-        .checkout-button {
-            padding: 0.65rem 1.25rem;
-            font-size: 0.95rem;
-        }
+    .cart-page {
+        padding: 1.5rem;
+        max-width: 600px;
     }
+    .cart-page h3 {
+        font-size: 1.75rem;
+    }
+    .cart-item {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+    .checkout-button {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}
 
 
 @media screen and (max-width: 768px) {
@@ -214,10 +208,6 @@ p {
         font-size: 1.5rem;
     }
 
-    .cart-main-container {
-        flex-direction: column;
-    }
-
     .cart-header {
         justify-content: center;
     }
@@ -229,13 +219,15 @@ p {
     }
 
     .cart-summary {
-        margin-top: 1rem;
-        width: 100%;
+        text-align: left;
+        padding-top: 1.5rem;
+        font-size: 0.95rem;
     }
 
-    .order-button {
+    .checkout-button {
         width: 100%;
         padding: 0.75rem;
+
     }
 }
 
@@ -259,7 +251,7 @@ p {
         margin-top: 1.5rem;
         padding-top: 1rem;
     }
-    .order-button {
+    .checkout-button {
         font-size: 0.9rem;
         padding: 0.6rem;
     }

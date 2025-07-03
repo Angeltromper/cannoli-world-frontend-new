@@ -7,9 +7,9 @@ import axios from "axios";
 import Button from "../button/Button";
 
 function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) {
-    const { user } = useContext(AuthContext);
-    const { cannoli_id } = useParams();
-    const { register, formState: { errors }, handleSubmit} = useFormContext();
+    const {user} = useContext(AuthContext);
+    const {cannoli_id} = useParams();
+    const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "..veld is verplicht";
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
         pageTitleHandler();
     }, []);
 
-    async function sendCannolisData(cannolidata) {
+    async function sendCannoliData(cannolidata) {
         try {
             await axios.put(`http://localhost:8080/cannolis/${cannoli_id}`,
                 {
@@ -62,7 +62,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                     </div>
 
                     <form className="admin-form"
-                          onSubmit={handleSubmit(sendCannolisData)}>
+                          onSubmit={handleSubmit(sendCannoliData)}>
 
                         <div>
                             <label htmlFor="details-cannolis-id">
@@ -83,11 +83,11 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                                 Cannolinaam:
                                 <input
                                     type="text"
-                                    id="cannoli_id"
+                                    id="cannoli_name"
                                     {...register("cannoli_name", {
                                         required: {value: true, message: message }
                                     })}
-                                    placeholder="Cannolinaam"
+                                    placeholder="cannoli-naam"
                                 />
                             </label>
                             {errors.cannoli_name && <p>{errors.cannoli_name.message}</p>}
@@ -136,9 +136,9 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                                     Ingrediënten:
                                     <textarea
                                         type="text"
+                                        id="cannoli_ingredients"
                                         rows="8"
                                         cols="50"
-                                        id="cannoli_ingredients"
                                         {...register("cannoli_ingredients", {
                                             required: {value: false, message: message}
                                         })}

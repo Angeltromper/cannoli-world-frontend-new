@@ -9,10 +9,20 @@
 
 .profile-header {
     color: var(--text-intro-pink);
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
 .profile-welcomepage {
-  margin: 2rem 0;
+    color: #333;
+    font-size: 1rem;
+    margin: 2rem 0;
+}
+
+.user-profile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .profile-adress-wrapper {
@@ -26,39 +36,8 @@
 }
 
 .profile-adress-details {
+    color: #444;
     flex: 1;
-}
-
-
-.profile-adress-details h4 {
-    color: #c62844;
-    margin-bottom: 0.5rem;
-}
-
-.profile-adress-details h5 {
-    color: #370617;
-    margin-bottom: 0.5rem;
-}
-
-.edit-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.edit-buttonn img {
-    width: 24px;
-    height: 24px;
-}
-
-.profile-info-container {
-    display: flex;
-    background: #ffe8d6;
-    margin: 2rem 0;
-    padding: 1rem;
-    text-align: center;
-    border-radius: 12px;
 }
 
 .profile-info {

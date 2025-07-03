@@ -1,20 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import WholesaleInfo from "../../components/wholesaleInfo/WholesaleInfo";
 import './Wholesale.css';
 
 
 function Wholesale({headerImageHandler, pageTitleHandler}) {
     const {id} = useParams();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
     const [cannolis, setCannolis] = useState([]);
 
-
-
-    function resetCannolis() {
-        setCannoliCount (0);
-    }
 
     useEffect(() => {
         headerImageHandler (pageImg);
@@ -26,20 +23,16 @@ function Wholesale({headerImageHandler, pageTitleHandler}) {
    useEffect( () => {
        async function fetchCannolis() {
            try {
-               const cannolis = await axios.get (`http://localhost:8080/cannolis/${id}`,
-                   {
-                       headers: {
-                           "Content-Type": "application/json",
-                       }
-                   });
-               setCannolis(cannolis.data)
+               const cannolis = await axios.get (`http://localhost:8080/cannolis/${id}`);
+
+              setCannolis(cannolis.data)
 
            } catch (error) {
                console.error ('There was an error', error);
            }
        }
 
-       fetchCannolis ();
+       fetchCannolis();
    },[]);
 
    return(

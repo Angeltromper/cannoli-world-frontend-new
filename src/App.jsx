@@ -27,7 +27,7 @@ import Contact from "./pages/contact/Contact";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword";
 import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
-import ProfilePage from "./pages/profilePage/ProfilePage";
+import UserProfile from "./pages/userProfile/UserProfile";
 
 import Privacy from "./pages/privacy/Privacy";
 import General from "./pages/privacy/General";
@@ -43,8 +43,7 @@ import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponen
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 
 import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
-import ButtonEdit from "./components/buttonEdit/ButtonEdit";
-import UserForm from "./components/form/UserForm";
+import UserForm from "./components/userForm/UserForm";
 import OrderListComponent from "./components/order/OrderListComponent";
 import OrderList from "./pages/orderList/OrderList";
 
@@ -54,6 +53,7 @@ import headerImg from "./assets/img.header/homepage-background-2400.jpg";
 
 import './App.css';
 import CartPage from "./components/cartPage/CartPage";
+import { Cannoli } from "./components";
 
 function App() {
     const [headerImage, setHeaderImage] = useState(headerImg);
@@ -69,94 +69,119 @@ function App() {
 
 
     return (
+
         <Wrapper>
             <div className="container">
                 <div className="inner-container__reusable default-text-restrict">
 
-                <Header headerImage={headerImage} pageTitle={pageTitle} />
+                    <Header headerImage={headerImage} pageTitle={pageTitle} />
 
-        <Routes>
-            <Route path="/"
-                   element={<HomePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cannoli"
-                   element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cannoli-assorti"
-                   element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/snack-cannoli/assorti"
-                   element={<SnackCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/glutenfree-cannoli/assorti"
-                   element={<GlutenfreeCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/vegan-cannoli/assorti"
-                   element={<VeganCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                    <Routes>
+                        <Route path="/"
+                               element={<HomePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/cannolisnack"
-                   element={<CannoliSnack headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cannoliglutenfree"
-                   element={<CannoliGlutenFree headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cannolivegan"
-                   element={<CannoliVegan headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/cannoli"
+                               element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/counter"
-                   element={<Counter headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/giftbox"
-                   element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/service"
-                   element={<Service headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/franchise"
-                   element={<Franchise headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/franchise-information"
-                   element={<FranchiseInformation headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/contact"
-                   element={<Contact headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/cannoli-list"
+                               element={<Cannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/privacy"
-                   element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/general-terms"
-                   element={<General headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cookies"
-                   element={<Cookies headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/cannoli-assorti"
+                               element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/login"
-                   element={<SignIn headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/register"
-                   element={<SignUp headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/forgot-password"
-                   element={<ForgotPassword headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/snack-cannoli/assorti"
+                               element={<SnackCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/wholesale/:id"
-                   element={<Wholesale headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/glutenfree-cannoli/assorti"
+                               element={<GlutenfreeCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/profile"
-                   element={<PrivateRoute><ProfilePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/cannolis-add"
-                   element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/user-view"
-                   element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+                        <Route path="/vegan-cannoli/assorti"
+                               element={<VeganCannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/checkout"
-                   element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/cart-instruction"
-                   element={<PrivateRoute><CartPage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/cart-instruction/checkout"
-                   element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+                        <Route path="/cannolisnack"
+                               element={<CannoliSnack headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/deliveryRequests"
-                   element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/deliveryRequests/:deliveryRequest_id"
-                   element={<PrivateRoute><OrderListComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/button-edit"
-                   element={<PrivateRoute><ButtonEdit headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-            <Route path="/userform/:user_id"
-                   element={<PrivateRoute><UserForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+                        <Route path="/cannoliglutenfree"
+                               element={<CannoliGlutenFree headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/cannolis/image/:cannoli_id"
-                   element={<ImageCannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-            <Route path="/cannolis/info/:cannoli_id"
-                   element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        <Route path="/cannolivegan"
+                               element={<CannoliVegan headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-            <Route path="/404"
-                   element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-        </Routes>
+                        <Route path="/counter"
+                               element={<Counter headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/giftbox"
+                               element={<Giftbox headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/service"
+                               element={<Service headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/franchise"
+                               element={<Franchise headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/franchise-information"
+                               element={<FranchiseInformation headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/contact"
+                               element={<Contact headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/privacy"
+                               element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/general-terms"
+                               element={<General headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/cookies"
+                               element={<Cookies headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/login"
+                               element={<SignIn headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/register"
+                               element={<SignUp headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/forgot-password"
+                               element={<ForgotPassword headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/wholesale/:id"
+                               element={<Wholesale headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/profile"
+                               element={<PrivateRoute><UserProfile headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/cannolis-add"
+                               element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/user-view"
+                               element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/checkout"
+                               element={<PrivateRoute><Cart headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/cart-instruction"
+                               element={<PrivateRoute><CartPage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/cart-instruction/checkout"
+                               element={<PrivateRoute><CartDeliveryRequest headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/deliveryRequests"
+                               element={<PrivateRoute><OrderList headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/deliveryRequests/:deliveryRequest_id"
+                               element={<PrivateRoute><OrderListComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/userform/:user_id"
+                               element={<PrivateRoute><UserForm headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        <Route path="/cannolis/image/:cannoli_id"
+                               element={<ImageCannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/cannolis/info/:cannoli_id"
+                               element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+
+                        <Route path="/404"
+                               element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                    </Routes>
 
                     <Footer />
                 </div>

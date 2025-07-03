@@ -1,3 +1,4 @@
+/*
 import {Route, Routes, useLocation} from "react-router-dom";
 import React, {useLayoutEffect, useState} from 'react'
 import headerImg from "../../cannoli-world-frontend-main/src/assets/img.header/homepage-background-2400.jpg";
@@ -21,7 +22,7 @@ import Admin_WholesaleEditComponent from "./components/admin/Admin_WholesaleEdit
 import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
-import ProfilePage from "./pages/profilePage/ProfilePage";
+import UserProfile from "./pages/userProfile/UserProfile";
 import Cookies from "./pages/privacy/Cookies";
 import General from "./pages/privacy/General";
 import Privacy from "./pages/privacy/Privacy";
@@ -29,7 +30,7 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import Wholesale from "./pages/wholesale/Wholesale";
 import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRequest";
-import UserForm from "./components/form/UserForm"
+import UserForm from "./components/userForm/UserForm"
 import FourZeroFour from "./pages/404/FourZeroFour";
 import OrderListComponent from "./components/order/OrderListComponent";
 import OrderList from "./pages/orderList/OrderList";
@@ -136,8 +137,8 @@ function AppKopie () {
                         <Route path="/cannolis/info/:cannoli_id"
                                element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/>}/>
 
-                        <Route path="/profile"
-                               element={<PrivateRoute><ProfilePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
+                        <Route path="/userProfile"
+                               element={<PrivateRoute><UserProfile headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
 
                         <Route path="/cannolis-add/"
                                element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute>}/>
@@ -171,3 +172,4 @@ function AppKopie () {
 }
 
 export default AppKopie;
+*/

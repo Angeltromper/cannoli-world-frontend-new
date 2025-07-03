@@ -1,23 +1,29 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import ButtonEditCannoli from "../buttonEdit/ButtonEditCannoli";
-import Counter1 from "../counter/Counter";
+import Counter from "../counter/Counter";
 import ButtonEditImage from "../buttonEdit/ButtonEditImage";
-import ShoppingCart from './../../assets/svg/shoppingCart.svg';
+import ShoppingCartIcon  from "../../assets/svg/shoppingCart.svg";
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import TwoColumn from "../pageLayout/designElement/column/TwoColumn";
 import Column from "../pageLayout/designElement/column/Column";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import './WholesaleInfo.css';
 
+
 export const WholesaleInfo = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [cart, setCart] = useContext(CartContext);
     const [cannoliProduct, setCannoliProduct] = useState(0);
     const [toggleCount, setToggleCount] = useState(false);
     const { auth } = useContext(AuthContext);
+
+    const searchParams = new URLSearchParams(location.search);
+    const isReadonly = searchParams.get("readonly") === "true";
+
 
     const addToCart = () => {
         const existing = cart.find(item => item.artikelnummer === props.cannoli_id);
@@ -82,14 +88,18 @@ export const WholesaleInfo = (props) => {
                 <TwoColumn>
                     <Column>
                         <div className="cannoli-info-description">
-                            <img src={props.url || "/img/placeholder.jpg"} alt={props.fileName || "Cannoli"} />
+                            {/*<h5>Artikelnummer: {props.cannoli_id}</h5>*/}
+                            <img src={props.url} alt={props.fileName} />
                         </div>
-                    </Column>
+                        </Column>
 
                     <Column>
                         <h2>{props.cannoliName}</h2>
-                        <h5>Artikelnummer: {props.cannoli_id}</h5>
-                        <h5>Categorie: {props.cannoliType}</h5>
+                      <h5>Artikelnummer: {props.cannoli_id}</h5>
+
+                        <button className="link-button" onClick={() => navigate(-1)}>
+                            Categorie: {props.cannoliType}
+                        </button>
 
                         {auth && (
                             <>
@@ -100,19 +110,26 @@ export const WholesaleInfo = (props) => {
 
                         <br />
 
-                        <div className="cannoli-count-info">
-                            {cannoliProduct >= 1 ? (
-                                <></>
-                            ) : (
-                                <button className="button-added" onClick={() => setToggleCount(true)}>
-                                    <img src={ShoppingCart} alt="toevoegen" />
+                        {!isReadonly && (
+                            <>
+                            {!toggleCount ? (
+                                <button
+                                    className="button-added"
+                                    onClick={() => {
+                                        setToggleCount(true);
+                                        addToCart();
+                                    }}
+                                >
+                                    <img
+                                        src= {ShoppingCartIcon}
+                                        alt= "winkelmandje"
+                                        className="cart-icon"
+                                    />
                                     toevoegen aan mandje
                                 </button>
-                            )}
-
-                            {toggleCount && (
-                                <div className="cannoli-counters">
-                                    <Counter1
+                            ) : (
+                                <div className="cannoli-counters button-added">
+                                    <Counter
                                         addToCart={addToCart}
                                         cannoliCount={cannoliProduct}
                                         setCannoliCount={setCannoliProduct}
@@ -120,7 +137,8 @@ export const WholesaleInfo = (props) => {
                                     />
                                 </div>
                             )}
-                        </div>
+                        </>
+                        )}
                     </Column>
                 </TwoColumn>
 
@@ -136,6 +154,8 @@ export const WholesaleInfo = (props) => {
                     <h5>{props.cannoliIngredients}</h5>
                 </TextContainerResp>
 
+
+                {!isReadonly && location.pathname.includes("/wholesale") && (
                 <div className="edit-buttons-row">
                     <div onClick={addImage}>
                         <ButtonEditImage />
@@ -145,6 +165,7 @@ export const WholesaleInfo = (props) => {
                         <ButtonEditCannoli />
                     </div>
                 </div>
+                )}
             </div>
         </section>
     );

@@ -1,5 +1,5 @@
 /*
-.form-register {
+.userForm-register {
     display: flex;
     border: 1px solid black;
     border-radius: 0.5em;
@@ -59,7 +59,7 @@ a, a:visited {
     color: white;
 }
 
-.form-register input [type="text"],
+.userForm-register input [type="text"],
 input [type="email"],
 input [type="password"],
 button,
@@ -116,11 +116,11 @@ textarea {
     bottom: -5px;
 }
 
-button.form-button {
+button.userForm-button {
     width: 100%;
 }
 
-.form-footer {
+.userForm-footer {
     display: flex;
     font-size: 16px;
     justify-content: center;

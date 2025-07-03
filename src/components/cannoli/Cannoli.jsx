@@ -59,7 +59,7 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     };
 
     return (
-        <article className="cannoli-card cannoli-card--snack">
+        <article className="cannoli-card cannoli-card">
             <div className="cannoli-card__info-icon" onClick={redirect}>
                 <FaInfoCircle />
             </div>

@@ -7,12 +7,12 @@ import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import './UserForm.css';
 
 
-function InfoForm({headerImageHandler, pageTitleHandler}) {
+function UserForm({headerImageHandler, pageTitleHandler}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
-    const token = localStorage.getItem( 'token');
     const message = "...dit veld is verplicht";
     const navigate = useNavigate();
     const {user} = useContext(AuthContext);
+    const token = localStorage.getItem( 'token');
 
     useEffect (() => {
         headerImageHandler (pageImg);
@@ -21,23 +21,23 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
 
 
 
-    async function sendPersonData(data) {
+    async function sendPersonData(persondata) {
         try {
             await axios.put(`http://localhost:8080/persons/${user.person_id}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${ token }`,
+                         "Authorization": `Bearer ${ token }`,
                     },
 
                     id: user.id,
-                    personFirstname: data.person_firstname,
-                    personLastname: data.person_lastname,
-                    personStreetName: data.person_street_name,
-                    personHouseNumber: data.person_house_number,
-                    personHouseNumberAdd: data.person_house_number_add,
-                    personZipcode: data.person_zipcode,
-                    personCity: data.person_city,
+                    personFirstname: persondata.person_firstname,
+                    personLastname: persondata.person_lastname,
+                    personStreetName: persondata.person_street_name,
+                    personHouseNumber: persondata.person_house_number,
+                    personHouseNumberAdd: persondata.person_house_number_add,
+                    personZipcode: persondata.person_zipcode,
+                    personCity: persondata.person_city,
                 });
 
         } catch (error) {
@@ -45,9 +45,9 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
         }
     }
 
-    async function onSubmit(data) {
+    async function onSubmit(personData) {
         try {
-            await sendPersonData(data);
+            await sendPersonData(personData);
 
             setTimeout(() => {
                 navigate( '/profile')
@@ -188,4 +188,4 @@ function InfoForm({headerImageHandler, pageTitleHandler}) {
     );
 }
 
-export default InfoForm;
+export default UserForm;

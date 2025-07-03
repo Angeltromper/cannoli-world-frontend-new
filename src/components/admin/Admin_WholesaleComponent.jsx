@@ -57,16 +57,17 @@ function Admin_WholesaleComponent() {
     }, []);
 
 
-    async function deleteCannoli(cannoliName) {
-        console.log("Verwijderen:", cannoliName);
-
+    async function deleteCannoli(cannoliId) {
         try {
-            await axios.delete(`http://localhost:8080/cannolis/delete/${cannoliName}`, {
+            await axios.delete(`http://localhost:8080/cannolis/delete/${cannoliId}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
                 }
             });
+
+            setCannolis(prev =>
+                prev.filter(c=> c.id !== cannoliId));
 
         } catch (error) {
             console.error(error);
@@ -91,7 +92,7 @@ function Admin_WholesaleComponent() {
                 <section className="admin-container">
                     <TextContainerResp>
                         <h3>Cannoli toevoegen/wijzigen:</h3>
-                        <h5>Voeg nieuwe producten toe of wijzig bestaande cannoli-artikelen.</h5>
+                        <h5>Voeg nieuwe producten toe of wijzig/verwijder bestaande cannoli-producten als administrator.</h5>
                         <ul className="admin-form-text">
                             <li><i>Cannoli-product wijzigen</i><p>Gebruik bestaand artikelnummer.</p></li>
                             <li><i>Nieuw product</i><p>Nieuw artikelnummer wordt automatisch aangemaakt.</p></li>
@@ -122,7 +123,7 @@ function Admin_WholesaleComponent() {
                             <label htmlFor="cannoli-type">
                                 <select
                                     id="cannoli-type"
-                                    {...register("cannoli_name", {
+                                    {...register("cannoli_type", {
                                         required: { value: true, message: message }
                                     })}
                                     placeholder="cannoli-soort"

@@ -7,7 +7,7 @@ function Popup({ title = '', variants = [], onClose }) {
 
     const handleNavigate = (id) => {
         if (id) {
-            navigate(`/wholesale/${id}`);
+            navigate(`/wholesale/${id}?readonly=true`);
         }
     };
 

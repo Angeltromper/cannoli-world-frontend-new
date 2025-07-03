@@ -119,7 +119,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                        aria-live="assertive">
                         { errorMessage }</p>
 
-                    <form className="form-register"
+                    <userForm className="userForm-register"
                           onSubmit={ handleSubmit }>
 
                         <h2>Registreren</h2>
@@ -257,13 +257,13 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
                         <p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>
 
 
-                        <section className="form-footer">
+                        <section className="userForm-footer">
                             Heeft u al een account?<br/>
                             <span className="line">
                                  <NavLink to="/login" exact activeClassName="active-link">Log hier in!</NavLink>
                              </span>
                         </section>
-                    </form>
+                    </userForm>
                 </div>
             )}
         </>

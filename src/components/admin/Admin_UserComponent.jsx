@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import ButtonDelete from "../button/ButtonDelete";
 import './Admin_UserComponent.css';
@@ -10,10 +9,27 @@ function Admin_UserComponent() {
     const token = localStorage.getItem('token');
     const {user} = useContext(AuthContext);
     const [users, setUsers] = useState([]);
-    const navigate = useNavigate();
 
 
-useEffect(()=> {
+
+    async function deleteUser(username) {
+        try {
+            await axios.delete(`http://localhost:8080/users/delete/${username}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    }
+                });
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
+    }
+
+
+
+    useEffect(()=> {
+
         async function fetchUsers() {
             try {
                 const response = await axios.get(`http://localhost:8080/users/all`,
@@ -30,25 +46,7 @@ useEffect(()=> {
             }
         }
         fetchUsers();
-    }, []);
-
-
-
-async function deleteUser(username) {
-    try {
-        await axios.delete(`http://localhost:8080/users/delete/${username}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`,
-                    }
-                });
-
-        } catch (error) {
-            console.error('There was an error!', error);
-        }
-    }
-
+    }, [users]);
 
     return (
         <>
@@ -72,8 +70,9 @@ async function deleteUser(username) {
                             <thead>
                             <tr>
                                 <th>Persoon-ID</th>
+                                <th>Gebruikersnaam</th>
                                 <th>Email</th>
-                                <th>Voornaam:</th>
+                                <th>Voornaam</th>
                                 <th>Achternaam</th>
                                 <th>Adres</th>
                                 <th>Verwijderen</th>
@@ -86,6 +85,7 @@ async function deleteUser(username) {
                                 return <tr key={user.id}>
 
                                     <td data-label="Person-ID">{user.id}</td>
+                                    <td data-label="Gebruikersnaam">{user.username}</td>
                                     <td data-label="Email">{user.email}</td>
                                     <td data-label="Voornaam">{user.person.personFirstname}</td>
                                     <td data-label="Achternaam">{user.person.personLastname}</td>
@@ -93,7 +93,8 @@ async function deleteUser(username) {
                                         {user.person.personStreetName}{user.person.personHouseNumber}{user.person.personHouseNumberAdd}<br/>
                                         {user.person.personZipcode}{user.person.personCity}
                                     </td>
-                                    <td data-label="Verwijderren">
+
+                                    <td data-label="Verwijderen">
                                         <div className="admin-user-delete-button"
                                              onClick={() => deleteUser(user.username)}>
                                             <ButtonDelete/>

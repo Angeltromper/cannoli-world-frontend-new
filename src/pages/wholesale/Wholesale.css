@@ -40,7 +40,7 @@
 
 /*
 .cannoli-counters button,
-form button {
+userForm button {
     margin: 6px 0;
     width: 100%;
     padding: 6px 0;
@@ -48,7 +48,7 @@ form button {
 */
 
 /*
-form,
+userForm,
 .cannoli-counters {
     width: 500px;
     padding: 10px 14px;

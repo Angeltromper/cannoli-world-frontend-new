@@ -74,7 +74,7 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
             <section className="shoppingcart-layout-menu">
                 <section>
                     <TextContainer>
-                        <h1>Order checkout</h1>
+                        <h1>Online Order</h1>
                     </TextContainer>
                     <br/>
 
@@ -107,8 +107,8 @@ function CartDeliveryRequest({headerImageHandler, pageTitleHandler}) {
                     <br/>
 
                     <div className="naw-deliveryRequest-information">
-                       <h5> <Link to={'/users/:user_id'} exact activeClassName='active-link'><strong><em>Klik hier</em></strong>
-                           </Link>voor het invullen van uw persoongegevens</h5>
+                       <h5> <Link to={'/userform/:user_id'} exact activeClassName='active-link'><strong><em>Klik hier</em></strong>
+                           </Link>voor het invullen en of wijzigen van uw persoongegevens</h5>
                     </div>
                     <br/>
 

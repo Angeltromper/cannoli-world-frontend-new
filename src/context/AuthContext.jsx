@@ -2,6 +2,7 @@ import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
 import axios from "axios";
+import isTokenValid from "../helpers/isTokenValid";
 
 
 export const AuthContext = createContext({});
@@ -13,16 +14,15 @@ function AuthContextProvider({children}) {
         user: null,
         status:'pending',
     });
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     // is er een token? En zo ja, is deze nog geldig?
     useEffect (() => {
         const token = localStorage.getItem ('token');
 
-  /*    if (token && isTokenValid (token)) {*/
-        if (token) {
-            const decodedToken = jwtDecode (token);
-           getUserData (decodedToken.sub, token);
+        if (token && isTokenValid(token)) {
+            const decodedToken = jwtDecode(token);
+            getData (decodedToken.sub, token);
         } else {
             // als er geen token is doen we niks en zetten we de status op 'done'
             setAuth ( {
@@ -35,27 +35,30 @@ function AuthContextProvider({children}) {
 
     function login(token) {
         localStorage.setItem ('token', token);
-        const decodedToken = jwtDecode (token);
-        getUserData(decodedToken.sub, token);
+        const decodedToken = jwtDecode(token);
+        getData(decodedToken.sub, token, "/profile");
     }
 
     function logout(e) {
-        localStorage.clear ();
+        localStorage.clear();
+        e.preventDefault();
         setAuth ({
             isAuth: false,
             user: null,
             status: 'done',
         });
+        navigate('/');
     }
 
-    async function getUserData(id, token) {
+    async function getData(id, token, redirectUrl) {
         try {
-            const response = await axios.get (`http://localhost:8080/users/${ id }`, {
+            const response = await axios.get (`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`,
                 }
             });
+
             setAuth ({
                 ...auth,
                 isAuth: true,
@@ -67,25 +70,23 @@ function AuthContextProvider({children}) {
                     person_id: response.data.person.id,
                     person_firstname: response.data.person.personFirstname,
                     person_lastname: response.data.person.personLastname,
-                    person_street_name: response.data.person.personHouseNumber,
+                    person_street_name: response.data.person.personStreetName,
                     person_house_number: response.data.person.personHouseNumber,
                     person_house_number_add: response.data.person.personHouseNumberAdd,
+                    person_zipcode: response.data.person.personZipcode,
                     person_city: response.data.person.personCity,
-                    person_zipcode: response.data.person.personZipcode
                 },
                 status: 'done',
             });
+            if (redirectUrl) {
+                navigate(redirectUrl);
+            }
 
         } catch (error) {
                 console.error ('There was an error!', error);
                 localStorage.clear ();
-                setAuth({
-                isAuth: false,
-                user: null,
-                status: 'done',
-            });
-            }
         }
+    }
 
     const contextData = {
         auth: auth.isAuth,

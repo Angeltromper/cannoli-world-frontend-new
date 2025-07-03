@@ -1,4 +1,4 @@
-
+/*
 import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo/Logo Cannoli.png';
@@ -83,7 +83,7 @@ function Navbar() {
                 <div className="navbar-inlog-menu">
                     {auth ? (
                         <>
-                            {location.pathname !== '/profile' && (
+                            {location.pathname !== '/userProfile' && (
                                 <NavLink to="/profile" className="account-menu">
                                     <img src={user} alt="Profiel" /> Profiel
                                 </NavLink>
@@ -105,4 +105,4 @@ function Navbar() {
 }
 
 export default Navbar;
-
+*/

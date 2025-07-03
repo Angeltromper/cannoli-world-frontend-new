@@ -25,7 +25,7 @@ export const ImageCannoliComponent = (props) => {
             await axios.put(`http://localhost:8080/cannolis/${cannoli_id}/image/`,formData,
                 {
                     headers: {
-                        "Content-Type": "multipart/form-data",
+                        "Content-Type": "multipart/userForm-data",
                         "Authorization": `Bearer ${token}`,
                     },
                 }).then(savedImage)

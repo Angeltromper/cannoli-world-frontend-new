@@ -39,10 +39,10 @@ function SnackCannoli() {
                                 cannoli.image !== null ?
 
                                     <Cannoli key={cannoli.id}
-
                                              url={cannoli.image.url}
                                              cannoli_id={cannoli.id}
                                              cannoliName={cannoli.cannoliName}
+                                             cannoliType={cannoli.cannoliType}
                                              cannoliPrice={cannoli.price}
                                     />
                                     :
@@ -50,6 +50,7 @@ function SnackCannoli() {
 
                                              cannoli_id={cannoli.id}
                                              cannoliName={cannoli.cannoliName}
+                                             cannoliType={cannoli.cannoliType}
                                              cannoliPrice={cannoli.price}
                                     />
                             )

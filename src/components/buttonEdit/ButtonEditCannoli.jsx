@@ -4,50 +4,43 @@ import axios from "axios";
 import './ButtonEditCannoli.css';
 
 function ButtonEditCannoli() {
-    const token = localStorage.getItem('token');
-    const { user } = useContext(AuthContext);
-    const username = user?.username;
-
-    const [isAdmin, toggleIsAdmin] = useState(false);
-    const [adminInput, toggleAdminInput] = useState([]);
+    const {user} =useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        async function fetchAdmin() {
+
+        async function fetchAdminStatus() {
+           const token = localStorage.getItem('token');
+           if (!user || !token) return;
+
             try {
-                const response = await axios.get(`http://localhost:8080/users/${username}/`, {
+                const response = await axios.get(`http://localhost:8080/users/${user.username}/`, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`,
                     }
                 });
 
-                toggleAdminInput(response.data);
-
-                if (response.data.roles[0].authority === 'ROLE_ADMIN') {
-                    toggleIsAdmin(true);
-                } else {
-                    toggleIsAdmin(false);
-                }
+                const roles= response.data.roles || [];
+                const isUserAdmin = roles.some(role => role.authority === 'ROLE_ADMIN');
+                setIsAdmin(isUserAdmin);
 
             } catch (error) {
                 console.error('There was an error!', error);
             }
         }
 
-        if (username) {
-            fetchAdmin();
-        }
-    }, [username, token]);
+        fetchAdminStatus();
+    }, [user]);
+
 
     return (
         <>
-            {isAdmin && (
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button className="cannoli-editInfoCannoli">
-                        Wijzig Product
-                    </button>
-                </div>
-            )}
+            {isAdmin &&
+                <button className="cannoli-editInfoCannoli">
+                    Wijzig Product
+                </button>
+            }
         </>
     );
 }

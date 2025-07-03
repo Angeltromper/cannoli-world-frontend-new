@@ -3,17 +3,16 @@ import { useNavigate } from "react-router-dom";
 import pencilIcon from '../../assets/svg/pencil.svg';
 import './ButtonEdit.css';
 
-// function ButtonEdit({onClick}) {
 
-function ButtonEdit({userId}) {
+function ButtonEdit() {
     const navigate = useNavigate ();
 
     function redirect() {
-        navigate(`/userform/${userId}`);
+        navigate(`/userform/:user_id`);
     }
 
     return (
-        <button className="edit-button" onClick={redirect}>
+        <button className="button-edit" onClick={redirect}>
             <img src={ pencilIcon } alt="wijzig adres" />
         </button>
     );
