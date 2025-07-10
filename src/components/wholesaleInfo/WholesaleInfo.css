@@ -28,9 +28,9 @@ img. {
     height: 24em;
 }
 
-.cannoli-description {
-    font: var(--second-font);
-    position: relative;
+.link-button {
+    background-color: transparent;
+
 }
 
 .cannoli-info {

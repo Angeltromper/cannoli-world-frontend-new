@@ -94,12 +94,15 @@ function Admin_UserComponent() {
                                         {user.person.personZipcode}{user.person.personCity}
                                     </td>
 
-                                    <td data-label="Verwijderen">
-                                        <div className="admin-user-delete-button"
-                                             onClick={() => deleteUser(user.username)}>
-                                            <ButtonDelete/>
-                                        </div>
-                                    </td>
+
+                                    {user.id !== 1 && (
+                                        <td data-label="Verwijderen">
+                                            <div className="admin-user-delete-button"
+                                                 onClick={() => deleteUser(user.username)}>
+                                                <ButtonDelete/>
+                                            </div>
+                                        </td>
+                                    )}
                                 </tr>
                             })}
 

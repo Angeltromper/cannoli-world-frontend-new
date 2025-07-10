@@ -210,19 +210,21 @@ function Admin_WholesaleComponent() {
                             </thead>
                             <tbody className="admin_tbody">
 
-                            {cannolis.map(cannoli => (
-                                <tr key={cannoli.id}>
+                            {cannolis.map(cannoli => {
+                                return <tr key={cannoli.id}>
+
                                     <td>{cannoli.id}</td>
                                     <td>{cannoli.cannoliName}</td>
                                     <td>{cannoli.image && <img src={cannoli.image.url} alt={cannoli.image.fileName} />}</td>
                                     <td>{cannoli.price}</td>
                                     <td>{cannoli.description}</td>
                                     <td>{cannoli.ingredients}</td>
+
                                     <td>
                                         <ButtonDelete onClick={() => deleteCannoli(cannoli.id)}/>
                                     </td>
                                 </tr>
-                            ))}
+                            })}
                             </tbody>
                         </table>
                     </div>

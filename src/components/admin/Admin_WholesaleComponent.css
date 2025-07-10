@@ -74,10 +74,11 @@
 
 .admin-form-savebutton,
 .orange-outline-button {
-    color: #fff;
-    border: 2px solid #f7a400;
-    border-radius: 8px;
-    padding: 0.5rem 1.2rem;
+    background-color: #fff3e0;;
+    color: black;
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    border: 2px solid #f4a300;
+    padding: 0.5rem 1rem;
     margin-top: 1rem;
     cursor: pointer;
     font-weight: bold;
@@ -89,7 +90,6 @@
     background-color: #f7a400;
     color: #fff;
 }
-
 
 .Admin_WholesaleComponent {
     overflow-x: auto;

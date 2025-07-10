@@ -163,9 +163,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                             {errors.cannoli_price && <p>{errors.cannoli_price.message}</p>}
                             <br/>
 
-                            <div className="admin-form-save-button">
-                                <Button text="Opslaan" type="submit" />
-                            </div>
+                            <button type="submit" className="admin-form-savebutton">Opslaan</button>
                         </div>
                     </form>
                 </div>
