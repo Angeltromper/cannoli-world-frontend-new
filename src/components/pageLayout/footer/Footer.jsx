@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
 import mail from "../../../assets/navIcon/mail.png";
@@ -8,7 +8,16 @@ import './Footer.css';
 function Footer() {
 
     const {isAuth} = useContext(AuthContext);
+    const [popupOpen, setPopupOpen] = useState(false);
 
+    const handleNewsletterSubmit = (e) => {
+        e.preventDefault();
+        setPopupOpen(true);
+
+        setTimeout(() => {
+            setPopupOpen(false);
+        }, 5000);
+    };
 
     return (
         <div className="footer-container">
@@ -41,7 +50,7 @@ function Footer() {
                             Visscher: (+31)648889093</NavLink></figure>
                     </ul>
                 </div>
-                <div className="register-content">
+                <div className="register-content" onSubmit={handleNewsletterSubmit}>
                     <h3 className="register-subtitle">Wilt u onze nieuwsbrief ontvangen?</h3>
                     <form className="register-form">
                         <label>
@@ -52,9 +61,21 @@ function Footer() {
                 </div>
                 <hr/>
 
+
+                {popupOpen && (
+                    <div className="popup-newsletter">
+                        <div className="popup-newsletter-content">
+                            <p>Dank u wel voor uw inschrijving!</p>
+                            <p>We zullen u zo spoedig mogelijk mailen met info over de nieuwsbrief</p>
+                            <button onClick={() => setPopupOpen(false)}>Sluiten</button>
+                        </div>
+                    </div>
+                )}
+
                 <div className="footer-bottom">
                     <p>Eindproject Fullstack developer hogeschool Novi || gemaakt door Angelique Tromper || Copyright © 2025 Cannoli-world || Alle rechten voorbehouden </p>
                 </div>
+
             </footer>
         </div>
     );

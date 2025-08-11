@@ -1,3 +1,4 @@
+/*
 import React, { useContext, useEffect, useState } from 'react';
 import {CartContext} from "../../context/CartContext";
 import {AuthContext} from "../../context/AuthContext";
@@ -8,7 +9,7 @@ import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import './CartDeliveryRequest.css'
 
-function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
+function CartDeliveryRequestCopie({headerImageHandler, pageTitleHandler}) {
 
     const {user} = useContext(AuthContext);
     const token = localStorage.getItem('token');
@@ -35,20 +36,22 @@ function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
         pageTitleHandler();
     }, []);
 
+    useEffect(() => {
+        const formattedList = cart.map(item => ({
+            cannoliId: item.artikelnummer,
+            amount: item.qty
+        }));
+        setCannoliList(formattedList);
+    }, [cart]);
 
-   useEffect(() => {
-        const expandedList = cart.flatMap(item =>
-             Array(item.qty).fill(item.artikelnummer)
-         );
-       setCannoliList(expandedList);
-     }, [cart]);
+
 
     async function sendCannoliData(data) {
         try {
             await axios.post (
                 `http://localhost:8080/deliveryRequests/create`,
                 {
-                    cannoliList: cannoliListLong,
+                    orderItems: cannoliListLong,
                     comment: data.remark,
                     applier: user.person_id
                 }, {
@@ -144,4 +147,4 @@ function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
 }
 
 export default CartDeliveryRequest;
-
+*/

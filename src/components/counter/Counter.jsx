@@ -42,3 +42,9 @@ function Counter({ setCannoliCount, cannoliCount, addToCart, removeFromCart }) {
 }
 
 export default Counter;
+
+
+
+
+
+

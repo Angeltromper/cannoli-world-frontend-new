@@ -1,56 +1,66 @@
+
 /*
-import React,{useState} from 'react';
+import React from 'react';
 import './Order_InfoComponent.css';
 
-function Order_InfoComponent({id, cannoliList, status, comment, applier}) {
-    const [cannolis, setCannolis] = useState([cannoliList]);
-    const [products, setProduct] = useState([Object.values(cannolis[0])]);
+function Order_InfoComponentCopie({ id, cannoliList, status, comment, applier }) {
+
+
+    const cannolis = Array.isArray(cannoliList) ? cannoliList : [];
 
     return (
         <div className="orderinfoComponent-container">
-            <span className="orderinfoComponent">
-                <table>
-                    <thead>
+
+            <div className="orderinfoComponent-orderinfo">
+                <h4>Ordergegevens</h4>
+                <table className="orderinfo-table">
+                    <tbody>
                     <tr>
                         <th>Ordernummer:</th>
-                        <th>Status</th>
-                        <th>Naam</th>
-                        <th>Achternaam</th>
-                        <th>Adres</th>
-                    </tr>
-                    </thead>
-
-                    <tbody className="orderinfoComponent_body">
-                    <tr>
                         <td>{id}</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
                         <td>{status}</td>
-                        <td>{applier.personFirstname}</td>
-                        <td>{applier.personLastname}</td>
+                    </tr>
+                    <tr>
+                        <th>Naam:</th>
+                        <td>{applier.personFirstname} {applier.personLastname}</td>
+                    </tr>
+                    <tr>
+                        <th>Adres:</th>
                         <td>
-                            {applier.personStreetName} {applier.personHouseNumber} {applier.personHouseNumberAdd}<br/>
+                            {applier.personStreetName} {applier.personHouseNumber} {applier.personHouseNumberAdd}<br />
                             {applier.personZipcode} {applier.personCity}
                         </td>
                     </tr>
                     </tbody>
                 </table>
-            </span>
-            <br/>
+            </div>
 
-            <span className= "orderinfoComponent-cannolis">
-                <h5>Cannolis:</h5>
+            <div className="orderinfoComponent-cannolis">
+                <h4>Cannolis:</h4>
+                <table className="cannoli-table">
+                    <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Prijs</th>
+                        <th>Aantal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
+                    {cannolis.map((orderItem, index) => (
+                        <tr key={index}>
+                            <td>{orderItem.cannoli.cannoliName}</td>
+                            <td>€ {orderItem.cannoli.price.toFixed(2)}</td>
+                            <td>{orderItem.amount}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
 
-                {products.map((product) => {
-                    return (
-                        product.map ((product1, index) => {
-                            return (
-                                <ul key={ index }>
-                                    {product1.replaceAll("-", "").replaceAll("-", " ")}
-                                </ul>
-                            )
-                        }))
-                })}
-            </span>
             <br/>
 
             <span className="orderinfoComponent-comments">
@@ -63,3 +73,4 @@ function Order_InfoComponent({id, cannoliList, status, comment, applier}) {
 
 export default Order_InfoComponent;
 */
+

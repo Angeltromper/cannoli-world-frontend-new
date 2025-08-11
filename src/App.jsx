@@ -53,7 +53,7 @@ import headerImg from "./assets/img.header/homepage-background-2400.jpg";
 
 import './App.css';
 import CartPage from "./components/cartPage/CartPage";
-import { Cannoli } from "./components";
+// import { Cannoli } from "./components";
 
 function App() {
     const [headerImage, setHeaderImage] = useState(headerImg);
@@ -83,8 +83,8 @@ function App() {
                         <Route path="/cannoli"
                                element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-                        <Route path="/cannoli-list"
-                               element={<Cannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                        {/*<Route path="/cannoli-list"*/}
+                        {/*       element={<Cannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />*/}
 
                         <Route path="/cannoli-assorti"
                                element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />

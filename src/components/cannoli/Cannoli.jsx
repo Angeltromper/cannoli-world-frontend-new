@@ -10,6 +10,9 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     const [cart, setCart] = useContext(CartContext);
     const { auth } = useContext(AuthContext);
 
+    const currentItem = cart.find(item => item.artikelnummer === cannoli_id);
+    const currentQty = currentItem ? currentItem.qty : 0;
+
     const addToCart = () => {
         if (!auth) {
             alert("Log eerst in om producten toe te voegen aan je winkelmandje.");
@@ -25,10 +28,10 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
         };
 
         setCart(prevCart => {
-            const exists = prevCart.find(item => item.id === cannoli_id);
+            const exists = prevCart.find(item => item.artikelnummer === cannoli_id);
             const updatedCart = exists
                 ? prevCart.map(item =>
-                    item.id === cannoli_id ? { ...item, qty: item.qty + 1 } : item
+                    item.artikelnummer === cannoli_id ? { ...item, qty: item.qty + 1 } : item
                 )
                 : [...prevCart, { ...cannoli, qty: 1 }];
 
@@ -39,15 +42,15 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
 
     const removeOne = () => {
         setCart(prevCart => {
-            const exists = prevCart.find(item => item.id === cannoli_id);
+            const exists = prevCart.find(item => item.artikelnummer === cannoli_id);
             if (!exists) return prevCart;
 
             const updatedCart =
                 exists.qty > 1
                     ? prevCart.map(item =>
-                        item.id === cannoli_id ? { ...item, qty: item.qty - 1 } : item
+                        item.artikelnummer === cannoli_id ? { ...item, qty: item.qty - 1 } : item
                     )
-                    : prevCart.filter(item => item.id !== cannoli_id);
+                    : prevCart.filter(item => item.artikelnummer !== cannoli_id);
 
             localStorage.setItem("cart", JSON.stringify(updatedCart));
             return updatedCart;
@@ -67,12 +70,13 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
             <img className="cannoli-card__image" src={url || "/img/placeholder.jpg"} alt={fileName} />
 
             <p className="cannoli-card__name">{cannoliName}</p>
-            <p className="cannoli-card__weight">35gr</p>
+            <p className="cannoli-card__weight">25gr</p>
             <p className="cannoli-card__price">€ {Number(cannoliPrice).toFixed(2)}</p>
 
             {auth && (
                 <div className="cannoli-card__actions">
                     <button onClick={removeOne} className="remove-one">–</button>
+                    <span className="current-qty">{currentQty}</span>
                     <button onClick={addToCart} className="add-one">+</button>
                 </div>
             )}
@@ -81,3 +85,4 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
 };
 
 export default Cannoli;
+

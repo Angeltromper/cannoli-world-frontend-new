@@ -22,6 +22,7 @@ function OrderListComponent() {
                         }
                     }
                 );
+                console.log(response.data)
                 setDeliveryRequests (response.data);
             } catch (error) {
                 console.log ('There was an error!',error);
@@ -29,7 +30,7 @@ function OrderListComponent() {
         }
 
         fetchDeliveryRequest ();
-    }, [deliveryRequest_id,updateStatusConfirmed,updateStatusFinished]);
+    }, []);
 
 
     async function updateStatusConfirmed() {
@@ -76,6 +77,9 @@ function OrderListComponent() {
          return (
              <>
                  <div className="orderlist-page">
+
+
+
                      <div className="orderlist-status-update">
 
                          <TextContainer>
@@ -103,7 +107,15 @@ function OrderListComponent() {
                              <button onClick={updateStatusFinished}>
                                  Bezorgt
                              </button>
+
+                             <button onClick={() => navigate(-1)}>
+                                 Terug naar het overzicht
+                             </button>
                          </div>
+
+
+
+
                      </div>
                          <section className="orderlist-info-page">
                              {deliveryRequests.applier &&
@@ -111,9 +123,9 @@ function OrderListComponent() {
                                                       id={deliveryRequests.id }
                                                       applier={deliveryRequests.applier}
                                                       cannoliList={deliveryRequests.cannoliList}
+                                                      // cannoliList={deliveryRequests.orderItems}
                                                       status={deliveryRequests.status}
-                                                      comments={deliveryRequests.comments}
-
+                                                      comment={deliveryRequests.comment}
                                  />
                              }
                          </section>

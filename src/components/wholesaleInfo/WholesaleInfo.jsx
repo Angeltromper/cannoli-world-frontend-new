@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import ButtonEditCannoli from "../buttonEdit/ButtonEditCannoli";
@@ -46,7 +46,6 @@ export const WholesaleInfo = (props) => {
             setCart(prev => [...prev, cannoli]);
         }
 
-        setCannoliProduct(prev => prev + 1);
     };
 
     const removeFromCart = () => {
@@ -81,36 +80,43 @@ export const WholesaleInfo = (props) => {
         <section className="cannoli-info-container">
             <div className="cannoli-info-page">
 
-                <TextContainer>
-                    <h1>Cannoli</h1>
-                </TextContainer>
+                <TextContainerResp>
+                    <h2>Cannoli {props.cannoliType} </h2>
+                </TextContainerResp>
+                <br/>
+                <br/>
 
-                <TwoColumn>
-                    <Column>
+
+                <TwoColumn className="custom-column-container">
+                    <Column className="custom-image-column">
                         <div className="cannoli-info-description">
-                            {/*<h5>Artikelnummer: {props.cannoli_id}</h5>*/}
                             <img src={props.url} alt={props.fileName} />
                         </div>
-                        </Column>
+                    </Column>
+                    <Column className="custom-text-column">
+                        <div>
+                            <h3>{props.cannoliName}</h3>
+                            <h5>Artikelnummer:<span className="artikelnumber">{props.cannoli_id}</span></h5>
+                        <br/>
 
-                    <Column>
-                        <h2>{props.cannoliName}</h2>
-                      <h5>Artikelnummer: {props.cannoli_id}</h5>
+                            <div className="category-cannolitype">
+                                <h5><em>Categorie:</em></h5>
+                            </div>
+                                <button className="link-button" onClick={() => navigate(-1)}>
+                                    <h5>{props.cannoliType}</h5>
+                                </button>
+                            <br/>
+                            <br/>
 
-                        <button className="link-button" onClick={() => navigate(-1)}>
-                            Categorie: {props.cannoliType}
-                        </button>
+                            {auth && (
+                                <h3>
+                                   € {Number(props.cannoliPrice).toFixed(2)}<span className="groothandel-label">p.st (groothandelsprijs)</span>
+                                </h3>
+                            )}
 
-                        {auth && (
-                            <>
-                                <h2>€ {Number(props.cannoliPrice).toFixed(2)}</h2>
-                                <h5>p.st (groothandelsprijs)</h5>
-                            </>
-                        )}
+                            <br />
 
-                        <br />
-
-                        {!isReadonly && (
+                            {auth && !isReadonly && (
                             <>
                             {!toggleCount ? (
                                 <button
@@ -139,6 +145,7 @@ export const WholesaleInfo = (props) => {
                             )}
                         </>
                         )}
+                        </div>
                     </Column>
                 </TwoColumn>
 

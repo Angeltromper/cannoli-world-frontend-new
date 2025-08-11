@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './Order_InfoComponent.css';
 
@@ -48,13 +49,13 @@ function Order_InfoComponent({ id, cannoliList, status, comment, applier }) {
                     </thead>
                     <tbody>
 
-                        {cannolis.map((cannoli, index) => (
-                            <tr key={index}>
-                                <td>{cannoli.name}</td>
-                                <td>€ {cannoli.price.toFixed(2)}</td>
-                                <td>{cannoli.amount}</td>
-                            </tr>
-                        ))}
+                    {cannolis.map((cannoli, index) => (
+                        <tr key={index}>
+                            <td>{cannoli.name}</td>
+                            <td>€ {cannoli.price.toFixed(2)}</td>
+                            <td>{cannoli.amount}</td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>
@@ -70,3 +71,4 @@ function Order_InfoComponent({ id, cannoliList, status, comment, applier }) {
 }
 
 export default Order_InfoComponent;
+
