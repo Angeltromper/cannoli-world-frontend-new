@@ -1,22 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
+export const CartContext = React.createContext(null);
 
-export const CartContext = React.createContext();
-
-export const CartProvider = (props) => {
+export const CartProvider = ({children}) => {
     const [cart, setCart] = useState(() => {
-        const storedCart = localStorage.getItem("cart");
-        return storedCart ? JSON.parse(storedCart) : [];
+        try {
+            const stored = localStorage.getItem("cart");
+            return stored ? JSON.parse(stored) : [];
+        } catch {
+            return [];
+        }
     });
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
+        try {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        } catch {
+        }
+        }, [cart]);
 
+    const clearCart = () => {
+        setCart([]);
+        try {
+            localStorage.removeItem('cart');
+        } catch {
+        }
+    };
+
+    const value = useMemo(() => ({ cart, setCart, clearCart }), [cart]);
 
     return (
-        <CartContext.Provider value={[cart, setCart]}>
-            {props.children}
+        <CartContext.Provider value={value}>
+            {children}
         </CartContext.Provider>
     )
 };

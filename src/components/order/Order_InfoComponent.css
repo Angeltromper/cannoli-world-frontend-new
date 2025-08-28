@@ -1,3 +1,15 @@
+.orderinfoComponent-container {
+    text-align: left;
+}
+
+.orderinfo-cannolis-title {
+    margin: 0.25rem 0 0.25rem 0;
+}
+
+.orderinfo-remark {
+    margin: 0 0 0.5rem;
+}
+
 .cannoli-table {
     width: 100%;
     border-collapse: collapse;

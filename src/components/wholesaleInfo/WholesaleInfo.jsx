@@ -16,7 +16,7 @@ import './WholesaleInfo.css';
 export const WholesaleInfo = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const [cart, setCart] = useContext(CartContext);
+    const { cart, setCart} = useContext(CartContext);
     const [cannoliProduct, setCannoliProduct] = useState(0);
     const [toggleCount, setToggleCount] = useState(false);
     const { auth } = useContext(AuthContext);

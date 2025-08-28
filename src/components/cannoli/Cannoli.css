@@ -86,6 +86,31 @@
     opacity: 0.9;
 }
 
+.cannoli-card__login-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.5rem .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.cannoli-card__login-btn:hover,
+.cannoli-card__login-btn:focus {
+    color: black;
+    outline: none;
+}
+
+.cannoli-card a {
+    text-indent: 0;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
 /* Responsive */
 @media screen and (max-width: 768px) {
     .cannoli-card--snack {

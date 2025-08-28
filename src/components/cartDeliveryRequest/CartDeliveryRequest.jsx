@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
-import {CartContext} from "../../context/CartContext";
-import {AuthContext} from "../../context/AuthContext";
-import {useFormContext} from "react-hook-form";
+import React, { useContext, useEffect } from 'react';
+import { CartContext } from "../../context/CartContext";
+import { AuthContext } from "../../context/AuthContext";
+import { useFormContext } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
-import './CartDeliveryRequest.css'
+import './CartDeliveryRequest.css';
 
-function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
-
-    const {user} = useContext(AuthContext);
+function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
+    const { user } = useContext(AuthContext);
     const token = localStorage.getItem('token');
 
-    const [cart] = useContext(CartContext);
-    const totalPrice = cart.reduce((acc, item) => acc + (item.prijs * item.qty), 0);
+    const { cart, clearCart } = useContext(CartContext);
+    const totalPrice = cart.reduce((acc, item) => acc + (Number(item.prijs) || 0) * (Number(item.qty) || 0), 0);
 
-    // const [comment, setComment] = useState('');
     const firstname = user.person_firstname;
     const lastname = user.person_lastname;
     const streetName = user.person_street_name;
@@ -25,45 +23,42 @@ function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
     const zipcode = user.person_zipcode;
     const city = user.person_city;
 
-    const {register, formState: {errors}, handleSubmit} = useFormContext();
-    const navigate= useNavigate();
-
-    const [cannoliListLong, setCannoliList] = useState([])
+    const { register, handleSubmit, reset } = useFormContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
     }, []);
 
-
-   useEffect(() => {
-        const expandedList = cart.flatMap(item =>
-             Array(item.qty).fill(item.artikelnummer)
-         );
-       setCannoliList(expandedList);
-     }, [cart]);
-
     async function sendCannoliData(data) {
         try {
-            await axios.post (
+            const items = cart.map(it => ({
+                cannoliId: it.artikelnummer,
+                quantity: Number(it.qty) || 0,
+            }));
+
+            await axios.post(
                 `http://localhost:8080/deliveryRequests/create`,
                 {
-                    cannoliList: cannoliListLong,
-                    comment: data.remark,
-                    applier: user.person_id
-                }, {
+                    comment: data.remark ?? "",
+                    items,
+                },
+                {
                     headers: {
                         'Content-Type': 'application/json',
-                        "Authorization": `Bearer ${ token }`
-                    }
-                }).then(addedDeliveryRequest)
-        } catch (e) {
-            console.error(e.message)
-        }
-    }
+                        'Authorization': `Bearer ${token}`,
+                    },
+                }
+            );
 
-    function addedDeliveryRequest() {
-        navigate(`/deliveryRequests`)
+            clearCart();
+            reset({ remark: '' });
+            navigate(`/deliveryRequests`);
+        } catch (e) {
+            console.error(e);
+            alert('Verzenden mislukt. Probeer opnieuw of neem contact op.');
+        }
     }
 
     return (
@@ -73,60 +68,73 @@ function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
                     <TextContainer>
                         <h1>Online Order</h1>
                     </TextContainer>
-                    <br/>
 
-                    {cart && cart.map((cannoli, index) => {
-                        return (
-                            <ul key={index} className="shoppingcart-items-order">
-                                <div>{cannoli.naam}</div>
-                                <div>{cannoli.prijs.toFixed(2)}</div>
-                                <div>{cannoli.qty}</div>
-                            </ul>
-                        )
-                    })}
-                    <br/>
+                    <br />
 
-                    <div className="shoppingcart-price-order">
-                        <h3><strong>Totaal prijs: € {totalPrice.toFixed(2)} </strong></h3>
+                    <div className="order-table-wrap">
+                        <table className="shoppingcart-table">
+                            <thead>
+                            <tr>
+                                <th>Cannoli</th>
+                                <th>Prijs</th>
+                                <th>Aantal</th>
+                                <th>Subtotaal</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {cart.map((cannoli, index) => {
+                                const price = Number(cannoli.prijs) || 0;
+                                const qty = Number(cannoli.qty) || 0;
+                                return (
+                                    <tr key={`${cannoli.artikelnummer}-${index}`}>
+                                        <td data-label="Cannoli"> {cannoli.naam}</td>
+                                        <td data-label="Prijs">€ {price.toFixed(2)}</td>
+                                        <td data-label="Aantal"> {qty}</td>
+                                        <td data-label="Subtotaal">€ {(price * qty).toFixed(2)}</td>
+                                    </tr>
+                                );
+                            })}
+                            </tbody>
+                        </table>
                     </div>
 
-                    <br/>
+
+                    <div className="order-total-row">
+                        <span className="order-total-label">Totaal prijs:</span>
+                        <span className="order-total-amount">€ {totalPrice.toFixed(2)}</span>
+                    </div>
+
+                    <br />
 
                     <div className="naw-deliveryRequest">
-                        <h5> *Controleer of uw persoongegevens juist zijn ingevuld.</h5>
+                        <h5>*Controleer of uw persoonsgegevens juist zijn ingevuld.</h5>
                     </div>
-                    <br/>
+
+                    <br />
 
                     <div className="naw-deliveryRequest-information">
-                        <h5> <Link to={'/userform/:user_id'} exact activeClassName='active-link'><strong><em>Klik hier</em></strong>
-                        </Link>voor het invullen en of wijzigen van uw persoongegevens</h5>
-                    </div>
-                    <br/>
-
-
-                    <div>
-                        <h3>Persoongegevens:</h3>
+                        <h5>
+                            <Link to={'/userform/:user_id'}>
+                                <strong><em>Klik hier</em></strong>
+                            </Link> voor het invullen en/of wijzigen van uw persoonsgegevens
+                        </h5>
                     </div>
 
-                    {firstname} {lastname} <br/>
-                    {streetName} {houseNumber} {houseNumberAdd} <br/>
-                    {zipcode} {city} <br/>
+                    <br />
 
-                    <br/>
-                    <br/>
+                    <div><h3>Persoonsgegevens:</h3></div>
+                    {firstname} {lastname} <br />
+                    {streetName} {houseNumber} {houseNumberAdd} <br />
+                    {zipcode} {city} <br />
 
-                    <form className="form-shoppingcart-order"
-                          onSubmit={handleSubmit(sendCannoliData)}>
+                    <br /><br />
 
+                    <form className="form-shoppingcart-order" onSubmit={handleSubmit(sendCannoliData)}>
                         <section>
                             <label htmlFor="remark-field">Opmerking</label>
-
                             <textarea
                                 maxLength={280}
-                                name="remark"
                                 id="remark-field"
-                                // value={comment}
-                                // onChange={(e) => setComment(e.target.value)}
                                 {...register("remark")}
                                 rows={8}
                                 cols={50}
@@ -134,14 +142,13 @@ function CartDeliveryRequest ({headerImageHandler, pageTitleHandler}) {
                             />
                         </section>
 
-                        <br/>
+                        <br />
                         <button type="submit">Verzend</button>
                     </form>
                 </section>
             </section>
         </div>
-    )
+    );
 }
 
 export default CartDeliveryRequest;
-

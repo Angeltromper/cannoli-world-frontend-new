@@ -11,9 +11,10 @@ import './UserProfile.css';
 function UserProfile({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
-    const {user: {username}} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    const username = user?.username;
     const [isAdmin, setIsAdmin] = useState(false);
-    const [adminInput, setAdminInput] = useState([]);
+    // const [adminInput, setAdminInput] = useState([]);
 
 
      useEffect(() => {
@@ -34,32 +35,38 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
         // const source =axios.CancelToken.source();
 
         useEffect(()=> {
-        async function fetchAdmin() {
-            try {
-                const response = await axios.get (`http://localhost:8080/users/${username}/`,
-                    {
-                        headers: {
-                            "Content-type": "application/json",
-                            "Authorization": `Bearer ${token}`,
+            if (!username || !token) return;
+
+            let cancelled = false;
+
+            async function fetchAdmin() {
+                try {
+                    const {data} = await axios.get (`http://localhost:8080/users/${ username }/`,
+                        {
+                            headers: {
+                                "Content-type": "application/json",
+                                "Authorization": `Bearer ${ token }`,
+                            }
                         }
+                    );
+
+                    const roleFromArray = Array.isArray (data.roles) ? (data.roles[0]?.authority || data.roles[0]) : undefined;
+                    const role = roleFromArray ??
+                        (typeof data.roles === 'string' ? data.roles : undefined) ??
+                        (typeof data.role === 'string' ? data.role : undefined);
+
+                    if (!cancelled) {
+                        setIsAdmin (role === 'ROLE_ADMIN' || role === 'ADMIN');
                     }
-                );
-
-               setAdminInput (response.data)
-
-                if ( response.data.roles[0].authority ==='ROLE_ADMIN') {
-                    setIsAdmin (true);
-                } else {
-                    setIsAdmin (false);
+                } catch (error) {
+                    console.error ('There was an error', error);
                 }
-
-            } catch (error) {
-                console.error ('There was an error', error);
             }
-        }
 
-        fetchAdmin();
-    }, [isAdmin, token]);
+            fetchAdmin();
+            return () => { cancelled = true; };
+            }, [username, token]);
+
 
         function navigateToUserEdit() {
             navigate("/user-view/");
@@ -68,6 +75,14 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
         function navigateToCannoliEdit() {
             navigate("/cannolis-add/");
         }
+
+    function navigateToAdminOrders() {
+        navigate("/deliveryRequests/");
+    }
+
+    function navigateTomyOrders() {
+        navigate("/orders/");
+    }
 
 
 
@@ -89,7 +104,7 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
             </div>
 
 
-            {isAdmin &&
+            {isAdmin && (
                 <div className="profile-info">
                     <div className="profile-info-view" onClick={ navigateToUserEdit }>
                         Gebruikersgegevens beheren
@@ -98,8 +113,21 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
                     <div className="profile-info-added" onClick={ navigateToCannoliEdit }>
                         Cannolis toevoegen en of wijzigen
                     </div>
+
+                    <div className="profile-info-added" onClick={ navigateToAdminOrders }>
+                        Overzicht bestellijst
+                    </div>
                 </div>
-            }
+            )}
+
+            {!isAdmin && (
+                <div className="profile-info">
+                    <div className="profile-info-added" onClick={ navigateTomyOrders }>
+                        Mijn bestellingen
+                    </div>
+                </div>
+
+            )}
         </>
     );
 }

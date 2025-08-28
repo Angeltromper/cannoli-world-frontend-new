@@ -1,15 +1,23 @@
-
-import React from 'react';
+import React, { useMemo } from 'react';
 import './Order_InfoComponent.css';
 
-function Order_InfoComponent({ id, cannoliList, status, comment, applier }) {
+function Order_InfoComponent({ id, applier, cannoliList = [], status, comment }) {
+    // Als data nog niet binnen is, niks renderen (of toon een spinner)
+    if (!applier) return null;
 
+    const formatEuro = (n) =>
+        new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
+            .format(Number(n || 0));
 
-    const cannolis = Array.isArray(cannoliList) ? cannoliList : [];
+    const items = Array.isArray(cannoliList) ? cannoliList : [];
+
+    const orderTotal = useMemo(
+        () => items.reduce((sum, it) => sum + Number(it.prijs || 0) * Number(it.qty || 0), 0),
+        [items]
+    );
 
     return (
         <div className="orderinfoComponent-container">
-
             <div className="orderinfoComponent-orderinfo">
                 <h4>Ordergegevens</h4>
                 <table className="orderinfo-table">
@@ -29,7 +37,7 @@ function Order_InfoComponent({ id, cannoliList, status, comment, applier }) {
                     <tr>
                         <th>Adres:</th>
                         <td>
-                            {applier.personStreetName} {applier.personHouseNumber} {applier.personHouseNumberAdd}<br />
+                            {applier.personStreetName} {applier.personHouseNumber} {applier.personHouseNumberAdd || ''}<br />
                             {applier.personZipcode} {applier.personCity}
                         </td>
                     </tr>
@@ -37,38 +45,49 @@ function Order_InfoComponent({ id, cannoliList, status, comment, applier }) {
                 </table>
             </div>
 
-            <div className="orderinfoComponent-cannolis">
-                <h4>Cannolis:</h4>
+            <h4 className="orderinfo-cannolis-title">Cannolis:</h4>
+
+            {items.length > 0 ? (
                 <table className="cannoli-table">
                     <thead>
                     <tr>
                         <th>Naam</th>
                         <th>Prijs</th>
                         <th>Aantal</th>
+                        <th>Totaal</th>
                     </tr>
                     </thead>
                     <tbody>
-
-                    {cannolis.map((cannoli, index) => (
-                        <tr key={index}>
-                            <td>{cannoli.name}</td>
-                            <td>€ {cannoli.price.toFixed(2)}</td>
-                            <td>{cannoli.amount}</td>
-                        </tr>
-                    ))}
+                    {items.map((item, i) => {
+                        const lineTotal = Number(item.prijs || 0) * Number(item.qty || 0);
+                        return (
+                            <tr key={item.artikelnummer ?? `${item.naam}-${i}`}>
+                                <td>{item.naam}</td>
+                                <td>{formatEuro(item.prijs)}</td>
+                                <td>{item.qty}</td>
+                                <td>{formatEuro(lineTotal)}</td>
+                            </tr>
+                        );
+                    })}
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colSpan={3} style={{ textAlign: 'right' }}>Totaal:</th>
+                        <th>{formatEuro(orderTotal)}</th>
+                    </tr>
+                    </tfoot>
                 </table>
-            </div>
+            ) : (
+                <p>Geen cannoli&apos;s gevonden.</p>
+            )}
 
-            <br/>
+            <br />
 
-            <span className="orderinfoComponent-comments">
-                <h5>Opmerking:</h5>
-                {comment}
-            </span>
+            <p className="orderinfo-remark">
+                <strong>Opmerking:</strong> {comment?.trim() ? comment : '–'}
+            </p>
         </div>
     );
 }
 
 export default Order_InfoComponent;
-

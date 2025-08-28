@@ -40,6 +40,7 @@ import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRe
 
 import Admin_WholesaleEditComponent from "./components/admin/Admin_WholesaleEditComponent";
 import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
+// import Admin_OrderListComponent from "./components/admin/Admin_OrderListComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 
 import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
@@ -53,7 +54,6 @@ import headerImg from "./assets/img.header/homepage-background-2400.jpg";
 
 import './App.css';
 import CartPage from "./components/cartPage/CartPage";
-// import { Cannoli } from "./components";
 
 function App() {
     const [headerImage, setHeaderImage] = useState(headerImg);
@@ -82,9 +82,6 @@ function App() {
 
                         <Route path="/cannoli"
                                element={<Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-
-                        {/*<Route path="/cannoli-list"*/}
-                        {/*       element={<Cannoli headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />*/}
 
                         <Route path="/cannoli-assorti"
                                element={<CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
@@ -151,6 +148,9 @@ function App() {
 
                         <Route path="/cannolis-add"
                                element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
+
+                        {/*<Route path="/deliveryRequests"*/}
+                        {/*       element={<PrivateRoute><Admin_OrderListComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />*/}
 
                         <Route path="/user-view"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />

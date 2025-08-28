@@ -7,7 +7,7 @@ import './CartPage.css';
 
 const CartPage = () => {
     const navigate = useNavigate();
-    const [cart, setCart] = useContext(CartContext);
+    const { cart, setCart} = useContext(CartContext);
     const [showPopup, setShowPopup] = useState(false);
 
     const totalPrice = cart.reduce((acc, item) => acc + item.prijs * item.qty, 0);

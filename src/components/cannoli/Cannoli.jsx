@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 import { FaInfoCircle } from "react-icons/fa";
 import "./Cannoli.css";
 
+
 const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     const navigate = useNavigate();
-    const [cart, setCart] = useContext(CartContext);
+    const { cart, setCart} = useContext(CartContext);
     const { auth } = useContext(AuthContext);
+
+    const isLoggedIn = !!(auth?.isAuthenticated ?? auth?.user ?? auth?.token ?? auth);
 
     const currentItem = cart.find(item => item.artikelnummer === cannoli_id);
     const currentQty = currentItem ? currentItem.qty : 0;
 
     const addToCart = () => {
-        if (!auth) {
+        if (!isLoggedIn) {
             alert("Log eerst in om producten toe te voegen aan je winkelmandje.");
             return;
         }
@@ -71,9 +74,18 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
 
             <p className="cannoli-card__name">{cannoliName}</p>
             <p className="cannoli-card__weight">25gr</p>
-            <p className="cannoli-card__price">€ {Number(cannoliPrice).toFixed(2)}</p>
 
-            {auth && (
+            {isLoggedIn ? (
+                typeof  cannoliPrice === "number" && (
+                    <p className="cannoli-card__price">€ {Number(cannoliPrice).toFixed(2)}</p>
+                )
+            ) : (
+                <Link to='/register' className="cannoli-card__login-btn">
+                    Registreer/Log in om prijzen te kunnen zien.
+                </Link>
+            )}
+
+            {isLoggedIn && (
                 <div className="cannoli-card__actions">
                     <button onClick={removeOne} className="remove-one">–</button>
                     <span className="current-qty">{currentQty}</span>
