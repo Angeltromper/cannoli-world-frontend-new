@@ -17,13 +17,13 @@
 }
 
 .delete-button:hover {
-    background-color: rgb(237, 0, 0);
+    /*background-color: rgb(237, 0, 0);*/
     transform: translateY(-1px);
     z-index: 500;
 }
 
 .delete-button:active {
-    background-color: #f3454a;
+    /*background-color: #f3454a;*/
     transform: translateY(0);
    }
 

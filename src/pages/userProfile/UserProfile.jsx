@@ -22,71 +22,58 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
          pageTitleHandler();
      }, []);
 
+     useEffect(()=> {
+         if (!username || !token) return;
 
-    // function editUsers() {
-    //     navigate(`/user-view/`)
-    // }
-    //
-    // function editCannolis() {
-    //     navigate(`/cannolis-add/`)
-    // }
+         let cancelled = false;
 
+         async function fetchAdmin() {
+             try {
+                 const {data} = await axios.get (`http://localhost:8080/users/${ username }/`,
+                     {
+                         headers: {
+                             "Content-type": "application/json",
+                             "Authorization": `Bearer ${ token }`,
+                         }
+                     }
+                     );
 
-        // const source =axios.CancelToken.source();
+                 const roleFromArray = Array.isArray (data.roles) ? (data.roles[0]?.authority || data.roles[0]) : undefined;
+                 const role = roleFromArray ??
+                     (typeof data.roles === 'string' ? data.roles : undefined) ??
+                     (typeof data.role === 'string' ? data.role : undefined);
 
-        useEffect(()=> {
-            if (!username || !token) return;
+                 if (!cancelled) {
+                     setIsAdmin (role === 'ROLE_ADMIN' || role === 'ADMIN');
+                 }
+             } catch (error) {
+                 console.error ('There was an error', error);
+             }
+         }
 
-            let cancelled = false;
-
-            async function fetchAdmin() {
-                try {
-                    const {data} = await axios.get (`http://localhost:8080/users/${ username }/`,
-                        {
-                            headers: {
-                                "Content-type": "application/json",
-                                "Authorization": `Bearer ${ token }`,
-                            }
-                        }
-                    );
-
-                    const roleFromArray = Array.isArray (data.roles) ? (data.roles[0]?.authority || data.roles[0]) : undefined;
-                    const role = roleFromArray ??
-                        (typeof data.roles === 'string' ? data.roles : undefined) ??
-                        (typeof data.role === 'string' ? data.role : undefined);
-
-                    if (!cancelled) {
-                        setIsAdmin (role === 'ROLE_ADMIN' || role === 'ADMIN');
-                    }
-                } catch (error) {
-                    console.error ('There was an error', error);
-                }
-            }
-
-            fetchAdmin();
-            return () => { cancelled = true; };
-            }, [username, token]);
+         fetchAdmin();
+         return () => { cancelled = true; };
+         }, [username, token]);
 
 
-        function navigateToUserEdit() {
-            navigate("/user-view/");
-        }
+     function navigateToUserEdit() {
+         navigate("/user-view/");
+     }
 
-        function navigateToCannoliEdit() {
-            navigate("/cannolis-add/");
-        }
+     function navigateToCannoliEdit() {
+         navigate("/cannolis-add/");
+     }
 
-    function navigateToAdminOrders() {
-        navigate("/deliveryRequests/");
-    }
+     function navigateToAdminOrders() {
+         navigate("/deliveryRequests/");
+     }
 
-    function navigateTomyOrders() {
-        navigate("/orders/");
-    }
+     function navigateTomyOrders() {
+         navigate("/orders/");
+     }
 
 
-
-    return (
+     return (
         <>
             <div className="profile-page-container">
                 <h2 className="profile-header">Welkom {username}</h2>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
-import { FaInfoCircle } from "react-icons/fa";
+import { FiInfo} from "react-icons/fi";
 import "./Cannoli.css";
 
 
@@ -65,28 +65,28 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     };
 
     return (
-        <article className="cannoli-card cannoli-card">
-            <div className="cannoli-card__info-icon" onClick={redirect}>
-                <FaInfoCircle />
+        <article className="cannoli-item">
+            <div className="cannoli-item__info-icon" onClick={redirect}>
+                <FiInfo />
             </div>
 
-            <img className="cannoli-card__image" src={url || "/img/placeholder.jpg"} alt={fileName} />
+            <img className="cannoli-item__image" src={url || "/img/placeholder.jpg"} alt={fileName} />
 
-            <p className="cannoli-card__name">{cannoliName}</p>
-            <p className="cannoli-card__weight">25gr</p>
+            <p className="cannoli-item__name">{cannoliName}</p>
+            <p className="cannoli-item__weight">25gr</p>
 
             {isLoggedIn ? (
                 typeof  cannoliPrice === "number" && (
-                    <p className="cannoli-card__price">€ {Number(cannoliPrice).toFixed(2)}</p>
+                    <p className="cannoli-item__price">€ {Number(cannoliPrice).toFixed(2)}</p>
                 )
             ) : (
-                <Link to='/register' className="cannoli-card__login-btn">
+                <Link to='/register' className="cannoli-item__login-btn">
                     Registreer/Log in om prijzen te kunnen zien.
                 </Link>
             )}
 
             {isLoggedIn && (
-                <div className="cannoli-card__actions">
+                <div className="cannoli-item__actions">
                     <button onClick={removeOne} className="remove-one">–</button>
                     <span className="current-qty">{currentQty}</span>
                     <button onClick={addToCart} className="add-one">+</button>

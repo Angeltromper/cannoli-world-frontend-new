@@ -40,7 +40,6 @@ import CartDeliveryRequest from "./components/cartDeliveryRequest/CartDeliveryRe
 
 import Admin_WholesaleEditComponent from "./components/admin/Admin_WholesaleEditComponent";
 import Admin_WholesaleComponent from "./components/admin/Admin_WholesaleComponent";
-// import Admin_OrderListComponent from "./components/admin/Admin_OrderListComponent";
 import Admin_UserComponent from "./components/admin/Admin_UserComponent";
 
 import ImageCannoliComponent from "./components/imageUploaden/ImageCannoliComponent";
@@ -148,9 +147,6 @@ function App() {
 
                         <Route path="/cannolis-add"
                                element={<PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />
-
-                        {/*<Route path="/deliveryRequests"*/}
-                        {/*       element={<PrivateRoute><Admin_OrderListComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />*/}
 
                         <Route path="/user-view"
                                element={<PrivateRoute><Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} /></PrivateRoute>} />

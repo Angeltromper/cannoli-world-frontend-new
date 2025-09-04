@@ -1,4 +1,4 @@
-.cannoli-card {
+.cannoli-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,18 +12,18 @@
     transition: transform 0.3s ease;
 }
 
-.cannoli-card:hover {
+.cannoli-item:hover {
     transform: translateY(-5px);
 }
 
-.cannoli-card__image {
+.cannoli-item__image {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 0.5rem;
 }
 
-.cannoli-card__info-icon {
+.cannoli-item__info-icon {
     position: absolute;
     top: 8px;
     right: 12px;
@@ -32,38 +32,38 @@
     cursor: pointer;
 }
 
-.cannoli-card__info-icon:hover {
+.cannoli-item__info-icon:hover {
     color: #333;
 }
 
-.cannoli-card__name {
+.cannoli-item__name {
     font-size: 1.1rem;
     font-weight: 600;
     margin: 0.6rem 0 0.2rem 0;
     color: #2c2c2c;
 }
 
-.cannoli-card__weight {
+.cannoli-item__weight {
     font-size: 0.9rem;
     color: #555;
     margin-bottom: 0.3rem;
 }
 
-.cannoli-card__price {
+.cannoli-item_price {
     color: #b85c38;
     font-weight: bold;
     margin-bottom: 0.8rem;
 }
 
-.cannoli-card__actions {
+.cannoli-item__actions {
     display: flex;
     justify-content: center;
     gap: 0.7rem;
     margin-top: 0.4rem;
 }
 
-.cannoli-card__actions .add-one,
-.cannoli-card__actions .remove-one {
+.cannoli-item__actions .add-one,
+.cannoli-item__actions .remove-one {
     font-size: 1rem;
     padding: 6px 10px;
     border: none;
@@ -81,12 +81,12 @@
     background-color: #FFB100;
 }
 
-.cannoli-card__actions button:hover {
+.cannoli-item__actions button:hover {
     transform: scale(1.05);
     opacity: 0.9;
 }
 
-.cannoli-card__login-btn {
+.cannoli-item__login-btn {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 0.5rem .9rem;
@@ -97,13 +97,13 @@
     cursor: pointer;
 }
 
-.cannoli-card__login-btn:hover,
-.cannoli-card__login-btn:focus {
+.cannoli-item__login-btn:hover,
+.cannoli-item__login-btn:focus {
     color: black;
     outline: none;
 }
 
-.cannoli-card a {
+.cannoli-item a {
     text-indent: 0;
     visibility: visible;
     opacity: 1;
@@ -111,9 +111,8 @@
 
 
 
-/* Responsive */
 @media screen and (max-width: 768px) {
-    .cannoli-card--snack {
+    .cannoli-item--snack {
         width: 100%;
         max-width: 90%;
         margin: 0 auto;

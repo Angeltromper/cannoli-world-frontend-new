@@ -28,40 +28,105 @@
 
 .order-status {
     display: flex;
-    gap: 1rem;
+    /*display: grid;*/
+    gap: 1rem 1.25rem;
+    align-items: center;
     margin-top: 1.5rem;
+}
+
+.order-status__current {
+    color: #333;
+    font-size: 0.98rem;
+    grid-column: 1 / -1;
+}
+
+.order-status__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
 .order-status button {
     background-color: #f8e8bc;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #cdc08f;
     font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.order-status button:hover:not(:disabled),
+.order-status button:focus-visible:not(:disabled) {
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255,161,7,.15);
+    outline: none;
+}
+
+.order-status button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.order-status button:disabled {
+    background-color: #f1f1f1;
+    border-color: #e7e7e7;
+    color: #9aa1a7;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/*
 .order-status button:hover {
     background-color: white;
 }
+*/
+.order-status__error {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+    color: #d60f32;
+    background: #fdecee;
+    border: 1px solid #f8c6cd;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.93rem;
+}
 
 .orderlist-info-page {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
     margin-top: 2rem;
     padding: 1.5rem;
-    background-color: #fafafa;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
+}
+
+/*--------------------- 6.Media-queries -----------------*/
+
+@media screen and (max-width: 992px) {
+
 }
 
 @media (max-width: 768px) {
     .order-status {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        /*flex-direction: column;*/
         gap: 0.75rem;
     }
 
     .orderlist-page {
         padding: 1rem;
     }
+
+    .order-status__current {
+        margin-bottom: 0.25rem;
+    }
+
+    .order-status__actions {
+        gap: 0.6rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+
 }

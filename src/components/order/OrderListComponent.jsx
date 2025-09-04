@@ -6,6 +6,20 @@ import Order_InfoComponent from "./Order_InfoComponent";
 import { AuthContext } from "../../context/AuthContext";
 import "./OrderListComponent.css";
 
+const STATUS = Object.freeze({
+    NEW: "NEW",
+    AVAILABLE: "AVAILABLE",
+    CONFIRMED: "CONFIRMED",
+    FINISHED: "FINISHED",
+});
+
+const ALLOWED_NEXT = {
+    [STATUS.NEW]: [STATUS.AVAILABLE],
+    [STATUS.AVAILABLE]: [STATUS.CONFIRMED],
+    [STATUS.CONFIRMED]: [STATUS.FINISHED],
+    [STATUS.FINISHED]: [],
+};
+
 function OrderListComponent() {
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
@@ -14,6 +28,8 @@ function OrderListComponent() {
 
     const [deliveryRequest, setDeliveryRequest] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [saving, setSaving] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
 
     const isAdmin = useMemo(() => {
         if (!user) return false;
@@ -24,9 +40,19 @@ function OrderListComponent() {
         return false;
     }, [user]);
 
+    const status = deliveryRequest?.status ?? STATUS.NEW;
+    const canGoTo = (target) => ALLOWED_NEXT[status]?.includes(target);
+
     const fetchDeliveryRequest = useCallback(async () => {
+        if (!deliveryRequest_id) return;
+        if (!token) {
+            setErrorMsg("Niet ingelogd.");
+            setLoading(false);
+            return;
+        }
         try {
             setLoading(true);
+            setErrorMsg("");
             const { data } = await axios.get(
                 `http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
                 { headers: { Authorization: `Bearer ${token}` } }
@@ -34,42 +60,63 @@ function OrderListComponent() {
             setDeliveryRequest(data);
         } catch (e) {
             if (e?.response?.status === 403) {
-                // geen toegang → klant terug naar eigen overzicht
-                navigate("/orders", { replace: true });
+                navigate("/deliveryRequests", { replace: true });
                 return;
             }
-            console.error("There was an error!", e);
+            setErrorMsg(e?.response?.data?.message || e?.message || "Het ophalen van de bestelling is mislukt.");
+            console.error("fetch error:", e);
         } finally {
             setLoading(false);
         }
     }, [deliveryRequest_id, token, navigate]);
 
-    useEffect(() => {
-        if (deliveryRequest_id && token) fetchDeliveryRequest();
-    }, [deliveryRequest_id, token, fetchDeliveryRequest]);
+    useEffect(() => { fetchDeliveryRequest(); }, [fetchDeliveryRequest]);
 
-    async function updateStatus(next) {
-        if (!isAdmin) return; // UI guard
+    async function updateStatus(nextStatus) {
+        if (!isAdmin || !deliveryRequest || saving) return;
+        if (!canGoTo(nextStatus)) return;
+        if (!token) { setErrorMsg("Niet ingelogd."); return; }
+
         try {
+            setSaving(true);
+            setErrorMsg("");
+
+            // Handige debug: zie exact wat naar de server gaat
+            console.log("PUT body ->", { status: nextStatus });
+
             await axios.put(
                 `http://localhost:8080/deliveryRequests/${deliveryRequest_id}`,
-                { status: next },
-                { headers: { Authorization: `Bearer ${token}` } }
+                { status: nextStatus },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
             );
+
+            setDeliveryRequest(prev => (prev ? { ...prev, status: nextStatus } : prev));
+
             await fetchDeliveryRequest();
         } catch (e) {
-            console.error(e);
+            setErrorMsg(e?.response?.data?.message || e?.message || "Bijwerken van de status is mislukt.");
+            console.error("update status error:", e);
+        } finally {
+            setSaving(false);
         }
     }
 
-    const status = deliveryRequest?.status;
+    const prettyStatus = {
+        [STATUS.NEW]: "NEW",
+        [STATUS.AVAILABLE]: "AVAILABLE",
+        [STATUS.CONFIRMED]: "CONFIRMED",
+        [STATUS.FINISHED]: "FINISHED",
+    }[status] || status;
 
     return (
         <div className="orderlist-page">
             <div className="orderlist-status-update">
-                <TextContainer>
-                    <h3>Overzicht bestellijst</h3>
-                </TextContainer>
+                <TextContainer><h3>Overzicht bestellijst</h3></TextContainer>
 
                 <div className="orderlist-status-deliver">
                     <h5>Hier kunt u de status aangeven wanneer deze is aangenomen en bezorgd.</h5>
@@ -79,31 +126,37 @@ function OrderListComponent() {
                     <h5><i>*FINISHED</i> = De bestelling is verwerkt en bezorgd.</h5>
                 </div>
 
-                <br /><br />
+                <br />
 
                 <div className="order-status">
+                    <div className="order-status__current">
+                        <strong>Huidige status:</strong> {prettyStatus} {saving ? "(opslaan...)" : ""}
+                    </div>
+
                     {isAdmin && (
-                        <>
-                            <button
-                                onClick={() => updateStatus("CONFIRMED")}
-                                disabled={status !== "AVAILABLE"}
-                            >
+                        <div className="order-status__actions">
+                            <button onClick={() => updateStatus(STATUS.AVAILABLE)} disabled={!canGoTo(STATUS.AVAILABLE)}>
+                                Beschikbaar
+                            </button>
+                            <button onClick={() => updateStatus(STATUS.CONFIRMED)} disabled={!canGoTo(STATUS.CONFIRMED)}>
                                 Bevestigen
                             </button>
-                            <button
-                                onClick={() => updateStatus("FINISHED")}
-                                disabled={status === "FINISHED"}
-                            >
+                            <button onClick={() => updateStatus(STATUS.FINISHED)} disabled={!canGoTo(STATUS.FINISHED)}>
                                 Bezorgd
                             </button>
-                        </>
+                        </div>
                     )}
+
                     <button onClick={() => navigate(-1)}>Terug naar het overzicht</button>
                 </div>
+
+                {errorMsg && <p className="order-status__error">{errorMsg}</p>}
             </div>
 
             <section className="orderlist-info-page">
-                {!loading && deliveryRequest?.applier && (
+                {loading && <p className="muted">Gegevens laden...</p>}
+
+                {!loading && deliveryRequest && (
                     <Order_InfoComponent
                         key={deliveryRequest.id}
                         id={deliveryRequest.id}
@@ -113,6 +166,8 @@ function OrderListComponent() {
                         comment={deliveryRequest.comment}
                     />
                 )}
+
+                {!loading && !deliveryRequest && <p className="muted">Geen gegevens gevonden voor deze bestelling</p>}
             </section>
         </div>
     );

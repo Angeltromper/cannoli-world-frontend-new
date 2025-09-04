@@ -98,7 +98,6 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
                         </table>
                     </div>
 
-
                     <div className="order-total-row">
                         <span className="order-total-label">Totaal prijs:</span>
                         <span className="order-total-amount">€ {totalPrice.toFixed(2)}</span>

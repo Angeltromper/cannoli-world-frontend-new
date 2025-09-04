@@ -131,8 +131,8 @@
 }
 
 .button-added {
-    display: flex;
-    background-color: #fff3e0;;
+    display: inline-flex;
+    /*background-color: #fff3e0;;*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: black;
     border: 1px solid #f4a300;
@@ -141,15 +141,17 @@
     font-weight: 500;
     align-items: center;
     justify-content: center;
-    padding: 0 12px;
-    width: fit-content;
+    padding: 0.55rem 0.9rem;
+    width: auto;
     cursor: pointer;
-    gap: 6px;
+    gap: 0.5rem;
     transition: all 0.3s ease-in-out;
 }
 
 .button-added:hover {
-    background-color: #ffe0b2;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,.16);
+    /*background-color: #ffe0b2;*/
 }
 
 
@@ -159,6 +161,7 @@
     width: 35px;
     height: 70px;
 }
+
 
 .cart-icon {
     width: 18px;

@@ -12,15 +12,21 @@ function OrderList() {
     const [deliveryRequests, setDeliveryRequests] = useState([]);
     const [loading , setLoading] = useState(false);
 
-    const isAdmin = useMemo(() => {
-        if (!user) return false;
-        if (typeof user.roles === 'string') return user.roles === 'ROLE_ADMIN';
-        if (Array.isArray(user.roles)) return user.roles.includes('ROLE_ADMIN') || user.roles.includes('ADMIN');
-        if (Array.isArray(user.authorities)) return user.authorities.some(a => a.authority === 'ROLE_ADMIN');
-        if (typeof user.role === 'string') return ['ROLE_ADMIN','ADMIN'].includes(user.role);
-        return false;
-        }, [user]);
+    // const isAdmin = useMemo(() => {
+    //     if (!user) return false;
+    //     if (typeof user.roles === 'string') return user.roles === 'ROLE_ADMIN';
+    //     if (Array.isArray(user.roles)) return user.roles.includes('ROLE_ADMIN') || user.roles.includes('ADMIN');
+    //     if (Array.isArray(user.authorities)) return user.authorities.some(a => a.authority === 'ROLE_ADMIN');
+    //     if (typeof user.role === 'string') return ['ROLE_ADMIN','ADMIN'].includes(user.role);
+    //     return false;
+    //     }, [user]);
 
+    const isAdmin = !!user && (
+        (Array.isArray(user.roles) && user.roles.includes('ROLE_ADMIN')) ||
+        (Array.isArray(user.authorities) && user.authorities.some(a => a.authority === 'ROLE_ADMIN')) ||
+        user.role === 'ROLE_ADMIN' ||
+        user.roles === 'ROLE_ADMIN'
+    );
 
     useEffect(() => {
         if (!token) return;
@@ -51,7 +57,7 @@ function OrderList() {
     async function deleteDeliveryRequest(id) {
         if (!isAdmin) return;
         try {
-            await axios.delete(`http://localhost:8080/deliveryRequests/delete/${id}`, {
+            await axios.delete(`http://localhost:8080/deliveryRequests/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
@@ -130,6 +136,7 @@ function OrderList() {
                     ))}
                     </tbody>
                 </table>
+                <br/>
 
                 {!loading && deliveryRequests.length === 0 && (
                    <p>Geen bestellingen gevonden</p>
