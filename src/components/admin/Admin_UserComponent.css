@@ -2,9 +2,6 @@
     max-width: 1200px;
     margin: 2rem auto;
     padding: 2rem;
-    /*background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);*/
-    /*background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);*/
-    /*box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;;*/
     border-radius: 8px;
     text-align: center;
     overflow: auto;
@@ -54,7 +51,7 @@
     height: 80vh;
 }
 
-.admin-usr-warning h3 {
+.admin-user-warning h3 {
     background-color: #fff0f0;
     color: #f80707;
     padding: 2rem;

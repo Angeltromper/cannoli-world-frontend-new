@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './PopupCannoli.css';
+import './Popup.css';
 
 function Popup({ title = '', variants = [], onClose }) {
     const navigate = useNavigate();

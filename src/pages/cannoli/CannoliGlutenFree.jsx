@@ -11,7 +11,7 @@ import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
 import './CannoliGlutenFree.css';
-import PopupCannoli from "../../components/popupCannoli/PopupCannoli";
+import PopupCannoli from "../../components/popup/PopupCannoli";
 
 
 function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {

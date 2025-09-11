@@ -24,6 +24,15 @@ export const WholesaleInfo = (props) => {
     const searchParams = new URLSearchParams(location.search);
     const isReadonly = searchParams.get("readonly") === "true";
 
+    const from = location.state?.from;
+
+    const catRouteMap = {
+        Snack: "/snack-cannoli/assorti",
+        Glutenfree: "/glutenfree-cannoli/assorti",
+        Vegan: "/vegan-cannoli/assorti",
+    };
+
+    const backTo = from || catRouteMap[props.cannoliType] || '/cannoli';
 
     const addToCart = () => {
         const existing = cart.find(item => item.artikelnummer === props.cannoli_id);
@@ -45,7 +54,6 @@ export const WholesaleInfo = (props) => {
             };
             setCart(prev => [...prev, cannoli]);
         }
-
     };
 
     const removeFromCart = () => {
@@ -80,9 +88,9 @@ export const WholesaleInfo = (props) => {
         <section className="cannoli-info-container">
             <div className="cannoli-info-page">
 
-                <TextContainerResp>
+                <TextContainer>
                     <h2>Cannoli {props.cannoliType} </h2>
-                </TextContainerResp>
+                </TextContainer>
                 <br/>
                 <br/>
 
@@ -102,7 +110,11 @@ export const WholesaleInfo = (props) => {
                             <div className="category-cannolitype">
                                 <h5><em>Categorie:</em></h5>
                             </div>
-                                <button className="link-button" onClick={() => navigate(-1)}>
+
+
+                                <button className="link-button"
+                                        onClick={() => navigate(backTo, {replace: true})}
+                                >
                                     <h5>{props.cannoliType}</h5>
                                 </button>
                             <br/>

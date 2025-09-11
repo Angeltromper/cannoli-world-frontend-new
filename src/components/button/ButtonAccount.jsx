@@ -1,4 +1,4 @@
-
+/*
 import { useNavigate } from "react-router-dom";
 import {ReactComponent as UserIcon} from '../../assets/svg/user.svg';
 
@@ -22,5 +22,4 @@ function InlogButton() {
 }
 
 export default InlogButton;
-
-
+*/

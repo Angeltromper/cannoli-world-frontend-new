@@ -47,9 +47,19 @@
     gap: 1rem;
 }
 
+.profile-info a.profile-info-view,
+.profile-info a.profile-info-view:link,
+.profile-info a.profile-info-view:visited,
+.profile-info a.profile-info-added,
+.profile-info a.profile-info-added:link,
+.profile-info a.profile-info-added:visited {
+    color: #000;
+    text-decoration: none;
+}
+
 .profile-info-view,
 .profile-info-added {
-    background-color: #fff3e0;;
+    background-color: #fff3e0;
     color: black;
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
     border: 2px solid #f4a300;

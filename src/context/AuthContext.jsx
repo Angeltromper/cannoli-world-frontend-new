@@ -1,103 +1,109 @@
-import React, {createContext, useEffect, useState} from 'react';
-import { useNavigate} from "react-router-dom";
-import {jwtDecode} from "jwt-decode";
+import React, { createContext, useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import isTokenValid from "../helpers/isTokenValid";
 
+export const AuthContext = createContext({
+    auth: false,
+    user: null,
+    login: () => {},
+    logout: () => {},
+    setUser: () => {},     // <— belangrijk voor je forms
+});
 
-export const AuthContext = createContext({});
-
-
-function AuthContextProvider({children}) {
-    const [auth, setAuth] = useState ({
+function AuthContextProvider({ children }) {
+    const [authState, setAuthState] = useState({
         isAuth: false,
         user: null,
-        status:'pending',
+        status: 'pending',
     });
+
     const navigate = useNavigate();
 
-    // is er een token? En zo ja, is deze nog geldig?
-    useEffect (() => {
-        const token = localStorage.getItem ('token');
-
+    useEffect(() => {
+        const token = localStorage.getItem('token');
         if (token && isTokenValid(token)) {
-            const decodedToken = jwtDecode(token);
-            getData (decodedToken.sub, token);
+            const { sub } = jwtDecode(token);
+            getData(sub, token);
         } else {
-            // als er geen token is doen we niks en zetten we de status op 'done'
-            setAuth ( {
-                isAuth: false,
-                user: null,
-                status: 'done',
-            });
+            setAuthState({ isAuth: false, user: null, status: 'done' });
         }
-    }, [])
+    }, []);
 
     function login(token) {
-        localStorage.setItem ('token', token);
-        const decodedToken = jwtDecode(token);
-        getData(decodedToken.sub, token, "/profile");
+        localStorage.setItem('token', token);
+        const { sub } = jwtDecode(token);
+        getData(sub, token, "/profile");
     }
 
     function logout(e) {
+        e?.preventDefault?.();
         localStorage.clear();
-        e.preventDefault();
-        setAuth ({
-            isAuth: false,
-            user: null,
-            status: 'done',
-        });
+        setAuthState({ isAuth: false, user: null, status: 'done' });
         navigate('/');
     }
 
-    async function getData(id, token, redirectUrl) {
+    /** ⇩ Nieuwe helper om alléén user-velden bij te werken */
+    function setUser(updates) {
+        setAuthState(prev => ({
+            ...prev,
+            user: { ...(prev.user ?? {}), ...updates },
+        }));
+    }
+
+    async function getData(usernameOrId, token, redirectUrl) {
         try {
-            const response = await axios.get (`http://localhost:8080/users/${id}`, {
+            // Jij gebruikt /users/{id|username}; laat dit zoals bij jou werkt
+            const { data } = await axios.get(`http://localhost:8080/users/${usernameOrId}`, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
                 }
             });
 
-            setAuth ({
-                ...auth,
+            const p = data.person ?? {}; // kan null zijn als er nog geen adres is
+
+            setAuthState(prev => ({
+                ...prev,
                 isAuth: true,
                 user: {
-                    username: response.data.username,
-                    password: response.data.password,
-                    userId: response.data.id,
-                    roles: response.data.roles[0].authority,
-                    person_id: response.data.person.id,
-                    person_firstname: response.data.person.personFirstname,
-                    person_lastname: response.data.person.personLastname,
-                    person_street_name: response.data.person.personStreetName,
-                    person_house_number: response.data.person.personHouseNumber,
-                    person_house_number_add: response.data.person.personHouseNumberAdd,
-                    person_zipcode: response.data.person.personZipcode,
-                    person_city: response.data.person.personCity,
+                    username: data.username,
+                    userId: data.id,
+                    roles: Array.isArray(data.roles) && data.roles[0]?.authority ? data.roles[0].authority : null,
+
+                    // Persoonsgegevens (optioneel aanwezig)
+                    person_id: p.id ?? null,
+                    person_firstname: p.personFirstname ?? "",
+                    person_lastname: p.personLastname ?? "",
+                    person_street_name: p.personStreetName ?? "",
+                    person_house_number: p.personHouseNumber ?? "",
+                    person_house_number_add: p.personHouseNumberAdd ?? "",
+                    person_zipcode: p.personZipcode ?? "",
+                    person_city: p.personCity ?? "",
                 },
                 status: 'done',
-            });
-            if (redirectUrl) {
-                navigate(redirectUrl);
-            }
+            }));
 
+            if (redirectUrl) navigate(redirectUrl);
         } catch (error) {
-                console.error ('There was an error!', error);
-                localStorage.clear ();
+            console.error('getData error', error);
+            localStorage.clear();
+            setAuthState({ isAuth: false, user: null, status: 'done' });
         }
     }
 
     const contextData = {
-        auth: auth.isAuth,
-        user: auth.user,
-        login: login,
-        logout: logout,
+        auth: authState.isAuth,
+        user: authState.user,
+        login,
+        logout,
+        setUser, // <— expose naar je forms
     };
 
     return (
         <AuthContext.Provider value={contextData}>
-            {auth.status === 'done' ? children : <h2>Ogenblik geduld alstublieft...</h2>}
+            {authState.status === 'done' ? children : <h2>Ogenblik geduld alstublieft...</h2>}
         </AuthContext.Provider>
     );
 }

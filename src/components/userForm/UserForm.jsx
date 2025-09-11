@@ -11,37 +11,52 @@ function UserForm({headerImageHandler, pageTitleHandler}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "...dit veld is verplicht";
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
+    const {user, setUser} = useContext(AuthContext);
     const token = localStorage.getItem( 'token');
 
     useEffect (() => {
         headerImageHandler (pageImg);
         pageTitleHandler ();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
 
 
-    async function sendPersonData(persondata) {
+    async function sendPersonData(form) {
+        const payload = {
+            personFirstname:       form.person_firstname,
+            personLastname:        form.person_lastname,
+            personStreetName:      form.person_street_name,
+            personHouseNumber:     form.person_house_number,
+            personHouseNumberAdd:  form.person_house_number_add,
+            personZipcode:         form.person_zipcode,
+            personCity:            form.person_city,
+        };
+
         try {
-            await axios.put(`http://localhost:8080/persons/${user.person_id}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                         "Authorization": `Bearer ${ token }`,
-                    },
+        const { data: updated } = await axios.put(
+            "http://localhost:8080/persons/me",
+            payload,
+            {
+                headers: {"Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
 
-                    id: user.id,
-                    personFirstname: persondata.person_firstname,
-                    personLastname: persondata.person_lastname,
-                    personStreetName: persondata.person_street_name,
-                    personHouseNumber: persondata.person_house_number,
-                    personHouseNumberAdd: persondata.person_house_number_add,
-                    personZipcode: persondata.person_zipcode,
-                    personCity: persondata.person_city,
-                });
-
-        } catch (error) {
-            console.error(error);
+        setUser(u => ({
+            ...u,
+            person_id: updated.id,
+            personFirstname:       updated.person_firstname,
+            personLastname:        updated.person_lastname,
+            personStreetName:      updated.person_street_name,
+            personHouseNumber:     updated.person_house_number,
+            personHouseNumberAdd:  updated.person_house_number_add,
+            personZipcode:         updated.person_zipcode,
+            personCity:            updated.person_city,
+        }));
+    } catch (e) {
+        console.error(e);
+        throw e;
         }
     }
 
@@ -68,111 +83,78 @@ function UserForm({headerImageHandler, pageTitleHandler}) {
 
 
                     <div className="form-naw-user">
-                        <label htmlFor="details-firstname">
+                        <label htmlFor="firstname">
                             Voornaam:
                             <input
                                 type="text"
                                 id="firstname"
-                                {...register("person_firstname", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register("person_firstname", {required: {value: true, message: message} })}
                                 placeholder="Voornaam"
-
                             />
                         </label>
                         {errors.person_firstname && <p className="form-error">{errors.person_firstname.message}</p>}
 
-                        <br/>
-
-                        <label htmlFor="details-lastname">
+                        <label htmlFor="lastname">
                             Achternaam
                             <input
                                 type="text"
                                 id="lastname"
-                                {...register( "person_lastname", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register( "person_lastname", {required: {value: true, message: message} })}
                                 placeholder="Achternaam"
-
                             />
                         </label>
                         {errors.person_lastname && <p className="form-error">{errors.person_lastname.message}</p>}
 
-                        <br/>
-
-
-                        <label htmlFor="details-streetname">
+                        <label htmlFor="streetname">
                             Straatnaam
                             <input
                                 type="text"
                                 id="streetname"
-                                {...register("person_street_name", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register("person_street_name", {required: {value: true, message: message} })}
                                 placeholder="Straatnaam"
-
                             />
                         </label>
                         {errors.person_street_name && <p className="form-error">{errors.person_street_name.message}</p>}
 
-                        <br/>
-
-                        <label htmlFor="details-housenumber">
+                        <label htmlFor="housenumber">
                             Huisnummer
                             <input
                                 type="text"
                                 id="housenumber"
-                                {...register( "person_house-number", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register( "person_house_number", {required: {value: true, message: message} })}
                                 placeholder="Huisnummer"
-
                             />
                         </label>
                         {errors.person_house_number && <p className="form-error">{errors.person_house_number.message}</p>}
 
-                        <br/>
-
-                        <label htmlFor="details-housenumberadd">
+                        <label htmlFor="housenumberadd">
                             Toevoeging
                             <input
                                 type="text"
                                 id="housenumberadd"
-                                {...register("person_house_number_add", {
-                                    required: {value: false, message: message}
-                                })}
+                                {...register("person_house_number_add", {required: {value: false, message: message} })}
                                 placeholder="Toevoeging"
-
                             />
                         </label>
                         {errors.person_house_number_add && <p className="form-error">{errors.person_house_number_add.message}</p>}
 
-                        <br/>
-
-                        <label htmlFor="details-zipcode">
+                        <label htmlFor="zipcode">
                             Postcode
                             <input
                                 type="text"
                                 id="zipcode"
-                                {...register("person_zipcode", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register("person_zipcode", {required: {value: true, message: message} })}
                                 placeholder="Postcode"
-
                             />
                         </label>
-                        {errors.person_zipcode && <p className="form-error">{errors.person_zipcode_message}</p>}
+                        {errors.person_zipcode && <p className="form-error">{errors.person_zipcode.message}</p>}
 
-                        <br/>
-
-                        <label htmlFor="details-city">
+                        <label htmlFor="city">
                             Woonplaats
                             <input
                                 type="text"
                                 id="city"
-                                {...register("person_city", {
-                                    required: {value: true, message: message}
-                                })}
+                                {...register("person_city", {required: {value: true, message: message} })}
                                 placeholder="Woonplaats"
                             />
                         </label>

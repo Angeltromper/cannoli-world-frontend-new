@@ -29,10 +29,6 @@ import SignIn from "./pages/signIn/SignIn";
 import SignUp from "./pages/signUp/SignUp";
 import UserProfile from "./pages/userProfile/UserProfile";
 
-import Privacy from "./pages/privacy/Privacy";
-import General from "./pages/privacy/General";
-import Cookies from "./pages/privacy/Cookies";
-
 import Wholesale from "./pages/wholesale/Wholesale";
 
 import {Cart} from "./components/cart/Cart";
@@ -51,8 +47,8 @@ import FourZeroFour from "./pages/404/FourZeroFour";
 
 import headerImg from "./assets/img.header/homepage-background-2400.jpg";
 
-import './App.css';
 import CartPage from "./components/cartPage/CartPage";
+import './App.css';
 
 function App() {
     const [headerImage, setHeaderImage] = useState(headerImg);
@@ -66,13 +62,11 @@ function App() {
         return children
     };
 
-
     return (
 
         <Wrapper>
             <div className="container">
                 <div className="inner-container__reusable default-text-restrict">
-
                     <Header headerImage={headerImage} pageTitle={pageTitle} />
 
                     <Routes>
@@ -121,15 +115,6 @@ function App() {
                         <Route path="/contact"
                                element={<Contact headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
-                        <Route path="/privacy"
-                               element={<Privacy headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-
-                        <Route path="/general-terms"
-                               element={<General headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-
-                        <Route path="/cookies"
-                               element={<Cookies headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
-
                         <Route path="/login"
                                element={<SignIn headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
@@ -175,8 +160,10 @@ function App() {
                         <Route path="/cannolis/info/:cannoli_id"
                                element={<Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
 
+                        <Route path="*"
+                               element={<FourZeroFour/>} />
                         <Route path="/404"
-                               element={<FourZeroFour headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle} />} />
+                               element={<FourZeroFour/>} />
                     </Routes>
 
                     <Footer />

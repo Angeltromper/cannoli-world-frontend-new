@@ -6,8 +6,8 @@ import Card from "../../components/cardMenu/Card";
 import veganpistache from "../../assets/img.cannoli-vegan/Vegan Pistache.png";
 import veganlimoncello from "../../assets/img.cannoli-vegan/Vegan Limoncello.png";
 import veganstrawberry from "../../assets/img.cannoli-vegan/Vegan Strawberry.png";
+import PopupCannoli from "../../components/popup/PopupCannoli";
 import './CannoliVegan.css';
-import PopupCannoli from "../../components/popupCannoli/PopupCannoli";
 
 function CannoliVegan({headerImageHandler, pageTitleHandler}) {
     const [selectedTitle, setSelectedTitle] = useState(null);

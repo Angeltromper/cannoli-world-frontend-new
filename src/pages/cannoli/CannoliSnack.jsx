@@ -6,7 +6,7 @@ import snackLimoncello from "./../../assets/img.cannoli-snack/Snack Limoncello.p
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
-import PopupCannoli from "../../components/popupCannoli/PopupCannoli";
+import PopupCannoli from "../../components/popup/PopupCannoli";
 import './CannoliSnack.css';
 
 

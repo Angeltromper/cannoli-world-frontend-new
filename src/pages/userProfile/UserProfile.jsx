@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import pageImg from "../../assets/img.background/background cannolis.jpg";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -9,15 +9,13 @@ import './UserProfile.css';
 
 
 function UserProfile({headerImageHandler, pageTitleHandler}) {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const token = localStorage.getItem("token");
     const { user } = useContext(AuthContext);
     const username = user?.username;
     const [isAdmin, setIsAdmin] = useState(false);
-    // const [adminInput, setAdminInput] = useState([]);
 
-
-     useEffect(() => {
+    useEffect(() => {
          headerImageHandler(pageImg);
          pageTitleHandler();
      }, []);
@@ -56,21 +54,21 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
          }, [username, token]);
 
 
-     function navigateToUserEdit() {
-         navigate("/user-view/");
-     }
+     // function navigateToUserEdit() {
+     //     navigate("/user-view");
+     // }
 
-     function navigateToCannoliEdit() {
-         navigate("/cannolis-add/");
-     }
+     // function navigateToCannoliEdit() {
+     //     navigate("/cannolis-add");
+     // }
 
-     function navigateToAdminOrders() {
-         navigate("/deliveryRequests/");
-     }
+     // function navigateToAdminOrders() {
+     //     navigate("/deliveryRequests");
+     // }
 
-     function navigateTomyOrders() {
-         navigate("/orders/");
-     }
+     // function navigateTomyOrders() {
+     //     navigate("/deliveryRequests");
+     // }
 
 
      return (
@@ -93,25 +91,25 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
 
             {isAdmin && (
                 <div className="profile-info">
-                    <div className="profile-info-view" onClick={ navigateToUserEdit }>
+                    <Link className="profile-info-view" to="/user-view">
                         Gebruikersgegevens beheren
-                    </div>
+                    </Link>
 
-                    <div className="profile-info-added" onClick={ navigateToCannoliEdit }>
+                    <Link className="profile-info-added" to="/cannolis-add">
                         Cannolis toevoegen en of wijzigen
-                    </div>
+                    </Link>
 
-                    <div className="profile-info-added" onClick={ navigateToAdminOrders }>
+                    <Link className="profile-info-added" to= "/deliveryRequests">
                         Overzicht bestellijst
-                    </div>
+                    </Link>
                 </div>
             )}
 
             {!isAdmin && (
                 <div className="profile-info">
-                    <div className="profile-info-added" onClick={ navigateTomyOrders }>
+                    <Link className="profile-info-added" to="/deliveryRequests">
                         Mijn bestellingen
-                    </div>
+                    </Link>
                 </div>
 
             )}

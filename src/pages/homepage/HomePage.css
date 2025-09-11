@@ -1,16 +1,16 @@
 .intro-container {
     display: flex;
     width: 100%;
+    position: relative;
     justify-content: center;
     flex-direction: column;
+    z-index: 1;
 }
-
 
 #intro {
     color: black ;
     position: relative;
 }
-
 
 #intro::before {
     content: 'Welkom';
@@ -22,8 +22,10 @@
     font-size: 230px;
     font-weight: var(--font-weight);
     letter-spacing: -18px;
+    pointer-events: none;
     top: -60px;
     left: 0;
+    z-index: 0;
 }
 
 .product-container {
@@ -50,12 +52,9 @@
     padding: 1px 20px;
 }
 
-
 .input-field__select-information {
     display: flex;
 }
-
-
 
 .search-result__go-up-icon {
     width: 1.5em;

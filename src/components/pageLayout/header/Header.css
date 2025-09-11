@@ -1,13 +1,16 @@
 header {
     background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgba(73, 31, 14, 0.8) 40%, rgba(140, 75, 57, 0.01) 100%);
     background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 0.31) 40%, rgba(59, 28, 17, 0.04) 100%);
-    height: 20rem;
+    height: 180px;
+    top: 0;
+    left: 0;
+    right: 0;
     justify-content: space-between;
     width: 100%;
     align-items: center;
     position: fixed;
-    overflow: hidden;
-    z-index: 99;
+    overflow: visible;
+    z-index: 100;
 }
 
 header::before {
@@ -16,8 +19,10 @@ header::before {
     width: 78px;
     height: 10px;
     position: absolute;
+    pointer-events: none;
     bottom: 25px;
     left: calc(50% - 39px);
+    z-index: 0;
 }
 
 header::after {
@@ -28,14 +33,15 @@ header::after {
     width: 100%;
     height: 100%;
     opacity: 0.6;
+    pointer-events: none;
     background-position: top center;
+    z-index: 0;
 }
 
 .header-top {
     display: flex;
     justify-content: flex-end;
     padding: 0.5rem 1rem;
-    /*background-color: #3d1d0d;*/
 }
 
 .header-actions {
@@ -86,18 +92,17 @@ header::after {
 
 .skewer--bottom {
     border-top: 10px solid rgba(59, 28, 17, 0.01);
-    border-right: 100dvw solid transparent;
+    border-right: 10dvw solid transparent;
     position: absolute;
-    height: 0;
     margin: 0;
+    top: 0;
     left: 0;
-    /*right: 0;*/
+    height: 4px;
+    pointer-events: none;
     bottom: 0;
     width: 0;
-    /*clip-path: polygon(0 60%, 100% 0, 100% 100%, 0% 100%);*/
-    /*top: 0;*/
-    z-index: 96;
-    pointer-events: none;
+    z-index: 98;
+
 }
 
 /*------------------- Header-image ---------------------*/
@@ -161,9 +166,6 @@ button, header .btn-text::after {
 }
 
 
-
-
-
 /*--------------------- Media-queries -----------------*/
 
 @media screen and (max-width: 992px) {
@@ -182,7 +184,7 @@ button, header .btn-text::after {
         display: flex;
         max-width: 100%;
         height: auto;
-        margin: 18em auto ;
+        margin: 18em auto;
     }
 
     .color-container {
@@ -196,8 +198,8 @@ button, header .btn-text::after {
         border-right: 130dvw solid transparent;
         left: 0;
         bottom: 0;
-        /*top: 0;*/
-        z-index:200;
+        top: 0;
+        z-index: 200;
     }
 
 

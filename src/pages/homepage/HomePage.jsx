@@ -71,7 +71,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 onChange={ handleSelect }
                                 defaultValue='DEFAULT'
                             >
-                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option disabled value='DEFAULT'>-- maak een keuze --</option>
                                 <option value="cannolisnack">Cannoli snack</option>
                                 <option value="snack-cannoli/assorti">Cannoli snack assorti</option>
                             </select>
@@ -87,7 +87,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 onChange={ handleSelect }
                                 defaultValue='DEFAULT'
                             >
-                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option disabled value='DEFAULT'>-- maak een keuze --</option>
                                 <option value="cannoliglutenfree">Cannoli almond</option>
                                 <option value="glutenfree-cannoli/assorti">Cannoli almond assorti</option></select>
                         </Column>
@@ -102,7 +102,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 onChange={ handleSelect }
                                 defaultValue='DEFAULT'
                             >
-                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option disabled value='DEFAULT'>-- maak een keuze --</option>
                                 <option value="cannolivegan">Cannoli vegan</option>
                                 <option value="vegan-cannoli/assorti">Cannoli vegan assorti</option>
                             </select>
@@ -118,7 +118,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 onChange={ handleSelect }
                                 defaultValue='DEFAULT'
                             >
-                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option disabled value='DEFAULT'>-- maak een keuze--</option>
                                 <option value="giftbox">Giftbox</option>
                                 <option value="giftbox-pricelist">Giftbox prijslijst</option>
                             </select>
@@ -134,7 +134,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
                                 onChange={ handleSelect }
                                 defaultValue='DEFAULT'
                             >
-                                <option disabled value='DEFAULT'>-- choose one option --</option>
+                                <option disabled value='DEFAULT'>-- maak een keuze --</option>
                                 <option value="franchise">Franchise</option>
                                 <option value="franchise-information">Franchise informatie</option>
                             </select>

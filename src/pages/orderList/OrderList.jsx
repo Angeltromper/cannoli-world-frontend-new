@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Trash2} from "lucide-react";
 import axios from "axios";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './OrderList.css';
@@ -11,15 +12,6 @@ function OrderList() {
     const { user } = useContext(AuthContext);
     const [deliveryRequests, setDeliveryRequests] = useState([]);
     const [loading , setLoading] = useState(false);
-
-    // const isAdmin = useMemo(() => {
-    //     if (!user) return false;
-    //     if (typeof user.roles === 'string') return user.roles === 'ROLE_ADMIN';
-    //     if (Array.isArray(user.roles)) return user.roles.includes('ROLE_ADMIN') || user.roles.includes('ADMIN');
-    //     if (Array.isArray(user.authorities)) return user.authorities.some(a => a.authority === 'ROLE_ADMIN');
-    //     if (typeof user.role === 'string') return ['ROLE_ADMIN','ADMIN'].includes(user.role);
-    //     return false;
-    //     }, [user]);
 
     const isAdmin = !!user && (
         (Array.isArray(user.roles) && user.roles.includes('ROLE_ADMIN')) ||
@@ -93,6 +85,15 @@ function OrderList() {
                 )}
 
                 <table className="orderlist-table">
+                    <colgroup>
+                        <col className="col-overzicht" />
+                        <col className="col-status" />
+                        <col className="col-id" />
+                        {isAdmin && <col className="col-naam" />}
+                        <col className="col-adres" />
+                        {isAdmin && <col className="col-delete" />}
+                    </colgroup>
+
                     <thead>
                     <tr>
                         <th>Overzicht</th>
@@ -100,9 +101,10 @@ function OrderList() {
                         <th>ID</th>
                         {isAdmin &&  <th>Naam</th>}
                         <th>Adres</th>
-                        {isAdmin && <th>Verwijderen</th>}
+                        {isAdmin && <th className="col-delete">Verwijderen</th>}
                     </tr>
                     </thead>
+
                     <tbody>
                     {deliveryRequests.map((request) => (
                         <tr key={request.id}>
@@ -126,9 +128,14 @@ function OrderList() {
                             </td>
 
                             {isAdmin && (
-                                <td>
-                                    <button className="delete-button" onClick={() => deleteDeliveryRequest(request.id)}>
-                                        Verwijder
+                                <td className="cell-delete">
+                                    <button className="delete-button"
+                                            disabled={request.status !== 'FINISHED'}
+                                            onClick={() => deleteDeliveryRequest(request.id)}
+                                            title={request.status !== 'FINISHED' ? 'Bestelling kan alleen verwijderd worden als de status FINISHED is' : 'Verwijder'}
+                                    >
+                                        <Trash2 className="delete-button_icon" aria-hidden="true" />
+                                        <span>Verwijderen</span>
                                     </button>
                                 </td>
                             )}
