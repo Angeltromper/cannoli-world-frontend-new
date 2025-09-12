@@ -64,6 +64,7 @@
 
 
 /*--------------------- Media-queries -----------------*/
+
 @media screen and (max-width: 992px) {
     #intro {
         color: black;

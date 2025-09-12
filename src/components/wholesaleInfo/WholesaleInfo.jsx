@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { CartContext } from "../../context/CartContext";
 import ButtonEditCannoli from "../buttonEdit/ButtonEditCannoli";
-import Counter from "../counter/Counter";
 import ButtonEditImage from "../buttonEdit/ButtonEditImage";
+import Counter from "../counter/Counter";
 import ShoppingCartIcon  from "../../assets/svg/shoppingCart.svg";
 import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import TwoColumn from "../pageLayout/designElement/column/TwoColumn";
@@ -122,7 +122,7 @@ export const WholesaleInfo = (props) => {
 
                             {auth && (
                                 <h3>
-                                   € {Number(props.cannoliPrice).toFixed(2)}<span className="groothandel-label">p.st (groothandelsprijs)</span>
+                                   € {Number(props.cannoliPrice).toFixed(2)}<span className="groothandel-label">  p.st (groothandelsprijs)</span>
                                 </h3>
                             )}
 

@@ -1,24 +1,41 @@
 import React, { useContext, useEffect } from "react";
 import pageImg from "./../../assets/img.background/background cannolis.jpg";
-import { useNavigate, useParams } from "react-router-dom";
+import { generatePath, matchPath, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import axios from "axios";
-import "./Admin_WholesaleComponent.css";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
+import "./Admin_WholesaleComponent.css";
 
 function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) {
     const { user } = useContext(AuthContext);
     const { cannoli_id } = useParams();
-    const { register, formState: { errors }, handleSubmit } = useFormContext();
+    const location = useLocation();
+    const { register, formState: { errors }, handleSubmit,reset, getValues } = useFormContext();
     const message = "..veld is verplicht";
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
+
     useEffect(() => {
         headerImageHandler?.(pageImg);
         pageTitleHandler?.();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
+
+    useEffect(() => {
+        const current = getValues();
+        reset({ ...current, cannoli_id });
+    }, [cannoli_id, reset, getValues]);
+
+    // const backTo = location.state?.from ?? `/wholesale/${cannoli_id}`;
+
+    const detailPath = generatePath("/wholesale/:cannoli_id", { cannoli_id });
+    const backTo =
+        typeof location.state?.from === "string" &&
+        matchPath("/wholesale/:cannoli_id", location.state.from)
+            ? location.state.from
+            : detailPath;
+
 
     async function sendCannoliData(data) {
         try {
@@ -39,13 +56,13 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                     },
                 }
             );
-            navigate("/cannoli-assorti");
+            navigate(backTo, {replace: true});
         } catch (error) {
             console.error(error);
         }
     }
 
-    if (user.roles !== "ROLE_ADMIN") {
+    if (user?.roles !== "ROLE_ADMIN") {
         return (
             <div className="admin-container">
                 <div className="admin-warning">
@@ -77,7 +94,7 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
                    <input
                        id="cannoli_id"
                        type="text"
-                       defaultValue={cannoli_id}
+                       // defaultValue={cannoli_id}
                        readOnly
                        {...register("cannoli_id")}
                    />

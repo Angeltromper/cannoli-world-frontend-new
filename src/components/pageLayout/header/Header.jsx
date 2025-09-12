@@ -4,11 +4,11 @@ import { Cart } from "../../cart/Cart";
 import { AuthContext } from "../../../context/AuthContext";
 import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
-import './Header.css';
 import { FaUserCircle } from "react-icons/fa";
+import './Header.css';
 
 function Header({ headerImage, pageTitle }) {
-    const { auth, logout } = useContext(AuthContext);
+    const { auth,user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     return (
@@ -23,7 +23,10 @@ function Header({ headerImage, pageTitle }) {
                                     onClick={() => navigate('/profile')} className="account-btn"
                                 >
                                     <FaUserCircle size={20}/>
-                                    <span className="account-name">{auth.user?.name || 'Account'}</span>
+
+                                    <span className="account-name">
+                                    {user?.person_firstname || user?.username || 'Account'}
+                                    </span>
                                 </button>
 
                                 <button onClick={logout} className="logout-btn">Uitloggen</button>

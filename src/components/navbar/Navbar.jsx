@@ -20,8 +20,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            {/* Hamburger linksboven bij mobiel */}
-            {screenWidth <= 990 && (
+            {screenWidth <= 992 && (
                 <div className="navbar-hamburger" onClick={handleToggleMenu}>
                     {toggleMenu ? (
                         <RiCloseLine size={30} color="black" />
@@ -35,8 +34,7 @@ const Navbar = () => {
                 </div>
             )}
 
-            {/* Drawer menu - uitschuivend */}
-            {screenWidth <= 990 && (
+            {screenWidth <= 992 && (
                 <div className={`navbar-drawer ${toggleMenu ? 'open' : ''}`}>
                     <ul className="navbar-links">
                         <li><NavLink to="/" onClick={() => setToggleMenu(false)}>Home</NavLink></li>
@@ -54,8 +52,7 @@ const Navbar = () => {
                 </div>
             )}
 
-            {/* Normale navbar (boven 992px) */}
-            {screenWidth > 990 && (
+            {screenWidth > 992 && (
                 <ul className="navbar-links">
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="/cannoli">Cannoli</NavLink></li>

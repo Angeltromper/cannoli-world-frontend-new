@@ -26,9 +26,9 @@
 .cannoli-item__info-icon {
     position: absolute;
     top: 8px;
-    right: 12px;
+    right: 10px;
     color: red;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 

@@ -132,7 +132,7 @@
 
 .button-added {
     display: inline-flex;
-    /*background-color: #fff3e0;;*/
+    background-color: #fff3e0;;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: black;
     border: 1px solid #f4a300;
@@ -151,7 +151,6 @@
 .button-added:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0,0,0,.16);
-    /*background-color: #ffe0b2;*/
 }
 
 

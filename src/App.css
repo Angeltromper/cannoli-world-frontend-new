@@ -5,53 +5,37 @@
     1.  Global Styles
     2.  Typography
     3.  Page-layout
-    4.  Elementen
-    5.  Scroll-bar
-    6.  Media Queries
+    4.  Scroll bar
+    5.  Media queries
+
 /////////////////////////*/
 
-/*--------------------- 1. Global Styles ---------------------*/
+/*--------------------- 1.Global Styles ---------------------*/
 
 :root {
   --font: Merriweather;
   --font-weight: 800;
   --second-font: 'Roboto', sans-serif;
-  --second-font-line-height: 10px;
 
   --background-color-dark:  #150A06;
-  --background-color: rgba(59, 28, 17, 0.22);
   --background-color-light: rgba(59, 28, 17, 0);
-  --background-color-yellow: #fff8d7;
-  --background-color-light-orange: rgba(255, 231, 130, 0);
   --background-color-light-green: #1AE216;
   --figure-color-1: #FF003D;
   --figure-color-2: #1AE216;
   --button-color: #FF003D;
 
-  --focus-color: #010101;
   --shadow-color: rgba(0, 0, 0, 0.32);
 
-  --text-logo: #CEA71E;
   --text-intro-pink: #FF003D;
-  --text-color-error: #F40000;
-  --text: #7A7A7A;
   --text-intro-white: #FFFFFF;
   --text-light: #FFFFFF;
   --text-faded: rgba(177, 142, 130, 0.47);
   --text-faded-light: #FFDDE6;
   --text-dark: #010101;
 
-  --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
-  --border: 0.2em solid var(--focus-color);
-  --margin: 2em;
-  --minusTop: -2.5rem;
 
-  /*--------------------- Mobile Styles  ---------------------*/
-  --background-color-light-mobile: #E7FFC7;
-  --background-color-mobile: #FFDA5B;
-  --text-dark-mobile: #010101;
-  --menu-bar-width: 60px;
-  --menu-bar-height: 10px;
+  --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
+  --margin: 2em;
 }
 
 #root {
@@ -83,17 +67,9 @@ a, a:hover {
 body, html {
   margin: 0;
   padding: 0;
-  /*overflow-x: hidden;*/
 }
 
-
-/*--------------------- 2. Typography ---------------------*/
-
-.page-title  {
-  font-size: 2em;
-  margin: -4.5em;
-  background-size: auto;
-}
+/*--------------------- 2.Typography ---------------------*/
 
 h1, h2, h3, h4 {
   font-family: Merriweather, 'Times New Roman', serif;
@@ -145,7 +121,7 @@ strong {
   font-weight: 600;
 }
 
-/*--------------------- 3. Page-layout ---------------------*/
+/*--------------------- 3.Page-layout ---------------------*/
 
 .container {
   display: flex;
@@ -158,35 +134,9 @@ html, body {
   height: 100%;
 }
 
-.page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.page-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .page-content {
   flex: 1;
 }
-
-
-.page-content {
-  flex: 1;
-}
-
-.outer-container__reusable {
-  display: flex;
-  max-width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 
 .inner-container__reusable  {
   display: flex;
@@ -198,13 +148,11 @@ html, body {
   justify-content: space-between;
 }
 
-
 .default-text-restrictor {
   display: flex;
   max-width: 100%;
   text-align: center;
 }
-
 
 .page-content {
   color: var(--text-intro-pink);
@@ -214,6 +162,11 @@ html, body {
   position: relative;
   justify-content: center;
   z-index: 5;
+}
+
+.page-content-two {
+  position: relative;
+  margin: var(--margin);
 }
 
 .page-content-two h2 {
@@ -226,12 +179,6 @@ html, body {
   height: 3ch;
 }
 
-.page-content-two {
-  position: relative;
-  margin: var(--margin);
-
-}
-
 .image-preview {
   display: block;
   width: 100%;
@@ -240,12 +187,7 @@ html, body {
 }
 
 
-/*--------------------- 5.Scroll-bar -----------------*/
-
-.slide-side {
-    /*-webkit-animation: slide-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;*/
-    animation: slide-bottom 1s cubic-bezier(0.23, 1, 0.32, 1) both;
-  }
+/*--------------------- 4.Scroll-bar -----------------*/
 
 @keyframes slide-bottom {
   0% {
@@ -255,7 +197,6 @@ html, body {
     transform: translateX(0);
   }
 }
-
 
 .slide-bar {
   animation: side-bottom 1s cubic-bezier(0.23, 1, 0.32, 1) both;
@@ -308,9 +249,7 @@ html, body {
 }
 
 
-
-  /*--------------------- 6.Media-queries -----------------*/
-
+/*--------------------- 5.Media-queries -----------------*/
 
 @media screen and (max-width: 992px) {
   .container {

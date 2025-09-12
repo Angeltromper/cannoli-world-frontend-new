@@ -18,14 +18,22 @@ function Admin_WholesaleComponent() {
 
     async function sendCannoliData(data) {
         try {
+            const payload = {
+                id: data.cannoli_id,
+                cannoliName: data.cannoli_name,
+                cannoliType: data.cannoli_type,
+                description: data.cannoli_description,
+                ingredients: data.cannoli_ingredients,
+                price: data.cannoli_price,
+            };
+
             await axios.post("http://localhost:8080/cannolis/create",
+                payload,
                 {
-                    id: data.cannoli_id,
-                    cannoliName: data.cannoli_name,
-                    cannoliType: data.cannoli_type,
-                    description: data.cannoli_description,
-                    ingredients: data.cannoli_ingredients,
-                    price: data.cannoli_price,
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`,
+                    },
                 });
             addedNewCannoli();
         } catch (error) {

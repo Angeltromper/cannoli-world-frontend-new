@@ -1,13 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import {NavLink} from "react-router-dom";
-import {AuthContext} from "../../../context/AuthContext";
 import mail from "../../../assets/navIcon/mail.png";
 import phone from "../../../assets/navIcon/phone.png";
 import './Footer.css';
 
 function Footer() {
-
-    const {isAuth} = useContext(AuthContext);
     const [popupOpen, setPopupOpen] = useState(false);
 
     const handleNewsletterSubmit = (e) => {
@@ -27,27 +24,23 @@ function Footer() {
                 <div className="footer-menu">
                     <h3>navigatie</h3>
                     <ul>
-                        <li><NavLink to="/home">Home</NavLink></li>
-                        <li><NavLink to="/webshop">Webshop</NavLink></li>
+                        <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/faq's">Faq's</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
-                        <li><NavLink to="/account">Account</NavLink></li>
-
-                        { isAuth ? <li><NavLink to="/logout">Uitloggen</NavLink></li> :
-                            <li><NavLink to="/login">Inloggen</NavLink></li> }
-                        { isAuth && <li><NavLink to="/profiel">Profiel</NavLink></li> }
+                        <li><NavLink to="/profile">Account</NavLink></li>
+                        <li><NavLink to="/login">Inloggen</NavLink></li>
                     </ul>
                 </div>
 
                 <div className="footer-contact">
                     <h3>contact</h3>
                     <ul>
-                        <figure><img src={ mail } alt="mail" className="mail"/><NavLink
-                            to="mail"> srruffino@outlook.com</NavLink></figure>
-                        <figure><img src={ phone } alt="phone" className="phone"/><NavLink
-                            to="phone"> SR.Ruffino: (+31)620940691</NavLink></figure>
-                        <figure><img src={ phone } alt="phone" className="phone"/><NavLink to="phone"> E.Jongh
-                            Visscher: (+31)648889093</NavLink></figure>
+                        <figure><img src={ mail } alt="mail" className="mail"/>
+                           srruffino@outlook.com</figure>
+                        <figure><img src={ phone } alt="phone" className="phone"/>
+                            SR.Ruffino: (+31)620940691</figure>
+                        <figure><img src={ phone } alt="phone" className="phone"/> E.Jongh
+                            Visscher: (+31)648889093</figure>
                     </ul>
                 </div>
                 <div className="register-content" onSubmit={handleNewsletterSubmit}>
@@ -60,7 +53,6 @@ function Footer() {
                     </form>
                 </div>
                 <hr/>
-
 
                 {popupOpen && (
                     <div className="popup-newsletter">

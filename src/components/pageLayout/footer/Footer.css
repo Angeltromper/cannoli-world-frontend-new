@@ -30,11 +30,9 @@ footer {
     margin-top: 6em;
 }
 
-
 .footer-menu h3 {
     color: var(--text-light);
     text-transform: uppercase;
-    /*margin: 1em -1em;*/
 }
 
 .footer-menu {
@@ -110,7 +108,6 @@ footer {
     margin-bottom:  1em;
 }
 
-
 hr {
     width: 95%;
     margin-bottom: 1em;
@@ -138,7 +135,6 @@ hr {
     align-items: center;
     padding-bottom: 1rem;
 }
-
 
 .popup-newsletter {
     display: flex;
@@ -182,6 +178,7 @@ hr {
 }
 
 
+/*--------------------- Media-queries -----------------*/
 
 @media screen and (max-width: 992px) {
 
@@ -198,8 +195,6 @@ hr {
 
     .footer-container {
         display: flex;
-        /*color: var(--text-dark);*/
-        /*align-items: center;*/
         flex-direction: column;
     }
 
@@ -217,7 +212,6 @@ hr {
     }
 
     .footer-menu, .footer-contact {
-        /*color: var(--text-dark);*/
         margin-top: 6em;
     }
 

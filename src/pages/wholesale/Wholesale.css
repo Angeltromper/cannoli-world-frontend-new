@@ -4,31 +4,15 @@
     font: var(--font);
     align-items: center;
     justify-content: center;
-    /*margin: 2em;*/
     flex-direction: column;
     width: 100%;
-
-    /*height: auto;*/
 }
 
 .wholesale-container {
-    /*justify-content: center;*/
-    /*flex-direction: column;*/
-    /*align-items: center;*/
-    /*flex-shrink: 1;*/
-    /*flex-wrap: wrap;*/
     padding: 20rem 2rem;
-
 }
 
-/*
-.wholesale-layout {
-    min-width: auto;
-    padding: -2rem 7rem;
-    margin: 2em 2em;
 
-}
-*/
 
 /*
 .cannoli-counters article button {

@@ -9,7 +9,7 @@ export const AuthContext = createContext({
     user: null,
     login: () => {},
     logout: () => {},
-    setUser: () => {},     // <— belangrijk voor je forms
+    setUser: () => {},     // <— belangrijk voor de forms
 });
 
 function AuthContextProvider({ children }) {
@@ -44,7 +44,6 @@ function AuthContextProvider({ children }) {
         navigate('/');
     }
 
-    /** ⇩ Nieuwe helper om alléén user-velden bij te werken */
     function setUser(updates) {
         setAuthState(prev => ({
             ...prev,
@@ -54,7 +53,6 @@ function AuthContextProvider({ children }) {
 
     async function getData(usernameOrId, token, redirectUrl) {
         try {
-            // Jij gebruikt /users/{id|username}; laat dit zoals bij jou werkt
             const { data } = await axios.get(`http://localhost:8080/users/${usernameOrId}`, {
                 headers: {
                     "Content-Type": "application/json",
@@ -62,7 +60,7 @@ function AuthContextProvider({ children }) {
                 }
             });
 
-            const p = data.person ?? {}; // kan null zijn als er nog geen adres is
+            const p = data.person ?? {}; // Kan ontbreken wanneer profiel nog leeg is.
 
             setAuthState(prev => ({
                 ...prev,
@@ -94,11 +92,11 @@ function AuthContextProvider({ children }) {
     }
 
     const contextData = {
-        auth: authState.isAuth,
-        user: authState.user,
+        auth: authState.isAuth, // Boolean: ingelogd of niet
+        user: authState.user, // Huidige gebruiker (of null)
         login,
         logout,
-        setUser, // <— expose naar je forms
+        setUser, // <— Alleen user velden bijwerken (bv. na profiel-edit)
     };
 
     return (
