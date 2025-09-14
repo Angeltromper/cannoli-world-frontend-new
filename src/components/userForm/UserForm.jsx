@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import './UserForm.css';
 
-
 function UserForm({headerImageHandler, pageTitleHandler}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "...dit veld is verplicht";
@@ -18,7 +17,6 @@ function UserForm({headerImageHandler, pageTitleHandler}) {
         headerImageHandler (pageImg);
         pageTitleHandler ();
     }, [headerImageHandler, pageTitleHandler]);
-
 
 
     async function sendPersonData(form) {
@@ -162,7 +160,7 @@ function UserForm({headerImageHandler, pageTitleHandler}) {
                         <br/>
                     </div>
 
-                    <button className="button__reusable " type="submit">Opslaan</button>
+                    <button className="button__userform " type="submit">Opslaan</button>
 
                 </form>
             </div>

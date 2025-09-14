@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/Logo.svg';
-import './Navbar.css';
 import { RiCloseLine } from "react-icons/ri";
+import './Navbar.css';
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false);

@@ -106,13 +106,6 @@ textarea {
     border-radius: 0.5em;
 }
 
-/*.input-container {
-    position: relative;
-    margin-bottom: 2rem;
-
-}
-*/
-
 .repeat {
     padding: 20px;
     font-size: 20px;
@@ -158,8 +151,6 @@ button.form-button {
     height: 2rem;
 }
 
-
-
 .akkoord-registratie {
     display: flex;
     font-size: 12px;
@@ -183,11 +174,8 @@ button.form-button {
 .invalid {
     color: #ff0404;
     margin-left: 0.2rem ;
-
-
 }
 
-/*Keyframes*/
 
 .succes-slide-down {
     -webkit-animation: succes-slide-bottom 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;

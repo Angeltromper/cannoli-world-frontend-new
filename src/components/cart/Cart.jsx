@@ -9,7 +9,6 @@ import './Cart.css';
 export const Cart = () => {
     const navigate = useNavigate();
     const { auth } = useContext(AuthContext);
-    // const [open, setOpen] = useState(false);
     const {cart = []} = useContext(CartContext);
     const totalPrice = cart.reduce((sum, i) => sum + i.prijs * i.qty, 0);
 

@@ -9,21 +9,12 @@ import axios from "axios";
 import './SignIn.css';
 
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
-const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
+
 
 function SignIn({ headerImageHandler, pageTitleHandler }) {
     const {register, formState: { errors }, handleSubmit} = useFormContext();
-
     const navigate = useNavigate();
     const { login, logout, auth } = useContext(AuthContext);
-
-    // const [user] = useState('');
-    // const [validName, setValidName] = useState(false);
-    //
-    // const [password] = useState('');
-    // const [validPassword, setValidPassword] = useState(false);
-
     const [error, setError] = useState(false);
     const [addSucces, toggleAddSuccess] = useState(false);
 
@@ -32,19 +23,11 @@ function SignIn({ headerImageHandler, pageTitleHandler }) {
         pageTitleHandler();
     }, []);
 
-    // useEffect(() => {
-    //     setValidName(USER_REGEX.test(user));
-    // }, [user]);
-
-    // useEffect(() => {
-    //     setValidPassword(PASSWORD_REGEX.test(password));
-    // }, [password]);
-
-    async function signIn(e) {
+    async function signIn(data) {
         try {
             const response = await axios.post('http://localhost:8080/authenticate', {
-                username: e.username,
-                password: e.password,
+                username: data.username,
+                password: data.password,
             });
 
             login(response.data.jwt);
@@ -116,7 +99,7 @@ function SignIn({ headerImageHandler, pageTitleHandler }) {
                         <div className="login-footer-wrapper">
                             <p className="account-text">Heeft u nog geen account?</p>
                             <Link to="/register">
-                                <button className="register-button">Registreer</button>
+                                <button className="button-register">Registreer</button>
                             </Link>
                         </div>
                 </div>

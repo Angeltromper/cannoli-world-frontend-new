@@ -9,7 +9,7 @@ export const AuthContext = createContext({
     user: null,
     login: () => {},
     logout: () => {},
-    setUser: () => {},     // <— belangrijk voor de forms
+    setUser: () => {},
 });
 
 function AuthContextProvider({ children }) {
@@ -60,7 +60,7 @@ function AuthContextProvider({ children }) {
                 }
             });
 
-            const p = data.person ?? {}; // Kan ontbreken wanneer profiel nog leeg is.
+            const p = data.person ?? {};
 
             setAuthState(prev => ({
                 ...prev,
@@ -70,7 +70,6 @@ function AuthContextProvider({ children }) {
                     userId: data.id,
                     roles: Array.isArray(data.roles) && data.roles[0]?.authority ? data.roles[0].authority : null,
 
-                    // Persoonsgegevens (optioneel aanwezig)
                     person_id: p.id ?? null,
                     person_firstname: p.personFirstname ?? "",
                     person_lastname: p.personLastname ?? "",
@@ -92,11 +91,11 @@ function AuthContextProvider({ children }) {
     }
 
     const contextData = {
-        auth: authState.isAuth, // Boolean: ingelogd of niet
-        user: authState.user, // Huidige gebruiker (of null)
+        auth: authState.isAuth,
+        user: authState.user,
         login,
         logout,
-        setUser, // <— Alleen user velden bijwerken (bv. na profiel-edit)
+        setUser,
     };
 
     return (

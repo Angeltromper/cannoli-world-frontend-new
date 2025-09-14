@@ -153,7 +153,6 @@
     box-shadow: 0 4px 10px rgba(0,0,0,.16);
 }
 
-
 .button-added img {
     filter: brightness(0) saturate(100%);
     color: black;
@@ -161,9 +160,7 @@
     height: 70px;
 }
 
-
 .cart-icon {
     width: 18px;
     height: 18px;
-
 }

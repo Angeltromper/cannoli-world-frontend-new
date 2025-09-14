@@ -1,32 +1,53 @@
 .card-container {
     display: block;
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
-    /*overflow: hidden;*/
-    margin: 0 auto;
-    max-width: 20em;
-    border-radius: .6em;
+    width: 100%;
+    /*margin: 0 auto;*/
+    /*max-width: 20em;*/
+    overflow: hidden;
+    border-radius: 0.6em;
+    box-sizing: border-box;
 }
 
 .card-image {
     display: block;
     max-width: 100%;
     height: auto;
-    padding: 0;
 }
 
 .text-container {
-    padding: 2em;
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 0.75rem;
 }
 
 .text-container h2 {
     font-size: 1.2em;
-    margin-bottom: .5em;
+    margin: 0 0 0.5rem 0;
 }
 
 .btn-text-registreren {
     color: black;
     font-size: 1rem;
     font-weight: bold;
-    margin: 2em;
-    z-index: 500;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+
+/*--------------------- Media-queries -----------------*/
+
+
+@media (max-width: 576px) {
+    .text-container { padding: 1.25rem; }
+    .text-container .button {
+        display: block;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        padding: .6rem .9rem;
+    }
 }

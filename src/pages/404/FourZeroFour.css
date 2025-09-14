@@ -9,7 +9,6 @@
 
 .fourzfour__figure {
     text-align: center;
-    /*padding: clamp(16px, 3vw, 32px);*/
     width: 100%;
     max-width: 900px;
 }
@@ -24,15 +23,9 @@
 }
 
 .fourzfour__info {
-    /*display: inline-block;*/
-    /*background: #ef4444;*/
-    /*color: black;*/
-    /*box-shadow: 0 8px 18px rgba(239,68,68,0.35);*/
     margin: 6px 0 18px;
     font-size: clamp(1.25rem, 2vw + 1rem, 2rem);
-    /*text-decoration: none;*/
     font-weight: 800;
-    /*transition: transform .12s ease, background .12s ease, box-shadow .12s ease;*/
 }
 
 .fourzfour__btn {

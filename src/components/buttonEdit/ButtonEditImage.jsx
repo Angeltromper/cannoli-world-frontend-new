@@ -47,5 +47,3 @@ function ButtonEditImage() {
 }
 
 export default ButtonEditImage;
-
-

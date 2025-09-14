@@ -8,7 +8,6 @@
     font-family: Arial, sans-serif;
 }
 
-
 .form-login {
     background-color: white;
     padding: 2rem 2.5rem;
@@ -24,7 +23,6 @@
     margin-bottom: 1.5rem;
     color: #333;
 }
-
 
 label {
     display: block;
@@ -76,7 +74,6 @@ p {
     background-color: #1AE216;
 }
 
-
 .login-footer-wrapper {
     text-align: center;
     margin-top: 2rem;
@@ -89,7 +86,7 @@ p {
     color: #444;
 }
 
-.register-button {
+.button-register {
     padding: 0.3rem 1rem;
     background-color: #e60044;
     color: white;
@@ -100,10 +97,9 @@ p {
     transition: background-color 0.3s ease;
 }
 
-.register-button:hover {
+.button-register:hover {
     background-color: #1AE216;
 }
-
 
 .timeout-succes-signin {
     text-align: center;

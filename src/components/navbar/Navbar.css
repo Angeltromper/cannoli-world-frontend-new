@@ -71,7 +71,6 @@
     width: 250px;
     height: 100vh;
     background: linear-gradient(180deg, rgb(255, 159, 0) 0%, rgba(250, 152, 5, 0.8) 60%, rgba(244, 149, 0, 0.76) 100%);
-    background: -ms-linear-gradient(0deg, rgb(255, 161, 7) 0%, rgba(250, 152, 5, 0.8) 60%, rgba(244, 149, 0, 0.76) 100%);
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
     display: flex;
     flex-direction: column;

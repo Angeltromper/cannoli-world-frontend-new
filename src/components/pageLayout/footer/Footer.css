@@ -185,7 +185,6 @@ hr {
     footer {
         display: flex;
         background: linear-gradient(180deg, rgba(255, 161, 7, 0.61) 0%, rgba(217, 173, 102, 0.17) 70%, rgba(217, 173, 102, 0.01) 100%);
-        background: -ms-linear-gradient(0deg, rgba(255, 161, 7, 0.77) 0%, rgba(217, 173, 102, 0.17) 70%, rgba(217, 173, 102, 0.01) 100%);
         width: 100%;
         gap: 3%;
         justify-content: space-evenly;

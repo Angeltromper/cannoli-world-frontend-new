@@ -5,7 +5,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { FiInfo} from "react-icons/fi";
 import "./Cannoli.css";
 
-
 const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     const navigate = useNavigate();
     const { cart, setCart} = useContext(CartContext);
@@ -97,4 +96,3 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
 };
 
 export default Cannoli;
-

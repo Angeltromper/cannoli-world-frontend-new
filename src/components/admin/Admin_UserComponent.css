@@ -62,7 +62,7 @@
 }
 
 
-/*--------------------- 6.Media-queries -----------------*/
+/*--------------------- Media-queries -----------------*/
 
     @media screen and (max-width: 992px) {
         .Admin_UserComponentContainer h3 {
@@ -75,7 +75,7 @@
 }
 
 
-@media screen and (max-width: 768px)  {
+@media screen and (max-width: 768px) {
     table,
     thead,
     tbody,
@@ -122,15 +122,6 @@
         border-bottom: none;
     }
 
-    /*.admin-user-delete-button {*/
-    /*    margin-top: 0.5rem;*/
-    /*    text-align: right;*/
-    /*/    width: 100%;*/
-    /*}*/
-
-    /*.admin-user-delete-button button {*/
-    /*    width: 100%;*/
-    /*}*/
 }
 
 @media screen and (max-width: 576px) {

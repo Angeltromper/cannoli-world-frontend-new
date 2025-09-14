@@ -10,9 +10,8 @@ import glutenfreefruttidibosco from "../../assets/img.cannoli-glutenfree/Glutenf
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
-import './CannoliGlutenFree.css';
 import PopupCannoli from "../../components/popup/PopupCannoli";
-
+import './CannoliGlutenFree.css';
 
 function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
     const [selectedTitle, setSelectedTitle] = useState(null);
@@ -82,7 +81,6 @@ function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
 
     return (
         <div className="cannoli-container">
-
 
             <div>
                 <h2>Cannoli Almond</h2>

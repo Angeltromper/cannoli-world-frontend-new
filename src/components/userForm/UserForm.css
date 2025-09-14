@@ -16,8 +16,6 @@
 }
 
 .user-form input[type="text"],
-/*input[type="password"],*/
-/*input[type="email"],*/
 textarea {
     font-size: 20px;
     margin: 0;
@@ -31,11 +29,25 @@ textarea {
     display: flex;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    /*flex-direction: column;*/
     flex-wrap: wrap;
     flex-shrink: 1;
     width: 100%;
-
 }
 
+.button__userform {
+    display: inline-flex;
+    background-color: var(--button-color);
+    color: var(--text-intro-white);
+    box-shadow: var(--shadow-color);
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0.5em 5em;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 1rem;
+    transition:background-color .2s ease, box-shadow .2s ease, transform .02s ease;
+}
 

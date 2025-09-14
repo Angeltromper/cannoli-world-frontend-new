@@ -23,8 +23,8 @@ function OrderList() {
     useEffect(() => {
         if (!token) return;
         const url = isAdmin
-            ? 'http://localhost:8080/deliveryRequests/all'   // admin: alles
-            : 'http://localhost:8080/deliveryRequests/mine'; // klant: alleen eigen
+            ? 'http://localhost:8080/deliveryRequests/all'
+            : 'http://localhost:8080/deliveryRequests/mine';
 
 
         (async function fetchDeliveryRequests() {

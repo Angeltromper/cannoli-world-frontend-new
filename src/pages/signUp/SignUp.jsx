@@ -163,7 +163,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
                         <input
                             className="email"
-                            type="e-mail"
+                            type="email"
                             id="email"
                             onChange={ (e) => setEmail (e.target.value) }
                             value={ email }
@@ -260,11 +260,7 @@ function SignUp({headerImageHandler, pageTitleHandler}) {
 
                             <label htmlFor="agree-field">Door te registreren ga ik akkoord met de algemene voorwaarden
                                 en het privacybeleid</label>
-
-                       </section>
-
-                        {/*<p className="btn-text-registreren">Registreer/Log in om prijzen te kunnen zien</p>*/}
-
+                        </section>
 
                         <section className="form-footer-logout">
                             Heeft u al een account?

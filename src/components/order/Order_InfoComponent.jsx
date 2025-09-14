@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import './Order_InfoComponent.css';
 
 function Order_InfoComponent({ id, applier, cannoliList = [], status, comment }) {
-    // Als data nog niet binnen is, niks renderen (of toon een spinner)
     if (!applier) return null;
 
     const formatEuro = (n) =>

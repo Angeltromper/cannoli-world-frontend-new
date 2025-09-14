@@ -54,23 +54,6 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
          }, [username, token]);
 
 
-     // function navigateToUserEdit() {
-     //     navigate("/user-view");
-     // }
-
-     // function navigateToCannoliEdit() {
-     //     navigate("/cannolis-add");
-     // }
-
-     // function navigateToAdminOrders() {
-     //     navigate("/deliveryRequests");
-     // }
-
-     // function navigateTomyOrders() {
-     //     navigate("/deliveryRequests");
-     // }
-
-
      return (
         <>
             <div className="profile-page-container">

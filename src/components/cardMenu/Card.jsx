@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { ButtonInfo } from "../button/ButtonInfo";
 import './Card.css';
 
-
-
 function Card({title, content, image, imageAlt, id, onMoreInfoClick }) {
     return (
         <div className="card-container">

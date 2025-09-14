@@ -4,8 +4,6 @@ import Cannoli from "../../components/cannoli/Cannoli";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './GlutenfreeCannoli.css';
 
-
-
 function GlutenfreeCannoli() {
     const [glutenfree, setGlutenfree] = useState([]);
 
