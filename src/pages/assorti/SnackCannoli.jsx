@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import Cannoli from "../../components/cannoli/Cannoli";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './SnackCannoli.css';
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 
-function SnackCannoli() {
+function SnackCannoli({ headerImageHandler, pageTitleHandler }) {
     const [snack, setSnack] = useState([]);
+
+    useEffect(() => {
+        headerImageHandler(pageImg);
+        pageTitleHandler("Cannoli Snack");
+    }, [headerImageHandler, pageTitleHandler]);
+
 
     useEffect(() => {
         async function fetchSnack(e) {
@@ -23,10 +30,6 @@ function SnackCannoli() {
 
     return (
         <>
-            <TextContainer>
-                <h2>Cannoli snack</h2>
-            </TextContainer>
-
             <section className="snackCannoli-container">
                 <div className="cannolis-container">
 

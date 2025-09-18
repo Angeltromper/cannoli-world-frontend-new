@@ -1,11 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import  { useContext, useEffect } from 'react';
 import { CartContext } from "../../context/CartContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
-import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import './CartDeliveryRequest.css';
 
 function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
@@ -28,8 +27,8 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
 
     useEffect(() => {
         headerImageHandler(pageImg);
-        pageTitleHandler();
-    }, []);
+        pageTitleHandler("Online Order");
+    }, [headerImageHandler, pageTitleHandler]);
 
     async function sendCannoliData(data) {
         try {
@@ -65,12 +64,6 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
         <div>
             <section className="shoppingcart-layout-menu">
                 <section>
-                    <TextContainer>
-                        <h1>Online Order</h1>
-                    </TextContainer>
-
-                    <br />
-
                     <div className="order-table-wrap">
                         <table className="shoppingcart-table">
                             <thead>

@@ -15,16 +15,14 @@ export const CartProvider = ({children}) => {
     useEffect(() => {
         try {
             localStorage.setItem('cart', JSON.stringify(cart));
-        } catch {
-        }
+        } catch { /* empty */ }
         }, [cart]);
 
     const clearCart = () => {
         setCart([]);
         try {
             localStorage.removeItem('cart');
-        } catch {
-        }
+        } catch { /* empty */ }
     };
 
     const value = useMemo(() => ({ cart, setCart, clearCart }), [cart]);

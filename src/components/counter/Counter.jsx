@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import ButtonCount from "../button/ButtonCount";
 
 function Counter({ setCannoliCount, cannoliCount, addToCart, removeFromCart }) {

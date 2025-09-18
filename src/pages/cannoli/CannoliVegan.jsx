@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import pageImg from './../../assets/img.background/background cannoli-vegan.jpg';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import pageImg from './../../assets/img.background/background-cannoli-glutenfree.jpg';
 import glutenfreepistacchio from "../../assets/img.cannoli-glutenfree/Glutenfree Pistacchio.png";
 import glutenfreenocciola from "../../assets/img.cannoli-glutenfree/Glutenfree Nocciola (hazelnoot).png";
@@ -20,8 +20,8 @@ function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
 
         useEffect(() => {
         headerImageHandler (pageImg);
-        pageTitleHandler();
-    }, []);
+        pageTitleHandler("Cannoli Almond");
+    }, [headerImageHandler, pageTitleHandler]);
 
         const handleMoreInfo = (title) => {
             let variants = [];
@@ -81,11 +81,6 @@ function CannoliGlutenFree({headerImageHandler, pageTitleHandler})  {
 
     return (
         <div className="cannoli-container">
-
-            <div>
-                <h2>Cannoli Almond</h2>
-            </div>
-
             <div className="cards-glutenfree-container">
                 <Card image={ glutenfreefruttidibosco } id={1010} imageAlt="fruttidibosco" title="Bosvruchten" content="Almond koekje gevuld met zachte bosvruchten crème" onMoreInfoClick={handleMoreInfo}/>
                 <Card image={ glutenfreenocciola } id={1011} imageAlt="cannoli nocciola" title="Nocciola" content="Almond koekje gevuld met zachte nocciola crème"onMoreInfoClick={handleMoreInfo} />

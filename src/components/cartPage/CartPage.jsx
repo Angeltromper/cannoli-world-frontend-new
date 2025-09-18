@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ConfirmPopup from "./../popup/ConfirmPopup";
 import './CartPage.css';
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 
-const CartPage = () => {
+const CartPage = ({ headerImageHandler, pageTitleHandler }) => {
     const navigate = useNavigate();
     const { cart, setCart} = useContext(CartContext);
     const [showPopup, setShowPopup] = useState(false);
@@ -42,10 +43,13 @@ const CartPage = () => {
         setCart(updatedCart);
     };
 
+    useEffect(() => {
+        headerImageHandler(pageImg);
+        pageTitleHandler("Winkelmandje");
+    }, [headerImageHandler, pageTitleHandler]);
+
     return (
         <div className="cart-page">
-            <h3>Winkelmandje</h3>
-
             <div className="cart-main-container">
                 <div className="cart-left">
                     <div className="cart-header">

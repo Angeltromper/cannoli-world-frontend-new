@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import pageImg from './../../assets/img.background/background cannolis.jpg';
-
 import cannolisnack from './../../assets/img.cannoli-snack/Cannolisnack-image.png';
 import cannoliglutenfree from './../../assets/img.cannoli-glutenfree/Cannoliglutenfree-image.png';
 import cannolivegan from './../../assets/img.cannoli-vegan/Cannolivegan-image.png';
@@ -10,23 +9,24 @@ import CannoliCard from "../../components/cardMenu/CannoliCard";
 import './CannoliAssorti.css';
 
 function CannoliAssorti({ headerImageHandler, pageTitleHandler }) {
+
     useEffect(() => {
         headerImageHandler(pageImg);
-        pageTitleHandler();
-    }, []);
+        pageTitleHandler("Cannoli Assortiment");
+    }, [headerImageHandler, pageTitleHandler]);
 
     return (
         <div className="cannolis-container">
             <NavLink to="/snack-cannoli/assorti">
-                <CannoliCard image={cannolisnack} imageAlt="Snack Cannoli" description="Snack Cannoli" />
+                <CannoliCard image={cannolisnack} imageAlt="Snack Cannoli" description="Cannoli Snack" />
             </NavLink>
 
             <NavLink to="/glutenfree-cannoli/assorti">
-                <CannoliCard image={cannoliglutenfree} imageAlt="Glutenvrije Cannoli" description="Almond Cannoli" />
+                <CannoliCard image={cannoliglutenfree} imageAlt="Glutenvrije Cannoli" description="Cannoli Almond (glutenfree)" />
             </NavLink>
 
             <NavLink to="/vegan-cannoli/assorti">
-                <CannoliCard image={cannolivegan} imageAlt="Vegan Cannoli" description="Vegan Cannoli" />
+                <CannoliCard image={cannolivegan} imageAlt="Vegan Cannoli" description="Cannoli Vegan" />
             </NavLink>
         </div>
     );

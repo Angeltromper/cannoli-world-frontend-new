@@ -1,10 +1,10 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
+import  { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import TextContainer from "../pageLayout/designElement/container/textContainer/TextContainer";
 import Order_InfoComponent from "./Order_InfoComponent";
 import { AuthContext } from "../../context/AuthContext";
 import "./OrderListComponent.css";
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 
 const STATUS = Object.freeze({
     NEW: "NEW",
@@ -20,7 +20,7 @@ const ALLOWED_NEXT = {
     [STATUS.FINISHED]: [],
 };
 
-function OrderListComponent() {
+function OrderListComponent({ headerImageHandler, pageTitleHandler }) {
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
     const { deliveryRequest_id } = useParams();
@@ -70,6 +70,11 @@ function OrderListComponent() {
         }
     }, [deliveryRequest_id, token, navigate]);
 
+    useEffect(() => {
+        headerImageHandler(pageImg);
+        pageTitleHandler();
+    }, [headerImageHandler, pageTitleHandler]);
+
     useEffect(() => { fetchDeliveryRequest(); }, [fetchDeliveryRequest]);
 
     async function updateStatus(nextStatus) {
@@ -116,8 +121,6 @@ function OrderListComponent() {
     return (
         <div className="orderlist-page">
             <div className="orderlist-status-update">
-                <TextContainer><h3>Overzicht bestellijst</h3></TextContainer>
-
                 <div className="orderlist-status-deliver">
                     <h5>Hier kunt u de status aangeven wanneer deze is aangenomen en bezorgd.</h5>
                     <br />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import  { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { RiShoppingBasket2Line } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';

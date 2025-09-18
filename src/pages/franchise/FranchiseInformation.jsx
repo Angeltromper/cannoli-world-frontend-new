@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import  { useEffect, useRef } from 'react'
 import pageImg from "../../assets/img.background/background giftbox.jpg";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";

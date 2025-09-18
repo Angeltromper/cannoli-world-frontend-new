@@ -133,24 +133,6 @@ button.form-button {
     padding: 2rem;
 }
 
-
-.line-footer-logout {
-    display: flex;
-    background-color: var(--text-intro-pink);
-    box-shadow: var(--shadow-color);
-    color: var(--text-intro-white);
-    border: 1px solid black;
-    border-radius: 1.5em;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: var(--second-font), sans-serif;
-    align-items: center;
-    justify-content: center;
-    margin: var(--margin);
-    width: 7rem;
-    height: 2rem;
-}
-
 .akkoord-registratie {
     display: flex;
     font-size: 12px;

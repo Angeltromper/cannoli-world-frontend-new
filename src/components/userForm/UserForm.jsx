@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import  { useContext, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
 import {useFormContext} from 'react-hook-form';
@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import pageImg from "../../assets/img.background/Background cannolis.jpg";
 import './UserForm.css';
 
-function UserForm({headerImageHandler, pageTitleHandler}) {
+function UserForm({headerImageHandler}) {
     const {register, formState: {errors}, handleSubmit} = useFormContext();
     const message = "...dit veld is verplicht";
     const navigate = useNavigate();
@@ -15,8 +15,7 @@ function UserForm({headerImageHandler, pageTitleHandler}) {
 
     useEffect (() => {
         headerImageHandler (pageImg);
-        pageTitleHandler ();
-    }, [headerImageHandler, pageTitleHandler]);
+    }, [headerImageHandler]);
 
 
     async function sendPersonData(form) {

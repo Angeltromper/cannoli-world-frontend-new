@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,8 +6,9 @@ import { AuthContext } from "../../context/AuthContext";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import ButtonDelete from "../button/ButtonDelete";
 import './Admin_WholesaleComponent.css';
+import pageImg from "../../assets/img.background/background-cannoli-glutenfree.jpg";
 
-function Admin_WholesaleComponent() {
+function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
 
     const { register, formState: { errors }, handleSubmit } = useFormContext();
     const { user } = useContext(AuthContext);
@@ -15,6 +16,11 @@ function Admin_WholesaleComponent() {
     const token = localStorage.getItem('token');
     const [cannolis, setCannolis] = useState([]);
     const message = ".. veld is verplicht";
+
+    useEffect(() => {
+        headerImageHandler (pageImg);
+        pageTitleHandler("Cannolis toevoegen");
+    }, [headerImageHandler, pageTitleHandler]);
 
     async function sendCannoliData(data) {
         try {
@@ -60,7 +66,7 @@ function Admin_WholesaleComponent() {
             }
         }
         fetchCannolis();
-    }, []);
+    }, [token]);
 
     async function deleteCannoli(cannoliId) {
         try {
@@ -87,10 +93,8 @@ function Admin_WholesaleComponent() {
             ) : (
                 <section className="admin-container">
                     <TextContainerResp className="admin-intro">
-                        <h2>Cannoli toevoegen/wijzigen:</h2>
-
                         <ul className="admin-form-text">
-                            <li><i>Cannoli-product wijzigen</i>
+                            <li><i>Cannoli-product toevoegen</i>
                                 <p>Open het assortiment → kies product → <b>Wijzig product</b> → pas tekst/prijs aan → <b>Opslaan</b>.</p>
                             </li>
                             <li><i>Nieuw product</i>
@@ -102,6 +106,7 @@ function Admin_WholesaleComponent() {
                             <li><i>Foto toevoegen / wijzigen</i>
                                 <p>Ga via de <b>(i)</b>-knop naar de productdetailpagina → <b>Wijzig afbeelding</b> → kies bestand → <b>Uploaden</b>.</p>
                             </li>
+
                         </ul>
                     </TextContainerResp>
 

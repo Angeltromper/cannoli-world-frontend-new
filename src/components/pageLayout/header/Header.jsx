@@ -1,4 +1,4 @@
-import React from 'react';
+import 'react';
 import Navbar from "../../navbar/Navbar.jsx";
 import { Cart } from "../../cart/Cart";
 import { AuthContext } from "../../../context/AuthContext";

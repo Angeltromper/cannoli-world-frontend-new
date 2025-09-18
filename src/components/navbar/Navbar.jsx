@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/Logo.svg';
 import { RiCloseLine } from "react-icons/ri";
@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className={`navbar-drawer ${toggleMenu ? 'open' : ''}`}>
                     <ul className="navbar-links">
                         <li><NavLink to="/" onClick={() => setToggleMenu(false)}>Home</NavLink></li>
-                        <li><NavLink to="/cannoli" onClick={() => setToggleMenu(false)}>Cannoli</NavLink></li>
+                        <li><NavLink to="/cannoli-assorti" onClick={() => setToggleMenu(false)}>Cannoli</NavLink></li>
                         <li><NavLink to="/giftbox" onClick={() => setToggleMenu(false)}>Giftbox</NavLink></li>
 
                         <li className="navbar-logo">
@@ -55,7 +55,7 @@ const Navbar = () => {
             {screenWidth > 992 && (
                 <ul className="navbar-links">
                     <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/cannoli">Cannoli</NavLink></li>
+                    <li><NavLink to="/cannoli-assorti">Cannoli</NavLink></li>
                     <li><NavLink to="/giftbox">Giftbox</NavLink></li>
 
                     <li className="navbar-logo">

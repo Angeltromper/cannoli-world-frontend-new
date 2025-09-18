@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import  { useContext, useEffect, useState } from 'react';
+import { Link, } from "react-router-dom";
 import pageImg from "../../assets/img.background/background cannolis.jpg";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -9,7 +9,6 @@ import './UserProfile.css';
 
 
 function UserProfile({headerImageHandler, pageTitleHandler}) {
-    // const navigate = useNavigate();
     const token = localStorage.getItem("token");
     const { user } = useContext(AuthContext);
     const username = user?.username;
@@ -17,8 +16,8 @@ function UserProfile({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
          headerImageHandler(pageImg);
-         pageTitleHandler();
-     }, []);
+         pageTitleHandler("Profiel")
+         }, [headerImageHandler,pageTitleHandler]);
 
      useEffect(()=> {
          if (!username || !token) return;

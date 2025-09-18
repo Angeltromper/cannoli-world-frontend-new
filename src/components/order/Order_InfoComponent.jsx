@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import  { useMemo } from 'react';
 import './Order_InfoComponent.css';
 
 function Order_InfoComponent({ id, applier, cannoliList = [], status, comment }) {
@@ -8,8 +8,10 @@ function Order_InfoComponent({ id, applier, cannoliList = [], status, comment })
         new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' })
             .format(Number(n || 0));
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const items = Array.isArray(cannoliList) ? cannoliList : [];
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const orderTotal = useMemo(
         () => items.reduce((sum, it) => sum + Number(it.prijs || 0) * Number(it.qty || 0), 0),
         [items]

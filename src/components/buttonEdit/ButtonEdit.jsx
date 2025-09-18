@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { useNavigate } from "react-router-dom";
 import pencilIcon from '../../assets/svg/pencil.svg';
 import './ButtonEdit.css';

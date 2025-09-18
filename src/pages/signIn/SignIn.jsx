@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
@@ -7,9 +7,6 @@ import { useFormContext } from "react-hook-form";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import './SignIn.css';
-
-
-
 
 function SignIn({ headerImageHandler, pageTitleHandler }) {
     const {register, formState: { errors }, handleSubmit} = useFormContext();
@@ -21,7 +18,7 @@ function SignIn({ headerImageHandler, pageTitleHandler }) {
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
     async function signIn(data) {
         try {

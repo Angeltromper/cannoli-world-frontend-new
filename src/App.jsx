@@ -6,7 +6,6 @@ import Footer from "./components/pageLayout/footer/Footer";
 import PrivateRoute from "./components/pageLayout/route/PrivateRoute";
 
 import HomePage from "./pages/homepage/HomePage";
-import Cannolis from "./pages/assorti/Cannolis";
 import CannoliAssorti from "./pages/assorti/CannoliAssorti";
 import SnackCannoli from "./pages/assorti/SnackCannoli";
 import GlutenfreeCannoli from "./pages/assorti/GlutenfreeCannoli";
@@ -88,9 +87,6 @@ function App() {
                     <Route path="/"
                        element={ <HomePage headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
 
-                    <Route path="/cannoli"
-                       element={ <Cannolis headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
-
                     <Route path="/cannoli-assorti"
                        element={ <CannoliAssorti headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
 
@@ -145,6 +141,9 @@ function App() {
                     <Route path="/cannolis-add"
                        element={ <PrivateRoute><Admin_WholesaleComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute> }/>
 
+                    <Route path="/cannolis/info/:cannoli_id"
+                           element={ <Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
+
                     <Route path="/user-view"
                        element={ <PrivateRoute> <Admin_UserComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/></PrivateRoute> }/>
 
@@ -169,8 +168,7 @@ function App() {
                     <Route path="/cannolis/image/:cannoli_id"
                        element={ <ImageCannoliComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
 
-                    <Route path="/cannolis/info/:cannoli_id"
-                       element={ <Admin_WholesaleEditComponent headerImageHandler={setHeaderImage} pageTitleHandler={setPageTitle}/> }/>
+
                 </Route>
 
                 <Route path="/404"

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import './ImageCannoliComponent.css';
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 
-export const ImageCannoliComponent = (props) => {
+export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) => {
     const token = localStorage.getItem('token');
     const {cannoli_id} = useParams();
     const location = useLocation();
@@ -14,6 +15,12 @@ export const ImageCannoliComponent = (props) => {
     const navigate = useNavigate();
 
     const backTo = location.state?.from ?? `/wholesale/${cannoli_id}`;
+
+    useEffect(() => {
+        headerImageHandler(pageImg);
+        pageTitleHandler("Afbeelding uploaden");
+    }, [headerImageHandler, pageTitleHandler]);
+
 
     useEffect(() => {
         async function fetchCannoli(){
@@ -87,8 +94,6 @@ export const ImageCannoliComponent = (props) => {
 
     return (
         <section className="cannoli-image-container">
-            <h1>Cannoli afbeelding uploaden</h1>
-
             <form onSubmit={sendImage}>
                 <div className="button-row">
                     <label htmlFor="cannoli-image" className="btn btn-secondary">Kies afbeelding</label>

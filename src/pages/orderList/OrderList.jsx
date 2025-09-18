@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import  { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Trash2} from "lucide-react";
 import axios from "axios";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './OrderList.css';
+import pageImg from "../../assets/img.background/background cannolis.jpg";
 
-function OrderList() {
+function OrderList({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     const { user } = useContext(AuthContext);
@@ -19,6 +20,12 @@ function OrderList() {
         user.role === 'ROLE_ADMIN' ||
         user.roles === 'ROLE_ADMIN'
     );
+
+    useEffect(() => {
+        headerImageHandler(pageImg);
+        pageTitleHandler("Bestellijst")
+    }, [headerImageHandler,pageTitleHandler]);
+
 
     useEffect(() => {
         if (!token) return;
@@ -63,9 +70,9 @@ function OrderList() {
 
     return (
         <>
-            <TextContainer>
-                <h2>{isAdmin ? 'Bestellijst' : 'Mijn bestellingen'}</h2>
-            </TextContainer>
+            {/*<TextContainer>*/}
+            {/*    <h2>{isAdmin ? 'Bestellijst' : 'Mijn bestellingen'}</h2>*/}
+            {/*</TextContainer>*/}
 
             <section className="orderlist-container">
                 <h4>{isAdmin ? 'Overzicht status bestellijst' : 'Overzicht van uw bestellingen'}</h4>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
 import { useLocation, useParams } from "react-router-dom";

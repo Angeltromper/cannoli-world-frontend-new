@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import  { useContext, useEffect } from "react";
 import pageImg from "./../../assets/img.background/background cannolis.jpg";
 import { generatePath, matchPath, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -7,7 +7,7 @@ import axios from "axios";
 import TextContainerResp from "../pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import "./Admin_WholesaleComponent.css";
 
-function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) {
+function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
     const { user } = useContext(AuthContext);
     const { cannoli_id } = useParams();
     const location = useLocation();
@@ -16,11 +16,11 @@ function Admin_WholesaleEditComponent({ headerImageHandler, pageTitleHandler }) 
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
-
     useEffect(() => {
-        headerImageHandler?.(pageImg);
-        pageTitleHandler?.();
+        headerImageHandler (pageImg);
+        pageTitleHandler("Cannolis wijzigen");
     }, [headerImageHandler, pageTitleHandler]);
+
 
     useEffect(() => {
         const current = getValues();
