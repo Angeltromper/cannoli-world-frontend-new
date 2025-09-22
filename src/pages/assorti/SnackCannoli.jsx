@@ -1,7 +1,6 @@
 import  { useEffect, useState } from "react";
 import axios from "axios";
 import Cannoli from "../../components/cannoli/Cannoli";
-import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './SnackCannoli.css';
 import pageImg from "../../assets/img.background/background cannolis.jpg";
 

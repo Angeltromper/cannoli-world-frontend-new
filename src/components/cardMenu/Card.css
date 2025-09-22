@@ -2,8 +2,6 @@
     display: block;
     box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
     width: 100%;
-    /*margin: 0 auto;*/
-    /*max-width: 20em;*/
     overflow: hidden;
     border-radius: 0.6em;
     box-sizing: border-box;

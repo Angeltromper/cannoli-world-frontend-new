@@ -59,4 +59,4 @@ De gebruiker kan:
 - Wachtwoord: password
 
 
-###### Eindopdracht Full-Stack Developer NOVI College / Angelique Tromper / Copyright © 2025 Cannoli-world/ Alle rechten voorbehouden.
+###### Eindopdracht Full-Stack Developer NOVI College / Angelique Tromper / Copyright © 2024-2025 Cannoli-world/ Alle rechten voorbehouden.

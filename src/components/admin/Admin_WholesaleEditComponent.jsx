@@ -27,8 +27,6 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
         reset({ ...current, cannoli_id });
     }, [cannoli_id, reset, getValues]);
 
-    // const backTo = location.state?.from ?? `/wholesale/${cannoli_id}`;
-
     const detailPath = generatePath("/wholesale/:cannoli_id", { cannoli_id });
     const backTo =
         typeof location.state?.from === "string" &&
@@ -94,7 +92,6 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
                    <input
                        id="cannoli_id"
                        type="text"
-                       // defaultValue={cannoli_id}
                        readOnly
                        {...register("cannoli_id")}
                    />

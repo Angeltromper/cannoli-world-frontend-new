@@ -160,7 +160,6 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <textarea
                                 id="cannoli-ingredients"
                                 rows="8"
-                                // cols="50"
                                 {...register("cannoli_ingredients", { required: { value: false, message } })}
                                 placeholder={errors.cannoli_ingredients ? message : "Bijv. Room, suiker, tiramisu-créme..."}
                                 className={errors.cannoli_ingredients ? "field is-error" : "field"}

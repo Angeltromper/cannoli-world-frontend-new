@@ -1,9 +1,8 @@
-import  { useContext, useEffect, useMemo, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { Trash2} from "lucide-react";
 import axios from "axios";
-import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import './OrderList.css';
 import pageImg from "../../assets/img.background/background cannolis.jpg";
 
@@ -70,10 +69,6 @@ function OrderList({headerImageHandler, pageTitleHandler}) {
 
     return (
         <>
-            {/*<TextContainer>*/}
-            {/*    <h2>{isAdmin ? 'Bestellijst' : 'Mijn bestellingen'}</h2>*/}
-            {/*</TextContainer>*/}
-
             <section className="orderlist-container">
                 <h4>{isAdmin ? 'Overzicht status bestellijst' : 'Overzicht van uw bestellingen'}</h4>
 

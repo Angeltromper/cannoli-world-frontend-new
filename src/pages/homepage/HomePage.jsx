@@ -193,13 +193,3 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
 }
 
 export default HomePage;
-
-
-
-
-
-
-
-
-
-

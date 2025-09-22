@@ -16,7 +16,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}) {
     useEffect(() => {
         headerImageHandler (pageImg);
         pageTitleHandler();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
 
 
@@ -33,7 +33,7 @@ function Wholesale({headerImageHandler, pageTitleHandler}) {
        }
 
        fetchCannolis();
-   },[]);
+   },[id]);
 
    return(
        <section className="wholesale">

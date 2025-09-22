@@ -237,7 +237,6 @@ function SignUp({ headerImageHandler }) {
                             <em>Wachtwoorden moeten overeenkomen.</em>
                         </p>
 
-                        {/* --- Onderkant: checkbox, fouttekst, daarna de knop --- */}
                         <label htmlFor="accept-terms">
                             <input
                                 type="checkbox"
