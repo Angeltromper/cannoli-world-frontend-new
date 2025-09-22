@@ -2,7 +2,8 @@ import  { useEffect, useRef } from 'react';
 import pageImg from "../../assets/img.background/background franchise.jpg";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
-import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
+import "../../components/pageLayout/designElement/container/textContainer/TextContainer";
+import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer.jsx";
 import './Franchise.css';
 
 function Franchise({headerImageHandler, pageTitleHandler}) {
@@ -10,7 +11,7 @@ function Franchise({headerImageHandler, pageTitleHandler}) {
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
     const refSearch = useRef(null);
 
@@ -22,7 +23,6 @@ function Franchise({headerImageHandler, pageTitleHandler}) {
                         <TextContainer>
                             <h2>Onder Constructie</h2>
                         </TextContainer>
-
                     </div>
                 </div>
 

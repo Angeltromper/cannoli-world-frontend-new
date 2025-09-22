@@ -21,9 +21,7 @@ function FranchiseInformation({headerImageHandler, pageTitleHandler}) {
                 <h1>Franchise Informatie</h1>
             </TextContainer>
 
-            <div>
-
-            </div>
+            <div />
 
             <img alt="go-up-search-section" src={ goUp } onClick={ () => HandleRef (refSearch) }
                  className="search-result__go-up-icon"/>

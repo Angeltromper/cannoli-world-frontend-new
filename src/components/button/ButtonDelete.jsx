@@ -9,7 +9,7 @@ export default function ButtonDelete({ onClick }) {
             className="delete-button"
             onClick={onClick}
         >
-            <Trash2 size={16} style={{ marginRight: '0.5rem '}}></Trash2>
+            <Trash2 size={16} style={{ marginRight: '0.5rem '}} />
             Verwijder
         </button>
     );

@@ -48,7 +48,7 @@ function Header({ headerImage, pageTitle }) {
                     <h1>{pageTitle}</h1>
                 </div>
             </div>
-            <div className="skewer--bottom"></div>
+            <div className="skewer--bottom" />
         </>
     );
 }

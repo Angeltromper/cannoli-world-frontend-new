@@ -26,9 +26,9 @@ const Navbar = () => {
                         <RiCloseLine size={30} color="black" />
                     ) : (
                         <div className="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <span />
+                            <span />
+                            <span />
                         </div>
                     )}
                 </div>

@@ -86,8 +86,8 @@ function SignUp({ headerImageHandler }) {
         try {
             const res = await axios.post("http://localhost:8080/users/create", {
                 username: user,
-                password: password,
-                email: email,
+                password,
+                email,
             });
             console.log(res);
             setSuccess(true);
@@ -95,7 +95,7 @@ function SignUp({ headerImageHandler }) {
         } catch (err) {
             if (!err?.response) setErrorMessage("Geen server response");
             else if (err.response?.status === 409)
-                setErrorMessage("Registratie is mislukt.. Gebruikersnaam en/of email is al in gebruik!");
+                {setErrorMessage("Registratie is mislukt.. Gebruikersnaam en/of email is al in gebruik!");}
             else setErrorMessage("Registratie mislukt");
             errorRef.current?.focus();
         }

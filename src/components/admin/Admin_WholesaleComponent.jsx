@@ -118,7 +118,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <input
                                 id="cannoli_name"
                                 type="text"
-                                {...register("cannoli_name", {required: { value: true, message: message } })}
+                                {...register("cannoli_name", {required: { value: true, message } })}
                                 placeholder={errors.cannoli_name ? message : "cannoli_naam"}
                                 className={errors.cannoli_name ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_name}
@@ -130,7 +130,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <select
                                 id="cannoli-type"
                                 defaultValue=""
-                                {...register("cannoli_type", { required: { value: true, message: message } })}
+                                {...register("cannoli_type", { required: { value: true, message } })}
                                 className={errors.cannoli_type ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_type}
                             >
@@ -148,7 +148,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <textarea
                                 id="cannoli-description"
                                 rows="8"
-                                {...register("cannoli_description", { required: { value: false, message: message }})}
+                                {...register("cannoli_description", { required: { value: false, message }})}
                                 placeholder={errors.cannoli_description ? message : "Bijv. Italiaanse koek gevuld met cremige vulling."}
                                 className={errors.cannoli_description ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_description}
@@ -161,7 +161,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                                 id="cannoli-ingredients"
                                 rows="8"
                                 // cols="50"
-                                {...register("cannoli_ingredients", { required: { value: false, message: message } })}
+                                {...register("cannoli_ingredients", { required: { value: false, message } })}
                                 placeholder={errors.cannoli_ingredients ? message : "Bijv. Room, suiker, tiramisu-créme..."}
                                 className={errors.cannoli_ingredients ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_ingredients}
@@ -173,7 +173,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <input
                                 type="text"
                                 id="cannoli_price"
-                                {...register("cannoli_price", { required: { value: true, message: message } })}
+                                {...register("cannoli_price", { required: { value: true, message } })}
                                 placeholder={errors.cannoli_price ? message : "prijs"}
                                 className={errors.cannoli_price ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_price}

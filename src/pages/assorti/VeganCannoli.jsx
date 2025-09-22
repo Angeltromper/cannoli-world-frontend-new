@@ -36,7 +36,7 @@ function VeganCannoli({ headerImageHandler, pageTitleHandler }) {
                     {vegan.map((cannoli) => {
                         if (cannoli.cannoliType === 'Vegan')
 
-                            return (
+                            {return (
                                 cannoli.image !== null ?
 
                                     <Cannoli key={cannoli.id}
@@ -53,7 +53,7 @@ function VeganCannoli({ headerImageHandler, pageTitleHandler }) {
                                              cannoliName={cannoli.cannoliName}
                                              cannoliPrice={cannoli.price}
                                     />
-                            )
+                            )}
                     })}
                 </div>
             </section>

@@ -36,7 +36,7 @@ function SnackCannoli({ headerImageHandler, pageTitleHandler }) {
                     {snack.map((cannoli) => {
                         if (cannoli.cannoliType === 'Snack')
 
-                            return (
+                            {return (
                                 cannoli.image !== null ?
 
                                     <Cannoli key={cannoli.id}
@@ -54,7 +54,7 @@ function SnackCannoli({ headerImageHandler, pageTitleHandler }) {
                                              cannoliType={cannoli.cannoliType}
                                              cannoliPrice={cannoli.price}
                                     />
-                            )
+                            )}
                     })}
                 </div>
             </section>

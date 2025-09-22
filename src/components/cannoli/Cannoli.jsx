@@ -25,7 +25,7 @@ const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
             artikelnummer: cannoli_id,
             naam: cannoliName,
             prijs: cannoliPrice,
-            url: url,
+            url,
             qty: 1
         };
 

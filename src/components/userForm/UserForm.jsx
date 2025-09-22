@@ -85,7 +85,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="firstname"
-                                {...register("person_firstname", {required: {value: true, message: message} })}
+                                {...register("person_firstname", {required: {value: true, message} })}
                                 placeholder="Voornaam"
                             />
                         </label>
@@ -96,7 +96,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="lastname"
-                                {...register( "person_lastname", {required: {value: true, message: message} })}
+                                {...register( "person_lastname", {required: {value: true, message} })}
                                 placeholder="Achternaam"
                             />
                         </label>
@@ -107,7 +107,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="streetname"
-                                {...register("person_street_name", {required: {value: true, message: message} })}
+                                {...register("person_street_name", {required: {value: true, message} })}
                                 placeholder="Straatnaam"
                             />
                         </label>
@@ -118,7 +118,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="housenumber"
-                                {...register( "person_house_number", {required: {value: true, message: message} })}
+                                {...register( "person_house_number", {required: {value: true, message} })}
                                 placeholder="Huisnummer"
                             />
                         </label>
@@ -129,7 +129,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="housenumberadd"
-                                {...register("person_house_number_add", {required: {value: false, message: message} })}
+                                {...register("person_house_number_add", {required: {value: false, message} })}
                                 placeholder="Toevoeging"
                             />
                         </label>
@@ -140,7 +140,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="zipcode"
-                                {...register("person_zipcode", {required: {value: true, message: message} })}
+                                {...register("person_zipcode", {required: {value: true, message} })}
                                 placeholder="Postcode"
                             />
                         </label>
@@ -151,7 +151,7 @@ function UserForm({headerImageHandler}) {
                             <input
                                 type="text"
                                 id="city"
-                                {...register("person_city", {required: {value: true, message: message} })}
+                                {...register("person_city", {required: {value: true, message} })}
                                 placeholder="Woonplaats"
                             />
                         </label>

@@ -34,7 +34,7 @@ function GlutenfreeCannoli({ headerImageHandler, pageTitleHandler }) {
                     {glutenfree.map((cannoli) => {
                         if (cannoli.cannoliType === 'Glutenfree')
 
-                            return (
+                            {return (
                                 cannoli.image !== null ?
 
                                     <Cannoli key={cannoli.id}
@@ -49,7 +49,7 @@ function GlutenfreeCannoli({ headerImageHandler, pageTitleHandler }) {
                                              cannoliName={cannoli.cannoliName}
                                              cannoliPrice={cannoli.price}
                                     />
-                            )
+                            )}
                     })}
                 </div>
             </section>
