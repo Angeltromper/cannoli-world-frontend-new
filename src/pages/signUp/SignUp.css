@@ -17,7 +17,6 @@
 }
 
 .register {
-    /*display: flex;*/
     font-size: 14px;
     text-align: start;
     margin-top: 2rem;
@@ -106,13 +105,6 @@ textarea {
     border-radius: 0.5em;
 }
 
-/*.input-container {
-    position: relative;
-    margin-bottom: 2rem;
-
-}
-*/
-
 .repeat {
     padding: 20px;
     font-size: 20px;
@@ -140,26 +132,6 @@ button.form-button {
     padding: 2rem;
 }
 
-
-.line-footer-logout {
-    display: flex;
-    background-color: var(--text-intro-pink);
-    box-shadow: var(--shadow-color);
-    color: var(--text-intro-white);
-    border: 1px solid black;
-    border-radius: 1.5em;
-    font-size: 14px;
-    font-weight: 400;
-    font-family: var(--second-font), sans-serif;
-    align-items: center;
-    justify-content: center;
-    margin: var(--margin);
-    width: 7rem;
-    height: 2rem;
-}
-
-
-
 .akkoord-registratie {
     display: flex;
     font-size: 12px;
@@ -183,11 +155,8 @@ button.form-button {
 .invalid {
     color: #ff0404;
     margin-left: 0.2rem ;
-
-
 }
 
-/*Keyframes*/
 
 .succes-slide-down {
     -webkit-animation: succes-slide-bottom 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;

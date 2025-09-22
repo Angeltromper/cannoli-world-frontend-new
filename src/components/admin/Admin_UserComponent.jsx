@@ -1,138 +1,157 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from "axios";
-import DeleteIcon from "../../assets/navIcon/delete.png";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
+import ConfirmPopup from '../popup/ConfirmPopup';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import pageImg from "../../assets/img.background/background-cannoli-glutenfree.jpg";
 import './Admin_UserComponent.css';
-import {AuthContext} from "../../context/AuthContext";
 
+function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
+    const token = localStorage.getItem('token');
+    const { user } = useContext(AuthContext);
 
-function Admin_UserComponent() {
-    const navigate = useNavigate();
-    const token = localStorage.getItem ('token');
-    const {user} = useContext (AuthContext);
     const [users, setUsers] = useState([]);
+    const [pendingDelete, setPendingDelete] = useState(null); // user-object of null
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-
-    function goBack() {
-            navigate(`/profile-info`)
-    }
-
-
-    async function deleteUser(username) {
-        try {
-            await axios.delete(`http://localhost:8080/users/delete/${username}`,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                       "Authorization": `Bearer ${token}`,
-                    }
-                })
-        } catch (error) {
-
-            console.error(error)
-        }
-    }
+    // Werkt voor string of array van rollen
+    const isAdmin = Array.isArray(user?.roles)
+        ? user.roles.includes('ROLE_ADMIN')
+        : user?.roles === 'ROLE_ADMIN';
 
     useEffect(() => {
+        headerImageHandler (pageImg);
+        pageTitleHandler("Persoongegevens");
+    }, [headerImageHandler, pageTitleHandler]);
 
+    useEffect(() => {
+        if (!token) return;
+
+        let cancelled = false;
         async function fetchUsers() {
             try {
-                const response = await axios.get('http://localhost:8080/users',
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": `Bearer ${token}`,
-                        }
-                    }
-                );
-                setUsers(response.data)
-
-            } catch (error) {
-                console.error ('There was an error!', error);
+                setLoading(true);
+                setError('');
+                const res = await axios.get('http://localhost:8080/users/all', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (!cancelled) setUsers(res.data);
+            } catch (e) {
+                if (!cancelled) setError('Kon gebruikers niet laden.');
+            } finally {
+                if (!cancelled) setLoading(false);
             }
         }
 
-        fetchUsers ();
-    }, [users]);
+        fetchUsers();
+        return () => {
+            cancelled = true;
+        };
+    }, [token]);
+
+    async function deleteUser(username) {
+        await axios.delete(`http://localhost:8080/users/delete/${username}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    }
+
+    async function handleConfirmDelete() {
+        if (!pendingDelete) return;
+        try {
+            await deleteUser(pendingDelete.username);
+            setUsers(prev => prev.filter(u => u.username !== pendingDelete.username));
+        } catch (e) {
+            alert('Verwijderen is mislukt. Probeer het opnieuw.');
+        } finally {
+            setPendingDelete(null);
+        }
+    }
+
+    if (!isAdmin) {
+        return (
+            <div className="admin-user-warning-container">
+                <div className="admin-user-warning">
+                    <h3>
+                        U moet zijn ingelogd als
+                        <br />
+                        ADMINISTRATOR
+                        <br />
+                        om deze gegevens te beheren
+                    </h3>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <>
+        <div className="admin-user-page">
+            <section className="Admin_UserComponentContainer">
 
-            {user.roles !== "ROLE_ADMIN" ?
+                {loading && <p>Bezig met laden…</p>}
+                {error && <p className="error-text">{error}</p>}
 
-                <div className="admin-info-container">
-                    <div className="admin-info">
-                        <h1>U moet ingelogd zijn als
-                            <br/> ADMINISTRATIE
-                            <br/> om deze content te mogen zien...
-                        </h1>
-                    </div>
-                </div>
-
-                :
-
-                <div className="admin-user-page">
-
-                    <section className="admin_UserInfo">
-                        <div>
-                            <h3>GEBRUIKERS</h3>
-                        </div>
-
-                        <table>
-                            <thead>
-                            <tr>
-                                <th></th>
-
-                                <th>Gebruikers-ID</th>
-                                <th>GEBRUIKERSNAAM</th>
-                                <th>E-mail</th>
-                                <th>Voornaam:</th>
-                                <th>Achternaam</th>
-                                <th>Straatnaam</th>
-                                <th>Huisnummer</th>
-                                <th>Toevoeging</th>
-                                <th>Postcode</th>
-                                <th>Woonplaats</th>
-
-                            </tr>
-                            </thead>
-
-                            <tbody className="admin-user">
-
-                            {users.map((user) => {
-                                return <tr key={ user.id }>
-
-                                    <td>
-                                        <button className="delete-button-user"
-                                                onClick={() => deleteUser(user.username)}>
-
-                                            <DeleteIcon/>
-
+                {!loading && !error && (
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Persoon-ID</th>
+                            <th>Gebruikersnaam</th>
+                            <th>Email</th>
+                            <th>Voornaam</th>
+                            <th>Achternaam</th>
+                            <th>Adres</th>
+                            <th>Verwijderen</th>
+                        </tr>
+                        </thead>
+                        <tbody className="admin-tbody">
+                        {users.map(u => (
+                            <tr key={u.id}>
+                                <td data-label="Person-ID">{u.id}</td>
+                                <td data-label="Gebruikersnaam">{u.username}</td>
+                                <td data-label="Email">{u.email}</td>
+                                <td data-label="Voornaam">{u.person?.personFirstname}</td>
+                                <td data-label="Achternaam">{u.person?.personLastname}</td>
+                                <td data-label="Adres">
+                                    {u.person?.personStreetName} {u.person?.personHouseNumber}
+                                    {u.person?.personHouseNumberAdd && u.person.personHouseNumberAdd}
+                                    <br />
+                                    {u.person?.personZipcode} {u.person?.personCity}
+                                </td>
+                                <td data-label="Verwijderen">
+                                    {u.id !== 1 && (
+                                        <button
+                                            onClick={() => setPendingDelete(u)}
+                                            className="icon-button"
+                                            aria-label={`Verwijder ${u.username}`}
+                                        >
+                                            <RiDeleteBin6Line size={30} />
+                                            <span>Verwijderen</span>
                                         </button>
-                                    </td>
-                                    <td>{user.id}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.personFirstname}</td>
-                                    <td>{user.personLastname}</td>
-                                    <td>{user.personStreetName}</td>
-                                    <td>{user.personHouseNumber}</td>
-                                    <td>{user.personHouseNumberAdd}</td>
-                                    <td>{user.personZipcode}</td>
-                                    <td>{user.personCity}</td>
-                                </tr>
-                            })}
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                )}
 
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
-            }
-        </>
-    )
+                {pendingDelete && (
+                    <ConfirmPopup
+                        title={`Persoonsgegevens van "${pendingDelete.username}" verwijderen?`}
+                        onCancel={() => setPendingDelete(null)}
+                        onConfirm={handleConfirmDelete}
+                    />
+                )}
+            </section>
+        </div>
+    );
 }
 
-
 export default Admin_UserComponent;
-
-

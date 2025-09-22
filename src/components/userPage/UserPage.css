@@ -1,0 +1,17 @@
+.userpage {
+    display: flex;
+    font-size: 1.2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.userpage-container {
+    display: flex;
+    flex-basis: fit-content;
+    margin: 1rem 0 0 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+

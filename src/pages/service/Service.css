@@ -7,13 +7,17 @@
     justify-content: space-between;
 }
 
+.construction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 .go-up-search-section {
     width: 1.5em;
     cursor: pointer;
     align-self: center;
 }
 
-.search-result__go-up-icon {
-
-}
 

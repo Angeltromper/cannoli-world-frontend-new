@@ -1,74 +1,74 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import logo from "../../assets/logo/Logo Cannoli.png";
-import { AuthContext } from "../../context/AuthContext";
-import { RiAccountCircleFill, RiAccountCircleLine, RiCloseLine, RiMenu3Line } from "react-icons/ri";
-import login from "../../assets/navIcon/login.png";
-import signOut from "../../assets/navIcon/signOut.png";
-import './../pageLayout/header/Header.css'
+import  { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import logo from '../../assets/logo/Logo.svg';
+import { RiCloseLine } from "react-icons/ri";
 import './Navbar.css';
 
-
-function Navbar() {
-    const { auth } = useContext ( AuthContext );
-    const [toggleMenu, setToggleMenu] = useState('');
-    const [toggleLogin, setToggleLogin] = useState('');
-    const [screenWidth, setScreenWidth] = useState( window.innerWidth );
+const Navbar = () => {
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const changeWidth = () => {
-            setScreenWidth( window.innerWidth );
-        }
+        const handleResize = () => setScreenWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-        window.addEventListener('resize', changeWidth);
-
-        return() => {
-            window.removeEventListener('resize', changeWidth);
-        }
-
-        }, []);
-
+    const handleToggleMenu = () => {
+        setToggleMenu(!toggleMenu);
+    };
 
     return (
-
-        <nav className="navbar__main-container">
-            <div className="navbar__menu-X">
-                { toggleMenu ? <RiCloseLine  size={ 30 } onClick={() => setToggleMenu (false) }/>
-                    :
-                    <RiMenu3Line  size={ 30 } onClick={() => setToggleMenu (true) }/>
-                }
-
-                {(toggleMenu || screenWidth > 990) && (
-
-                    <div className="navbar-menu">
-                        <NavLink to="/" exact activeClassName='active-link'>Home</NavLink>
-                        <NavLink to="/cannoli" exact activeClassName='active-link'>Cannoli</NavLink>
-                        <NavLink to="/giftbox" exact activeClassName='active-link'>Giftbox</NavLink>
-
-                        <NavLink to="/logo">
-                            <figure><img src={ logo } alt="logo" className="logo"/></figure>
-                        </NavLink>
-
-                        <NavLink to="/service" exact activeClassName='active-link'>Service</NavLink>
-                        <NavLink to="/franchise" exact activeClassName='active-link'>Franchise</NavLink>
-                        <NavLink to="/contact" exact activeClassName='active-link'>Contact</NavLink>
-                        { auth && <NavLink to="/orderlist" exact activeClassName='active-link'>Online Bestellen</NavLink> }
-                    </div>
-                )}
-
-
-                <div className="navbar-inlog-menu">
-                    { toggleLogin ? <button className="button-logout-menu" onClick={()  => setToggleLogin (false)}>
-                            <NavLink to="/" exact activeClassName='active-link'><img src={signOut} alt="uitloggen"/></NavLink></button>
-                        :
-                        <button onClick={() => setToggleLogin(true)}>
-                            <NavLink to="/login" exact activeClassName='active-link'><img src={login} alt="inloggen"/>Inloggen</NavLink></button>
-                    }
+        <nav className="navbar">
+            {screenWidth <= 992 && (
+                <div className="navbar-hamburger" onClick={handleToggleMenu}>
+                    {toggleMenu ? (
+                        <RiCloseLine size={30} color="black" />
+                    ) : (
+                        <div className="hamburger">
+                            <span />
+                            <span />
+                            <span />
+                        </div>
+                    )}
                 </div>
-            </div>
+            )}
+
+            {screenWidth <= 992 && (
+                <div className={`navbar-drawer ${toggleMenu ? 'open' : ''}`}>
+                    <ul className="navbar-links">
+                        <li><NavLink to="/" onClick={() => setToggleMenu(false)}>Home</NavLink></li>
+                        <li><NavLink to="/cannoli-assorti" onClick={() => setToggleMenu(false)}>Cannoli</NavLink></li>
+                        <li><NavLink to="/giftbox" onClick={() => setToggleMenu(false)}>Giftbox</NavLink></li>
+
+                        <li className="navbar-logo">
+                            <img src={logo} alt="Logo" />
+                        </li>
+
+                        <li><NavLink to="/service" onClick={() => setToggleMenu(false)}>Service</NavLink></li>
+                        <li><NavLink to="/franchise" onClick={() => setToggleMenu(false)}>Franchise</NavLink></li>
+                        <li><NavLink to="/contact" onClick={() => setToggleMenu(false)}>Contact</NavLink></li>
+                    </ul>
+                </div>
+            )}
+
+            {screenWidth > 992 && (
+                <ul className="navbar-links">
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/cannoli-assorti">Cannoli</NavLink></li>
+                    <li><NavLink to="/giftbox">Giftbox</NavLink></li>
+
+                    <li className="navbar-logo">
+                        <img src={logo} alt="Logo" />
+                    </li>
+
+                    <li><NavLink to="/service">Service</NavLink></li>
+                    <li><NavLink to="/franchise">Franchise</NavLink></li>
+                    <li><NavLink to="/contact">Contact</NavLink></li>
+                </ul>
+            )}
         </nav>
     );
-}
-
+};
 
 export default Navbar;

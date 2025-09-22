@@ -1,4 +1,3 @@
-/*
 import {jwtDecode} from "jwt-decode";
 
 function isTokenValid(jwtToken) {
@@ -8,14 +7,10 @@ function isTokenValid(jwtToken) {
     const now = new Date().getTime();
     const nowInUnix = Math.round ( now / 1000);
 
-    if (expirationUnix - nowInUnix > 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return expirationUnix - nowInUnix>0;
 
 }
 
 export default isTokenValid;
-*/
+
 

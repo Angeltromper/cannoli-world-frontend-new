@@ -1,77 +1,98 @@
-import React, {useContext} from "react";
-import { useNavigate } from "react-router-dom";
+import  { useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { FaInfoCircle } from "react-icons/fa";
-import './Cannoli.css';
+import { AuthContext } from "../../context/AuthContext";
+import { FiInfo} from "react-icons/fi";
+import "./Cannoli.css";
 
-export const Cannoli = (props) => {
-
+const Cannoli = ({ cannoli_id, cannoliName, cannoliPrice, url, fileName }) => {
     const navigate = useNavigate();
-    const [cart, setCart] = useContext(CartContext);
+    const { cart, setCart} = useContext(CartContext);
+    const { auth } = useContext(AuthContext);
+
+    const isLoggedIn = !!(auth?.isAuthenticated ?? auth?.user ?? auth?.token ?? auth);
+
+    const currentItem = cart.find(item => item.artikelnummer === cannoli_id);
+    const currentQty = currentItem ? currentItem.qty : 0;
 
     const addToCart = () => {
+        if (!isLoggedIn) {
+            alert("Log eerst in om producten toe te voegen aan je winkelmandje.");
+            return;
+        }
+
         const cannoli = {
-            artikelnummer: props.id,
-            naam: props.cannoliName,
-            prijs: props.cannoliPrice,
-            url: props.url
-        }
+            artikelnummer: cannoli_id,
+            naam: cannoliName,
+            prijs: cannoliPrice,
+            url,
+            qty: 1
+        };
 
-        const exists = cart.find((x) => x.id === cannoli.artikelnummer);
-        if (exists) {
-            setCart(
-                cart.map((x, index) =>
-
-                    x.id === cannoli.artikelnummer ? {...exists, qty: exists.qty + 1} : x
+        setCart(prevCart => {
+            const exists = prevCart.find(item => item.artikelnummer === cannoli_id);
+            const updatedCart = exists
+                ? prevCart.map(item =>
+                    item.artikelnummer === cannoli_id ? { ...item, qty: item.qty + 1 } : item
                 )
-            );
-        } else {
-            setCart([...cart, {...cannoli, qty: 1}]);
-        }
-        localStorage.setItem(cart, JSON.stringify(cart));
+                : [...prevCart, { ...cannoli, qty: 1 }];
+
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+        });
     };
 
+    const removeOne = () => {
+        setCart(prevCart => {
+            const exists = prevCart.find(item => item.artikelnummer === cannoli_id);
+            if (!exists) return prevCart;
 
-    function redirect() {
-        navigate(`wholesale/${props.id}`)
-    }
+            const updatedCart =
+                exists.qty > 1
+                    ? prevCart.map(item =>
+                        item.artikelnummer === cannoli_id ? { ...item, qty: item.qty - 1 } : item
+                    )
+                    : prevCart.filter(item => item.artikelnummer !== cannoli_id);
 
-    return(
-        <>
-            <section className="cannoli">
-                <div className="info-cannoli"
-                     onClick={redirect}>
-                    <FaInfoCircle/>
+            localStorage.setItem("cart", JSON.stringify(updatedCart));
+            return updatedCart;
+        });
+    };
+
+    const redirect = () => {
+        navigate(`/wholesale/${cannoli_id}`);
+    };
+
+    return (
+        <article className="cannoli-item">
+            <div className="cannoli-item__info-icon" onClick={redirect}>
+                <FiInfo />
+            </div>
+
+            <img className="cannoli-item__image" src={url || "/img/placeholder.jpg"} alt={fileName} />
+
+            <p className="cannoli-item__name">{cannoliName}</p>
+            <p className="cannoli-item__weight">25gr</p>
+
+            {isLoggedIn ? (
+                typeof  cannoliPrice === "number" && (
+                    <p className="cannoli-item__price">€ {Number(cannoliPrice).toFixed(2)}</p>
+                )
+            ) : (
+                <Link to='/register' className="cannoli-item__login-btn">
+                    Registreer/Log in om prijzen te kunnen zien.
+                </Link>
+            )}
+
+            {isLoggedIn && (
+                <div className="cannoli-item__actions">
+                    <button onClick={removeOne} className="remove-one">–</button>
+                    <span className="current-qty">{currentQty}</span>
+                    <button onClick={addToCart} className="add-one">+</button>
                 </div>
-
-                <div className="ItemCannoli-container">
-                    <div className="plus_cannoli_button_container">
-                        <button type="button"
-                                onClick={addToCart}> +
-                        </button>
-                    </div>
-                </div>
-
-                <div className="ImageCannoli-button-container">
-                    <div className="image-cannoli">
-                        <img alt={props.fileName} src={props.url}/>
-                    </div>
-                </div>
-
-                <span className="PriceCannoli-container">
-                    <span className="cannoli-price">
-                        <p> € {props.cannoliPrice.toFixed(2)} </p>
-                    </span>
-
-                    <span className="cannoli-name">
-                        <h5> {props.cannoliName} </h5>
-                    </span>
-                </span>
-            </section>
-        </>
+            )}
+        </article>
     );
-}
+};
 
 export default Cannoli;
-
-

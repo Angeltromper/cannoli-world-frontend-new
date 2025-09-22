@@ -1,0 +1,20 @@
+.button-edit {
+    background-color: #fff3e0;;
+    border: 2px solid #f4a300;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.button-edit:hover {
+    background-color: #ffe0b2;
+    transform: scale(1.05);
+
+}
+
+.button-edit img {
+    width: 30px;
+    height: auto;
+}

@@ -1,0 +1,116 @@
+.orderlist-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, 0.17) 60%, rgba(217, 173, 102, 0.01) 100%);
+    border-radius: 12px;
+}
+
+.orderlist-status-update {
+    margin-bottom: 2rem;
+}
+
+.orderlist-status-deliver {
+    background-color: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    color: #333;
+}
+
+.orderlist-status-deliver h5 {
+    margin: 0.3rem 0;
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+.order-status {
+    display: flex;
+    gap: 1rem 1.25rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.order-status__current {
+    color: #333;
+    font-size: 0.98rem;
+    grid-column: 1 / -1;
+}
+
+.order-status__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.order-status button {
+    background-color: #f8e8bc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #cdc08f;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.order-status button:hover:not(:disabled),
+.order-status button:focus-visible:not(:disabled) {
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255,161,7,.15);
+    outline: none;
+}
+
+.order-status button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.order-status button:disabled {
+    background-color: #f1f1f1;
+    border-color: #e7e7e7;
+    color: #9aa1a7;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.order-status__error {
+    grid-column: 1 / -1;
+    margin-top: 0.5rem;
+    color: #d60f32;
+    background: #fdecee;
+    border: 1px solid #f8c6cd;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.93rem;
+}
+
+.orderlist-info-page {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 1.5rem;
+}
+
+/*--------------------- Media-queries -----------------*/
+
+@media (max-width: 768px) {
+    .order-status {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .orderlist-page {
+        padding: 1rem;
+    }
+
+    .order-status__current {
+        margin-bottom: 0.25rem;
+    }
+
+    .order-status__actions {
+        gap: 0.6rem;
+    }
+}
+

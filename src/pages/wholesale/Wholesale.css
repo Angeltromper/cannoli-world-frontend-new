@@ -3,56 +3,13 @@
     font: var(--font);
     align-items: center;
     justify-content: center;
-    margin: 5em;
     flex-direction: column;
+    width: 100%;
 }
 
 .wholesale-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 1;
-    flex-wrap: wrap;
-    padding: 4rem 2rem;
+    padding: 20rem 2rem;
 }
-
-.wholesale-layout {
-    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
-    border-radius: 0.5rem;
-    min-width: auto;
-    padding: 10rem 2rem;
-}
-
-/*
-.cannoli-counters article button {
-    margin: 0 6px;
-    padding: 2px 6px;
-    font-size: 14px;
-    width: auto;
-}
-
-/*
-.cannoli-counters button,
-form button {
-    margin: 6px 0;
-    width: 100%;
-    padding: 6px 0;
-}
-*/
-
-/*
-form,
-.cannoli-counters {
-    width: 500px;
-    padding: 10px 14px;
-    margin: 8px;
-    box-shadow: rgba(30, 30, 70, 0.25) -9px 1px 10px -4px, rgba(0, 0, 0, 0.1) -1px 0 0 0;
-    border: none;
-}
-*/
-
 
 .button-sent {
     display: inline-block;
@@ -77,22 +34,20 @@ form,
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
-    margin: 2em 2em;
+    margin: 5em 6em;
     gap: 1em;
-
 }
 
 .form-bezorgen h3 {
     color: #FF003D;
 }
 
-
 .beoordelingen {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
-    margin: 2em 2em;
+    margin: 5em 6em;
 }
 
 textarea {
@@ -105,11 +60,10 @@ textarea {
 
 
 .form-beoordeling {
-    box-shadow: rgba(30, 30, 70, 0.25) -9px 1px 10px -4px, rgba(0, 0, 0, 0.1) -1px 0 0 0;
     border: none;
     border-radius: 0.5rem;
     font-size: 14px;
-    margin: 2em 2em;
-    padding: 2rem 2rem;
+    margin: 1em 1em;
+    padding: 1rem 4rem;
 }
 

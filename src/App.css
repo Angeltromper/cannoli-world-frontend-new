@@ -5,52 +5,37 @@
     1.  Global Styles
     2.  Typography
     3.  Page-layout
-    4.  Elementen
-    5.  Scroll-bar
-    6.  Media Queries
+    4.  Scroll bar
+    5.  Media queries
+
 /////////////////////////*/
 
-/*--------------------- 1. Global Styles ---------------------*/
+/*--------------------- 1.Global Styles ---------------------*/
 
 :root {
   --font: Merriweather;
   --font-weight: 800;
   --second-font: 'Roboto', sans-serif;
-  --second-font-line-height: 10px;
 
   --background-color-dark:  #150A06;
-  --background-color: rgba(59, 28, 17, 99);
-  --background-color-light: #FFFFFF;
-  --background-color-yellow: #FFF4A0;
-  --background-color-light-orange: #FFE782FF;
+  --background-color-light: rgba(59, 28, 17, 0);
   --background-color-light-green: #1AE216;
   --figure-color-1: #FF003D;
   --figure-color-2: #1AE216;
   --button-color: #FF003D;
 
-  --focus-color: #010101;
   --shadow-color: rgba(0, 0, 0, 0.32);
 
-  --text-logo: #CEA71E;
   --text-intro-pink: #FF003D;
-  --text-color-error: #F40000;
-  --text: #7A7A7A;
   --text-intro-white: #FFFFFF;
   --text-light: #FFFFFF;
-  --text-faded: #FFDDE6;
+  --text-faded: rgba(177, 142, 130, 0.47);
+  --text-faded-light: #FFDDE6;
   --text-dark: #010101;
 
-  --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
-  --border: 0.2em solid var(--focus-color);
-  --margin: 2em;
-  --minusTop: -2.5rem;
 
-  /*--------------------- Mobile Styles  ---------------------*/
-  --background-color-light-mobile: #E7FFC7;
-  --background-color-mobile: #FFDA5B;
-  --text-dark-mobile: #010101;
-  --menu-bar-width: 60px;
-  --menu-bar-height: 10px;
+  --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
+  --margin: 2em;
 }
 
 #root {
@@ -79,28 +64,26 @@ a, a:hover {
   text-decoration: #FF003D;
 }
 
-
-/*--------------------- 2. Typography ---------------------*/
-
-.page-title {
-  font-size: 10px;
-  margin: -12rem;
-  background-size: auto;
+body, html {
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2, h3, h4, h5 {
+/*--------------------- 2.Typography ---------------------*/
+
+h1, h2, h3, h4 {
   font-family: Merriweather, 'Times New Roman', serif;
   letter-spacing: 0.02em;
 }
 
 h1 {
   font-size: 2em;
-  margin-bottom: 0.2em;
-  padding: 20px 0;
+  margin-bottom: -8rem;
+
 }
 
 h2 {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 
 h3 {
@@ -109,7 +92,7 @@ h3 {
 
 h4 {
   font-size: 1.2rem;
-  padding: 12px 0;
+
 }
 
 h4::after {
@@ -130,7 +113,7 @@ h6 {
 }
 
 p {
-  font-size: 0.6em;
+  font-size: 1em;
 }
 
 strong {
@@ -138,22 +121,22 @@ strong {
   font-weight: 600;
 }
 
-/*--------------------- 3. Page-layout ---------------------*/
+/*--------------------- 3.Page-layout ---------------------*/
 
 .container {
   display: flex;
   width: 100%;
 }
 
-
-.outer-container__reusable {
-  display: flex;
-  max-width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
+.page-content {
+  flex: 1;
+}
 
 .inner-container__reusable  {
   display: flex;
@@ -165,20 +148,11 @@ strong {
   justify-content: space-between;
 }
 
-
-/*
-.default-area-padding {
-  padding: 0 0 100px 0;
-}
-*/
-
-
 .default-text-restrictor {
-  /*display: flex;*/
+  display: flex;
   max-width: 100%;
   text-align: center;
 }
-
 
 .page-content {
   color: var(--text-intro-pink);
@@ -188,6 +162,11 @@ strong {
   position: relative;
   justify-content: center;
   z-index: 5;
+}
+
+.page-content-two {
+  position: relative;
+  margin: var(--margin);
 }
 
 .page-content-two h2 {
@@ -200,95 +179,106 @@ strong {
   height: 3ch;
 }
 
-.page-content-two {
-  position: relative;
-  margin: var(--margin);
-  font-weight: bold;
-}
-
-
-
-
 .image-preview {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 
-/*--------------------- 5.Scroll-bar -----------------*/
+/*--------------------- 4.Scroll-bar -----------------*/
 
-
-
-  .slide-side {
-    -webkit-animation: slide-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-    animation: slide-bottom 1s cubic-bezier(0.230, 2.000, 0.320, 1.000) both;
+@keyframes slide-bottom {
+  0% {
+    transform: translateX(-100px);
   }
-
-  @-webkit-keyframes slide-side {
-    0% {
-      -webkit-transform: translateY(-100px);
-      transform: translateY(-100px);
-    }
-    100% {
-      -webkit-transform: translateY(10px);
-      transform: translateY(10px);
-    }
+  100% {
+    transform: translateX(0);
   }
-
-  @keyframes slide-bottom {
-    0% {
-      -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
-    }
-    100% {
-      -webkit-transform: translateX(10px);
-      transform: translateX(10px);
-    }
-  }
-
-
-  .slide-bar {
-    -webkit-animation: side-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) reverse both;
-    animation: side-bottom 1s cubic-bezier(0.230, 1.000, 0.320, 1.000) reverse both;
-  }
-
-
-  @-webkit-keyframes side-bottom {
-    0% {
-      -webkit-transform: rotateX(0);
-      transform: rotateX(0);
-    }
-    100% {
-      -webkit-transform: rotateX(-180deg);
-      transform: rotateX(-180deg);
-    }
-  }
-  @keyframes side-bottom {
-    0% {
-      -webkit-transform: rotateX(0);
-      transform: rotateX(0);
-    }
-    100% {
-      -webkit-transform: rotateX(-180deg);
-      transform: rotateX(-180deg);
-    }
-  }
-
-
-
-@media screen and (max-width: 740px) {
-
-
-
 }
 
-  /*--------------------- 6.Media-queries -----------------*/
+.slide-bar {
+  animation: side-bottom 1s cubic-bezier(0.23, 1, 0.32, 1) both;
+  transform-origin: center top;
+  backface-visibility: hidden;
+  will-change: transform;
+}
 
+@keyframes side-bottom {
+  0% {
+    transform: rotateX(-180deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
 
-@media screen and (max-width: 600px) {
-    :root {
+.scale-up-hor-left-right {
+  -webkit-animation: scale-up-hor-left-right 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-hor-left-right 0.3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes scale-up-hor-left-right {
+  0% {
+    -webkit-transform: scaleX(0.3);
+    transform: scaleX(0.3);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+@keyframes scale-up-hor-left-right {
+  0% {
+    -webkit-transform: scaleX(0.3);
+    transform: scaleX(0.3);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+  }
+}
+
+/*--------------------- 5.Media-queries -----------------*/
+
+@media screen and (max-width: 992px) {
+  .container {
+    display: flex;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+    .container {
+      display: flex;
       font-size: 12px;
     }
-  }
+}
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,67 +1,140 @@
 .admin-user-page {
-    padding-top: 10em;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    overflow: auto;
 }
 
-.admin_UserInfo {
+.Admin_UserComponentContainer {
+    padding: 1.5rem;
+    max-width: 100%;
+}
+
+.Admin_UserComponentContainer h3 {
+    color: #e40606;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.Admin_UserComponentContainer table {
+    margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.Admin_UserComponentContainer th {
+    background-color: white ;
+    color: #333;
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.Admin_UserComponentContainer td {
+    padding: 0.75rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.Admin_UserComponentContainer tr:nth-child(even) {
+    background-color: #fdf5e6;
+}
+
+.admin-user-warning-container {
     display: flex;
+    background-color: #fce4e4;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    flex-direction: column;
-
-
-    background: linear-gradient(180deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 0.53) 100%);
-    background: -ms-linear-gradient(0deg, rgba(21, 10, 6, 100) 0%, rgba(21, 10, 6, 100) 40%, rgba(59, 28, 17, 0.53) 100%);
-    box-shadow: rgba(0, 0, 0, 0.32) 7px 10px 18px;
-
-    height: auto;
-    margin: 0 2rem 6rem 2rem;
-    padding: 2rem 2rem 2rem 2rem;
+    height: 80vh;
 }
 
-.admin-user {
-    margin: 0 2em 2em 0;
-}
-
-.admin_UserInfo table, td, th {
-    border: 1px solid #887b7b
-}
-
-.admin_UserInfo table th {
-    background-color:  #FFF4A0;
-    color: white;
+.admin-user-warning h3 {
+    background-color: #fff0f0;
+    color: #f80707;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #ffcccc;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     text-align: center;
 }
 
 
-.admin_UserInfo table td {
-    text-align: center;
-}
+/*--------------------- Media-queries -----------------*/
 
-.admin_UserInfo table {
-    width: 90%;
-    margin: 18px 0;
-}
+@media screen and (max-width: 992px) {
+    .Admin_UserComponentContainer h3 {
+        font-size: 1.25rem;
+    }
 
-.delete-button-user {
-    background-color: #fffdfd;
-    border: none;
-    transform: scale(0.5);
-    transition: transform 150ms ease-in-out;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 1050px) {
-
-    .admin_UserInfo {
-        transform: scale(0.6);
+    td, th {
+        font-size: 1rem;
     }
 }
 
-@media screen and (max-width: 740px) {
 
-    .admin_UserInfo {
-        transform: scale(0.4);
+@media screen and (max-width: 768px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+        width: 100%;
+    }
 
+    thead {
+        display: none;
+    }
+
+    tr {
+        background-color: #fff7f0;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    td {
+        display: flex;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        text-align: left;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+
+    td::before {
+        color: #ff1212;
+        content: attr(data-label);
+        font-weight: 600;
+        margin-right: 1rem;
+        min-width: 110px;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .Admin_UserComponentContainer h3 {
+        font-size: 1rem;
+    }
+
+    td {
+        font-size: 0.95rem;
+    }
+
+    td::before {
+        font-size: 0.95rem;
     }
 }
+

@@ -1,153 +1,132 @@
-import React, {useContext, useEffect, useState} from 'react';
-import { useForm } from "react-hook-form";
+import  { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import pageImg from '../../assets/img.background/background cannolis.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useFormContext } from "react-hook-form";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import './SignIn.css';
 
-
-const USER_REGEX = /^[A-z][A-z0-9-_]{4,12}$/;
-const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
-
-
-function SignIn({headerImageHandler, pageTitleHandler}) {
-    const {register, formState: {errors}, handleSubmit} = useForm();
+function SignIn({ headerImageHandler, pageTitleHandler }) {
+    const {register, formState: { errors }, handleSubmit} = useFormContext();
     const navigate = useNavigate();
-
-    const {login, logout, auth} = useContext(AuthContext);
-
-    const [user] = useState('');
-    const [validName, setValidName] = useState(false);
-
-    const [password] = useState('');
-    const [validPassword, setValidPassword] = useState(false);
-
+    const { login, logout, auth } = useContext(AuthContext);
     const [error, setError] = useState(false);
     const [addSucces, toggleAddSuccess] = useState(false);
-
 
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, []);
-
-    useEffect( () => {
-        setValidName (USER_REGEX.test(user));
-    }, [user]);
-
-    useEffect( () => {
-        setValidPassword (PASSWORD_REGEX.test(password));
-    }, [password]);
+    }, [headerImageHandler, pageTitleHandler]);
 
     async function signIn(data) {
-
-
         try {
-            const response = await axios.post('http://localhost:8080/authenticate',
-                {
-                    username: data.username,
-                    password: data.password,
-               }, {
-
-                    // cancelToken: source.token,
+            const response = await axios.post('http://localhost:8080/authenticate', {
+                username: data.username,
+                password: data.password,
             });
 
             login(response.data.jwt);
-            toggleAddSuccess (true);
+            toggleAddSuccess(true);
 
-
-           setTimeout (() => {
-                navigate (`/profile-info`);
-            }, 2000)
+            setTimeout(() => {
+                navigate('/profile/');
+            }, 2000);
 
         } catch (error) {
             console.error('There was an error', error);
-            setError(true)
+            setError(true);
         }
     }
 
-    function handleClick() {
-
-    }
     return (
         <>
-            {!auth ?
+            {!auth && !addSucces && (
                 <div className="page-login">
-                    <form className="form-login"
-                          onSubmit={ handleSubmit (signIn) }>
-
-                        <h2 className="legend">Inloggen</h2>
-                        <br/>
+                    <h2 className="legend">Inloggen</h2>
+                        <form className="form-login" onSubmit={handleSubmit(signIn)}>
 
                         <label htmlFor="details-username">
                             Gebruikersnaam:
                             <input
-                                /*   className="details-username"*/
                                 type="text"
                                 id="details-username"
-                                { ...register ("username", {
+                                {...register("username", {
                                     required: "gebruikersnaam is verplicht!",
-                                }) }
-                                aria-invalid={ validName ? "false" : "true" }
+                                })}
+                                // aria-invalid={validName ? "false" : "true"}
                                 placeholder="gebruikersnaam"
                             />
                         </label>
-                        { errors.username && <p>{ errors.username.message }</p> }
-                        <br/>
+                            {errors.username && <p>{errors.username.message}</p>}
+                            <br/>
 
                         <label htmlFor="details-password">
                             Wachtwoord:
                             <input
-                                /*   className="details-password"*/
                                 type="password"
                                 id="details-password"
-                                { ...register ("password", {
+                                {...register("password", {
                                     required: "wachtwoord is verplicht!"
-                                }) }
-                                aria-invalid={ validPassword ? "false" : "true" }
+                                })}
+                                // aria-invalid={validPassword ? "false" : "true"}
                                 placeholder="wachtwoord"
                             />
                         </label>
+                            {errors.password && <p>{errors.password.message}</p>}
+                            <br/>
 
-                        { errors.password && <p>{ errors.password.message }</p> }
-                        <br/>
+                            <div className="errorInloggen">
+                                {error && "Inloggen mislukt. Controleer je gegevens en probeer het opnieuw."}
+                            </div>
 
-                        <button className="button-login"
-                            type="submit" onClick={ handleClick }>Inloggen
+
+                        <button className="button-login" type="submit">
+                            Inloggen
                         </button>
-
                     </form>
 
+                        <div className="button-row">
+                            <button className="button-logout" type="button" onClick={logout}>
+                                Uitloggen
+                            </button>
+                        </div>
 
-                    <button className="button-logout" type="button" onClick={ logout }>Uitloggen</button>
-
-                    { error && "Er ging iets mis, controleer u gegevens en probeer het opnieuw." }
-
-
-
-                    <section className="footer-login">
-                        Heeft u nog geen account?
-                        <span className="line-footer-login">
-                            <Link to="/register" exact activeClassName="active-link">Registreer</Link>
-                        </span>
-
-                    </section>
+                        <div className="login-footer-wrapper">
+                            <p className="account-text">Heeft u nog geen account?</p>
+                            <Link to="/register">
+                                <button className="button-register">Registreer</button>
+                            </Link>
+                        </div>
                 </div>
-                :
-                <span className="timeout-succes-signin succes-slide-bottom">
-                    <h2>Inloggen succesvol! <FontAwesomeIcon icon={ faCheck } className="valid-check"/></h2>
-                    <h5>U bent succesvol ingelogd<br/> en wordt automatisch doorgestuurd..</h5>
+            )}
+
+            {addSucces && (
+                        <div className="timeout-succes-signin">
+                            <h3>
+                                Inloggen succesvol! <FontAwesomeIcon icon={faCheck} className="valid-check"/>
+                            </h3>
+
+                            <h5>U wordt doorgestuurd naar uw profiel...</h5>
 
 
-                    <button className="button-logout" type="button" onClick={ logout }>Uitloggen</button>
-                </span>
-            }
+
+                            <div className="profile-button-wrapper">
+                        <Link to="/profile">
+                            <button className="button-profile">Ga naar profiel</button>
+                        </Link>
+                    </div>
+
+                    <button className="button-logout" type="button" onClick={logout}>
+                        Uitloggen
+                    </button>
+                </div>
+            )}
+
         </>
-    )
-}
+    );
 
+}
 
 export default SignIn;
