@@ -1,6 +1,6 @@
 ![cannoli-world](src/assets/logo/Logo%20Cannoli.png "cannoli-world logo")
 
-# Cannoli-world webapplicatie/ 2022-2023 / Novi College / Eindopdracht Full Stack Developer
+# Cannoli-world webapplicatie/ 2024-2025 / Novi College / Eindopdracht Full Stack Developer
 Dit is het frontend gedeelte voor mijn webapplicatie "cannoli-world".
 
 ## Inhoudsopgave
@@ -47,8 +47,7 @@ Open daarna http://localhost:5173 om de pagina in de browser te bekijken.
 De gebruiker kan:
 
 1. Registreren met ***E-MAIL ADRES*** en ***WACHTWOORD***
-2. Inloggen met ***GOOGLE***
-3. Bij voorkeur kan er een testaccount worden gebruikt.
+2. Bij voorkeur kan er een testaccount worden gebruikt.
 4. Testen en runnen van de applicatie door gebruik van ***ADMIN_ROLE*** en ***USER_ROLE***
 
 Emailadres: novi@test.nl  
