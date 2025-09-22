@@ -14,6 +14,3 @@ function isTokenValid(jwtToken) {
 export default isTokenValid;
 
 
-
-
-
