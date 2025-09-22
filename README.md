@@ -1,10 +1,12 @@
 ![cannoli-world](src/assets/logo/Logo%20Cannoli.png "cannoli-world logo")
 
 # Cannoli-world webapplicatie/ 2024-2025 / Novi College / Eindopdracht Full Stack Developer
+
 Dit is het frontend gedeelte van mijn webapplicatie "cannoli-world".
 
 **Mijn Github voor de BACK-END repo vind je**  [hier](https://github.com/Angeltromper/cannoli-world-backend)
 **Mijn Github voor de FRONT-END repo vind je** [hier](https://github.com/Angeltromper/cannoli-world-frontend-new)
+
 
 ## Inhoudsopgave
 1. Inleiding
