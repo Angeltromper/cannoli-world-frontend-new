@@ -49,7 +49,7 @@ De gebruiker kan:
 
 1. Registreren met ***E-MAIL ADRES*** en ***WACHTWOORD***
 2. Bij voorkeur kan er een testaccount worden gebruikt.
-4. Testen en runnen van de applicatie door gebruik van ***ADMIN_ROLE*** en ***USER_ROLE***
+3. Testen en runnen van de applicatie door gebruik van ***ADMIN_ROLE*** en ***USER_ROLE***
 
 
 **ADMIN_ROLE**
