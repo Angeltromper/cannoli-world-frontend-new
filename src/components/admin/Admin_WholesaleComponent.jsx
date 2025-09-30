@@ -33,7 +33,7 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                 price: data.cannoli_price,
             };
 
-            await axios.post("http://localhost:8080/cannolis/create",
+            await axios.post("http://localhost:8080/cannolis/",
                 payload,
                 {
                     headers: {
