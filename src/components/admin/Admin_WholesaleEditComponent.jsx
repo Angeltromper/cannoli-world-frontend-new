@@ -127,7 +127,11 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
                     <textarea
                         id="cannoli_description"
                         rows={8}
+<<<<<<< HEAD
                         {...register("cannoli_description", { required: { value: false, message } })}
+=======
+                        {...register("cannoli_description", { required: { value: true, message } })}
+>>>>>>> temp-local-snapshot
                         placeholder="Bv. Italiaanse koek gevuld met cremige vulling."
                     />
                 </label>
@@ -138,7 +142,11 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
                     <textarea
                         id="cannoli_ingredients"
                         rows={8}
+<<<<<<< HEAD
                         {...register("cannoli_ingredients", { required: { value: false, message } })}
+=======
+                        {...register("cannoli_ingredients", { required: { value: true, message } })}
+>>>>>>> temp-local-snapshot
                         placeholder="Bv. Room, suiker, tiramisu-créme..."
                     />
                 </label>

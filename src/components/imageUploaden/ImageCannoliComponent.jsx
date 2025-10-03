@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import  { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -14,6 +15,25 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
     const [imageUrl, setImageUrl] = useState('');
     const navigate = useNavigate();
 
+=======
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import "./ImageCannoliComponent.css";
+import pageImg from "../../assets/img.background/background cannolis.jpg";
+
+export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) => {
+    const token = localStorage.getItem("token");
+    const { cannoli_id } = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState("");
+    const [previewUrl, setPreviewUrl] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
+
+>>>>>>> temp-local-snapshot
     const backTo = location.state?.from ?? `/wholesale/${cannoli_id}`;
 
     useEffect(() => {
@@ -21,6 +41,7 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
         pageTitleHandler("Afbeelding uploaden");
     }, [headerImageHandler, pageTitleHandler]);
 
+<<<<<<< HEAD
 
     useEffect(() => {
         async function fetchCannoli(){
@@ -29,13 +50,26 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
                     headers: {Authorization: `Bearer ${token}`}
                 });
                 setImageUrl(data?.image?.url || '');
+=======
+    useEffect(() => {
+        async function fetchCannoli() {
+            try {
+                const { data } = await axios.get(`http://localhost:8080/cannolis/${cannoli_id}`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                setImageUrl(data?.image?.url || "");
+>>>>>>> temp-local-snapshot
             } catch (e) {
                 console.error(e);
             }
         }
         fetchCannoli();
+<<<<<<< HEAD
         }, [cannoli_id, token]);
 
+=======
+    }, [cannoli_id, token]);
+>>>>>>> temp-local-snapshot
 
     function handleImageChange(e) {
         const uploadFile = e.target.files?.[0];
@@ -46,6 +80,7 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
     }
 
     async function sendImage(e) {
+<<<<<<< HEAD
         e.preventDefault ();
         if (!file) return;
 
@@ -67,16 +102,41 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
             console.error (e)
             alert ('Uploaden mislukt.')
 
+=======
+        e.preventDefault();
+        if (!file) return;
+
+        const url = `http://localhost:8080/cannolis/${cannoli_id}/image`;
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            await axios.put(url, formData, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            URL.revokeObjectURL(previewUrl);
+            navigate(backTo, { replace: true });
+        } catch (e) {
+            console.error("Upload error:", e?.response?.status, e?.response?.data || e.message);
+            alert("Uploaden mislukt.");
+>>>>>>> temp-local-snapshot
         }
     }
 
     async function handleDownload() {
         if (!imageUrl) return;
+<<<<<<< HEAD
 
         try {
             const res = await axios.get(imageUrl, {
                 responseType: "blob",
                 headers: { Authorization: `Bearer ${token}` }
+=======
+        try {
+            const res = await axios.get(imageUrl, {
+                responseType: "blob",
+                headers: { Authorization: `Bearer ${token}` },
+>>>>>>> temp-local-snapshot
             });
             const url = URL.createObjectURL(res.data);
             const a = document.createElement("a");
@@ -87,8 +147,13 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
             a.remove();
             URL.revokeObjectURL(url);
         } catch (e) {
+<<<<<<< HEAD
             console.error(e)
             alert('Download mislukt.')
+=======
+            console.error(e);
+            alert("Download mislukt.");
+>>>>>>> temp-local-snapshot
         }
     }
 
@@ -120,6 +185,7 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
                     </button>
                 </div>
 
+<<<<<<< HEAD
                 {fileName && <p className="file-hint">{fileName}</p> }
 
 
@@ -131,10 +197,27 @@ export const ImageCannoliComponent = ({ headerImageHandler, pageTitleHandler }) 
                              className="image-preview"
                         />
                    </div>
+=======
+                {fileName && <p className="file-hint">{fileName}</p>}
+
+                {previewUrl && (
+                    <div className="preview-wrapper">
+                        Voorbeeld:
+                        <img
+                            src={previewUrl}
+                            alt="Voorbeeld van de gekozen afbeelding"
+                            className="image-preview"
+                        />
+                    </div>
+>>>>>>> temp-local-snapshot
                 )}
             </form>
         </section>
     );
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> temp-local-snapshot
 
 export default ImageCannoliComponent;

@@ -148,7 +148,11 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <textarea
                                 id="cannoli-description"
                                 rows="8"
+<<<<<<< HEAD
                                 {...register("cannoli_description", { required: { value: false, message }})}
+=======
+                                {...register("cannoli_description", { required: { value: true, message }})}
+>>>>>>> temp-local-snapshot
                                 placeholder={errors.cannoli_description ? message : "Bijv. Italiaanse koek gevuld met cremige vulling."}
                                 className={errors.cannoli_description ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_description}
@@ -160,7 +164,11 @@ function Admin_WholesaleComponent({headerImageHandler, pageTitleHandler}) {
                             <textarea
                                 id="cannoli-ingredients"
                                 rows="8"
+<<<<<<< HEAD
                                 {...register("cannoli_ingredients", { required: { value: false, message } })}
+=======
+                                {...register("cannoli_ingredients", { required: { value: true, message } })}
+>>>>>>> temp-local-snapshot
                                 placeholder={errors.cannoli_ingredients ? message : "Bijv. Room, suiker, tiramisu-créme..."}
                                 className={errors.cannoli_ingredients ? "field is-error" : "field"}
                                 aria-invalid={!!errors.cannoli_ingredients}
