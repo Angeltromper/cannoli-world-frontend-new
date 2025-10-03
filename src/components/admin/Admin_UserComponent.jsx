@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import ConfirmPopup from '../popup/ConfirmPopup';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import pageImg from "../../assets/img.background/background-cannoli-glutenfree.jpg";
+import pageImg from "../../assets/background-cannoli-glutenfree.jpg";
 import './Admin_UserComponent.css';
 
 function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
@@ -40,6 +40,7 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
                     },
                 });
                 if (!cancelled) setUsers(res.data);
+                // eslint-disable-next-line no-unused-vars
             } catch (e) {
                 if (!cancelled) setError('Kon gebruikers niet laden.');
             } finally {

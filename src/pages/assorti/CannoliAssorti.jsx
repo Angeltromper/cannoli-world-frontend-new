@@ -1,9 +1,9 @@
 import  { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import pageImg from './../../assets/img.background/background cannolis.jpg';
-import cannolisnack from './../../assets/img.cannoli-snack/Cannolisnack-image.png';
-import cannoliglutenfree from './../../assets/img.cannoli-glutenfree/Cannoliglutenfree-image.png';
-import cannolivegan from './../../assets/img.cannoli-vegan/Cannolivegan-image.png';
+import pageImg from '../../assets/background cannolis.jpg';
+import cannolisnack from '../../assets/Cannolisnack-image.png';
+import cannoliglutenfree from '../../assets/Cannoliglutenfree-image.png';
+import cannolivegan from '../../assets/Cannolivegan-image.png';
 
 import CannoliCard from "../../components/cardMenu/CannoliCard";
 import './CannoliAssorti.css';

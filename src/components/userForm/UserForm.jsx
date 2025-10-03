@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
 import {useFormContext} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
-import pageImg from "../../assets/img.background/Background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import './UserForm.css';
 
 function UserForm({headerImageHandler}) {

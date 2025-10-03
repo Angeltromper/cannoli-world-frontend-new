@@ -1,7 +1,7 @@
 import  { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import pageImg from '../../assets/img.background/background cannolis.jpg';
+import pageImg from '../../assets/background cannolis.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormContext } from "react-hook-form";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";

@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import "./SignUp.css";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{4,11}$/;

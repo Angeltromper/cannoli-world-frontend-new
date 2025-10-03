@@ -4,7 +4,7 @@ import axios from "axios";
 import Order_InfoComponent from "./Order_InfoComponent";
 import { AuthContext } from "../../context/AuthContext";
 import "./OrderListComponent.css";
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 const STATUS = Object.freeze({
     NEW: "NEW",

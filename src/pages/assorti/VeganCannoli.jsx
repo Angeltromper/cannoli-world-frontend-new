@@ -2,7 +2,7 @@ import  { useEffect, useState } from "react";
 import axios from "axios";
 import Cannoli from "../../components/cannoli/Cannoli";
 import './VeganCannoli.css';
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 
 function VeganCannoli({ headerImageHandler, pageTitleHandler }) {

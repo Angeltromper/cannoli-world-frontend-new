@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import pageImg from "../../assets/img.background/Background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import './CartDeliveryRequest.css';
 
 function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {

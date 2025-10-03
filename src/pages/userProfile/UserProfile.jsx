@@ -1,6 +1,6 @@
 import  { useContext, useEffect, useState } from 'react';
 import { Link, } from "react-router-dom";
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import UserPage from "../../components/userPage/UserPage";

@@ -1,8 +1,8 @@
 import  { useEffect, useState, useRef } from "react";
-import pageImg from "./../../assets/img.background/background cannolis.jpg";
-import snackVanille from "./../../assets/img.cannoli-snack/Snack Vanille.png";
-import snackAmandel from "./../../assets/img.cannoli-snack/Snack Amandel.png";
-import snackLimoncello from "./../../assets/img.cannoli-snack/Snack Limoncello.png";
+import pageImg from '../../assets/background cannoli-snack.jpg';
+import snackVanille from '../../assets/Snack Vanille.png';
+import snackAmandel from '../../assets/Snack Amandel.png';
+import snackLimoncello from '../../assets/Snack Limoncello.png';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";

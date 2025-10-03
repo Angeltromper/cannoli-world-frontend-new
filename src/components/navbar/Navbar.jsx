@@ -1,6 +1,6 @@
 import  { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../assets/logo/Logo.svg';
+import logo from '../../assets/svg/Logo.svg';
 import { RiCloseLine } from "react-icons/ri";
 import './Navbar.css';
 

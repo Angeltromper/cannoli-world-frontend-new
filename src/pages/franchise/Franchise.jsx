@@ -1,5 +1,5 @@
 import  { useEffect, useRef } from 'react';
-import pageImg from "../../assets/img.background/background franchise.jpg";
+import pageImg from "../../assets/background franchise.jpg";
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import "../../components/pageLayout/designElement/container/textContainer/TextContainer";
