@@ -1,0 +1,95 @@
+.cannoli-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+    gap: 2em;
+}
+
+.cards-glutenfree-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    margin: 3em auto;
+    justify-content: center;
+    max-width: 1280px;
+    gap: 2em;
+}
+
+.cards-glutenfree-container .button {
+    display: flex;
+    color: #FF003D;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.65rem 1.1rem;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.cards-glutenfree-container .button-primary {
+    background-color: #FF003D;
+    border: 2px solid #FF003D;
+    justify-self: center;
+}
+
+.cards-glutenfree-container .button-secondary {
+    border: 2px solid rgba(255, 0, 61, 0.63);
+}
+
+.cards-glutenfree-container .button-secondary:hover {
+    background-color: rgba(255, 0, 61, 0.44) ;
+}
+
+.search-result__go-up-icon {
+    width: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}
+
+/*--------------------- Media-queries -----------------*/
+
+@media (max-width: 992px) {
+    .cards-glutenfree-container {
+        grid-template-columns: repeat(2, minmax(18rem, 1fr));
+        gap: 1.75rem;
+    }
+    .cards-glutenfree-container .button {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-glutenfree-container {
+        grid-template-columns: repeat(2, minmax(16.5rem, 1fr));
+        max-width: 680px;
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cards-glutenfree-container {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        margin: 1.5rem 1rem;
+        gap: 1rem;
+    }
+}
+
+.cards-glutenfree-container .button {
+    display: block;
+    width: max-content;
+    text-align: center;
+    margin: 0.6rem auto 0;
+    padding: 0.6rem 1rem;
+}
+

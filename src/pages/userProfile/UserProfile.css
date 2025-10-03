@@ -1,0 +1,128 @@
+.profile-page-container {
+    background: #fff5f0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1000px;
+    border-radius: 16px;
+}
+
+.profile-header {
+    color: var(--text-intro-pink);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.profile-welcomepage {
+    color: #333;
+    font-size: 1rem;
+    margin: 2rem 0;
+}
+
+.user-profile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile-adress-wrapper {
+    display: flex;
+    background-color: #ffe8d6;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.profile-adress-details {
+    color: #444;
+    flex: 1;
+}
+
+.profile-info {
+    display: flex;
+    margin: 1rem 0;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.profile-info a.profile-info-view,
+.profile-info a.profile-info-view:link,
+.profile-info a.profile-info-view:visited,
+.profile-info a.profile-info-added,
+.profile-info a.profile-info-added:link,
+.profile-info a.profile-info-added:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.profile-info-view,
+.profile-info-added {
+    background-color: #fff3e0;
+    color: black;
+    box-shadow: rgba(30, 30, 70, 0.25) 0 8px 10px -1px, rgba(0, 0, 0, 0.4) 0 1px 7px -1px;
+    border: 2px solid #f4a300;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px;
+    width: 10rem;
+    max-width: 100%;
+    min-width: 170px;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.profile-info-view:hover,
+.profile-info-added:hover {
+    background-color: #ffe0b2;
+}
+
+.scale-up-hor-left-right {
+    animation: scale-up 0.5s ease-in-out;
+}
+
+@keyframes scale-up {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/*--------------------- 6.Media-queries -----------------*/
+
+
+@media screen and (max-width: 992px) {
+
+    .profile-welcomepage {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+        padding: 2em 2em;
+        min-width: min-content;
+    }
+
+    .profilepage-menu {
+        display: flex;
+    }
+
+
+    .profilepage-menu-column {
+        display: flex;
+        text-align: center;
+
+    }
+
+    .profilepage-menu-column button {
+        display: flex;
+        transform: scale(1.0);
+    }
+
+    .profilepage-menu-column button:hover {
+        display: flex;
+        transform: scale(1.1);
+    }
+
+}
+
+
+

@@ -1,0 +1,36 @@
+.delete-button {
+    display: flex;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 500;
+}
+
+.delete-button:hover {
+    transform: translateY(-1px);
+    z-index: 500;
+}
+
+.delete-button:active {
+    transform: translateY(0);
+   }
+
+
+
+/*--------------------- Media-queries -----------------*/
+
+
+@media screen and (max-width: 768px) {
+    .delete-button {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
+}

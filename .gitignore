@@ -1,0 +1,34 @@
+# dependencies & builds
+/node_modules/
+/dist/
+/build/
+/coverage/
+
+# env (commit alleen het voorbeeld)
+.env
+.env.*
+!.env.example
+
+# IDE & OS
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+
+# Yarn Plug'n'Play (als je dat gebruikt)
+.pnp.cjs
+.pnp.loader.mjs
+/.pnp
+.pnp.js
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# JetBrains defaults die soms opduiken
+/shelf/
+/workspace.xml
+
+# (optioneel) HTTP client requests in IDE
+/httpRequests/

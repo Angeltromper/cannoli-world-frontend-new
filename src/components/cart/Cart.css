@@ -1,0 +1,92 @@
+.cart-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+.page-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+    z-index: 999;
+}
+.page-overlay.open {
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.cart-drawer {
+    display: flex;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0; right: 0;
+    width: 100%; max-width: 400px;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+    flex-direction: column;
+    z-index: 1000;
+}
+.cart-drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    display: flex;
+    color: white;
+    top: 2rem;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #eee;
+}
+
+.drawer-items {
+    color: white;
+    flex: 1;
+    overflow-y: auto;
+    padding: 12rem 2rem;
+    z-index: 1000;
+}
+
+.drawer-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.drawer-footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+.drawer-button {
+    background-color: #f4a300;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.drawer-button:hover {
+    background-color: #d18600;
+}
+
+@media (max-width: 992px) {
+    .cart-drawer { max-width: 350px; }
+}
+@media (max-width: 768px) {
+    .cart-drawer { max-width: 100%; }
+}
+@media (max-width: 576px) {
+    .cart-drawer { width: 100%; max-width: none; }
+}

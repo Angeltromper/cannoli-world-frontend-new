@@ -1,0 +1,50 @@
+.snackCannoli-container {
+    background: linear-gradient(to bottom, #fffdf7, #ffffff);
+    position: relative;
+    min-height: auto;
+    padding: 10rem 0 2rem 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.snackCannoli-container h2 {
+    color: #2c2c2c;
+    font-size: 2.2rem;
+    text-align: center;
+    font: var(--second-font);
+    margin-bottom: 1.5rem;
+}
+
+
+/*--------------------- 6.Media-queries -----------------*/
+
+@media screen and (max-width: 992px) {
+    .snackCannoli-container h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .snackCannoli-container  {
+        padding-top: 8rem;
+    }
+
+    .snackCannoli-container h2  {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .snackCannoli-container  {
+        padding-top: 6rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .snackCannoli-container h2  {
+        font-size: 1.6rem;
+    }
+}
+
+
+
+
