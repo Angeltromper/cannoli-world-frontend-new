@@ -17,13 +17,9 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
 
     useEffect(() => {
         headerImageHandler(pageImg);
-<<<<<<< HEAD
-        pageTitleHandler();
-    }, []);
-=======
         pageTitleHandler("Cannoli Snack");
     }, [headerImageHandler, pageTitleHandler]);
->>>>>>> temp-local-snapshot
+
 
     const handleMoreInfo = (title) => {
         let variants = [];
@@ -58,13 +54,6 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
 
     return (
         <div className="cannoli-container">
-<<<<<<< HEAD
-            <div>
-                <h2>Cannoli Snack</h2>
-            </div>
-
-=======
->>>>>>> temp-local-snapshot
             <div className="cards-snack-container">
                 <Card image={snackVanille} id={1001} imageAlt="snack vanille" title="Vanille" content="Gevuld met zachte vanille crème" onMoreInfoClick={handleMoreInfo} />
                 <Card image={snackAmandel} id={1002} imageAlt="snack amandel" title="Amandel" content="Gevuld met zachte amandel crème" onMoreInfoClick={handleMoreInfo} />
