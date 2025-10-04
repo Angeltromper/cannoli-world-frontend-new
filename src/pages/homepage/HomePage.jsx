@@ -19,7 +19,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
     const [cannoliQuery, setCannoliQuery] = useState("");
     const refSearch = useRef(null);

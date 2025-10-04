@@ -6,7 +6,7 @@ import axios from "axios";
 import pageImg from "../../assets/background cannolis.jpg";
 import "./SignUp.css";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{4,11}$/;
+const USER_REGEX = /^[A-Za-z][A-Za-z0-9._-]{2,31}$/;
 const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
 const EMAIL_REGEX =
     /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -61,7 +61,7 @@ function SignUp({ headerImageHandler }) {
 
     useEffect(() => {
         setErrorMessage("");
-    }, [user, email, password, repeat]);
+    }, [user, email, password, repeat, agreeTerms]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -84,18 +84,19 @@ function SignUp({ headerImageHandler }) {
         }
 
         try {
-            const res = await axios.post("http://localhost:8080/users/create", {
-                username: user,
-                password,
-                email,
-            });
-            console.log(res);
+            const payload = { username: user, email, password };
+
+            await axios.post("http://localhost:8080/users/create",
+                payload,
+                { headers: { "Content-Type": "application/json" } }
+            );
+
             setSuccess(true);
-            setTimeout(() => navigate("/login"), 2500);
+            setTimeout(() => navigate("/login"), 2000);
         } catch (err) {
             if (!err?.response) setErrorMessage("Geen server response");
-            else if (err.response?.status === 409)
-                {setErrorMessage("Registratie is mislukt.. Gebruikersnaam en/of email is al in gebruik!");}
+            else if (err.response?.status === 409) setErrorMessage("Gebruikersnaam en/of e-mail bestaat al");
+            else if (err.response?.status === 400) setErrorMessage("Aanvraag ongeldig");
             else setErrorMessage("Registratie mislukt");
             errorRef.current?.focus();
         }
@@ -114,11 +115,9 @@ function SignUp({ headerImageHandler }) {
                             <br /> en wordt doorgestuurd naar de inlog pagina..
                         </h3>
                         <h5>
-                            Mocht u niet automatisch worden doorgestuurd
+                            Niet automatisch doorgestuurd?
                             <br />
-                            <NavLink to="/login" className="active-link">
-                                klik dan hier!
-                            </NavLink>
+                            <NavLink to="/login" className="active-link">klik dan hier!</NavLink>
                         </h5>
                     </div>
                 </div>
@@ -158,9 +157,9 @@ function SignUp({ headerImageHandler }) {
                         <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             <em>
-                                4 tot 12 karakters. <br />
+                                3 tot 32 karakters. <br />
                                 Moet met een letter beginnen. <br />
-                                Letters, cijfers, underscore, middenstreep zijn toegestaan.
+                                Letters, cijfers, punt, underscore, middenstreep toegestaan.
                             </em>
                         </p>
                         <br />
@@ -208,8 +207,8 @@ function SignUp({ headerImageHandler }) {
                         <p id="password-note" className={passwordFocus && !validPassword ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             <em>
-                                8 tot 24 karakters. <br />
-                                Moet een hoofd en klein letter, cijfer plus een speciaal teken bevatten. <br />
+                                8–24 karakters. <br />
+                                Hoofdletter, kleine letter, cijfer en speciaal teken vereist. <br />
                                 Toegestane tekens: ! @ # $ %
                             </em>
                         </p>
@@ -246,7 +245,6 @@ function SignUp({ headerImageHandler }) {
                                 aria-invalid={submitted && !agreeTerms}
                                 aria-describedby="agree-error"
                             />
-
                             Ik ga akkoord met de algemene voorwaarden.
                         </label>
                         {submitted && !agreeTerms && (
@@ -259,7 +257,7 @@ function SignUp({ headerImageHandler }) {
                         <button
                             type="submit"
                             className="button-register"
-                            disabled={!validName || !validEmail || !validPassword || !validRepeat}
+                            disabled={!validName || !validEmail || !validPassword || !validRepeat || !agreeTerms}
                         >
                             Registreren
                         </button>
