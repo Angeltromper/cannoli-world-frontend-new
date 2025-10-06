@@ -9,6 +9,7 @@ import './Admin_UserComponent.css';
 function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
     const token = localStorage.getItem('token');
     const { user } = useContext(AuthContext);
+    const me = user?.username || null;
 
     const [users, setUsers] = useState([]);
     const [pendingDelete, setPendingDelete] = useState(null); // user-object of null
@@ -55,23 +56,30 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
     }, [token]);
 
     async function deleteUser(username) {
-        await axios.delete(`http://localhost:8080/users/delete/${username}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        try {
+            await axios.delete (`http://localhost:8080/users/delete/${ username }`, {
+                headers: {
+                    Authorization: `Bearer ${ token }`,
+                },
+            });
+            return true;
+        } catch (e) {
+            if (e?.response?.status === 404) return true;
+            return false;
+        }
     }
-
     async function handleConfirmDelete() {
         if (!pendingDelete) return;
-        try {
-            await deleteUser(pendingDelete.username);
-            setUsers(prev => prev.filter(u => u.username !== pendingDelete.username));
-        } catch (e) {
+        const name = pendingDelete.username;
+
+        setPendingDelete(null);
+
+        const ok = await deleteUser(name);
+        if (ok) {
+            // direct uit UI verwijderen, geen reload nodig
+            setUsers(prev => prev.filter(u => u.username !== name));
+        } else {
             alert('Verwijderen is mislukt. Probeer het opnieuw.');
-        } finally {
-            setPendingDelete(null);
         }
     }
 
@@ -126,8 +134,9 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
                                     {u.person?.personZipcode} {u.person?.personCity}
                                 </td>
                                 <td data-label="Verwijderen">
-                                    {u.id !== 1 && (
+                                    {u.id !== 1 && u.username !== me && (
                                         <button
+                                            type="button"
                                             onClick={() => setPendingDelete(u)}
                                             className="icon-button"
                                             aria-label={`Verwijder ${u.username}`}

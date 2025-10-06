@@ -40,9 +40,7 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
             await axios.post(
                 `http://localhost:8080/deliveryRequests/create`,
                 {
-                    comment: data.remark ?? "",
-                    items,
-                },
+                    comment: data.remark ?? "", items },
                 {
                     headers: {
                         'Content-Type': 'application/json',

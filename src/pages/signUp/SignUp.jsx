@@ -6,6 +6,8 @@ import axios from "axios";
 import pageImg from "../../assets/background cannolis.jpg";
 import "./SignUp.css";
 
+axios.defaults.baseURL = "http://localhost:8080";
+
 const USER_REGEX = /^[A-Za-z][A-Za-z0-9._-]{2,31}$/;
 const PASSWORD_REGEX = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,24}$/;
 const EMAIL_REGEX =
@@ -37,34 +39,25 @@ function SignUp({ headerImageHandler }) {
 
     const [errorMessage, setErrorMessage] = useState("");
     const [success, setSuccess] = useState(false);
+    const [busy, setBusy] = useState(false);
 
     useEffect(() => {
         if (typeof headerImageHandler === "function") headerImageHandler(pageImg);
     }, [headerImageHandler]);
 
-    useEffect(() => {
-        userRef.current?.focus();
-    }, []);
-
-    useEffect(() => {
-        setValidName(USER_REGEX.test(user));
-    }, [user]);
-
-    useEffect(() => {
-        setValidEmail(EMAIL_REGEX.test(email));
-    }, [email]);
-
+    useEffect(() => { userRef.current?.focus(); }, []);
+    useEffect(() => { setValidName(USER_REGEX.test(user)); }, [user]);
+    useEffect(() => { setValidEmail(EMAIL_REGEX.test(email)); }, [email]);
     useEffect(() => {
         setValidPassword(PASSWORD_REGEX.test(password));
         setValidRepeat(password === repeat);
     }, [password, repeat]);
-
-    useEffect(() => {
-        setErrorMessage("");
-    }, [user, email, password, repeat, agreeTerms]);
+    useEffect(() => { setErrorMessage(""); }, [user, email, password, repeat, agreeTerms]);
 
     async function handleSubmit(e) {
         e.preventDefault();
+        if (busy) return;
+        setBusy(true);
         setSubmitted(true);
 
         const v1 = USER_REGEX.test(user);
@@ -75,30 +68,32 @@ function SignUp({ headerImageHandler }) {
         if (!v1 || !v2 || !v3 || !v4) {
             setErrorMessage("Ongeldige invoer");
             errorRef.current?.focus();
+            setBusy(false);
             return;
         }
         if (!agreeTerms) {
             setErrorMessage("Je kan je alleen registreren als je met onze voorwaarden instemt.");
             errorRef.current?.focus();
+            setBusy(false);
             return;
         }
 
         try {
-            const payload = { username: user, email, password };
-
-            await axios.post("http://localhost:8080/users/create",
-                payload,
+            await axios.post("/users/create",
+                { username: user, email, password },
                 { headers: { "Content-Type": "application/json" } }
             );
-
             setSuccess(true);
-            setTimeout(() => navigate("/login"), 2000);
+            setTimeout(() => navigate("/login"), 1500);
         } catch (err) {
             if (!err?.response) setErrorMessage("Geen server response");
             else if (err.response?.status === 409) setErrorMessage("Gebruikersnaam en/of e-mail bestaat al");
+            else if (err.response?.status === 403) setErrorMessage("Geen toegang tot registreren (403)");
             else if (err.response?.status === 400) setErrorMessage("Aanvraag ongeldig");
             else setErrorMessage("Registratie mislukt");
             errorRef.current?.focus();
+        } finally {
+            setBusy(false);
         }
     }
 
@@ -107,31 +102,18 @@ function SignUp({ headerImageHandler }) {
             {success ? (
                 <div className="timeout-succes succes-slide-down">
                     <div>
-                        <h1>
-                            Gelukt! <FontAwesomeIcon icon={faCheck} className="valid-check" />
-                        </h1>
-                        <h3>
-                            U heeft succesvol een account aangemaakt
-                            <br /> en wordt doorgestuurd naar de inlog pagina..
-                        </h3>
-                        <h5>
-                            Niet automatisch doorgestuurd?
-                            <br />
-                            <NavLink to="/login" className="active-link">klik dan hier!</NavLink>
-                        </h5>
+                        <h1>Gelukt! <FontAwesomeIcon icon={faCheck} className="valid-check" /></h1>
+                        <h3>U heeft succesvol een account aangemaakt<br />en wordt doorgestuurd naar de inlog pagina..</h3>
+                        <h5>Niet automatisch doorgestuurd?<br /><NavLink to="/login" className="active-link">klik dan hier!</NavLink></h5>
                     </div>
                 </div>
             ) : (
                 <div className="register">
-                    <p
-                        ref={errorRef}
-                        className={errorMessage ? "error-message" : "offscreen"}
-                        aria-live="assertive"
-                    >
+                    <p ref={errorRef} className={errorMessage ? "error-message" : "offscreen"} aria-live="assertive">
                         {errorMessage}
                     </p>
 
-                    <form className="form-register" onSubmit={handleSubmit}>
+                    <form className="form-register" onSubmit={handleSubmit} noValidate>
                         <h2>Registreren</h2>
                         <br />
 
@@ -145,7 +127,7 @@ function SignUp({ headerImageHandler }) {
                             type="text"
                             id="username"
                             ref={userRef}
-                            autoComplete="off"
+                            autoComplete="username"
                             value={user}
                             onChange={(e) => setUser(e.target.value)}
                             required
@@ -156,11 +138,7 @@ function SignUp({ headerImageHandler }) {
                         />
                         <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            <em>
-                                3 tot 32 karakters. <br />
-                                Moet met een letter beginnen. <br />
-                                Letters, cijfers, punt, underscore, middenstreep toegestaan.
-                            </em>
+                            <em>3 tot 32 karakters. <br />Moet met een letter beginnen. <br />Letters, cijfers, punt, underscore, middenstreep toegestaan.</em>
                         </p>
                         <br />
 
@@ -176,6 +154,7 @@ function SignUp({ headerImageHandler }) {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                            autoComplete="email"
                             aria-invalid={validEmail ? "false" : "true"}
                             aria-describedby="emailnote"
                             onFocus={() => setEmailFocus(true)}
@@ -199,6 +178,7 @@ function SignUp({ headerImageHandler }) {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
+                            autoComplete="new-password"
                             aria-invalid={validPassword ? "false" : "true"}
                             aria-describedby="password-note"
                             onFocus={() => setPasswordFocus(true)}
@@ -206,11 +186,7 @@ function SignUp({ headerImageHandler }) {
                         />
                         <p id="password-note" className={passwordFocus && !validPassword ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            <em>
-                                8–24 karakters. <br />
-                                Hoofdletter, kleine letter, cijfer en speciaal teken vereist. <br />
-                                Toegestane tekens: ! @ # $ %
-                            </em>
+                            <em>8–24 karakters. <br />Hoofdletter, kleine letter, cijfer en speciaal teken vereist.</em>
                         </p>
                         <br />
 
@@ -226,6 +202,7 @@ function SignUp({ headerImageHandler }) {
                             value={repeat}
                             onChange={(e) => setRepeat(e.target.value)}
                             required
+                            autoComplete="new-password"
                             aria-invalid={validRepeat ? "false" : "true"}
                             aria-describedby="repeat-note"
                             onFocus={() => setRepeatFocus(true)}
@@ -248,18 +225,16 @@ function SignUp({ headerImageHandler }) {
                             Ik ga akkoord met de algemene voorwaarden.
                         </label>
                         {submitted && !agreeTerms && (
-                            <p id="agree-error" className="error-label">
-                                Je kan je alleen registreren als je met onze voorwaarden instemt.
-                            </p>
+                            <p id="agree-error" className="error-label">Je kan je alleen registreren als je met onze voorwaarden instemt.</p>
                         )}
                         <br />
 
                         <button
                             type="submit"
                             className="button-register"
-                            disabled={!validName || !validEmail || !validPassword || !validRepeat || !agreeTerms}
+                            disabled={busy || !validName || !validEmail || !validPassword || !validRepeat || !agreeTerms}
                         >
-                            Registreren
+                            {busy ? "Bezig..." : "Registreren"}
                         </button>
                     </form>
                 </div>
