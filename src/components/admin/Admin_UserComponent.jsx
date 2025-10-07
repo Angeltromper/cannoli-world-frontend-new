@@ -56,31 +56,30 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
     }, [token]);
 
     async function deleteUser(username) {
-        try {
+        const res=
             await axios.delete (`http://localhost:8080/users/delete/${ username }`, {
                 headers: {
-                    Authorization: `Bearer ${ token }`,
-                },
+                    Authorization: `Bearer ${ token }`,},
+                validateStatus: () => true,
             });
-            return true;
-        } catch (e) {
-            if (e?.response?.status === 404) return true;
-            return false;
+        console.log('DELETE /users/delete response:', res.status, res.data);
+        return res;
         }
-    }
-    async function handleConfirmDelete() {
+
+
+        async function handleConfirmDelete() {
         if (!pendingDelete) return;
         const name = pendingDelete.username;
-
         setPendingDelete(null);
 
-        const ok = await deleteUser(name);
-        if (ok) {
-            // direct uit UI verwijderen, geen reload nodig
+        const res = await deleteUser(name);
+
+        if (res.status === 200 || res.status === 204) {
             setUsers(prev => prev.filter(u => u.username !== name));
-        } else {
-            alert('Verwijderen is mislukt. Probeer het opnieuw.');
+            return
         }
+        alert(`Verwijderen mislukt (${res.status}). ${typeof res.data === 'string' ? res.data : (res.data?.message || 'Onbekende fout')}`);
+        console.error('DELETE failed:', res);
     }
 
     if (!isAdmin) {

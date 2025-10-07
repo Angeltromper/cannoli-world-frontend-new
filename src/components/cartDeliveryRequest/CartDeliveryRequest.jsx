@@ -13,6 +13,8 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
 
     const { cart, clearCart } = useContext(CartContext);
     const totalPrice = cart.reduce((acc, item) => acc + (Number(item.prijs) || 0) * (Number(item.qty) || 0), 0);
+    const { register, handleSubmit, reset } = useFormContext();
+    const navigate = useNavigate();
 
     const firstname = user.person_firstname;
     const lastname = user.person_lastname;
@@ -21,9 +23,6 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
     const houseNumberAdd = user.person_house_number_add;
     const zipcode = user.person_zipcode;
     const city = user.person_city;
-
-    const { register, handleSubmit, reset } = useFormContext();
-    const navigate = useNavigate();
 
     useEffect(() => {
         headerImageHandler(pageImg);

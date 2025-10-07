@@ -79,18 +79,38 @@ function SignUp({ headerImageHandler }) {
         }
 
         try {
-            await axios.post("/users/create",
-                { username: user, email, password },
+            const normalizedEmail = email.trim().toLowerCase();
+            console.log("[SIGNUP] sending", { username: user, email: normalizedEmail });
+
+            // Stuur tijdelijk beide keys mee (email + emailAddress) voor compat met oude back-end
+            const res = await axios.post(
+                "/users/create",
+                { username: user, email: normalizedEmail, emailAddress: normalizedEmail, password },
                 { headers: { "Content-Type": "application/json" } }
             );
+
+            console.log("[SIGNUP] success", res.status, res.data);
             setSuccess(true);
+
+            // Doorsturen naar login zodat je meteen kunt inloggen
             setTimeout(() => navigate("/login"), 1500);
+
         } catch (err) {
+            if (err?.response) {
+                console.log("[SIGNUP] error response", err.response.status, err.response.data);
+            } else if (err?.request) {
+                console.log("[SIGNUP] no response", err.message);
+            } else {
+                console.log("[SIGNUP] setup error", err?.message);
+            }
+
             if (!err?.response) setErrorMessage("Geen server response");
-            else if (err.response?.status === 409) setErrorMessage("Gebruikersnaam en/of e-mail bestaat al");
-            else if (err.response?.status === 403) setErrorMessage("Geen toegang tot registreren (403)");
-            else if (err.response?.status === 400) setErrorMessage("Aanvraag ongeldig");
+            else if (err.response.status === 409) setErrorMessage("Gebruikersnaam en/of e-mail bestaat al");
+            else if (err.response.status === 403) setErrorMessage("Geen toegang tot registreren (403)");
+            else if (err.response.status === 400 || err.response.status === 422) setErrorMessage("Aanvraag ongeldig");
+            else if (err.response.data?.message) setErrorMessage(err.response.data.message);
             else setErrorMessage("Registratie mislukt");
+
             errorRef.current?.focus();
         } finally {
             setBusy(false);
@@ -109,7 +129,12 @@ function SignUp({ headerImageHandler }) {
                 </div>
             ) : (
                 <div className="register">
-                    <p ref={errorRef} className={errorMessage ? "error-message" : "offscreen"} aria-live="assertive">
+                    <p
+                        ref={errorRef}
+                        role="alert"
+                        className={errorMessage ? "error-message" : "offscreen"}
+                        aria-live="assertive"
+                    >
                         {errorMessage}
                     </p>
 
@@ -225,7 +250,9 @@ function SignUp({ headerImageHandler }) {
                             Ik ga akkoord met de algemene voorwaarden.
                         </label>
                         {submitted && !agreeTerms && (
-                            <p id="agree-error" className="error-label">Je kan je alleen registreren als je met onze voorwaarden instemt.</p>
+                            <p id="agree-error" className="error-label">
+                                Je kan je alleen registreren als je met onze voorwaarden instemt.
+                            </p>
                         )}
                         <br />
 
