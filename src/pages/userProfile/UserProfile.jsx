@@ -1,99 +1,96 @@
-import  { useContext, useEffect, useState } from 'react';
-import { Link, } from "react-router-dom";
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import pageImg from "../../assets/background cannolis.jpg";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import UserPage from "../../components/userPage/UserPage";
 import ButtonEdit from "../../components/buttonEdit/ButtonEdit";
 import './UserProfile.css';
 
+axios.defaults.baseURL = "http://localhost:8080";
 
-function UserProfile({headerImageHandler, pageTitleHandler}) {
-    const token = localStorage.getItem("token");
-    const { user } = useContext(AuthContext);
+function UserProfile({ headerImageHandler, pageTitleHandler }) {
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(AuthContext);
     const username = user?.username;
     const [isAdmin, setIsAdmin] = useState(false);
+    const [person, setPerson] = useState(null);
 
     useEffect(() => {
-         headerImageHandler(pageImg);
-         pageTitleHandler("Profiel")
-         }, [headerImageHandler,pageTitleHandler]);
+        headerImageHandler(pageImg);
+        pageTitleHandler("Profiel");
+    }, [headerImageHandler, pageTitleHandler]);
 
-     useEffect(()=> {
-         if (!username || !token) return;
+    useEffect(() => {
+        if (!username) return;
+        let cancelled = false;
+        (async () => {
+            try {
+                const { data: u } = await axios.get(`/users/${username}`);
+                const roles = Array.isArray(u.roles)
+                    ? u.roles.map(r => (typeof r === "string" ? r : r.authority))
+                    : u.role
+                        ? [u.role]
+                        : [];
+                if (!cancelled) setIsAdmin(roles.includes("ROLE_ADMIN") || roles.includes("ADMIN"));
 
-         let cancelled = false;
+                const { data: me } = await axios.get(`/persons/me`);
+                if (!cancelled) {
+                    setPerson(me);
+                    if (setUser) setUser(prev => (prev ? { ...prev, person: me } : prev));
+                }
+            } catch (e) {
+                if (e.response?.status === 401) {
+                    localStorage.removeItem("token");
+                    delete axios.defaults.headers.common.Authorization;
+                    navigate("/login", { replace: true });
+                } else {
+                    console.error(e);
+                }
+            }
+        })();
+        return () => { cancelled = true; };
+    }, [username, setUser, navigate]);
 
-         async function fetchAdmin() {
-             try {
-                 const {data} = await axios.get (`http://localhost:8080/users/${ username }/`,
-                     {
-                         headers: {
-                             "Content-type": "application/json",
-                             "Authorization": `Bearer ${ token }`,
-                         }
-                     }
-                     );
-
-                 const roleFromArray = Array.isArray (data.roles) ? (data.roles[0]?.authority || data.roles[0]) : undefined;
-                 const role = roleFromArray ??
-                     (typeof data.roles === 'string' ? data.roles : undefined) ??
-                     (typeof data.role === 'string' ? data.role : undefined);
-
-                 if (!cancelled) {
-                     setIsAdmin (role === 'ROLE_ADMIN' || role === 'ADMIN');
-                 }
-             } catch (error) {
-                 console.error ('There was an error', error);
-             }
-         }
-
-         fetchAdmin();
-         return () => { cancelled = true; };
-         }, [username, token]);
-
-
-     return (
+    return (
         <>
             <div className="profile-page-container">
                 <h2 className="profile-header">Welkom {username}</h2>
 
                 <div className="profile-welcomepage scale-up-hor-left-right">
-                    <h5> Op deze pagina kunt u uw persoonlijke gegevens bekijken en aanpassen.</h5>
+                    <h5>Op deze pagina kunt u uw persoonlijke gegevens bekijken en aanpassen.</h5>
                 </div>
 
                 <div className="user-profile-column">
+                    <ButtonEdit
+                        title="Adresgegevens bewerken" />
 
-                    <ButtonEdit title="Adresgegevens bewerken"/>
-                    <h5> Klik op het potloodje om uw adresgegevens in te voeren of te wijzigen.</h5>
-                    <UserPage/>
+                    <h5>
+                        Klik op het potloodje om uw adresgegevens in te voeren of te wijzigen.
+                    </h5>
+
+                    <UserPage person={person} />
                 </div>
             </div>
 
-
-            {isAdmin && (
+            {isAdmin ? (
                 <div className="profile-info">
                     <Link className="profile-info-view" to="/user-view">
                         Gebruikersgegevens beheren
                     </Link>
-
                     <Link className="profile-info-added" to="/cannolis-add">
                         Cannolis toevoegen en of wijzigen
                     </Link>
-
-                    <Link className="profile-info-added" to= "/deliveryRequests">
+                    <Link className="profile-info-added" to="/deliveryRequests">
                         Overzicht bestellijst
                     </Link>
                 </div>
-            )}
-
-            {!isAdmin && (
+            ) : (
                 <div className="profile-info">
                     <Link className="profile-info-added" to="/deliveryRequests">
                         Mijn bestellingen
                     </Link>
                 </div>
-
             )}
         </>
     );

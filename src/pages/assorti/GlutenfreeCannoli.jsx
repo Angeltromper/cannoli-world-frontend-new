@@ -1,8 +1,8 @@
 import  { useEffect, useState } from "react";
 import axios from "axios";
 import Cannoli from "../../components/cannoli/Cannoli";
+import pageImg from "../../assets/background cannolis.jpg";
 import './GlutenfreeCannoli.css';
-import pageImg from "../../assets/img.background/background cannolis.jpg";
 
 function GlutenfreeCannoli({ headerImageHandler, pageTitleHandler }) {
     const [glutenfree, setGlutenfree] = useState([]);

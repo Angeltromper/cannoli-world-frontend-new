@@ -1,11 +1,13 @@
-import  { useState } from 'react';
+import { useContext, useState } from 'react';
 import {NavLink} from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext.jsx";
 import mail from "../../../assets/navIcon/mail.png";
 import phone from "../../../assets/navIcon/phone.png";
 import './Footer.css';
 
 function Footer() {
     const [popupOpen, setPopupOpen] = useState(false);
+    const  { auth } =useContext(AuthContext);
 
     const handleNewsletterSubmit = (e) => {
         e.preventDefault();
@@ -27,8 +29,10 @@ function Footer() {
                         <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to="/faq's">Faq's</NavLink></li>
                         <li><NavLink to="/contact">Contact</NavLink></li>
-                        <li><NavLink to="/profile">Account</NavLink></li>
-                        <li><NavLink to="/login">Inloggen</NavLink></li>
+                        <li><NavLink to={auth ? "/profile" : "/login"}>
+                                {auth ? "Account" : "Inloggen"}
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
 

@@ -1,8 +1,8 @@
 import  { useEffect, useState, useRef } from "react";
-import pageImg from "./../../assets/img.background/background cannolis.jpg";
-import snackVanille from "./../../assets/img.cannoli-snack/Snack Vanille.png";
-import snackAmandel from "./../../assets/img.cannoli-snack/Snack Amandel.png";
-import snackLimoncello from "./../../assets/img.cannoli-snack/Snack Limoncello.png";
+import pageImg from '../../assets/background cannoli-snack.jpg';
+import snackVanille from '../../assets/Snack Vanille.png';
+import snackAmandel from '../../assets/Snack Amandel.png';
+import snackLimoncello from '../../assets/Snack Limoncello.png';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
@@ -17,8 +17,9 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
 
     useEffect(() => {
         headerImageHandler(pageImg);
-        pageTitleHandler();
-    }, []);
+        pageTitleHandler("Cannoli Snack");
+    }, [headerImageHandler, pageTitleHandler]);
+
 
     const handleMoreInfo = (title) => {
         let variants = [];
@@ -53,10 +54,6 @@ function CannoliSnack({ headerImageHandler, pageTitleHandler }) {
 
     return (
         <div className="cannoli-container">
-            <div>
-                <h2>Cannoli Snack</h2>
-            </div>
-
             <div className="cards-snack-container">
                 <Card image={snackVanille} id={1001} imageAlt="snack vanille" title="Vanille" content="Gevuld met zachte vanille crème" onMoreInfoClick={handleMoreInfo} />
                 <Card image={snackAmandel} id={1002} imageAlt="snack amandel" title="Amandel" content="Gevuld met zachte amandel crème" onMoreInfoClick={handleMoreInfo} />

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ConfirmPopup from "./../popup/ConfirmPopup";
 import './CartPage.css';
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 const CartPage = ({ headerImageHandler, pageTitleHandler }) => {
     const navigate = useNavigate();

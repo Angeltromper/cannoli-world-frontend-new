@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { Trash2} from "lucide-react";
 import axios from "axios";
 import './OrderList.css';
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 function OrderList({headerImageHandler, pageTitleHandler}) {
     const navigate = useNavigate();

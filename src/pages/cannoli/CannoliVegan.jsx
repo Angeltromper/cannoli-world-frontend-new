@@ -1,11 +1,11 @@
 import  { useEffect, useRef, useState } from 'react';
-import pageImg from './../../assets/img.background/background cannoli-vegan.jpg';
+import pageImg from '../../assets/background cannoli-vegan.jpg';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import Card from "../../components/cardMenu/Card";
-import veganpistache from "../../assets/img.cannoli-vegan/Vegan Pistache.png";
-import veganlimoncello from "../../assets/img.cannoli-vegan/Vegan Limoncello.png";
-import veganstrawberry from "../../assets/img.cannoli-vegan/Vegan Strawberry.png";
+import veganpistache from '../../assets/Vegan Pistache.png';
+import veganlimoncello from '../../assets/Vegan Limoncello.png';
+import veganstrawberry from '../../assets/Vegan Strawberry.png';
 import PopupCannoli from "../../components/popup/PopupCannoli";
 import './CannoliVegan.css';
 
@@ -16,8 +16,8 @@ function CannoliVegan({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
         headerImageHandler (pageImg);
-        pageTitleHandler();
-        }, []);
+        pageTitleHandler("Cannoli Vegan");
+        }, [headerImageHandler, pageTitleHandler]);
 
     const handleMoreInfo = (title) => {
         let variants = [];
@@ -52,11 +52,6 @@ function CannoliVegan({headerImageHandler, pageTitleHandler}) {
 
     return (
         <div className="cannoli-container">
-
-            <div>
-                <h2>Cannoli Vegan</h2>
-            </div>
-
             <div className="cards-vegan-container">
                 <Card image={ veganstrawberry } id={1017} imageAlt="cannoli strawberry" title="Strawberry" content="Vegan koekje gevuld met zachte vegan hazelnoot crème" onMoreInfoClick={handleMoreInfo} />
                 <Card image={ veganlimoncello } id={1018} imageAlt="cannoli limoncello" title="Limoncello" content="Vegan koekje gevuld met zachte vegan limoncello crème" onMoreInfoClick={handleMoreInfo} />

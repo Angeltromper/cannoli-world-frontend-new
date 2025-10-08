@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import pageImg from "../../assets/img.background/Background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import './CartDeliveryRequest.css';
 
 function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
@@ -13,6 +13,8 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
 
     const { cart, clearCart } = useContext(CartContext);
     const totalPrice = cart.reduce((acc, item) => acc + (Number(item.prijs) || 0) * (Number(item.qty) || 0), 0);
+    const { register, handleSubmit, reset } = useFormContext();
+    const navigate = useNavigate();
 
     const firstname = user.person_firstname;
     const lastname = user.person_lastname;
@@ -21,9 +23,6 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
     const houseNumberAdd = user.person_house_number_add;
     const zipcode = user.person_zipcode;
     const city = user.person_city;
-
-    const { register, handleSubmit, reset } = useFormContext();
-    const navigate = useNavigate();
 
     useEffect(() => {
         headerImageHandler(pageImg);
@@ -40,9 +39,7 @@ function CartDeliveryRequest({ headerImageHandler, pageTitleHandler }) {
             await axios.post(
                 `http://localhost:8080/deliveryRequests/create`,
                 {
-                    comment: data.remark ?? "",
-                    items,
-                },
+                    comment: data.remark ?? "", items },
                 {
                     headers: {
                         'Content-Type': 'application/json',

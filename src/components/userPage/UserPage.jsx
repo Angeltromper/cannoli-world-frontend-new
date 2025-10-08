@@ -2,36 +2,52 @@ import  { useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
 import './UserPage.css'
 
-function UserPage() {
+function UserPage({person: personProp}) {
+    const {user} = useContext (AuthContext);
+    const person = personProp ?? user?.person ?? {};
+
     const {
-        user: {
-            person_firstname, person_lastname,
-            person_street_name,
-            person_house_number,
-            person_house_number_add,
-            person_zipcode,
-            person_city,
-        }
-    } = useContext(AuthContext);
+        personFirstname = "",
+        personLastname = "",
+        personStreetName = "",
+        personHouseNumber = "",
+        personHouseNumberAdd = "",
+        personZipcode = "",
+        personCity = "",
+    } = person
+
+
+    const isEmpty =
+        !personFirstname &&
+        !personLastname &&
+        !personStreetName &&
+        !personHouseNumber &&
+        !personZipcode &&
+        !personCity;
+
+    if (isEmpty) {
+        return (
+            <section className="userpage">
+                <div className="userpage-container">
+                    Nog geen adres ingevuld!
+                </div>
+            </section>
+        );
+    }
+
 
     return (
         <section className="userpage">
             <div className="userpage-container">
-
+                <span>{personFirstname} {personLastname}</span>
                 <span>
-                    {person_firstname} {person_lastname}
+                    {personStreetName} {personHouseNumber}
+                    {personHouseNumberAdd ? ` (${personHouseNumberAdd})` : ''}
                 </span>
-
-                <span>
-                    {person_street_name} {person_house_number} {person_house_number_add}
-                </span>
-
-                <span>
-                    {person_zipcode} {person_city}
-                </span>
+                <span>{personZipcode} {personCity}</span>
             </div>
         </section>
-    )
+    );
 }
 
 export default UserPage;

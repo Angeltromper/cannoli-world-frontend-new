@@ -1,5 +1,5 @@
 import  { useContext, useEffect } from "react";
-import pageImg from "./../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 import { generatePath, matchPath, useLocation, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
@@ -127,7 +127,8 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
                     <textarea
                         id="cannoli_description"
                         rows={8}
-                        {...register("cannoli_description", { required: { value: false, message } })}
+                        {...register("cannoli_description", { required: { value: true, message } })}
+
                         placeholder="Bv. Italiaanse koek gevuld met cremige vulling."
                     />
                 </label>
@@ -138,7 +139,8 @@ function Admin_WholesaleEditComponent({headerImageHandler, pageTitleHandler}) {
                     <textarea
                         id="cannoli_ingredients"
                         rows={8}
-                        {...register("cannoli_ingredients", { required: { value: false, message } })}
+                        {...register("cannoli_ingredients", { required: { value: true, message } })}
+
                         placeholder="Bv. Room, suiker, tiramisu-créme..."
                     />
                 </label>

@@ -2,7 +2,7 @@ import  { useEffect, useState } from "react";
 import axios from "axios";
 import Cannoli from "../../components/cannoli/Cannoli";
 import './SnackCannoli.css';
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 function SnackCannoli({ headerImageHandler, pageTitleHandler }) {
     const [snack, setSnack] = useState([]);

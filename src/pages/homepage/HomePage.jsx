@@ -1,11 +1,11 @@
 import  { useEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import pageImg from "../../assets/img.header/homepage-background-2400.jpg";
-import cannoliSnack from "./../../assets/img.background/background-cannoli-snack.png";
-import cannoliGlutenFree from "./../../assets/img.background/background cannoli-glutenfree.png";
-import cannoliVegan from "./../../assets/img.background/background cannoli vegan.png";
-import cannoliGiftbox from "./../../assets/img.background/background giftbox.png";
-import cannoliFranchise from "./../../assets/img.background/background-franchise.png";
+import pageImg from '../../assets/homepage-background.jpg';
+import cannoliSnack from "../../assets/background-cannoli-snack.png";
+import cannoliGlutenFree from "../../assets/background cannoli-glutenfree.png";
+import cannoliVegan from "../../assets/background cannoli vegan.png";
+import cannoliGiftbox from "../../assets/background giftbox.png";
+import cannoliFranchise from "../../assets/background-franchise.png";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
 import TextContainerResp from "../../components/pageLayout/designElement/container/textContainerResp/TextContainerResp";
 import HandleRef from "./../../helpers/HandleRef";
@@ -19,7 +19,7 @@ function HomePage ({headerImageHandler, pageTitleHandler}) {
     useEffect(() => {
         headerImageHandler(pageImg);
         pageTitleHandler();
-    }, []);
+    }, [headerImageHandler, pageTitleHandler]);
 
     const [cannoliQuery, setCannoliQuery] = useState("");
     const refSearch = useRef(null);

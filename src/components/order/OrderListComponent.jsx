@@ -4,7 +4,7 @@ import axios from "axios";
 import Order_InfoComponent from "./Order_InfoComponent";
 import { AuthContext } from "../../context/AuthContext";
 import "./OrderListComponent.css";
-import pageImg from "../../assets/img.background/background cannolis.jpg";
+import pageImg from "../../assets/background cannolis.jpg";
 
 const STATUS = Object.freeze({
     NEW: "NEW",
@@ -122,7 +122,7 @@ function OrderListComponent({ headerImageHandler, pageTitleHandler }) {
         <div className="orderlist-page">
             <div className="orderlist-status-update">
                 <div className="orderlist-status-deliver">
-                    <h5>Hier kunt u de status aangeven wanneer deze is aangenomen en bezorgd.</h5>
+                    <h5>Hier ziet u de status van de bestelling.</h5>
                     <br />
                     <h5><i>*AVAILABLE</i> = De bestelling is beschikbaar voor bezorging.</h5>
                     <h5><i>*CONFIRMED</i> = De bestelling is ontvangen en wordt verwerkt.</h5>

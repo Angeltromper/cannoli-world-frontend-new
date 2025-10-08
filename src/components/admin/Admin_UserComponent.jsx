@@ -3,12 +3,13 @@ import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import ConfirmPopup from '../popup/ConfirmPopup';
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import pageImg from "../../assets/img.background/background-cannoli-glutenfree.jpg";
+import pageImg from "../../assets/background-cannoli-glutenfree.jpg";
 import './Admin_UserComponent.css';
 
 function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
     const token = localStorage.getItem('token');
     const { user } = useContext(AuthContext);
+    const me = user?.username || null;
 
     const [users, setUsers] = useState([]);
     const [pendingDelete, setPendingDelete] = useState(null); // user-object of null
@@ -40,6 +41,7 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
                     },
                 });
                 if (!cancelled) setUsers(res.data);
+                // eslint-disable-next-line no-unused-vars
             } catch (e) {
                 if (!cancelled) setError('Kon gebruikers niet laden.');
             } finally {
@@ -54,24 +56,30 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
     }, [token]);
 
     async function deleteUser(username) {
-        await axios.delete(`http://localhost:8080/users/delete/${username}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-    }
-
-    async function handleConfirmDelete() {
-        if (!pendingDelete) return;
-        try {
-            await deleteUser(pendingDelete.username);
-            setUsers(prev => prev.filter(u => u.username !== pendingDelete.username));
-        } catch (e) {
-            alert('Verwijderen is mislukt. Probeer het opnieuw.');
-        } finally {
-            setPendingDelete(null);
+        const res=
+            await axios.delete (`http://localhost:8080/users/delete/${ username }`, {
+                headers: {
+                    Authorization: `Bearer ${ token }`,},
+                validateStatus: () => true,
+            });
+        console.log('DELETE /users/delete response:', res.status, res.data);
+        return res;
         }
+
+
+        async function handleConfirmDelete() {
+        if (!pendingDelete) return;
+        const name = pendingDelete.username;
+        setPendingDelete(null);
+
+        const res = await deleteUser(name);
+
+        if (res.status === 200 || res.status === 204) {
+            setUsers(prev => prev.filter(u => u.username !== name));
+            return
+        }
+        alert(`Verwijderen mislukt (${res.status}). ${typeof res.data === 'string' ? res.data : (res.data?.message || 'Onbekende fout')}`);
+        console.error('DELETE failed:', res);
     }
 
     if (!isAdmin) {
@@ -125,8 +133,9 @@ function Admin_UserComponent({headerImageHandler, pageTitleHandler}) {
                                     {u.person?.personZipcode} {u.person?.personCity}
                                 </td>
                                 <td data-label="Verwijderen">
-                                    {u.id !== 1 && (
+                                    {u.id !== 1 && u.username !== me && (
                                         <button
+                                            type="button"
                                             onClick={() => setPendingDelete(u)}
                                             className="icon-button"
                                             aria-label={`Verwijder ${u.username}`}

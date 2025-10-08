@@ -1,5 +1,5 @@
 import  { useEffect, useRef } from 'react';
-import pageImg from './../../assets/img.background/background giftbox.jpg';
+import pageImg from '../../assets/background giftbox.jpg';
 import goUp from "../../assets/navIcon/goUp.png";
 import HandleRef from "../../helpers/HandleRef";
 import TextContainer from "../../components/pageLayout/designElement/container/textContainer/TextContainer";
@@ -9,8 +9,8 @@ function Giftbox({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
         headerImageHandler (pageImg);
-        pageTitleHandler ();
-    }, []);
+        pageTitleHandler ("Giftbox");
+    }, [headerImageHandler, pageTitleHandler]);
 
     const refSearch = useRef(null);
 

@@ -44,7 +44,7 @@ import OrderList from "./pages/orderList/OrderList";
 
 import FourZeroFour from "./pages/404/FourZeroFour";
 
-import headerImg from "./assets/img.header/homepage-background-2400.jpg";
+import headerImg from './assets/homepage-background.jpg';
 import "./App.css";
 
 /* ---------------- Helpers ---------------------- */
