@@ -1,34 +1,9 @@
 header {
-    background: linear-gradient(180deg, rgb(73, 36, 8) 0%, rgba(73, 31, 14, 0.8) 40%, rgba(140, 75, 57, 0.01) 100%);
+    background: linear-gradient(rgba(220, 202, 202, 0.93) 0%, rgba(73, 36, 8, 0.59) 70%, rgba(73, 36, 8, 0.7) 100%);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 180px;
-    width: 100%;
-    overflow: visible;
     z-index: 900;
-}
-
-header::before {
-    content: "";
-    position: absolute;
-    left: calc(50% - 39px);
-    bottom: 25px;
-    width: 78px;
-    height: 10px;
-    pointer-events: none;
-    z-index: 0;
-}
-
-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: .6;
-    background-position: top center;
-    pointer-events: none;
-    z-index: 0;
 }
 
 .header-top {
@@ -73,49 +48,42 @@ header::after {
 }
 
 .page-title {
-    position: absolute;
+    color: #fff;
+    position: fixed;
+    font-size: 0.90rem;
+    top: 140px;
     margin: 0;
     left: 50%;
-    bottom: 16px;
     transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 950;
 }
 
 .header-img-container {
     position: relative;
-    padding-top: 180px;
-    margin-bottom: 32px;
-    z-index: 0;
+    padding-top: calc(var(--header-h) + var(--join-overlap));
 }
 
 .header-img {
     display: block;
+    position: relative;
     width: 100%;
     height: auto;
-    /*max-width: 100%;*/
-    margin:0;
+    z-index: 0;
 }
 
-.skewer--bottom {
+.skewer--top{
+    background: linear-gradient(180deg, rgba(73, 36, 8, 0.7) 0%, rgba(73, 31, 14, 0.81) 40%, rgba(12, 12, 12, 0.87) 100%);
     position: absolute;
+    top: 180px;
     left: 0;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-top: 10px solid rgba(255, 255, 255, 0);
-    border-right: 10dvw solid transparent;
+    right: 0;
+    bottom: -1px;
+    height: calc(var(--skewer-h) + var(--join-overlap));
+    clip-path: polygon(0 0, 100% 0, 100% 15%, 0 100%);
     pointer-events: none;
-    z-index:0;
+    z-index: 940;
 }
-
-
-.cartMenu {
-    height: 2em;
-    transition: .5s;
-}
-.cartMenu:hover {
-    transition: .5s;
-}
-
 
 html, body {
     overflow-x: clip;
@@ -125,14 +93,18 @@ html, body {
 /*--------------------- Media-queries -----------------*/
 
 @media (max-width: 992px) {
+    .page-title {
+        color: #111;
+        font-size: 0.75rem;
+    }
+
+    .skewer--top {
+        display: none;
+    }
+
     header {
         background: linear-gradient(180deg, rgb(255, 161, 7) 0%, rgba(217, 173, 102, .17) 60%, rgba(217, 173, 102, .01) 100%);
         z-index: 999;
-    }
-
-    .skewer--bottom {
-        border-right: 130dvw solid transparent;
-        z-index: 950;
     }
 
     .account-btn,

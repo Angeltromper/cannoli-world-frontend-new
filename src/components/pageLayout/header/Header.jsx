@@ -14,6 +14,7 @@ function Header({ headerImage, pageTitle }) {
     return (
         <>
             <header className="header">
+
                 <div className="header-top">
                     <div className="header-actions">
                         <Cart />
@@ -38,17 +39,18 @@ function Header({ headerImage, pageTitle }) {
                 </div>
 
                 <Navbar />
-
+                <div className="skewer--top" />
             </header>
 
             <div className="header-img-container">
+
                 <img src={headerImage} className="header-img" alt="/" />
 
                 <div className="page-title">
                     <h1>{pageTitle}</h1>
                 </div>
             </div>
-            <div className="skewer--bottom" />
+
         </>
     );
 }

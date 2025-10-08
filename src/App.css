@@ -36,6 +36,9 @@
 
   --dropshadow: 0.2em 0.2em 0 var(--shadow-color);
   --margin: 2em;
+  --header-h: 180px;
+  --skewer-h: 100px;
+  --join-overlap: 12px;
 }
 
 #root {
@@ -43,7 +46,6 @@
   justify-content: center;
 }
 
-/*Met de padding worden de hoogtes en breedtes van de elementen berekend en inclusief padding en borders*/
 * {
   padding:0;
   margin: 0;

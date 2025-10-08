@@ -9,8 +9,8 @@ function Giftbox({headerImageHandler, pageTitleHandler}) {
 
     useEffect(() => {
         headerImageHandler (pageImg);
-        pageTitleHandler ();
-    }, []);
+        pageTitleHandler ("Giftbox");
+    }, [headerImageHandler, pageTitleHandler]);
 
     const refSearch = useRef(null);
 

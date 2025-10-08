@@ -22,11 +22,6 @@ function UserProfile({ headerImageHandler, pageTitleHandler }) {
     }, [headerImageHandler, pageTitleHandler]);
 
     useEffect(() => {
-        const t = localStorage.getItem("token");
-        if (t) axios.defaults.headers.common.Authorization = `Bearer ${t}`;
-    }, []);
-
-    useEffect(() => {
         if (!username) return;
         let cancelled = false;
         (async () => {
@@ -61,25 +56,40 @@ function UserProfile({ headerImageHandler, pageTitleHandler }) {
         <>
             <div className="profile-page-container">
                 <h2 className="profile-header">Welkom {username}</h2>
+
                 <div className="profile-welcomepage scale-up-hor-left-right">
                     <h5>Op deze pagina kunt u uw persoonlijke gegevens bekijken en aanpassen.</h5>
                 </div>
+
                 <div className="user-profile-column">
-                    <ButtonEdit title="Adresgegevens bewerken" />
-                    <h5>Klik op het potloodje om uw adresgegevens in te voeren of te wijzigen.</h5>
+                    <ButtonEdit
+                        title="Adresgegevens bewerken" />
+
+                    <h5>
+                        Klik op het potloodje om uw adresgegevens in te voeren of te wijzigen.
+                    </h5>
+
                     <UserPage person={person} />
                 </div>
             </div>
 
             {isAdmin ? (
                 <div className="profile-info">
-                    <Link className="profile-info-view" to="/user-view">Gebruikersgegevens beheren</Link>
-                    <Link className="profile-info-added" to="/cannolis-add">Cannolis toevoegen en of wijzigen</Link>
-                    <Link className="profile-info-added" to="/deliveryRequests">Overzicht bestellijst</Link>
+                    <Link className="profile-info-view" to="/user-view">
+                        Gebruikersgegevens beheren
+                    </Link>
+                    <Link className="profile-info-added" to="/cannolis-add">
+                        Cannolis toevoegen en of wijzigen
+                    </Link>
+                    <Link className="profile-info-added" to="/deliveryRequests">
+                        Overzicht bestellijst
+                    </Link>
                 </div>
             ) : (
                 <div className="profile-info">
-                    <Link className="profile-info-added" to="/deliveryRequests">Mijn bestellingen</Link>
+                    <Link className="profile-info-added" to="/deliveryRequests">
+                        Mijn bestellingen
+                    </Link>
                 </div>
             )}
         </>
