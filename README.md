@@ -1,4 +1,5 @@
-![cannoli-world](src/assets/logo/Logo%20Cannoli.png "cannoli-world logo")
+![cannoli-world logo](./src/assets/svg/Logo.svg)
+
 
 # Cannoli-world webapplicatie/ 2024-2025 / Novi College / Eindopdracht Full Stack Developer
 
